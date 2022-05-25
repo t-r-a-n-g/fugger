@@ -17,6 +17,7 @@
         "message": "You can only call the error() and warn() functions from the console object"
       }
     ],
-    "linebreak-style": ["error", "unix"]
+    "linebreak-style": ["error", "unix"],
+    "import/no-unresolved": "off"
   }
 }

@@ -1,17 +1,20 @@
-import React, { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import * as React from "react";
+import { Route } from "react-router-dom";
+import { Admin, CustomRoutes, Resource, ListGuesser } from "react-admin";
+import jsonServerProvider from "ra-data-json-server";
+import MyLayout from "@components/layout/MyLayout";
+import Test from "@components/test/Test";
+
+const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 
 function App() {
   return (
-    <Router>
-      <Suspense fallback="loading">
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<div>Welcome</div>} />
-          </Routes>
-        </div>
-      </Suspense>
-    </Router>
+    <Admin layout={MyLayout} dataProvider={dataProvider}>
+      <Resource name="users" list={ListGuesser} />
+      <CustomRoutes>
+        <Route path="/test" element={<Test />} />
+      </CustomRoutes>
+    </Admin>
   );
 }
 

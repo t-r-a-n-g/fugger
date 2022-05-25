@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route } from "react-router-dom";
 import { Admin, CustomRoutes, Resource, ListGuesser } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import MyLayout from "@components/layout/MyLayout";
+import MyLayout from "@components/layouts/MyLayout";
 import Test from "@components/test/Test";
 
 const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");

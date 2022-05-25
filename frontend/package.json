@@ -4,7 +4,7 @@
   "author": "Max Dahl",
   "license": "MIT",
   "scripts": {
-    "dev": "vite & npx json-server --watch db.json --port 3001",
+    "dev": "concurrently \"vite\" \"npx json-server --watch db.json --port 3001\"",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "echo '----- Checking Frontend...' && prettier --debug-check . && eslint --ext .jsx . && echo '----- Done!'",

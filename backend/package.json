@@ -24,7 +24,8 @@
     "mariadb": "^2.3.3",
     "sequelize": "^6.18.0",
     "swagger-autogen": "^2.21.1",
-    "swagger-ui-express": "^4.3.0"
+    "swagger-ui-express": "^4.3.0",
+    "template-fullstack": "file:.."
   },
   "rules": {
     "no-console": [

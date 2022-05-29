@@ -55,5 +55,5 @@ async function syncDB(force = false) {
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 startServer();
-// checkDB();
-// syncDB(true);
+checkDB();
+syncDB(true);

@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/db");
 
 const Upload = sequelize.define(
-  "uploads",
+  "upload",
   {
     id: {
       type: DataTypes.INTEGER,

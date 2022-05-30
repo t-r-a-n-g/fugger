@@ -30,16 +30,18 @@ module.exports = function createRelations() {
   User.hasMany(Upload);
   Upload.belongsTo(User);
 
+  // One-To-Many User & DatevAccounts
+  User.hasMany(DatevAccount);
+  DatevAccount.belongsTo(User);
+
+  // One-To-Many User & Budgets
+  User.hasMany(Budget);
+  Budget.belongsTo(User);
+
   // Many-to-Many User Relations
   User.hasMany(Category, { through: "UserCategory" });
   Category.hasMany(User, { through: "UserCategory" });
 
   User.hasMany(Subcategory, { through: "UserSubategory" });
   Subcategory.hasMany(User, { through: "UserSubategory" });
-
-  User.hasMany(DatevAccount, { through: "UserDatevAccount" });
-  DatevAccount.hasMany(User, { through: "UserDatevAccount" });
-
-  User.hasMany(Budget, { through: "UserBudget" });
-  Budget.hasMany(User, { through: "UserBudget" });
 };

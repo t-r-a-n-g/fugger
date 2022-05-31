@@ -2,13 +2,12 @@ const fs = require("fs");
 const XLSX = require("xlsx");
 
 // const FILE = "./DATEV_Export.xlsx";
-const FILE = "./DATEV_Export.csv";
+const FILE = "./DATEV_Export.ods";
 
 const workbook = XLSX.readFile(FILE);
 const firstSheetName = workbook.SheetNames[0];
 const worksheet = workbook.Sheets[firstSheetName];
 const parsedSheet = XLSX.utils.sheet_to_json(worksheet);
-
 const documentHeaders = parsedSheet[0];
 
 function getDeletableHeaderKeys(headers) {
@@ -49,7 +48,6 @@ for (let i = 1; i < parsedSheet.length; i += 1) {
 
     // The column headers are not parsed automatically, so we have to map them to the header names
     const columnName = documentHeaders[columnHeader];
-
     if (columnName) {
       if (columnName.includes("/")) {
         // columnName is a date in this case (Month/Year)

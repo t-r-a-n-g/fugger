@@ -1,7 +1,8 @@
 const fs = require("fs");
 const XLSX = require("xlsx");
 
-const FILE = "./DATEV_Export.xlsx";
+// const FILE = "./DATEV_Export.xlsx";
+const FILE = "./DATEV_Export.csv";
 
 const workbook = XLSX.readFile(FILE);
 const firstSheetName = workbook.SheetNames[0];

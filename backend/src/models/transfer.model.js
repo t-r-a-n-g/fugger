@@ -11,7 +11,7 @@ const Transfer = sequelize.define(
       allowNull: false,
     },
     amount: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     date: {

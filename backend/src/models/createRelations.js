@@ -10,6 +10,10 @@ const Budget = require("./budget.model");
 const Upload = require("./upload.model");
 
 module.exports = function createRelations() {
+  // User Categories
+  User.hasMany(Category);
+  Category.belongsTo(User);
+
   // One-to-Many Categories & Subcategories
   Category.hasMany(Subcategory);
   Subcategory.belongsTo(Category);
@@ -19,12 +23,12 @@ module.exports = function createRelations() {
   DatevAccount.belongsTo(Subcategory);
 
   // One-to-Many Transfers & DatevAccounts
-  Transfer.hasMany(DatevAccount);
-  DatevAccount.belongsTo(Transfer);
+  Transfer.belongsTo(DatevAccount);
+  DatevAccount.hasMany(Transfer);
 
   // One-to-Many Budgets & Subcategories
-  Budget.hasMany(Subcategory);
-  Subcategory.belongsTo(Budget);
+  Budget.belongsTo(DatevAccount);
+  DatevAccount.hasMany(Budget);
 
   // One-To-Many User & Uploads
   User.hasMany(Upload);
@@ -39,9 +43,9 @@ module.exports = function createRelations() {
   Budget.belongsTo(User);
 
   // Many-to-Many User Relations
-  User.belongsToMany(Category, { through: "UserCategory" });
-  Category.belongsToMany(User, { through: "UserCategory" });
+  // User.belongsToMany(Category, { through: "User_Categories" });
+  // Category.belongsToMany(User, { through: "User_Categories" });
 
-  User.belongsToMany(Subcategory, { through: "UserSubategory" });
-  Subcategory.belongsToMany(User, { through: "UserSubategory" });
+  // User.belongsToMany(Subcategory, { through: "User_Subcategories" });
+  // Subcategory.belongsToMany(User, { through: "User_Subcategories" });
 };

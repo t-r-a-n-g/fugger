@@ -10,23 +10,33 @@ import "./AnalysisTable.css";
 
 // recreating a suitable data structure for the response data for mapping the analysis table
 
-const data = [
+const monthsData = ["Jan 2022", "Feb 2022"];
+
+const financeData = [
   [
     { cat_name: "Revenues" },
     {
       transfer_jan22: 100,
     },
     { budget_jan22: 100 },
+    { abs_jan22: 0 },
+    { abs_pct: "0 %" },
     { transfer_feb22: 200 },
     { budget_feb22: 400 },
+    { abs_jan22: 200 },
+    { abs_pct: "100%" },
     [
       { subcat_name: "Revenue Stream 1" },
       {
         transfer_jan22: 100,
       },
       { budget_jan22: 100 },
+      { abs_jan22: 0 },
+      { abs_pct: "0 %" },
       { transfer_feb22: 200 },
       { budget_feb22: 400 },
+      { abs_jan22: 200 },
+      { abs_pct: "100%" },
       [
         { datev_number: 3000 },
         { datev_name: "Umsatzerlöse" },
@@ -34,8 +44,12 @@ const data = [
           transfer_jan22: 100,
         },
         { budget_jan22: 100 },
+        { abs_jan22: 0 },
+        { abs_pct: "0 %" },
         { transfer_feb22: 200 },
         { budget_feb22: 400 },
+        { abs_jan22: 200 },
+        { abs_pct: "100%" },
       ],
       [
         { datev_number: 3000 },
@@ -44,8 +58,12 @@ const data = [
           transfer_jan22: 100,
         },
         { budget_jan22: 100 },
+        { abs_jan22: 0 },
+        { abs_pct: "0 %" },
         { transfer_feb22: 200 },
         { budget_feb22: 400 },
+        { abs_jan22: 200 },
+        { abs_pct: "100%" },
       ],
     ],
     [
@@ -54,8 +72,12 @@ const data = [
         transfer_jan22: 100,
       },
       { budget_jan22: 100 },
+      { abs_jan22: 0 },
+      { abs_pct: "0 %" },
       { transfer_feb22: 200 },
       { budget_feb22: 400 },
+      { abs_jan22: 200 },
+      { abs_pct: "100%" },
     ],
   ],
 
@@ -65,16 +87,24 @@ const data = [
       transfer_jan22: 100,
     },
     { budget_jan22: 100 },
+    { abs_jan22: 0 },
+    { abs_pct: "0 %" },
     { transfer_feb22: 200 },
     { budget_feb22: 400 },
+    { abs_jan22: 200 },
+    { abs_pct: "100%" },
     [
       { subcat_name: "COGS1" },
       {
         transfer_jan22: 100,
       },
       { budget_jan22: 100 },
+      { abs_jan22: 0 },
+      { abs_pct: "0 %" },
       { transfer_feb22: 200 },
       { budget_feb22: 400 },
+      { abs_jan22: 200 },
+      { abs_pct: "100%" },
       [
         { datev_number: 3000 },
         { datev_name: "Kosten" },
@@ -82,8 +112,12 @@ const data = [
           transfer_jan22: 100,
         },
         { budget_jan22: 100 },
+        { abs_jan22: 0 },
+        { abs_pct: "0 %" },
         { transfer_feb22: 200 },
         { budget_feb22: 400 },
+        { abs_jan22: 200 },
+        { abs_pct: "100%" },
       ],
       [
         { datev_number: 3000 },
@@ -92,8 +126,12 @@ const data = [
           transfer_jan22: 100,
         },
         { budget_jan22: 100 },
+        { abs_jan22: 0 },
+        { abs_pct: "0 %" },
         { transfer_feb22: 200 },
         { budget_feb22: 400 },
+        { abs_jan22: 200 },
+        { abs_pct: "100%" },
       ],
     ],
     [
@@ -102,8 +140,12 @@ const data = [
         transfer_jan22: 100,
       },
       { budget_jan22: 100 },
+      { abs_jan22: 0 },
+      { abs_pct: "0 %" },
       { transfer_feb22: 200 },
       { budget_feb22: 400 },
+      { abs_jan22: 200 },
+      { abs_pct: "100%" },
     ],
   ],
   [
@@ -112,8 +154,12 @@ const data = [
       transfer_jan22: 100,
     },
     { budget_jan22: 100 },
+    { abs_jan22: 0 },
+    { abs_pct: "0 %" },
     { transfer_feb22: 200 },
     { budget_feb22: 400 },
+    { abs_jan22: 200 },
+    { abs_pct: "100%" },
   ],
 ];
 
@@ -130,32 +176,39 @@ const data = [
 
 function AnalysisTable() {
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper sx={{ width: "100", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: "90vh" }}>
         <Table stickyHeader aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell />
-              {/* this should somehow be mapped too */}
-              <TableCell colSpan={2} style={{ textAlign: "center" }}>
-                Jan 2022
-              </TableCell>
-              <TableCell colSpan={2} style={{ textAlign: "center" }}>
-                Feb 2022
-              </TableCell>
+              {monthsData.map((element) => (
+                <>
+                  <TableCell colSpan={2} style={{ textAlign: "center" }}>
+                    {element}
+                  </TableCell>
+                  <TableCell colSpan={2} style={{ textAlign: "center" }}>
+                    {element} vs. Budget
+                  </TableCell>
+                </>
+              ))}
             </TableRow>
             <TableRow>
-              {/* this should somehow be mapped too */}
+              {/* this should be mapped too */}
               <TableCell />
               <TableCell>Actual</TableCell>
               <TableCell>Budget</TableCell>
+              <TableCell>Abs.</TableCell>
+              <TableCell>%</TableCell>
               <TableCell>Actual</TableCell>
               <TableCell>Budget</TableCell>
+              <TableCell>Abs.</TableCell>
+              <TableCell>%</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {/* Nested mapping of Categories */}
-            {data.map((cat) => (
+            {financeData.map((cat) => (
               <>
                 <TableRow key={cat.name}>
                   {cat

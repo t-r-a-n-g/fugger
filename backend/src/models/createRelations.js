@@ -39,9 +39,9 @@ module.exports = function createRelations() {
   Budget.belongsTo(User);
 
   // Many-to-Many User Relations
-  User.hasMany(Category, { through: "UserCategory" });
-  Category.hasMany(User, { through: "UserCategory" });
+  User.belongsToMany(Category, { through: "UserCategory" });
+  Category.belongsToMany(User, { through: "UserCategory" });
 
-  User.hasMany(Subcategory, { through: "UserSubategory" });
-  Subcategory.hasMany(User, { through: "UserSubategory" });
+  User.belongsToMany(Subcategory, { through: "UserSubategory" });
+  Subcategory.belongsToMany(User, { through: "UserSubategory" });
 };

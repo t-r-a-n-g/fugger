@@ -1,1 +1,2146 @@
-[{"accountNumber":30,"accountName":"Lizenzen","transfers":[{"date":"Jan/2019","amount":18846.99},{"date":"Feb/2019","amount":-3653.03},{"date":"Mrz/2019","amount":-1346.97},{"date":"Apr/2019","amount":1986.35},{"date":"Mai/2019","amount":1986.36},{"date":"Jun/2019","amount":-26903.64},{"date":"Jul/2019","amount":1986.35},{"date":"Aug/2019","amount":937.51},{"date":"Sep/2019","amount":937.5},{"date":"Okt/2019","amount":937.5},{"date":"Nov/2019","amount":937.5},{"date":"Dez/2019","amount":21951.5}]},{"accountNumber":35,"accountName":"Geschäfts- oder Firmenwert","transfers":[{"date":"Jan/2019","amount":4166.66},{"date":"Feb/2019","amount":4166.67},{"date":"Mrz/2019","amount":4166.66},{"date":"Apr/2019","amount":4166.67},{"date":"Mai/2019","amount":4166.67},{"date":"Jun/2019","amount":4166.66},{"date":"Jul/2019","amount":4166.67},{"date":"Aug/2019","amount":4166.67},{"date":"Sep/2019","amount":4166.66},{"date":"Okt/2019","amount":4166.67},{"date":"Nov/2019","amount":4166.67},{"date":"Dez/2019","amount":4166.67}]},{"accountNumber":320,"accountName":"Pkw","transfers":[{"date":"Jan/2019","amount":250},{"date":"Feb/2019","amount":1500}]},{"accountNumber":350,"accountName":"Lkw","transfers":[{"date":"Jan/2019","amount":369.25},{"date":"Feb/2019","amount":117.25},{"date":"Mrz/2019","amount":468.74},{"date":"Apr/2019","amount":234.42},{"date":"Mai/2019","amount":234.42},{"date":"Jun/2019","amount":234.41},{"date":"Jul/2019","amount":234.42},{"date":"Aug/2019","amount":234.42},{"date":"Sep/2019","amount":234.41},{"date":"Okt/2019","amount":234.42},{"date":"Nov/2019","amount":234.42},{"date":"Dez/2019","amount":234.42}]},{"accountNumber":400,"accountName":"Betriebsausstattung","transfers":[{"date":"Jan/2019","amount":-2121.12},{"date":"Feb/2019","amount":1313.13},{"date":"Mrz/2019","amount":1615.47},{"date":"Apr/2019","amount":1147.53},{"date":"Mai/2019","amount":2439.17},{"date":"Jun/2019","amount":2329.88},{"date":"Jul/2019","amount":2286.45},{"date":"Aug/2019","amount":530.44},{"date":"Sep/2019","amount":2208.39},{"date":"Okt/2019","amount":1576.97},{"date":"Nov/2019","amount":2176.51},{"date":"Dez/2019","amount":3638.18}]},{"accountNumber":480,"accountName":"Geringwertige Wirtschaftsgüter","transfers":[{"date":"Aug/2019","amount":-2373.66},{"date":"Sep/2019","amount":2373.66},{"date":"Nov/2019","amount":0},{"date":"Dez/2019","amount":0}]},{"accountNumber":961,"accountName":"Urlaubs/ Überstundenrückstellung","transfers":[{"date":"Dez/2019","amount":6244.32}]},{"accountNumber":965,"accountName":"Rückstellungen für Personalkosten","transfers":[{"date":"Dez/2019","amount":-2725}]},{"accountNumber":970,"accountName":"Sonstige Rückstellungen","transfers":[{"date":"Jan/2019","amount":1666.63},{"date":"Feb/2019","amount":1666.63},{"date":"Mrz/2019","amount":1666.63},{"date":"Apr/2019","amount":1666.63},{"date":"Mai/2019","amount":1666.63},{"date":"Jun/2019","amount":1666.63},{"date":"Jul/2019","amount":-13058.37},{"date":"Aug/2019","amount":1666.63},{"date":"Sep/2019","amount":-5533.37},{"date":"Okt/2019","amount":1666.63},{"date":"Nov/2019","amount":1666.63},{"date":"Dez/2019","amount":16092.07}]},{"accountNumber":971,"accountName":"Rückstellung f. Übertragungs-/TV-Arbeit","transfers":[{"date":"Jan/2019","amount":47802.3},{"date":"Feb/2019","amount":-16902.3},{"date":"Mrz/2019","amount":6690},{"date":"Apr/2019","amount":-37590}]},{"accountNumber":977,"accountName":"Rückstellungen für Abschluss u. Prüfung","transfers":[{"date":"Dez/2019","amount":8000}]},{"accountNumber":980,"accountName":"Aktive Rechnungsabgrenzung","transfers":[{"date":"Dez/2019","amount":500}]},{"accountNumber":981,"accountName":"Aktive Rechnungsabgrenzungsposten","transfers":[{"date":"Jan/2019","amount":-7662.02},{"date":"Feb/2019","amount":1303.54},{"date":"Mrz/2019","amount":1561.54},{"date":"Apr/2019","amount":1468.63},{"date":"Mai/2019","amount":1468.63},{"date":"Jun/2019","amount":1468.63},{"date":"Jul/2019","amount":1468.63},{"date":"Aug/2019","amount":1468.63},{"date":"Sep/2019","amount":1468.63},{"date":"Okt/2019","amount":1468.63},{"date":"Nov/2019","amount":1468.63},{"date":"Dez/2019","amount":1981.35}]},{"accountNumber":991,"accountName":"Passive RAP für Werbung 2018","transfers":[{"date":"Jan/2019","amount":-14209.81},{"date":"Feb/2019","amount":53017.93},{"date":"Mrz/2019","amount":19230.49},{"date":"Apr/2019","amount":10523.87},{"date":"Mai/2019","amount":-8758.21},{"date":"Jun/2019","amount":47077.53},{"date":"Jul/2019","amount":1384.11},{"date":"Aug/2019","amount":-18820.78},{"date":"Sep/2019","amount":-16895.07},{"date":"Okt/2019","amount":-15397.4},{"date":"Nov/2019","amount":7692.61},{"date":"Dez/2019","amount":-64845.27}]},{"accountNumber":992,"accountName":"Passive RAP Erlöse Werbung 2018","transfers":[{"date":"Jan/2019","amount":-26226.47},{"date":"Feb/2019","amount":-21847.31},{"date":"Mrz/2019","amount":-19488.97},{"date":"Apr/2019","amount":-9502.8},{"date":"Mai/2019","amount":-7069.47},{"date":"Jun/2019","amount":-6327.8},{"date":"Jul/2019","amount":-4998.64},{"date":"Aug/2019","amount":-3284.75},{"date":"Sep/2019","amount":-2887.5},{"date":"Okt/2019","amount":-2887.5},{"date":"Nov/2019","amount":-583.34}]},{"accountNumber":995,"accountName":"Passive RAP Erlöse ab 10/2017","transfers":[{"date":"Jan/2019","amount":60117.44},{"date":"Feb/2019","amount":33316.88},{"date":"Mrz/2019","amount":-16833.36},{"date":"Apr/2019","amount":-38146.66},{"date":"Mai/2019","amount":-17661.99},{"date":"Jun/2019","amount":16869.2},{"date":"Jul/2019","amount":10662.58},{"date":"Aug/2019","amount":13212.23},{"date":"Sep/2019","amount":16960.22},{"date":"Okt/2019","amount":20052.64},{"date":"Nov/2019","amount":-3238.73},{"date":"Dez/2019","amount":58753.92}]},{"accountNumber":996,"accountName":"Pauschalwertberichtigung Forderg./b.1J","transfers":[{"date":"Dez/2019","amount":-1300}]},{"accountNumber":998,"accountName":"Einzelwertberichtigung Forderung(b.1J)","transfers":[{"date":"Dez/2019","amount":-6800}]},{"accountNumber":1000,"accountName":"Kasse","transfers":[{"date":"Jan/2019","amount":-453.44},{"date":"Feb/2019","amount":-205.26},{"date":"Mrz/2019","amount":656.61},{"date":"Apr/2019","amount":1263.61},{"date":"Mai/2019","amount":-1988.2},{"date":"Jun/2019","amount":497.76},{"date":"Jul/2019","amount":-20.09},{"date":"Aug/2019","amount":117.52},{"date":"Okt/2019","amount":-809.43},{"date":"Nov/2019","amount":616.78},{"date":"Dez/2019","amount":-317}]},{"accountNumber":1200,"accountName":"Nassauische Sparkasse # 111 233 508","transfers":[{"date":"Jan/2019","amount":28773.47},{"date":"Feb/2019","amount":1130.85},{"date":"Mrz/2019","amount":-28742.83},{"date":"Apr/2019","amount":-15526.02},{"date":"Mai/2019","amount":-10838.17},{"date":"Jun/2019","amount":20748.36},{"date":"Jul/2019","amount":-54747.55},{"date":"Aug/2019","amount":24910.96},{"date":"Sep/2019","amount":-131330.65},{"date":"Okt/2019","amount":95740.93},{"date":"Nov/2019","amount":95897.85},{"date":"Dez/2019","amount":-104583.46}]},{"accountNumber":1360,"accountName":"Geldtransit","transfers":[{"date":"Jan/2019","amount":0},{"date":"Feb/2019","amount":0},{"date":"Apr/2019","amount":-1500},{"date":"Mai/2019","amount":1500},{"date":"Jul/2019","amount":0},{"date":"Aug/2019","amount":0},{"date":"Sep/2019","amount":-800},{"date":"Okt/2019","amount":800},{"date":"Nov/2019","amount":-500},{"date":"Dez/2019","amount":500}]},{"accountNumber":1380,"accountName":"Überleitung Kostenstellen","transfers":[{"date":"Dez/2019","amount":0}]},{"accountNumber":1400,"accountName":"Forderungen aus Lieferungen u.Leistung","transfers":[{"date":"Jan/2019","amount":796.59},{"date":"Feb/2019","amount":-35665.82},{"date":"Mrz/2019","amount":8341.63},{"date":"Apr/2019","amount":43818.58},{"date":"Mai/2019","amount":95614.98},{"date":"Jun/2019","amount":-187916.76},{"date":"Jul/2019","amount":76665.2},{"date":"Aug/2019","amount":30538.75},{"date":"Sep/2019","amount":169945.29},{"date":"Okt/2019","amount":-68942.88},{"date":"Nov/2019","amount":-199889.02},{"date":"Dez/2019","amount":222473.74}]},{"accountNumber":1410,"accountName":"Forderungen aus Lieferungen u.Leistung","transfers":[{"date":"Jul/2019","amount":-2975},{"date":"Aug/2019","amount":2975}]},{"accountNumber":1502,"accountName":"Forderung ClipMyHorse.TV Operations GmbH","transfers":[{"date":"Dez/2019","amount":567214.73}]},{"accountNumber":1520,"accountName":"Forderungen ggb. Krankenkasse aus AAG","transfers":[{"date":"Jan/2019","amount":0}]},{"accountNumber":1530,"accountName":"Forderg. gg. Personal Lohn- u. Gehalt","transfers":[{"date":"Dez/2019","amount":700}]},{"accountNumber":1548,"accountName":"Vorsteuer im Folgejahr  abziehbar","transfers":[{"date":"Jan/2019","amount":-5362.82},{"date":"Feb/2019","amount":17675.77},{"date":"Mrz/2019","amount":3999.99},{"date":"Apr/2019","amount":-9728.46},{"date":"Mai/2019","amount":-2296.28},{"date":"Jun/2019","amount":-10277.67},{"date":"Jul/2019","amount":16589.86},{"date":"Aug/2019","amount":-8056.72},{"date":"Sep/2019","amount":3832.15},{"date":"Okt/2019","amount":8132.58},{"date":"Nov/2019","amount":-6447.7},{"date":"Dez/2019","amount":14360.95}]},{"accountNumber":1570,"accountName":"Abziehbare Vorsteuer","transfers":[{"date":"Mai/2019","amount":-13.77},{"date":"Dez/2019","amount":-595.26}]},{"accountNumber":1571,"accountName":"Abziehbare Vorsteuer 7%","transfers":[{"date":"Jan/2019","amount":-158.64},{"date":"Feb/2019","amount":-251.36},{"date":"Mrz/2019","amount":-222.6},{"date":"Apr/2019","amount":-75.97},{"date":"Mai/2019","amount":-243.52},{"date":"Jun/2019","amount":-229.02},{"date":"Jul/2019","amount":-293.53},{"date":"Aug/2019","amount":-58.36},{"date":"Sep/2019","amount":-667.32},{"date":"Okt/2019","amount":-173.4},{"date":"Nov/2019","amount":-254.8},{"date":"Dez/2019","amount":-2349.08}]},{"accountNumber":1574,"accountName":"Abziehbare Vorsteuer aus EU-Erwerb 19%","transfers":[{"date":"Jan/2019","amount":-126.91},{"date":"Feb/2019","amount":-10.49}]},{"accountNumber":1576,"accountName":"Abziehbare Vorsteuer 19%","transfers":[{"date":"Jan/2019","amount":-12482.01},{"date":"Feb/2019","amount":-37314.71},{"date":"Mrz/2019","amount":-21242.26},{"date":"Apr/2019","amount":-18587.77},{"date":"Mai/2019","amount":-19763.34},{"date":"Jun/2019","amount":-26999.45},{"date":"Jul/2019","amount":-41397.36},{"date":"Aug/2019","amount":-40087.35},{"date":"Sep/2019","amount":-31073.8},{"date":"Okt/2019","amount":-23325.78},{"date":"Nov/2019","amount":-18131.44},{"date":"Dez/2019","amount":-39687.09}]},{"accountNumber":1577,"accountName":"Abziehbare Vorsteuer § 13b UStG 19%","transfers":[{"date":"Jan/2019","amount":-1637.77},{"date":"Feb/2019","amount":-1295.44},{"date":"Mrz/2019","amount":-1828.76},{"date":"Apr/2019","amount":-1634.7},{"date":"Mai/2019","amount":-2773.05},{"date":"Jun/2019","amount":-2649.08},{"date":"Jul/2019","amount":-3259.01},{"date":"Aug/2019","amount":-1661.84},{"date":"Sep/2019","amount":-1848.54},{"date":"Okt/2019","amount":-1949.68},{"date":"Nov/2019","amount":-2810.66},{"date":"Dez/2019","amount":-2111.37}]},{"accountNumber":1590,"accountName":"Durchlaufende Posten","transfers":[{"date":"Jan/2019","amount":0},{"date":"Feb/2019","amount":1303},{"date":"Mrz/2019","amount":-255.07},{"date":"Jun/2019","amount":-1047.93},{"date":"Jul/2019","amount":-501.42},{"date":"Aug/2019","amount":501.42},{"date":"Sep/2019","amount":-1258.3},{"date":"Okt/2019","amount":1258.3},{"date":"Nov/2019","amount":1084.6},{"date":"Dez/2019","amount":-1084.6}]},{"accountNumber":1600,"accountName":"Verbindl. aus Lieferungen u. Leistungen","transfers":[{"date":"Jan/2019","amount":-101672.67},{"date":"Feb/2019","amount":-40089.07},{"date":"Mrz/2019","amount":-8991.04},{"date":"Apr/2019","amount":81489.36},{"date":"Mai/2019","amount":8318.86},{"date":"Jun/2019","amount":95617.76},{"date":"Jul/2019","amount":5296.53},{"date":"Aug/2019","amount":35425.63},{"date":"Sep/2019","amount":-57892.24},{"date":"Okt/2019","amount":-120083.09},{"date":"Nov/2019","amount":53771.63},{"date":"Dez/2019","amount":-17590.28}]},{"accountNumber":1725,"accountName":"USt in Folgeperiode fällig §§13/1, 13b/2","transfers":[{"date":"Dez/2019","amount":15.01}]},{"accountNumber":1728,"accountName":"USt im and. EU-Land stpfl.elektr. Leistg","transfers":[{"date":"Dez/2019","amount":4966.49}]},{"accountNumber":1729,"accountName":"Steuerzahlungen an KEA/MOSS","transfers":[{"date":"Jan/2019","amount":303.66},{"date":"Feb/2019","amount":1113.36},{"date":"Mrz/2019","amount":773.23},{"date":"Apr/2019","amount":54.91},{"date":"Mai/2019","amount":195.5},{"date":"Nov/2019","amount":2525.83},{"date":"Dez/2019","amount":-4966.49}]},{"accountNumber":1740,"accountName":"Verbindlichkeiten aus Lohn und Gehalt","transfers":[{"date":"Jan/2019","amount":-6147.82},{"date":"Feb/2019","amount":1943.36},{"date":"Mrz/2019","amount":2690.03},{"date":"Apr/2019","amount":-3153.83},{"date":"Mai/2019","amount":463.65},{"date":"Jun/2019","amount":2560.8},{"date":"Jul/2019","amount":-951.22},{"date":"Aug/2019","amount":-323.96},{"date":"Sep/2019","amount":9.7},{"date":"Okt/2019","amount":-242.33},{"date":"Nov/2019","amount":-1738.02},{"date":"Dez/2019","amount":-624.19}]},{"accountNumber":1741,"accountName":"Verbindlichk. Lohn- und Kirchensteuer","transfers":[{"date":"Jan/2019","amount":654.32},{"date":"Feb/2019","amount":-681.25},{"date":"Mrz/2019","amount":318.54},{"date":"Apr/2019","amount":-5555.96},{"date":"Mai/2019","amount":-462.51},{"date":"Jun/2019","amount":612.41},{"date":"Jul/2019","amount":487.86},{"date":"Aug/2019","amount":-959.64},{"date":"Sep/2019","amount":-14.81},{"date":"Okt/2019","amount":15.21},{"date":"Nov/2019","amount":375.99},{"date":"Dez/2019","amount":-21.65}]},{"accountNumber":1742,"accountName":"Verbindlichkeiten soziale Sicherheit","transfers":[{"date":"Jan/2019","amount":-35.16},{"date":"Feb/2019","amount":1233.1},{"date":"Mrz/2019","amount":417.1},{"date":"Apr/2019","amount":-21931.42},{"date":"Mai/2019","amount":20600.34},{"date":"Jun/2019","amount":-17295.09},{"date":"Jul/2019","amount":-22914.68},{"date":"Aug/2019","amount":40404.99},{"date":"Sep/2019","amount":-194.15},{"date":"Okt/2019","amount":91.2},{"date":"Nov/2019","amount":1014.14},{"date":"Dez/2019","amount":-833.29}]},{"accountNumber":1748,"accountName":"Verbindlichk. Einbehaltung Arbeitnehmer","transfers":[{"date":"Jan/2019","amount":0},{"date":"Feb/2019","amount":0},{"date":"Mrz/2019","amount":0},{"date":"Apr/2019","amount":-220},{"date":"Mai/2019","amount":220},{"date":"Jun/2019","amount":0},{"date":"Jul/2019","amount":0},{"date":"Aug/2019","amount":0},{"date":"Sep/2019","amount":0},{"date":"Okt/2019","amount":0},{"date":"Nov/2019","amount":0},{"date":"Dez/2019","amount":0}]},{"accountNumber":1750,"accountName":"Verbindlichkeiten a. Vermögensbildung","transfers":[{"date":"Jan/2019","amount":0},{"date":"Feb/2019","amount":0},{"date":"Mrz/2019","amount":0},{"date":"Apr/2019","amount":0},{"date":"Mai/2019","amount":0},{"date":"Jun/2019","amount":0},{"date":"Jul/2019","amount":0},{"date":"Aug/2019","amount":0},{"date":"Sep/2019","amount":0},{"date":"Okt/2019","amount":0},{"date":"Nov/2019","amount":0},{"date":"Dez/2019","amount":0}]},{"accountNumber":1755,"accountName":"Lohn- und Gehaltsverrechnungen","transfers":[{"date":"Jan/2019","amount":0},{"date":"Feb/2019","amount":0},{"date":"Mrz/2019","amount":0},{"date":"Apr/2019","amount":0},{"date":"Mai/2019","amount":0},{"date":"Jun/2019","amount":0},{"date":"Jul/2019","amount":0},{"date":"Aug/2019","amount":0},{"date":"Sep/2019","amount":0},{"date":"Okt/2019","amount":0},{"date":"Nov/2019","amount":0},{"date":"Dez/2019","amount":0}]},{"accountNumber":1759,"accountName":"Voraus.Beitrag ggb. Sozialversich.träger","transfers":[{"date":"Apr/2019","amount":20452.55},{"date":"Mai/2019","amount":-20452.55},{"date":"Jun/2019","amount":18632.7},{"date":"Jul/2019","amount":21137.43},{"date":"Aug/2019","amount":-39770.13}]},{"accountNumber":1774,"accountName":"Umsatzsteuer aus EU-Erwerb 19%","transfers":[{"date":"Jan/2019","amount":126.91},{"date":"Feb/2019","amount":10.49}]},{"accountNumber":1776,"accountName":"Umsatzsteuer 19%","transfers":[{"date":"Jan/2019","amount":55118.45},{"date":"Feb/2019","amount":55725.33},{"date":"Mrz/2019","amount":46324.05},{"date":"Apr/2019","amount":28734.25},{"date":"Mai/2019","amount":36304.4},{"date":"Jun/2019","amount":65121.47},{"date":"Jul/2019","amount":43048.45},{"date":"Aug/2019","amount":53152.75},{"date":"Sep/2019","amount":45436.54},{"date":"Okt/2019","amount":45322.42},{"date":"Nov/2019","amount":52218.97},{"date":"Dez/2019","amount":56724.94}]},{"accountNumber":1780,"accountName":"Umsatzsteuer-Vorauszahlungen","transfers":[{"date":"Mrz/2019","amount":-42040.8},{"date":"Apr/2019","amount":-18122.26},{"date":"Mai/2019","amount":-25334.19},{"date":"Jun/2019","amount":-10070.51},{"date":"Jul/2019","amount":-16283.77},{"date":"Aug/2019","amount":-37893},{"date":"Sep/2019","amount":-1357.56},{"date":"Okt/2019","amount":-13007.04},{"date":"Nov/2019","amount":-13695.42},{"date":"Dez/2019","amount":-50957.08}]},{"accountNumber":1781,"accountName":"Umsatzsteuer-Vorauszahlungen 1/11","transfers":[{"date":"Feb/2019","amount":-18651},{"date":"Mai/2019","amount":-5170},{"date":"Jun/2019","amount":-109}]},{"accountNumber":1787,"accountName":"Umsatzsteuer nach § 13b UStG 19%","transfers":[{"date":"Jan/2019","amount":1637.77},{"date":"Feb/2019","amount":1295.44},{"date":"Mrz/2019","amount":1828.76},{"date":"Apr/2019","amount":1634.7},{"date":"Mai/2019","amount":2773.05},{"date":"Jun/2019","amount":2649.08},{"date":"Jul/2019","amount":3259.01},{"date":"Aug/2019","amount":1661.84},{"date":"Sep/2019","amount":1848.54},{"date":"Okt/2019","amount":1949.68},{"date":"Nov/2019","amount":2810.66},{"date":"Dez/2019","amount":2111.37}]},{"accountNumber":1789,"accountName":"Umsatzsteuer laufendes Jahr","transfers":[{"date":"Dez/2019","amount":29134.84}]},{"accountNumber":1790,"accountName":"Umsatzsteuer Vorjahr","transfers":[{"date":"Jan/2019","amount":-41264.58},{"date":"Feb/2019","amount":-25310.59},{"date":"Mai/2019","amount":-58068.02}]},{"accountNumber":1792,"accountName":"KCP - Verrechnungskonto 2,0% p.a.","transfers":[{"date":"Dez/2019","amount":-625257.95}]},{"accountNumber":1793,"accountName":"Verrechnung Plönzke Holding AG 2,0% p.a.","transfers":[{"date":"Aug/2019","amount":-25823.13},{"date":"Dez/2019","amount":12110.82}]},{"accountNumber":1796,"accountName":"Verr. ClipMyHorse.TV International GmbH","transfers":[{"date":"Dez/2019","amount":7828.72}]},{"accountNumber":2110,"accountName":"Zinsaufwendungen f.kfr.Verbindlichkeit.","transfers":[{"date":"Dez/2019","amount":-13914.39}]},{"accountNumber":2200,"accountName":"Körperschaftsteuer","transfers":[{"date":"Mrz/2019","amount":-882},{"date":"Jun/2019","amount":-882},{"date":"Sep/2019","amount":-882},{"date":"Dez/2019","amount":-882}]},{"accountNumber":2208,"accountName":"Solidaritätszuschlag","transfers":[{"date":"Mrz/2019","amount":-48.51},{"date":"Jun/2019","amount":-48.51},{"date":"Jul/2019","amount":-275},{"date":"Aug/2019","amount":275},{"date":"Sep/2019","amount":-48.51},{"date":"Dez/2019","amount":-48.51}]},{"accountNumber":2213,"accountName":"Kapitalertragsteuer 25%","transfers":[{"date":"Jul/2019","amount":-5000},{"date":"Dez/2019","amount":5000}]},{"accountNumber":2216,"accountName":"SolZ auf Kapitalertragsteuer 25%","transfers":[{"date":"Aug/2019","amount":-275},{"date":"Dez/2019","amount":275}]},{"accountNumber":2300,"accountName":"Sonstige Aufwendungen","transfers":[{"date":"Jan/2019","amount":-1257.57},{"date":"Mrz/2019","amount":-148.75},{"date":"Apr/2019","amount":-646.32},{"date":"Mai/2019","amount":-739.5},{"date":"Jun/2019","amount":-158.75},{"date":"Jul/2019","amount":-158.75},{"date":"Aug/2019","amount":-487.57},{"date":"Okt/2019","amount":-646.32},{"date":"Dez/2019","amount":-3900}]},{"accountNumber":2310,"accountName":"Abgänge Sachanlagen Restbuchwert bei BV","transfers":[{"date":"Dez/2019","amount":-10}]},{"accountNumber":2315,"accountName":"Abgänge Sachanlagen Restbuchwert bei BG","transfers":[{"date":"Feb/2019","amount":-1250}]},{"accountNumber":2406,"accountName":"Forderungsverluste 19% USt","transfers":[{"date":"Dez/2019","amount":-374.99}]},{"accountNumber":2492,"accountName":"abgeführte Gewinne EAV","transfers":[{"date":"Dez/2019","amount":-233225.15}]},{"accountNumber":2494,"accountName":"Ausgleichszahlung Minderheitsgesellschaf","transfers":[{"date":"Jan/2019","amount":-1666.63},{"date":"Feb/2019","amount":-1666.63},{"date":"Mrz/2019","amount":-1666.63},{"date":"Apr/2019","amount":-1666.63},{"date":"Mai/2019","amount":-1666.63},{"date":"Jun/2019","amount":-1666.63},{"date":"Jul/2019","amount":-1666.63},{"date":"Aug/2019","amount":-1666.63},{"date":"Sep/2019","amount":-1666.63},{"date":"Okt/2019","amount":-1666.63},{"date":"Nov/2019","amount":-1666.63},{"date":"Dez/2019","amount":-1667.07}]},{"accountNumber":2650,"accountName":"Sonstige Zinsen und ähnliche Erträge","transfers":[{"date":"Dez/2019","amount":27482.89}]},{"accountNumber":2730,"accountName":"Erträge aus Herabsetzung PWB auf Ford","transfers":[{"date":"Dez/2019","amount":1300}]},{"accountNumber":2731,"accountName":"Erträge aus Herabsetzung EWB auf Ford","transfers":[{"date":"Dez/2019","amount":6800}]},{"accountNumber":2749,"accountName":"Erstattungen AufwendungsausgleichsG","transfers":[{"date":"Jan/2019","amount":1712.23}]},{"accountNumber":2750,"accountName":"Grundstückserträge Miete 19%","transfers":[{"date":"Jan/2019","amount":4001.07},{"date":"Feb/2019","amount":4001.07},{"date":"Mrz/2019","amount":4001.07},{"date":"Apr/2019","amount":4001.07},{"date":"Mai/2019","amount":4001.07},{"date":"Jun/2019","amount":4001.07},{"date":"Jul/2019","amount":4001.07},{"date":"Aug/2019","amount":749.4},{"date":"Sep/2019","amount":4001.07},{"date":"Okt/2019","amount":4001.07},{"date":"Nov/2019","amount":4001.07},{"date":"Dez/2019","amount":4001.07}]},{"accountNumber":3100,"accountName":"Fremdleistungen","transfers":[{"date":"Jan/2019","amount":-9723.75},{"date":"Feb/2019","amount":-7277.07},{"date":"Mrz/2019","amount":-8332.14},{"date":"Apr/2019","amount":-8588.39},{"date":"Mai/2019","amount":-11800.46},{"date":"Jun/2019","amount":-9501.69},{"date":"Jul/2019","amount":-17057.78},{"date":"Aug/2019","amount":-60755.45},{"date":"Sep/2019","amount":-11886.38},{"date":"Okt/2019","amount":-15316.91},{"date":"Nov/2019","amount":-11275.64},{"date":"Dez/2019","amount":-27535.71}]},{"accountNumber":3101,"accountName":"Übertragungs- / TV-Arbeiten","transfers":[{"date":"Jan/2019","amount":-47802.3},{"date":"Feb/2019","amount":-23267.7},{"date":"Mrz/2019","amount":-37590},{"date":"Apr/2019","amount":-53612.44},{"date":"Mai/2019","amount":-54217.56},{"date":"Jun/2019","amount":-115890},{"date":"Jul/2019","amount":-51535},{"date":"Aug/2019","amount":-115132.8},{"date":"Sep/2019","amount":-63687.2},{"date":"Okt/2019","amount":-23756},{"date":"Nov/2019","amount":-84990},{"date":"Dez/2019","amount":44569.76}]},{"accountNumber":3102,"accountName":"Moderatoren & Kommentatoren","transfers":[{"date":"Jan/2019","amount":-4000},{"date":"Feb/2019","amount":-400},{"date":"Mrz/2019","amount":-2600},{"date":"Apr/2019","amount":-2800},{"date":"Mai/2019","amount":-9850},{"date":"Jun/2019","amount":-7180},{"date":"Jul/2019","amount":-9700},{"date":"Aug/2019","amount":-2400},{"date":"Sep/2019","amount":-7425.8},{"date":"Okt/2019","amount":-1800},{"date":"Nov/2019","amount":-3400},{"date":"Dez/2019","amount":-2800}]},{"accountNumber":3103,"accountName":"Streaming","transfers":[{"date":"Jul/2019","amount":-3197}]},{"accountNumber":3104,"accountName":"Marketing Konrad","transfers":[{"date":"Dez/2019","amount":-614.7}]},{"accountNumber":3105,"accountName":"Fremdleistung betriebswirtschaftlich","transfers":[{"date":"Jan/2019","amount":-4500}]},{"accountNumber":3108,"accountName":"Systemgebühren","transfers":[{"date":"Jan/2019","amount":-2500},{"date":"Jul/2019","amount":-2500}]},{"accountNumber":3115,"accountName":"Management - allocation","transfers":[{"date":"Jan/2019","amount":-1410.51},{"date":"Feb/2019","amount":-1426.23},{"date":"Mrz/2019","amount":-1259.15},{"date":"Apr/2019","amount":-1283.11},{"date":"Mai/2019","amount":-1295.23},{"date":"Jun/2019","amount":-1280.17},{"date":"Jul/2019","amount":-1280.61},{"date":"Aug/2019","amount":-1284.67},{"date":"Sep/2019","amount":-1254.05},{"date":"Okt/2019","amount":-1256.42},{"date":"Nov/2019","amount":-1492.28},{"date":"Dez/2019","amount":-1036.86}]},{"accountNumber":3116,"accountName":"Support - allocation","transfers":[{"date":"Jan/2019","amount":-11777.99},{"date":"Feb/2019","amount":-11505.5},{"date":"Mrz/2019","amount":-11488},{"date":"Apr/2019","amount":-11539},{"date":"Mai/2019","amount":-11682.01},{"date":"Jun/2019","amount":-11641.01},{"date":"Jul/2019","amount":-11913.5},{"date":"Aug/2019","amount":-11846.5},{"date":"Sep/2019","amount":-11746.5},{"date":"Okt/2019","amount":-11358},{"date":"Nov/2019","amount":-13979.53},{"date":"Dez/2019","amount":-9332.97}]},{"accountNumber":3117,"accountName":"Controlling - allocation","transfers":[{"date":"Jan/2019","amount":-3705.56},{"date":"Feb/2019","amount":-3045.9},{"date":"Mrz/2019","amount":-3046.4},{"date":"Apr/2019","amount":-3430.47},{"date":"Mai/2019","amount":-3216.13},{"date":"Jun/2019","amount":-3099.13},{"date":"Jul/2019","amount":-3135.13},{"date":"Aug/2019","amount":-3282.13},{"date":"Sep/2019","amount":-3099.13},{"date":"Okt/2019","amount":-3099.13},{"date":"Nov/2019","amount":-3687.96},{"date":"Dez/2019","amount":-2551.3}]},{"accountNumber":3118,"accountName":"Finance - allocation","transfers":[{"date":"Jan/2019","amount":-4200},{"date":"Feb/2019","amount":-4200},{"date":"Mrz/2019","amount":-4200},{"date":"Apr/2019","amount":-4200},{"date":"Mai/2019","amount":-4200},{"date":"Jun/2019","amount":-4200},{"date":"Jul/2019","amount":-4200},{"date":"Aug/2019","amount":-4200},{"date":"Sep/2019","amount":-4200},{"date":"Okt/2019","amount":-4200},{"date":"Nov/2019","amount":-4998},{"date":"Dez/2019","amount":-3402}]},{"accountNumber":3123,"accountName":"Sonst. Leistung EU 19% Vorst., 19% USt","transfers":[{"date":"Jan/2019","amount":-1451.76},{"date":"Feb/2019","amount":391.29},{"date":"Mrz/2019","amount":-603.81},{"date":"Apr/2019","amount":-644.05},{"date":"Mai/2019","amount":-591.6},{"date":"Jun/2019","amount":-554.66},{"date":"Jul/2019","amount":-660.65},{"date":"Aug/2019","amount":-666.66},{"date":"Sep/2019","amount":-594.66},{"date":"Okt/2019","amount":-700.65},{"date":"Nov/2019","amount":-922.34},{"date":"Dez/2019","amount":-745.33}]},{"accountNumber":3125,"accountName":"Leistungen ausl. UN 19% Vorst., 19% USt","transfers":[{"date":"Feb/2019","amount":-1616.68},{"date":"Mrz/2019","amount":-679.01},{"date":"Apr/2019","amount":-709.95},{"date":"Mai/2019","amount":-708.42},{"date":"Jun/2019","amount":-715.05},{"date":"Jul/2019","amount":-709.93},{"date":"Aug/2019","amount":-986.74},{"date":"Sep/2019","amount":-729.65},{"date":"Okt/2019","amount":-715.51},{"date":"Nov/2019","amount":-720.29},{"date":"Dez/2019","amount":-707.79}]},{"accountNumber":3730,"accountName":"Erhaltene Skonti","transfers":[{"date":"Nov/2019","amount":-1},{"date":"Dez/2019","amount":1}]},{"accountNumber":3736,"accountName":"Erhaltene Skonti 19% Vorsteuer","transfers":[{"date":"Jan/2019","amount":3468},{"date":"Feb/2019","amount":1360.01},{"date":"Mrz/2019","amount":2008.52},{"date":"Apr/2019","amount":1545},{"date":"Mai/2019","amount":1928.24},{"date":"Jun/2019","amount":2276.2},{"date":"Jul/2019","amount":3115.49},{"date":"Aug/2019","amount":6332.01},{"date":"Sep/2019","amount":2473.5},{"date":"Okt/2019","amount":3612.52},{"date":"Nov/2019","amount":2793.5},{"date":"Dez/2019","amount":-30912.99}]},{"accountNumber":4120,"accountName":"Gehälter","transfers":[{"date":"Jan/2019","amount":-79524.96},{"date":"Feb/2019","amount":-77098.5},{"date":"Mrz/2019","amount":-78015.17},{"date":"Apr/2019","amount":-43514.97},{"date":"Mai/2019","amount":-42491.97},{"date":"Jun/2019","amount":-44413.65},{"date":"Jul/2019","amount":-43132.53},{"date":"Aug/2019","amount":-43323.77},{"date":"Sep/2019","amount":-43323.77},{"date":"Okt/2019","amount":-43323.77},{"date":"Nov/2019","amount":-45919.77},{"date":"Dez/2019","amount":-44491.32}]},{"accountNumber":4130,"accountName":"Gesetzliche Sozialaufwendungen","transfers":[{"date":"Jan/2019","amount":-16636.59},{"date":"Feb/2019","amount":-16998.01},{"date":"Mrz/2019","amount":-17701.37},{"date":"Apr/2019","amount":-10147.64},{"date":"Mai/2019","amount":-10187.64},{"date":"Jun/2019","amount":-11040.23},{"date":"Jul/2019","amount":-10565.83},{"date":"Aug/2019","amount":-10705.83},{"date":"Sep/2019","amount":-10725.48},{"date":"Okt/2019","amount":-10716.56},{"date":"Nov/2019","amount":-10974.35},{"date":"Dez/2019","amount":-10099.48}]},{"accountNumber":4138,"accountName":"Beiträge zur Berufsgenossenschaft","transfers":[{"date":"Apr/2019","amount":-3150.73},{"date":"Dez/2019","amount":1300}]},{"accountNumber":4140,"accountName":"Freiwillige soziale Aufwendung. LSt-frei","transfers":[{"date":"Jan/2019","amount":-354.99},{"date":"Feb/2019","amount":-316.43},{"date":"Mrz/2019","amount":-199.54},{"date":"Apr/2019","amount":-302.48},{"date":"Mai/2019","amount":-299.97},{"date":"Jun/2019","amount":-213.61},{"date":"Jul/2019","amount":-302.83},{"date":"Aug/2019","amount":-333.4},{"date":"Sep/2019","amount":-233.7},{"date":"Okt/2019","amount":-272.6},{"date":"Nov/2019","amount":-235.34},{"date":"Dez/2019","amount":-140.33}]},{"accountNumber":4156,"accountName":"Aufwendung Veränderung Urlaubsrückst.","transfers":[{"date":"Dez/2019","amount":-6244.32}]},{"accountNumber":4160,"accountName":"Versorgungskassen","transfers":[{"date":"Jan/2019","amount":-713.95},{"date":"Feb/2019","amount":-713.95},{"date":"Mai/2019","amount":-2937.79},{"date":"Jun/2019","amount":-810.82},{"date":"Jul/2019","amount":-810.82},{"date":"Aug/2019","amount":-810.82},{"date":"Sep/2019","amount":-810.82},{"date":"Okt/2019","amount":-810.82},{"date":"Nov/2019","amount":-810.82},{"date":"Dez/2019","amount":489.18}]},{"accountNumber":4165,"accountName":"Aufwendungen für Altersversorgung","transfers":[{"date":"Jan/2019","amount":-55.7},{"date":"Feb/2019","amount":-55.7},{"date":"Mrz/2019","amount":-55.7},{"date":"Apr/2019","amount":-19},{"date":"Mai/2019","amount":-19},{"date":"Jun/2019","amount":-19},{"date":"Jul/2019","amount":-19},{"date":"Aug/2019","amount":-19},{"date":"Sep/2019","amount":-19},{"date":"Okt/2019","amount":-19},{"date":"Nov/2019","amount":-19},{"date":"Dez/2019","amount":-19}]},{"accountNumber":4170,"accountName":"Vermögenswirksame Leistungen","transfers":[{"date":"Jan/2019","amount":-140},{"date":"Feb/2019","amount":-140},{"date":"Mrz/2019","amount":-140},{"date":"Apr/2019","amount":-80},{"date":"Mai/2019","amount":-80},{"date":"Jun/2019","amount":-80},{"date":"Jul/2019","amount":-80},{"date":"Aug/2019","amount":-80},{"date":"Sep/2019","amount":-80},{"date":"Okt/2019","amount":-80},{"date":"Nov/2019","amount":-80},{"date":"Dez/2019","amount":-80}]},{"accountNumber":4194,"accountName":"Pauschale Steuern Minijobber","transfers":[{"date":"Jan/2019","amount":-86.7},{"date":"Feb/2019","amount":-112.8},{"date":"Mrz/2019","amount":-133.15},{"date":"Apr/2019","amount":-92.75},{"date":"Mai/2019","amount":-110.5},{"date":"Jun/2019","amount":-144.55},{"date":"Jul/2019","amount":-119.4},{"date":"Aug/2019","amount":-130.54},{"date":"Sep/2019","amount":-123.15},{"date":"Okt/2019","amount":-143.39},{"date":"Nov/2019","amount":-126.78},{"date":"Dez/2019","amount":-119.4}]},{"accountNumber":4195,"accountName":"Löhne für Minijobs","transfers":[{"date":"Jan/2019","amount":-5264.5},{"date":"Feb/2019","amount":-7195},{"date":"Mrz/2019","amount":-9769.5},{"date":"Apr/2019","amount":-7927},{"date":"Mai/2019","amount":-8212.5},{"date":"Jun/2019","amount":-10164},{"date":"Jul/2019","amount":-9724.5},{"date":"Aug/2019","amount":-8806.5},{"date":"Sep/2019","amount":-8827},{"date":"Okt/2019","amount":-8911},{"date":"Nov/2019","amount":-7607.5},{"date":"Dez/2019","amount":-6661}]},{"accountNumber":4199,"accountName":"Pauschale Steuer für Aushilfen","transfers":[{"date":"Jan/2019","amount":-37.2},{"date":"Feb/2019","amount":-23.54},{"date":"Mrz/2019","amount":-23.54},{"date":"Apr/2019","amount":-23.54},{"date":"Mai/2019","amount":-23.54},{"date":"Jun/2019","amount":-175.85},{"date":"Jul/2019","amount":-146.21},{"date":"Aug/2019","amount":-72.36},{"date":"Sep/2019","amount":-81.66},{"date":"Okt/2019","amount":-59.56},{"date":"Nov/2019","amount":-54.66},{"date":"Dez/2019","amount":-60.72}]},{"accountNumber":4210,"accountName":"Miete, unbewegliche Wirtschaftsgüter","transfers":[{"date":"Jan/2019","amount":-7277.41},{"date":"Feb/2019","amount":-7277.41},{"date":"Mrz/2019","amount":-7277.41},{"date":"Apr/2019","amount":-6827.41},{"date":"Mai/2019","amount":-7576.81},{"date":"Jun/2019","amount":-6827.41},{"date":"Jul/2019","amount":-6078.01},{"date":"Aug/2019","amount":-6827.41},{"date":"Sep/2019","amount":-6827.41},{"date":"Okt/2019","amount":-6827.41},{"date":"Nov/2019","amount":-6827.41},{"date":"Dez/2019","amount":-6827.41}]},{"accountNumber":4240,"accountName":"Gas, Strom, Wasser","transfers":[{"date":"Jan/2019","amount":-363.87},{"date":"Feb/2019","amount":-363.87},{"date":"Mrz/2019","amount":-363.87},{"date":"Apr/2019","amount":-363.87},{"date":"Mai/2019","amount":-363.87},{"date":"Jun/2019","amount":-363.87},{"date":"Jul/2019","amount":-433},{"date":"Aug/2019","amount":-294.74},{"date":"Sep/2019","amount":-363.87},{"date":"Okt/2019","amount":-363.87},{"date":"Nov/2019","amount":-39.15},{"date":"Dez/2019","amount":-374.79}]},{"accountNumber":4360,"accountName":"Versicherungen","transfers":[{"date":"Jan/2019","amount":-24.93},{"date":"Feb/2019","amount":-24.93},{"date":"Mrz/2019","amount":-24.93},{"date":"Apr/2019","amount":-43.03},{"date":"Mai/2019","amount":-24.93},{"date":"Jun/2019","amount":-600.9},{"date":"Jul/2019","amount":-24.93},{"date":"Aug/2019","amount":-24.93},{"date":"Sep/2019","amount":-6691.51},{"date":"Okt/2019","amount":-2901.98},{"date":"Nov/2019","amount":-24.93},{"date":"Dez/2019","amount":-24.95}]},{"accountNumber":4380,"accountName":"Beiträge / Gebühren","transfers":[{"date":"Feb/2019","amount":-64.09},{"date":"Mrz/2019","amount":-144},{"date":"Apr/2019","amount":-384.6},{"date":"Mai/2019","amount":-77.47},{"date":"Jun/2019","amount":-100},{"date":"Jul/2019","amount":-225.47},{"date":"Aug/2019","amount":-52.47},{"date":"Sep/2019","amount":-127.98},{"date":"Okt/2019","amount":6.77},{"date":"Nov/2019","amount":-52.47},{"date":"Dez/2019","amount":-447.53}]},{"accountNumber":4510,"accountName":"Kfz-Steuern","transfers":[{"date":"Jan/2019","amount":-46.83},{"date":"Feb/2019","amount":30.67},{"date":"Mrz/2019","amount":-256.33},{"date":"Apr/2019","amount":-1284.33},{"date":"Mai/2019","amount":-68.33},{"date":"Jun/2019","amount":-68.33},{"date":"Jul/2019","amount":-37.33},{"date":"Aug/2019","amount":-68.33},{"date":"Sep/2019","amount":-402.33},{"date":"Okt/2019","amount":-722.33},{"date":"Nov/2019","amount":228.52},{"date":"Dez/2019","amount":182.63}]},{"accountNumber":4520,"accountName":"Kfz-Versicherungen","transfers":[{"date":"Jan/2019","amount":-1132.05},{"date":"Feb/2019","amount":-476.93},{"date":"Mrz/2019","amount":-1170.69},{"date":"Apr/2019","amount":-1009.2},{"date":"Mai/2019","amount":-1063.41},{"date":"Jun/2019","amount":-1045.12},{"date":"Jul/2019","amount":-983.32},{"date":"Aug/2019","amount":-1018.25},{"date":"Sep/2019","amount":-1018.25},{"date":"Okt/2019","amount":-991.38},{"date":"Nov/2019","amount":-2054.95},{"date":"Dez/2019","amount":-1700.31}]},{"accountNumber":4530,"accountName":"Laufende Kfz-Betriebskosten","transfers":[{"date":"Jan/2019","amount":-1536.67},{"date":"Feb/2019","amount":-177.8},{"date":"Mrz/2019","amount":-4020.92},{"date":"Apr/2019","amount":-2230.32},{"date":"Mai/2019","amount":-334.85},{"date":"Jun/2019","amount":-4588.38},{"date":"Jul/2019","amount":-6488.27},{"date":"Aug/2019","amount":-2430.43},{"date":"Sep/2019","amount":-2262.92},{"date":"Okt/2019","amount":-1450.25},{"date":"Nov/2019","amount":-4487.36},{"date":"Dez/2019","amount":-2017.87}]},{"accountNumber":4540,"accountName":"Kfz-Reparaturen","transfers":[{"date":"Jan/2019","amount":-326.84},{"date":"Feb/2019","amount":-869.31},{"date":"Mrz/2019","amount":-1456.12},{"date":"Apr/2019","amount":-765.95},{"date":"Mai/2019","amount":-2157.09},{"date":"Jun/2019","amount":930},{"date":"Jul/2019","amount":65.13},{"date":"Sep/2019","amount":-722.85},{"date":"Okt/2019","amount":-972.58},{"date":"Dez/2019","amount":-1962.75}]},{"accountNumber":4570,"accountName":"Mietleasing Kfz","transfers":[{"date":"Jan/2019","amount":-6116.63},{"date":"Feb/2019","amount":-7572.46},{"date":"Mrz/2019","amount":-6939.78},{"date":"Apr/2019","amount":-7180.8},{"date":"Mai/2019","amount":-8065.49},{"date":"Jun/2019","amount":-7318.71},{"date":"Jul/2019","amount":-5601.11},{"date":"Aug/2019","amount":-6571.93},{"date":"Sep/2019","amount":-6571.93},{"date":"Okt/2019","amount":-5966.46},{"date":"Nov/2019","amount":-7888.74},{"date":"Dez/2019","amount":-4234.05}]},{"accountNumber":4580,"accountName":"Sonstige Kfz-Kosten","transfers":[{"date":"Jan/2019","amount":-1680.68},{"date":"Feb/2019","amount":-870.15},{"date":"Mrz/2019","amount":-10.88}]},{"accountNumber":4600,"accountName":"Werbekosten","transfers":[{"date":"Jan/2019","amount":-157},{"date":"Feb/2019","amount":-697.7},{"date":"Mrz/2019","amount":-323.2},{"date":"Apr/2019","amount":-3220.81},{"date":"Mai/2019","amount":47.61},{"date":"Jun/2019","amount":-2088.09},{"date":"Jul/2019","amount":-1298.01},{"date":"Aug/2019","amount":-25.17},{"date":"Sep/2019","amount":-57.5},{"date":"Nov/2019","amount":-4723.01},{"date":"Dez/2019","amount":-3040}]},{"accountNumber":4601,"accountName":"Online Marketing (Google, Facebook)","transfers":[{"date":"Jan/2019","amount":-7168.11},{"date":"Feb/2019","amount":-5592.74},{"date":"Mrz/2019","amount":-7178.11},{"date":"Apr/2019","amount":-6416.47},{"date":"Mai/2019","amount":-12074.11},{"date":"Jun/2019","amount":-11161.3},{"date":"Jul/2019","amount":-14248.91},{"date":"Aug/2019","amount":-6101.54},{"date":"Sep/2019","amount":-6395.73},{"date":"Okt/2019","amount":-6151.04},{"date":"Nov/2019","amount":-11007.06},{"date":"Dez/2019","amount":-9365.34}]},{"accountNumber":4630,"accountName":"Geschenke abzugsfähig ohne § 37b EStG","transfers":[{"date":"Mrz/2019","amount":-32.7},{"date":"Apr/2019","amount":-31.59}]},{"accountNumber":4637,"accountName":"Pausch. Steuern für Zuwendungen n.abz.","transfers":[{"date":"Jul/2019","amount":-889.12}]},{"accountNumber":4645,"accountName":"Konferenz-/Tagungs-/Veranstaltungkosten","transfers":[{"date":"Jan/2019","amount":-160.22},{"date":"Feb/2019","amount":-71.44},{"date":"Mrz/2019","amount":-137.98},{"date":"Mai/2019","amount":-132.4},{"date":"Jun/2019","amount":-173.83},{"date":"Jul/2019","amount":-482.26},{"date":"Aug/2019","amount":-186.35},{"date":"Sep/2019","amount":-368.84},{"date":"Okt/2019","amount":-1373.25},{"date":"Nov/2019","amount":-297.25},{"date":"Dez/2019","amount":-85.2}]},{"accountNumber":4650,"accountName":"Bewirtungskosten","transfers":[{"date":"Jan/2019","amount":-156.86},{"date":"Feb/2019","amount":-47.02},{"date":"Mrz/2019","amount":-21.5},{"date":"Mai/2019","amount":-143.87},{"date":"Jun/2019","amount":-237.21},{"date":"Jul/2019","amount":-107.58},{"date":"Sep/2019","amount":-153.99},{"date":"Dez/2019","amount":-119.11}]},{"accountNumber":4653,"accountName":"Aufmerksamkeiten","transfers":[{"date":"Mrz/2019","amount":-42.17},{"date":"Mai/2019","amount":-12.9},{"date":"Jun/2019","amount":-38.45},{"date":"Jul/2019","amount":-5.6},{"date":"Okt/2019","amount":-76.59},{"date":"Nov/2019","amount":-34.04},{"date":"Dez/2019","amount":-12.51}]},{"accountNumber":4654,"accountName":"Nicht abzugsfähige Bewirtungskosten","transfers":[{"date":"Jan/2019","amount":-15.67},{"date":"Feb/2019","amount":-19.09},{"date":"Mrz/2019","amount":-6.45},{"date":"Mai/2019","amount":-49.66},{"date":"Jun/2019","amount":-6.02},{"date":"Jul/2019","amount":-46.11},{"date":"Sep/2019","amount":-66.01},{"date":"Dez/2019","amount":-51.06}]},{"accountNumber":4656,"accountName":"nicht abzugsfähige Bewirtungsk. 7% VSt","transfers":[{"date":"Jan/2019","amount":10.95},{"date":"Feb/2019","amount":2.51},{"date":"Mrz/2019","amount":6.45},{"date":"Mai/2019","amount":28.01}]},{"accountNumber":4660,"accountName":"Reisekosten Arbeitnehmer","transfers":[{"date":"Jan/2019","amount":-991.43},{"date":"Feb/2019","amount":-816.9},{"date":"Mrz/2019","amount":-575.01},{"date":"Apr/2019","amount":-679.62},{"date":"Mai/2019","amount":-1543.77},{"date":"Jun/2019","amount":-1270.13},{"date":"Jul/2019","amount":-401.46},{"date":"Aug/2019","amount":-2188.92},{"date":"Sep/2019","amount":-1571.61},{"date":"Okt/2019","amount":-216.34},{"date":"Nov/2019","amount":-785.92},{"date":"Dez/2019","amount":-763.97}]},{"accountNumber":4662,"accountName":"RK-Übernahme externe Dienstleister","transfers":[{"date":"Jan/2019","amount":-222},{"date":"Feb/2019","amount":-444.49},{"date":"Mrz/2019","amount":-155.42},{"date":"Mai/2019","amount":-1571.3},{"date":"Jun/2019","amount":-275.8},{"date":"Jul/2019","amount":-432.71}]},{"accountNumber":4664,"accountName":"Reisekosten AN Verpfleg.mehraufwand","transfers":[{"date":"Jan/2019","amount":-165.6},{"date":"Feb/2019","amount":-236.6},{"date":"Mrz/2019","amount":-860.4},{"date":"Apr/2019","amount":-110.8},{"date":"Mai/2019","amount":-396},{"date":"Jun/2019","amount":-211.2},{"date":"Jul/2019","amount":-345.6},{"date":"Aug/2019","amount":-333.6},{"date":"Sep/2019","amount":-585.8},{"date":"Okt/2019","amount":-384},{"date":"Nov/2019","amount":-240},{"date":"Dez/2019","amount":-355.2}]},{"accountNumber":4665,"accountName":"RK-Übernahme externe Dienstleister","transfers":[{"date":"Jan/2019","amount":-2429.39},{"date":"Feb/2019","amount":-3058.82},{"date":"Mrz/2019","amount":-1893.91},{"date":"Apr/2019","amount":-8419.04},{"date":"Mai/2019","amount":-1816.99},{"date":"Jun/2019","amount":-5033.86},{"date":"Jul/2019","amount":-2709.69},{"date":"Aug/2019","amount":-4725.52},{"date":"Sep/2019","amount":-6339.13},{"date":"Okt/2019","amount":-1771.45},{"date":"Nov/2019","amount":-4120.19},{"date":"Dez/2019","amount":-1088.06}]},{"accountNumber":4666,"accountName":"Reisekosten AN Übernachtungsaufwand","transfers":[{"date":"Jan/2019","amount":-1201.82},{"date":"Feb/2019","amount":-580.97},{"date":"Mrz/2019","amount":-1007.47},{"date":"Apr/2019","amount":-769.52},{"date":"Mai/2019","amount":-1014.54},{"date":"Jun/2019","amount":-186.92},{"date":"Jul/2019","amount":-610.56},{"date":"Aug/2019","amount":-804.02},{"date":"Sep/2019","amount":-5553.65},{"date":"Okt/2019","amount":-647.12},{"date":"Nov/2019","amount":-883.54},{"date":"Dez/2019","amount":-6404.89}]},{"accountNumber":4668,"accountName":"Kilometergelderstattung Arbeitnehmer","transfers":[{"date":"Jan/2019","amount":-1628.7},{"date":"Feb/2019","amount":-1767.36},{"date":"Mrz/2019","amount":-2823.6},{"date":"Apr/2019","amount":-1967.4},{"date":"Mai/2019","amount":-1280.2},{"date":"Jun/2019","amount":-1332},{"date":"Jul/2019","amount":-1158.3},{"date":"Aug/2019","amount":-556.65},{"date":"Sep/2019","amount":-2621.2},{"date":"Okt/2019","amount":-1499.7},{"date":"Nov/2019","amount":-362.4},{"date":"Dez/2019","amount":-1766.44}]},{"accountNumber":4730,"accountName":"Ausgangsfrachten","transfers":[{"date":"Jan/2019","amount":-50.34},{"date":"Feb/2019","amount":-44.9},{"date":"Jun/2019","amount":-17},{"date":"Jul/2019","amount":-173.57},{"date":"Aug/2019","amount":-1042.03},{"date":"Sep/2019","amount":-751.25},{"date":"Dez/2019","amount":-112.27}]},{"accountNumber":4760,"accountName":"Provisionen","transfers":[{"date":"Jun/2019","amount":-1500}]},{"accountNumber":4806,"accountName":"Wartungskosten für Hard- und Software","transfers":[{"date":"Jan/2019","amount":-608},{"date":"Feb/2019","amount":-608},{"date":"Mrz/2019","amount":-608},{"date":"Apr/2019","amount":-608},{"date":"Mai/2019","amount":-608},{"date":"Jun/2019","amount":-608},{"date":"Jul/2019","amount":-1212.8},{"date":"Aug/2019","amount":-608},{"date":"Sep/2019","amount":-608},{"date":"Okt/2019","amount":-608},{"date":"Nov/2019","amount":-608},{"date":"Dez/2019","amount":-608}]},{"accountNumber":4811,"accountName":"Miete Equipment für Veranstaltungen","transfers":[{"date":"Jan/2019","amount":-3728.5},{"date":"Feb/2019","amount":-3833.4},{"date":"Mrz/2019","amount":-4197},{"date":"Apr/2019","amount":-2055},{"date":"Mai/2019","amount":-300},{"date":"Jun/2019","amount":-12777.5},{"date":"Jul/2019","amount":-9809.3},{"date":"Aug/2019","amount":-6148.75},{"date":"Sep/2019","amount":-5920},{"date":"Nov/2019","amount":-3800.5},{"date":"Dez/2019","amount":-923.51}]},{"accountNumber":4822,"accountName":"Abschreibung immaterielle VermG","transfers":[{"date":"Jan/2019","amount":-3653.01},{"date":"Feb/2019","amount":-3653.03},{"date":"Mrz/2019","amount":1346.97},{"date":"Apr/2019","amount":-1986.35},{"date":"Mai/2019","amount":-1986.36},{"date":"Jun/2019","amount":-1986.36},{"date":"Jul/2019","amount":-1986.35},{"date":"Aug/2019","amount":-937.51},{"date":"Sep/2019","amount":-937.5},{"date":"Okt/2019","amount":-937.5},{"date":"Nov/2019","amount":-937.5},{"date":"Dez/2019","amount":-20061.5}]},{"accountNumber":4824,"accountName":"Abschr. Geschäfts- oder Firmenwert","transfers":[{"date":"Jan/2019","amount":-4166.66},{"date":"Feb/2019","amount":-4166.67},{"date":"Mrz/2019","amount":-4166.66},{"date":"Apr/2019","amount":-4166.67},{"date":"Mai/2019","amount":-4166.67},{"date":"Jun/2019","amount":-4166.66},{"date":"Jul/2019","amount":-4166.67},{"date":"Aug/2019","amount":-4166.67},{"date":"Sep/2019","amount":-4166.66},{"date":"Okt/2019","amount":-4166.67},{"date":"Nov/2019","amount":-4166.67},{"date":"Dez/2019","amount":-4166.67}]},{"accountNumber":4830,"accountName":"Abschreibungen auf Sachanlagen","transfers":[{"date":"Jan/2019","amount":-2846.59},{"date":"Feb/2019","amount":-2693.13},{"date":"Mrz/2019","amount":-2749.93},{"date":"Apr/2019","amount":-2460.87},{"date":"Mai/2019","amount":-2439.17},{"date":"Jun/2019","amount":-2329.88},{"date":"Jul/2019","amount":-2286.45},{"date":"Aug/2019","amount":-2230.44},{"date":"Sep/2019","amount":-2208.39},{"date":"Okt/2019","amount":-2226.97},{"date":"Nov/2019","amount":-2176.51},{"date":"Dez/2019","amount":-1787.36}]},{"accountNumber":4832,"accountName":"Abschreibungen auf Kfz","transfers":[{"date":"Jan/2019","amount":-619.25},{"date":"Feb/2019","amount":-367.25},{"date":"Mrz/2019","amount":-468.74},{"date":"Apr/2019","amount":-234.42},{"date":"Mai/2019","amount":-234.42},{"date":"Jun/2019","amount":-234.41},{"date":"Jul/2019","amount":-234.42},{"date":"Aug/2019","amount":-234.42},{"date":"Sep/2019","amount":-234.41},{"date":"Okt/2019","amount":-234.42},{"date":"Nov/2019","amount":-234.42},{"date":"Dez/2019","amount":-234.42}]},{"accountNumber":4855,"accountName":"Sofortabschreibung GWG","transfers":[{"date":"Sep/2019","amount":-3138.42},{"date":"Nov/2019","amount":-478.91},{"date":"Dez/2019","amount":-3164.46}]},{"accountNumber":4910,"accountName":"Porto","transfers":[{"date":"Jan/2019","amount":-1049.03},{"date":"Feb/2019","amount":-826.46},{"date":"Mrz/2019","amount":-1216.35},{"date":"Apr/2019","amount":-757.57},{"date":"Mai/2019","amount":-772.34},{"date":"Jun/2019","amount":-829.55},{"date":"Jul/2019","amount":-900.6},{"date":"Aug/2019","amount":-1176.64},{"date":"Sep/2019","amount":-1082.72},{"date":"Okt/2019","amount":-1369.81},{"date":"Nov/2019","amount":-986.32},{"date":"Dez/2019","amount":-787.33}]},{"accountNumber":4920,"accountName":"Telefon","transfers":[{"date":"Jan/2019","amount":-609.5},{"date":"Feb/2019","amount":-7976.54},{"date":"Mrz/2019","amount":-2931.74},{"date":"Apr/2019","amount":-2323.94},{"date":"Mai/2019","amount":-2574.78},{"date":"Jun/2019","amount":-3680.52},{"date":"Jul/2019","amount":-5917.51},{"date":"Aug/2019","amount":-3197.09},{"date":"Sep/2019","amount":-3369.58},{"date":"Okt/2019","amount":-3218.53},{"date":"Nov/2019","amount":-2949.86},{"date":"Dez/2019","amount":-6470.38}]},{"accountNumber":4925,"accountName":"Telefax und Internetkosten","transfers":[{"date":"Jan/2019","amount":-972.34},{"date":"Feb/2019","amount":-706.76},{"date":"Mrz/2019","amount":-581.38},{"date":"Apr/2019","amount":-179.71},{"date":"Mai/2019","amount":-187.97},{"date":"Jun/2019","amount":-481.97},{"date":"Jul/2019","amount":-497.55},{"date":"Aug/2019","amount":-187.97},{"date":"Sep/2019","amount":-466.34},{"date":"Okt/2019","amount":-350.94},{"date":"Nov/2019","amount":-270.34},{"date":"Dez/2019","amount":-1536}]},{"accountNumber":4930,"accountName":"Bürobedarf","transfers":[{"date":"Jan/2019","amount":-858.87},{"date":"Feb/2019","amount":-1164.17},{"date":"Mrz/2019","amount":-638.91},{"date":"Apr/2019","amount":-156.9},{"date":"Mai/2019","amount":-62.11},{"date":"Jun/2019","amount":-2024.24},{"date":"Jul/2019","amount":-411.35},{"date":"Aug/2019","amount":-847.47},{"date":"Sep/2019","amount":-425.6},{"date":"Okt/2019","amount":-793.82},{"date":"Nov/2019","amount":-684.42},{"date":"Dez/2019","amount":-486}]},{"accountNumber":4940,"accountName":"Zeitschriften, Bücher (Fachliteratur)","transfers":[{"date":"Jan/2019","amount":-51.21},{"date":"Jul/2019","amount":-97.05},{"date":"Aug/2019","amount":97.05},{"date":"Nov/2019","amount":-61.68}]},{"accountNumber":4945,"accountName":"Fortbildungskosten","transfers":[{"date":"Feb/2019","amount":-132}]},{"accountNumber":4950,"accountName":"Rechts- und Beratungskosten","transfers":[{"date":"Aug/2019","amount":-14193.5},{"date":"Dez/2019","amount":-15000}]},{"accountNumber":4955,"accountName":"Buchführungskosten","transfers":[{"date":"Feb/2019","amount":-2412.28},{"date":"Mrz/2019","amount":-2154.5},{"date":"Apr/2019","amount":-1976.42},{"date":"Mai/2019","amount":-3397.84},{"date":"Jul/2019","amount":-1662.32},{"date":"Aug/2019","amount":-2265.34},{"date":"Sep/2019","amount":-1424.42},{"date":"Okt/2019","amount":-842},{"date":"Nov/2019","amount":-1698.92},{"date":"Dez/2019","amount":-3020.34}]},{"accountNumber":4957,"accountName":"Abschluss- und Prüfungskosten","transfers":[{"date":"Jul/2019","amount":-52.5},{"date":"Dez/2019","amount":-8150}]},{"accountNumber":4970,"accountName":"Nebenkosten des Geldverkehrs","transfers":[{"date":"Jan/2019","amount":-19},{"date":"Feb/2019","amount":-124.4},{"date":"Mrz/2019","amount":-112.45},{"date":"Apr/2019","amount":-111.58},{"date":"Mai/2019","amount":-663.83},{"date":"Jun/2019","amount":-126.24},{"date":"Jul/2019","amount":-95.99},{"date":"Aug/2019","amount":-287.42},{"date":"Sep/2019","amount":-114.63},{"date":"Okt/2019","amount":-125.88},{"date":"Nov/2019","amount":-101.91},{"date":"Dez/2019","amount":-205.48}]},{"accountNumber":4980,"accountName":"Sonstiger Betriebsbedarf","transfers":[{"date":"Jan/2019","amount":-1682.51},{"date":"Feb/2019","amount":-2016.06},{"date":"Mrz/2019","amount":-2531.05},{"date":"Apr/2019","amount":-1719.86},{"date":"Mai/2019","amount":-2300.37},{"date":"Jun/2019","amount":-4338.69},{"date":"Jul/2019","amount":-3420.45},{"date":"Aug/2019","amount":-1919.47},{"date":"Sep/2019","amount":-2455.26},{"date":"Okt/2019","amount":-5876.81},{"date":"Nov/2019","amount":-1879.67},{"date":"Dez/2019","amount":-809.03}]},{"accountNumber":8200,"accountName":"Erlösabgrenzung","transfers":[{"date":"Jan/2019","amount":-60117.44},{"date":"Feb/2019","amount":-33316.88},{"date":"Mrz/2019","amount":16833.36},{"date":"Apr/2019","amount":38146.66},{"date":"Mai/2019","amount":17661.99},{"date":"Jun/2019","amount":-16869.2},{"date":"Jul/2019","amount":-10662.58},{"date":"Aug/2019","amount":-13212.23},{"date":"Sep/2019","amount":-16960.22},{"date":"Okt/2019","amount":-20052.64},{"date":"Nov/2019","amount":3238.73},{"date":"Dez/2019","amount":-58753.92}]},{"accountNumber":8319,"accountName":"Erlöse im and. EU-Land stpfl.Leistung RC","transfers":[{"date":"Jan/2019","amount":1545.85},{"date":"Feb/2019","amount":475.06},{"date":"Mrz/2019","amount":321.54},{"date":"Apr/2019","amount":401.64},{"date":"Mai/2019","amount":658.63},{"date":"Jun/2019","amount":833.7},{"date":"Jul/2019","amount":763.62},{"date":"Aug/2019","amount":2427.41},{"date":"Sep/2019","amount":2586.68},{"date":"Okt/2019","amount":930.57},{"date":"Nov/2019","amount":542.03},{"date":"Dez/2019","amount":1378.05}]},{"accountNumber":8320,"accountName":"D  -  im anderen EU-Land stpfl. Leistung","transfers":[{"date":"Feb/2019","amount":1240.4},{"date":"Mrz/2019","amount":2912.3},{"date":"Apr/2019","amount":1199.2},{"date":"Mai/2019","amount":455},{"date":"Jun/2019","amount":1550},{"date":"Jul/2019","amount":2073.45},{"date":"Aug/2019","amount":2779.2},{"date":"Sep/2019","amount":2160.2},{"date":"Okt/2019","amount":1918},{"date":"Nov/2019","amount":1431.5},{"date":"Dez/2019","amount":2226.9}]},{"accountNumber":8333,"accountName":"n.stb.L.EU-Untern.MediaServ. Production","transfers":[{"date":"Mrz/2019","amount":3404.67},{"date":"Aug/2019","amount":150}]},{"accountNumber":8335,"accountName":"n.stb.L. EU-Unternehmer - Werbung","transfers":[{"date":"Jan/2019","amount":8461.17},{"date":"Feb/2019","amount":1666.66},{"date":"Mrz/2019","amount":12065.92},{"date":"Apr/2019","amount":4369.47},{"date":"Mai/2019","amount":3202.81},{"date":"Jun/2019","amount":3202.8},{"date":"Jul/2019","amount":1536.14},{"date":"Aug/2019","amount":5366.14},{"date":"Sep/2019","amount":1138.89},{"date":"Okt/2019","amount":1138.89},{"date":"Nov/2019","amount":1138.88},{"date":"Dez/2019","amount":555.54}]},{"accountNumber":8340,"accountName":"n.stb.L. Drittland - Werbung","transfers":[{"date":"Feb/2019","amount":750},{"date":"Mrz/2019","amount":375},{"date":"Apr/2019","amount":375},{"date":"Mai/2019","amount":375},{"date":"Jun/2019","amount":375},{"date":"Jul/2019","amount":375},{"date":"Aug/2019","amount":375},{"date":"Sep/2019","amount":375},{"date":"Okt/2019","amount":375},{"date":"Nov/2019","amount":375},{"date":"Dez/2019","amount":375}]},{"accountNumber":8341,"accountName":"n.stb.L. Drittland - MediServ.Production","transfers":[{"date":"Jun/2019","amount":20765},{"date":"Jul/2019","amount":610},{"date":"Aug/2019","amount":1592},{"date":"Sep/2019","amount":600},{"date":"Okt/2019","amount":2085},{"date":"Nov/2019","amount":494},{"date":"Dez/2019","amount":662.5}]},{"accountNumber":8402,"accountName":"Erl. 19% USt - Media Serv. - Production","transfers":[{"date":"Jan/2019","amount":23238},{"date":"Feb/2019","amount":26708.9},{"date":"Mrz/2019","amount":21696},{"date":"Apr/2019","amount":17341.36},{"date":"Mai/2019","amount":29803.95},{"date":"Jun/2019","amount":39358.47},{"date":"Jul/2019","amount":8487.65},{"date":"Aug/2019","amount":48030},{"date":"Sep/2019","amount":17340},{"date":"Okt/2019","amount":29552},{"date":"Nov/2019","amount":31881.74},{"date":"Dez/2019","amount":15777}]},{"accountNumber":8403,"accountName":"Erlöse 19% USt - Werbung","transfers":[{"date":"Jan/2019","amount":47092.18},{"date":"Feb/2019","amount":-62.9},{"date":"Mrz/2019","amount":29580.04},{"date":"Apr/2019","amount":17364.16},{"date":"Mai/2019","amount":35377.35},{"date":"Jun/2019","amount":36999.35},{"date":"Jul/2019","amount":27839.84},{"date":"Aug/2019","amount":66678.5},{"date":"Sep/2019","amount":41836.88},{"date":"Okt/2019","amount":41071.01},{"date":"Nov/2019","amount":73895.04},{"date":"Dez/2019","amount":83692.97}]},{"accountNumber":8404,"accountName":"Erlöse 19% USt - Contentverkauf","transfers":[{"date":"Jan/2019","amount":580.5},{"date":"Feb/2019","amount":52.5},{"date":"Aug/2019","amount":24.17},{"date":"Okt/2019","amount":50},{"date":"Nov/2019","amount":83.61},{"date":"Dez/2019","amount":84.03}]},{"accountNumber":8405,"accountName":"Erlöse 19% USt - Mitgliedschaften","transfers":[{"date":"Jan/2019","amount":197504.43},{"date":"Feb/2019","amount":174073.56},{"date":"Mrz/2019","amount":119791.55},{"date":"Apr/2019","amount":104927.25},{"date":"Mai/2019","amount":128002.42},{"date":"Jun/2019","amount":169316.79},{"date":"Jul/2019","amount":169148.49},{"date":"Aug/2019","amount":170737.82},{"date":"Sep/2019","amount":174250.59},{"date":"Okt/2019","amount":175117.87},{"date":"Nov/2019","amount":152726.92},{"date":"Dez/2019","amount":218166.95}]},{"accountNumber":8407,"accountName":"Erlöse 19% USt - WL Kosten (Tanken,...)","transfers":[{"date":"Jan/2019","amount":681.37},{"date":"Feb/2019","amount":681.37},{"date":"Mrz/2019","amount":2542.64},{"date":"Apr/2019","amount":681.37},{"date":"Mai/2019","amount":681.37},{"date":"Jun/2019","amount":681.37},{"date":"Jul/2019","amount":681.37},{"date":"Aug/2019","amount":681.37},{"date":"Sep/2019","amount":681.37},{"date":"Okt/2019","amount":681.37},{"date":"Dez/2019","amount":7296}]},{"accountNumber":8408,"accountName":"Erlöse 19% USt Personalkostenerstattung","transfers":[{"date":"Jan/2019","amount":53138.71},{"date":"Feb/2019","amount":46755.9},{"date":"Mrz/2019","amount":44539.74},{"date":"Apr/2019","amount":1185.53},{"date":"Mai/2019","amount":1185.53},{"date":"Jun/2019","amount":2371.06},{"date":"Jul/2019","amount":1185.53},{"date":"Aug/2019","amount":1185.53},{"date":"Sep/2019","amount":1185.53},{"date":"Okt/2019","amount":1185.53},{"date":"Nov/2019","amount":1185.53},{"date":"Dez/2019","amount":1185.53}]},{"accountNumber":8409,"accountName":"Erl.19% USt - Media Serv.-Cont.Marketing","transfers":[{"date":"Jan/2019","amount":3000},{"date":"Feb/2019","amount":4155},{"date":"Mrz/2019","amount":6106.7},{"date":"Apr/2019","amount":2355},{"date":"Jun/2019","amount":39411.13},{"date":"Jul/2019","amount":13340},{"date":"Aug/2019","amount":9000},{"date":"Sep/2019","amount":15030},{"date":"Dez/2019","amount":29830.01}]},{"accountNumber":8410,"accountName":"Erlöse Minijo19% USt","transfers":[{"date":"Feb/2019","amount":3475},{"date":"Mrz/2019","amount":8110},{"date":"Apr/2019","amount":1000},{"date":"Mai/2019","amount":1622},{"date":"Jun/2019","amount":2961},{"date":"Jul/2019","amount":1350},{"date":"Aug/2019","amount":500},{"date":"Sep/2019","amount":724},{"date":"Okt/2019","amount":1292.5}]},{"accountNumber":8611,"accountName":"Verrechn. sonstige Sachbezüge Kfz 19%","transfers":[{"date":"Jan/2019","amount":2835.94},{"date":"Feb/2019","amount":2262.65},{"date":"Mrz/2019","amount":2262.65},{"date":"Apr/2019","amount":2561.6},{"date":"Mai/2019","amount":1701.93},{"date":"Jun/2019","amount":3316.79},{"date":"Jul/2019","amount":2240.22},{"date":"Aug/2019","amount":2358.91},{"date":"Sep/2019","amount":2358.91},{"date":"Okt/2019","amount":2358.91},{"date":"Nov/2019","amount":2439.58},{"date":"Dez/2019","amount":2846.27}]},{"accountNumber":8736,"accountName":"Gewährte Skonti 19% USt","transfers":[{"date":"Okt/2019","amount":-0.25},{"date":"Dez/2019","amount":-37.82}]},{"accountNumber":8820,"accountName":"Erlöse Sachanlageverkäufe 19% USt, BG","transfers":[{"date":"Feb/2019","amount":2100.84}]}]
+[
+  {
+    "accountNumber": 30,
+    "accountName": "Lizenzen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 18846.99 },
+      { "date": "Feb/2019", "amount": -3653.03 },
+      { "date": "Mrz/2019", "amount": -1346.97 },
+      { "date": "Apr/2019", "amount": 1986.35 },
+      { "date": "Mai/2019", "amount": 1986.36 },
+      { "date": "Jun/2019", "amount": -26903.64 },
+      { "date": "Jul/2019", "amount": 1986.35 },
+      { "date": "Aug/2019", "amount": 937.51 },
+      { "date": "Sep/2019", "amount": 937.5 },
+      { "date": "Okt/2019", "amount": 937.5 },
+      { "date": "Nov/2019", "amount": 937.5 },
+      { "date": "Dez/2019", "amount": 21951.5 }
+    ]
+  },
+  {
+    "accountNumber": 35,
+    "accountName": "Geschäfts- oder Firmenwert",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 4166.66 },
+      { "date": "Feb/2019", "amount": 4166.67 },
+      { "date": "Mrz/2019", "amount": 4166.66 },
+      { "date": "Apr/2019", "amount": 4166.67 },
+      { "date": "Mai/2019", "amount": 4166.67 },
+      { "date": "Jun/2019", "amount": 4166.66 },
+      { "date": "Jul/2019", "amount": 4166.67 },
+      { "date": "Aug/2019", "amount": 4166.67 },
+      { "date": "Sep/2019", "amount": 4166.66 },
+      { "date": "Okt/2019", "amount": 4166.67 },
+      { "date": "Nov/2019", "amount": 4166.67 },
+      { "date": "Dez/2019", "amount": 4166.67 }
+    ]
+  },
+  {
+    "accountNumber": 320,
+    "accountName": "Pkw",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 250 },
+      { "date": "Feb/2019", "amount": 1500 }
+    ]
+  },
+  {
+    "accountNumber": 350,
+    "accountName": "Lkw",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 369.25 },
+      { "date": "Feb/2019", "amount": 117.25 },
+      { "date": "Mrz/2019", "amount": 468.74 },
+      { "date": "Apr/2019", "amount": 234.42 },
+      { "date": "Mai/2019", "amount": 234.42 },
+      { "date": "Jun/2019", "amount": 234.41 },
+      { "date": "Jul/2019", "amount": 234.42 },
+      { "date": "Aug/2019", "amount": 234.42 },
+      { "date": "Sep/2019", "amount": 234.41 },
+      { "date": "Okt/2019", "amount": 234.42 },
+      { "date": "Nov/2019", "amount": 234.42 },
+      { "date": "Dez/2019", "amount": 234.42 }
+    ]
+  },
+  {
+    "accountNumber": 400,
+    "accountName": "Betriebsausstattung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -2121.12 },
+      { "date": "Feb/2019", "amount": 1313.13 },
+      { "date": "Mrz/2019", "amount": 1615.47 },
+      { "date": "Apr/2019", "amount": 1147.53 },
+      { "date": "Mai/2019", "amount": 2439.17 },
+      { "date": "Jun/2019", "amount": 2329.88 },
+      { "date": "Jul/2019", "amount": 2286.45 },
+      { "date": "Aug/2019", "amount": 530.44 },
+      { "date": "Sep/2019", "amount": 2208.39 },
+      { "date": "Okt/2019", "amount": 1576.97 },
+      { "date": "Nov/2019", "amount": 2176.51 },
+      { "date": "Dez/2019", "amount": 3638.18 }
+    ]
+  },
+  {
+    "accountNumber": 480,
+    "accountName": "Geringwertige Wirtschaftsgüter",
+    "transfers": [
+      { "date": "Aug/2019", "amount": -2373.66 },
+      { "date": "Sep/2019", "amount": 2373.66 },
+      { "date": "Nov/2019", "amount": 0 },
+      { "date": "Dez/2019", "amount": 0 }
+    ]
+  },
+  {
+    "accountNumber": 961,
+    "accountName": "Urlaubs/ Überstundenrückstellung",
+    "transfers": [{ "date": "Dez/2019", "amount": 6244.32 }]
+  },
+  {
+    "accountNumber": 965,
+    "accountName": "Rückstellungen für Personalkosten",
+    "transfers": [{ "date": "Dez/2019", "amount": -2725 }]
+  },
+  {
+    "accountNumber": 970,
+    "accountName": "Sonstige Rückstellungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 1666.63 },
+      { "date": "Feb/2019", "amount": 1666.63 },
+      { "date": "Mrz/2019", "amount": 1666.63 },
+      { "date": "Apr/2019", "amount": 1666.63 },
+      { "date": "Mai/2019", "amount": 1666.63 },
+      { "date": "Jun/2019", "amount": 1666.63 },
+      { "date": "Jul/2019", "amount": -13058.37 },
+      { "date": "Aug/2019", "amount": 1666.63 },
+      { "date": "Sep/2019", "amount": -5533.37 },
+      { "date": "Okt/2019", "amount": 1666.63 },
+      { "date": "Nov/2019", "amount": 1666.63 },
+      { "date": "Dez/2019", "amount": 16092.07 }
+    ]
+  },
+  {
+    "accountNumber": 971,
+    "accountName": "Rückstellung f. Übertragungs-/TV-Arbeit",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 47802.3 },
+      { "date": "Feb/2019", "amount": -16902.3 },
+      { "date": "Mrz/2019", "amount": 6690 },
+      { "date": "Apr/2019", "amount": -37590 }
+    ]
+  },
+  {
+    "accountNumber": 977,
+    "accountName": "Rückstellungen für Abschluss u. Prüfung",
+    "transfers": [{ "date": "Dez/2019", "amount": 8000 }]
+  },
+  {
+    "accountNumber": 980,
+    "accountName": "Aktive Rechnungsabgrenzung",
+    "transfers": [{ "date": "Dez/2019", "amount": 500 }]
+  },
+  {
+    "accountNumber": 981,
+    "accountName": "Aktive Rechnungsabgrenzungsposten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -7662.02 },
+      { "date": "Feb/2019", "amount": 1303.54 },
+      { "date": "Mrz/2019", "amount": 1561.54 },
+      { "date": "Apr/2019", "amount": 1468.63 },
+      { "date": "Mai/2019", "amount": 1468.63 },
+      { "date": "Jun/2019", "amount": 1468.63 },
+      { "date": "Jul/2019", "amount": 1468.63 },
+      { "date": "Aug/2019", "amount": 1468.63 },
+      { "date": "Sep/2019", "amount": 1468.63 },
+      { "date": "Okt/2019", "amount": 1468.63 },
+      { "date": "Nov/2019", "amount": 1468.63 },
+      { "date": "Dez/2019", "amount": 1981.35 }
+    ]
+  },
+  {
+    "accountNumber": 991,
+    "accountName": "Passive RAP für Werbung 2018",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -14209.81 },
+      { "date": "Feb/2019", "amount": 53017.93 },
+      { "date": "Mrz/2019", "amount": 19230.49 },
+      { "date": "Apr/2019", "amount": 10523.87 },
+      { "date": "Mai/2019", "amount": -8758.21 },
+      { "date": "Jun/2019", "amount": 47077.53 },
+      { "date": "Jul/2019", "amount": 1384.11 },
+      { "date": "Aug/2019", "amount": -18820.78 },
+      { "date": "Sep/2019", "amount": -16895.07 },
+      { "date": "Okt/2019", "amount": -15397.4 },
+      { "date": "Nov/2019", "amount": 7692.61 },
+      { "date": "Dez/2019", "amount": -64845.27 }
+    ]
+  },
+  {
+    "accountNumber": 992,
+    "accountName": "Passive RAP Erlöse Werbung 2018",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -26226.47 },
+      { "date": "Feb/2019", "amount": -21847.31 },
+      { "date": "Mrz/2019", "amount": -19488.97 },
+      { "date": "Apr/2019", "amount": -9502.8 },
+      { "date": "Mai/2019", "amount": -7069.47 },
+      { "date": "Jun/2019", "amount": -6327.8 },
+      { "date": "Jul/2019", "amount": -4998.64 },
+      { "date": "Aug/2019", "amount": -3284.75 },
+      { "date": "Sep/2019", "amount": -2887.5 },
+      { "date": "Okt/2019", "amount": -2887.5 },
+      { "date": "Nov/2019", "amount": -583.34 }
+    ]
+  },
+  {
+    "accountNumber": 995,
+    "accountName": "Passive RAP Erlöse ab 10/2017",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 60117.44 },
+      { "date": "Feb/2019", "amount": 33316.88 },
+      { "date": "Mrz/2019", "amount": -16833.36 },
+      { "date": "Apr/2019", "amount": -38146.66 },
+      { "date": "Mai/2019", "amount": -17661.99 },
+      { "date": "Jun/2019", "amount": 16869.2 },
+      { "date": "Jul/2019", "amount": 10662.58 },
+      { "date": "Aug/2019", "amount": 13212.23 },
+      { "date": "Sep/2019", "amount": 16960.22 },
+      { "date": "Okt/2019", "amount": 20052.64 },
+      { "date": "Nov/2019", "amount": -3238.73 },
+      { "date": "Dez/2019", "amount": 58753.92 }
+    ]
+  },
+  {
+    "accountNumber": 996,
+    "accountName": "Pauschalwertberichtigung Forderg./b.1J",
+    "transfers": [{ "date": "Dez/2019", "amount": -1300 }]
+  },
+  {
+    "accountNumber": 998,
+    "accountName": "Einzelwertberichtigung Forderung(b.1J)",
+    "transfers": [{ "date": "Dez/2019", "amount": -6800 }]
+  },
+  {
+    "accountNumber": 1000,
+    "accountName": "Kasse",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -453.44 },
+      { "date": "Feb/2019", "amount": -205.26 },
+      { "date": "Mrz/2019", "amount": 656.61 },
+      { "date": "Apr/2019", "amount": 1263.61 },
+      { "date": "Mai/2019", "amount": -1988.2 },
+      { "date": "Jun/2019", "amount": 497.76 },
+      { "date": "Jul/2019", "amount": -20.09 },
+      { "date": "Aug/2019", "amount": 117.52 },
+      { "date": "Okt/2019", "amount": -809.43 },
+      { "date": "Nov/2019", "amount": 616.78 },
+      { "date": "Dez/2019", "amount": -317 }
+    ]
+  },
+  {
+    "accountNumber": 1200,
+    "accountName": "Nassauische Sparkasse # 111 233 508",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 28773.47 },
+      { "date": "Feb/2019", "amount": 1130.85 },
+      { "date": "Mrz/2019", "amount": -28742.83 },
+      { "date": "Apr/2019", "amount": -15526.02 },
+      { "date": "Mai/2019", "amount": -10838.17 },
+      { "date": "Jun/2019", "amount": 20748.36 },
+      { "date": "Jul/2019", "amount": -54747.55 },
+      { "date": "Aug/2019", "amount": 24910.96 },
+      { "date": "Sep/2019", "amount": -131330.65 },
+      { "date": "Okt/2019", "amount": 95740.93 },
+      { "date": "Nov/2019", "amount": 95897.85 },
+      { "date": "Dez/2019", "amount": -104583.46 }
+    ]
+  },
+  {
+    "accountNumber": 1360,
+    "accountName": "Geldtransit",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 0 },
+      { "date": "Feb/2019", "amount": 0 },
+      { "date": "Apr/2019", "amount": -1500 },
+      { "date": "Mai/2019", "amount": 1500 },
+      { "date": "Jul/2019", "amount": 0 },
+      { "date": "Aug/2019", "amount": 0 },
+      { "date": "Sep/2019", "amount": -800 },
+      { "date": "Okt/2019", "amount": 800 },
+      { "date": "Nov/2019", "amount": -500 },
+      { "date": "Dez/2019", "amount": 500 }
+    ]
+  },
+  {
+    "accountNumber": 1380,
+    "accountName": "Überleitung Kostenstellen",
+    "transfers": [{ "date": "Dez/2019", "amount": 0 }]
+  },
+  {
+    "accountNumber": 1400,
+    "accountName": "Forderungen aus Lieferungen u.Leistung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 796.59 },
+      { "date": "Feb/2019", "amount": -35665.82 },
+      { "date": "Mrz/2019", "amount": 8341.63 },
+      { "date": "Apr/2019", "amount": 43818.58 },
+      { "date": "Mai/2019", "amount": 95614.98 },
+      { "date": "Jun/2019", "amount": -187916.76 },
+      { "date": "Jul/2019", "amount": 76665.2 },
+      { "date": "Aug/2019", "amount": 30538.75 },
+      { "date": "Sep/2019", "amount": 169945.29 },
+      { "date": "Okt/2019", "amount": -68942.88 },
+      { "date": "Nov/2019", "amount": -199889.02 },
+      { "date": "Dez/2019", "amount": 222473.74 }
+    ]
+  },
+  {
+    "accountNumber": 1410,
+    "accountName": "Forderungen aus Lieferungen u.Leistung",
+    "transfers": [
+      { "date": "Jul/2019", "amount": -2975 },
+      { "date": "Aug/2019", "amount": 2975 }
+    ]
+  },
+  {
+    "accountNumber": 1502,
+    "accountName": "Forderung ClipMyHorse.TV Operations GmbH",
+    "transfers": [{ "date": "Dez/2019", "amount": 567214.73 }]
+  },
+  {
+    "accountNumber": 1520,
+    "accountName": "Forderungen ggb. Krankenkasse aus AAG",
+    "transfers": [{ "date": "Jan/2019", "amount": 0 }]
+  },
+  {
+    "accountNumber": 1530,
+    "accountName": "Forderg. gg. Personal Lohn- u. Gehalt",
+    "transfers": [{ "date": "Dez/2019", "amount": 700 }]
+  },
+  {
+    "accountNumber": 1548,
+    "accountName": "Vorsteuer im Folgejahr  abziehbar",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -5362.82 },
+      { "date": "Feb/2019", "amount": 17675.77 },
+      { "date": "Mrz/2019", "amount": 3999.99 },
+      { "date": "Apr/2019", "amount": -9728.46 },
+      { "date": "Mai/2019", "amount": -2296.28 },
+      { "date": "Jun/2019", "amount": -10277.67 },
+      { "date": "Jul/2019", "amount": 16589.86 },
+      { "date": "Aug/2019", "amount": -8056.72 },
+      { "date": "Sep/2019", "amount": 3832.15 },
+      { "date": "Okt/2019", "amount": 8132.58 },
+      { "date": "Nov/2019", "amount": -6447.7 },
+      { "date": "Dez/2019", "amount": 14360.95 }
+    ]
+  },
+  {
+    "accountNumber": 1570,
+    "accountName": "Abziehbare Vorsteuer",
+    "transfers": [
+      { "date": "Mai/2019", "amount": -13.77 },
+      { "date": "Dez/2019", "amount": -595.26 }
+    ]
+  },
+  {
+    "accountNumber": 1571,
+    "accountName": "Abziehbare Vorsteuer 7%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -158.64 },
+      { "date": "Feb/2019", "amount": -251.36 },
+      { "date": "Mrz/2019", "amount": -222.6 },
+      { "date": "Apr/2019", "amount": -75.97 },
+      { "date": "Mai/2019", "amount": -243.52 },
+      { "date": "Jun/2019", "amount": -229.02 },
+      { "date": "Jul/2019", "amount": -293.53 },
+      { "date": "Aug/2019", "amount": -58.36 },
+      { "date": "Sep/2019", "amount": -667.32 },
+      { "date": "Okt/2019", "amount": -173.4 },
+      { "date": "Nov/2019", "amount": -254.8 },
+      { "date": "Dez/2019", "amount": -2349.08 }
+    ]
+  },
+  {
+    "accountNumber": 1574,
+    "accountName": "Abziehbare Vorsteuer aus EU-Erwerb 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -126.91 },
+      { "date": "Feb/2019", "amount": -10.49 }
+    ]
+  },
+  {
+    "accountNumber": 1576,
+    "accountName": "Abziehbare Vorsteuer 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -12482.01 },
+      { "date": "Feb/2019", "amount": -37314.71 },
+      { "date": "Mrz/2019", "amount": -21242.26 },
+      { "date": "Apr/2019", "amount": -18587.77 },
+      { "date": "Mai/2019", "amount": -19763.34 },
+      { "date": "Jun/2019", "amount": -26999.45 },
+      { "date": "Jul/2019", "amount": -41397.36 },
+      { "date": "Aug/2019", "amount": -40087.35 },
+      { "date": "Sep/2019", "amount": -31073.8 },
+      { "date": "Okt/2019", "amount": -23325.78 },
+      { "date": "Nov/2019", "amount": -18131.44 },
+      { "date": "Dez/2019", "amount": -39687.09 }
+    ]
+  },
+  {
+    "accountNumber": 1577,
+    "accountName": "Abziehbare Vorsteuer § 13b UStG 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1637.77 },
+      { "date": "Feb/2019", "amount": -1295.44 },
+      { "date": "Mrz/2019", "amount": -1828.76 },
+      { "date": "Apr/2019", "amount": -1634.7 },
+      { "date": "Mai/2019", "amount": -2773.05 },
+      { "date": "Jun/2019", "amount": -2649.08 },
+      { "date": "Jul/2019", "amount": -3259.01 },
+      { "date": "Aug/2019", "amount": -1661.84 },
+      { "date": "Sep/2019", "amount": -1848.54 },
+      { "date": "Okt/2019", "amount": -1949.68 },
+      { "date": "Nov/2019", "amount": -2810.66 },
+      { "date": "Dez/2019", "amount": -2111.37 }
+    ]
+  },
+  {
+    "accountNumber": 1590,
+    "accountName": "Durchlaufende Posten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 0 },
+      { "date": "Feb/2019", "amount": 1303 },
+      { "date": "Mrz/2019", "amount": -255.07 },
+      { "date": "Jun/2019", "amount": -1047.93 },
+      { "date": "Jul/2019", "amount": -501.42 },
+      { "date": "Aug/2019", "amount": 501.42 },
+      { "date": "Sep/2019", "amount": -1258.3 },
+      { "date": "Okt/2019", "amount": 1258.3 },
+      { "date": "Nov/2019", "amount": 1084.6 },
+      { "date": "Dez/2019", "amount": -1084.6 }
+    ]
+  },
+  {
+    "accountNumber": 1600,
+    "accountName": "Verbindl. aus Lieferungen u. Leistungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -101672.67 },
+      { "date": "Feb/2019", "amount": -40089.07 },
+      { "date": "Mrz/2019", "amount": -8991.04 },
+      { "date": "Apr/2019", "amount": 81489.36 },
+      { "date": "Mai/2019", "amount": 8318.86 },
+      { "date": "Jun/2019", "amount": 95617.76 },
+      { "date": "Jul/2019", "amount": 5296.53 },
+      { "date": "Aug/2019", "amount": 35425.63 },
+      { "date": "Sep/2019", "amount": -57892.24 },
+      { "date": "Okt/2019", "amount": -120083.09 },
+      { "date": "Nov/2019", "amount": 53771.63 },
+      { "date": "Dez/2019", "amount": -17590.28 }
+    ]
+  },
+  {
+    "accountNumber": 1725,
+    "accountName": "USt in Folgeperiode fällig §§13/1, 13b/2",
+    "transfers": [{ "date": "Dez/2019", "amount": 15.01 }]
+  },
+  {
+    "accountNumber": 1728,
+    "accountName": "USt im and. EU-Land stpfl.elektr. Leistg",
+    "transfers": [{ "date": "Dez/2019", "amount": 4966.49 }]
+  },
+  {
+    "accountNumber": 1729,
+    "accountName": "Steuerzahlungen an KEA/MOSS",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 303.66 },
+      { "date": "Feb/2019", "amount": 1113.36 },
+      { "date": "Mrz/2019", "amount": 773.23 },
+      { "date": "Apr/2019", "amount": 54.91 },
+      { "date": "Mai/2019", "amount": 195.5 },
+      { "date": "Nov/2019", "amount": 2525.83 },
+      { "date": "Dez/2019", "amount": -4966.49 }
+    ]
+  },
+  {
+    "accountNumber": 1740,
+    "accountName": "Verbindlichkeiten aus Lohn und Gehalt",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -6147.82 },
+      { "date": "Feb/2019", "amount": 1943.36 },
+      { "date": "Mrz/2019", "amount": 2690.03 },
+      { "date": "Apr/2019", "amount": -3153.83 },
+      { "date": "Mai/2019", "amount": 463.65 },
+      { "date": "Jun/2019", "amount": 2560.8 },
+      { "date": "Jul/2019", "amount": -951.22 },
+      { "date": "Aug/2019", "amount": -323.96 },
+      { "date": "Sep/2019", "amount": 9.7 },
+      { "date": "Okt/2019", "amount": -242.33 },
+      { "date": "Nov/2019", "amount": -1738.02 },
+      { "date": "Dez/2019", "amount": -624.19 }
+    ]
+  },
+  {
+    "accountNumber": 1741,
+    "accountName": "Verbindlichk. Lohn- und Kirchensteuer",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 654.32 },
+      { "date": "Feb/2019", "amount": -681.25 },
+      { "date": "Mrz/2019", "amount": 318.54 },
+      { "date": "Apr/2019", "amount": -5555.96 },
+      { "date": "Mai/2019", "amount": -462.51 },
+      { "date": "Jun/2019", "amount": 612.41 },
+      { "date": "Jul/2019", "amount": 487.86 },
+      { "date": "Aug/2019", "amount": -959.64 },
+      { "date": "Sep/2019", "amount": -14.81 },
+      { "date": "Okt/2019", "amount": 15.21 },
+      { "date": "Nov/2019", "amount": 375.99 },
+      { "date": "Dez/2019", "amount": -21.65 }
+    ]
+  },
+  {
+    "accountNumber": 1742,
+    "accountName": "Verbindlichkeiten soziale Sicherheit",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -35.16 },
+      { "date": "Feb/2019", "amount": 1233.1 },
+      { "date": "Mrz/2019", "amount": 417.1 },
+      { "date": "Apr/2019", "amount": -21931.42 },
+      { "date": "Mai/2019", "amount": 20600.34 },
+      { "date": "Jun/2019", "amount": -17295.09 },
+      { "date": "Jul/2019", "amount": -22914.68 },
+      { "date": "Aug/2019", "amount": 40404.99 },
+      { "date": "Sep/2019", "amount": -194.15 },
+      { "date": "Okt/2019", "amount": 91.2 },
+      { "date": "Nov/2019", "amount": 1014.14 },
+      { "date": "Dez/2019", "amount": -833.29 }
+    ]
+  },
+  {
+    "accountNumber": 1748,
+    "accountName": "Verbindlichk. Einbehaltung Arbeitnehmer",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 0 },
+      { "date": "Feb/2019", "amount": 0 },
+      { "date": "Mrz/2019", "amount": 0 },
+      { "date": "Apr/2019", "amount": -220 },
+      { "date": "Mai/2019", "amount": 220 },
+      { "date": "Jun/2019", "amount": 0 },
+      { "date": "Jul/2019", "amount": 0 },
+      { "date": "Aug/2019", "amount": 0 },
+      { "date": "Sep/2019", "amount": 0 },
+      { "date": "Okt/2019", "amount": 0 },
+      { "date": "Nov/2019", "amount": 0 },
+      { "date": "Dez/2019", "amount": 0 }
+    ]
+  },
+  {
+    "accountNumber": 1750,
+    "accountName": "Verbindlichkeiten a. Vermögensbildung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 0 },
+      { "date": "Feb/2019", "amount": 0 },
+      { "date": "Mrz/2019", "amount": 0 },
+      { "date": "Apr/2019", "amount": 0 },
+      { "date": "Mai/2019", "amount": 0 },
+      { "date": "Jun/2019", "amount": 0 },
+      { "date": "Jul/2019", "amount": 0 },
+      { "date": "Aug/2019", "amount": 0 },
+      { "date": "Sep/2019", "amount": 0 },
+      { "date": "Okt/2019", "amount": 0 },
+      { "date": "Nov/2019", "amount": 0 },
+      { "date": "Dez/2019", "amount": 0 }
+    ]
+  },
+  {
+    "accountNumber": 1755,
+    "accountName": "Lohn- und Gehaltsverrechnungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 0 },
+      { "date": "Feb/2019", "amount": 0 },
+      { "date": "Mrz/2019", "amount": 0 },
+      { "date": "Apr/2019", "amount": 0 },
+      { "date": "Mai/2019", "amount": 0 },
+      { "date": "Jun/2019", "amount": 0 },
+      { "date": "Jul/2019", "amount": 0 },
+      { "date": "Aug/2019", "amount": 0 },
+      { "date": "Sep/2019", "amount": 0 },
+      { "date": "Okt/2019", "amount": 0 },
+      { "date": "Nov/2019", "amount": 0 },
+      { "date": "Dez/2019", "amount": 0 }
+    ]
+  },
+  {
+    "accountNumber": 1759,
+    "accountName": "Voraus.Beitrag ggb. Sozialversich.träger",
+    "transfers": [
+      { "date": "Apr/2019", "amount": 20452.55 },
+      { "date": "Mai/2019", "amount": -20452.55 },
+      { "date": "Jun/2019", "amount": 18632.7 },
+      { "date": "Jul/2019", "amount": 21137.43 },
+      { "date": "Aug/2019", "amount": -39770.13 }
+    ]
+  },
+  {
+    "accountNumber": 1774,
+    "accountName": "Umsatzsteuer aus EU-Erwerb 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 126.91 },
+      { "date": "Feb/2019", "amount": 10.49 }
+    ]
+  },
+  {
+    "accountNumber": 1776,
+    "accountName": "Umsatzsteuer 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 55118.45 },
+      { "date": "Feb/2019", "amount": 55725.33 },
+      { "date": "Mrz/2019", "amount": 46324.05 },
+      { "date": "Apr/2019", "amount": 28734.25 },
+      { "date": "Mai/2019", "amount": 36304.4 },
+      { "date": "Jun/2019", "amount": 65121.47 },
+      { "date": "Jul/2019", "amount": 43048.45 },
+      { "date": "Aug/2019", "amount": 53152.75 },
+      { "date": "Sep/2019", "amount": 45436.54 },
+      { "date": "Okt/2019", "amount": 45322.42 },
+      { "date": "Nov/2019", "amount": 52218.97 },
+      { "date": "Dez/2019", "amount": 56724.94 }
+    ]
+  },
+  {
+    "accountNumber": 1780,
+    "accountName": "Umsatzsteuer-Vorauszahlungen",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": -42040.8 },
+      { "date": "Apr/2019", "amount": -18122.26 },
+      { "date": "Mai/2019", "amount": -25334.19 },
+      { "date": "Jun/2019", "amount": -10070.51 },
+      { "date": "Jul/2019", "amount": -16283.77 },
+      { "date": "Aug/2019", "amount": -37893 },
+      { "date": "Sep/2019", "amount": -1357.56 },
+      { "date": "Okt/2019", "amount": -13007.04 },
+      { "date": "Nov/2019", "amount": -13695.42 },
+      { "date": "Dez/2019", "amount": -50957.08 }
+    ]
+  },
+  {
+    "accountNumber": 1781,
+    "accountName": "Umsatzsteuer-Vorauszahlungen 1/11",
+    "transfers": [
+      { "date": "Feb/2019", "amount": -18651 },
+      { "date": "Mai/2019", "amount": -5170 },
+      { "date": "Jun/2019", "amount": -109 }
+    ]
+  },
+  {
+    "accountNumber": 1787,
+    "accountName": "Umsatzsteuer nach § 13b UStG 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 1637.77 },
+      { "date": "Feb/2019", "amount": 1295.44 },
+      { "date": "Mrz/2019", "amount": 1828.76 },
+      { "date": "Apr/2019", "amount": 1634.7 },
+      { "date": "Mai/2019", "amount": 2773.05 },
+      { "date": "Jun/2019", "amount": 2649.08 },
+      { "date": "Jul/2019", "amount": 3259.01 },
+      { "date": "Aug/2019", "amount": 1661.84 },
+      { "date": "Sep/2019", "amount": 1848.54 },
+      { "date": "Okt/2019", "amount": 1949.68 },
+      { "date": "Nov/2019", "amount": 2810.66 },
+      { "date": "Dez/2019", "amount": 2111.37 }
+    ]
+  },
+  {
+    "accountNumber": 1789,
+    "accountName": "Umsatzsteuer laufendes Jahr",
+    "transfers": [{ "date": "Dez/2019", "amount": 29134.84 }]
+  },
+  {
+    "accountNumber": 1790,
+    "accountName": "Umsatzsteuer Vorjahr",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -41264.58 },
+      { "date": "Feb/2019", "amount": -25310.59 },
+      { "date": "Mai/2019", "amount": -58068.02 }
+    ]
+  },
+  {
+    "accountNumber": 1792,
+    "accountName": "KCP - Verrechnungskonto 2,0% p.a.",
+    "transfers": [{ "date": "Dez/2019", "amount": -625257.95 }]
+  },
+  {
+    "accountNumber": 1793,
+    "accountName": "Verrechnung Plönzke Holding AG 2,0% p.a.",
+    "transfers": [
+      { "date": "Aug/2019", "amount": -25823.13 },
+      { "date": "Dez/2019", "amount": 12110.82 }
+    ]
+  },
+  {
+    "accountNumber": 1796,
+    "accountName": "Verr. ClipMyHorse.TV International GmbH",
+    "transfers": [{ "date": "Dez/2019", "amount": 7828.72 }]
+  },
+  {
+    "accountNumber": 2110,
+    "accountName": "Zinsaufwendungen f.kfr.Verbindlichkeit.",
+    "transfers": [{ "date": "Dez/2019", "amount": -13914.39 }]
+  },
+  {
+    "accountNumber": 2200,
+    "accountName": "Körperschaftsteuer",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": -882 },
+      { "date": "Jun/2019", "amount": -882 },
+      { "date": "Sep/2019", "amount": -882 },
+      { "date": "Dez/2019", "amount": -882 }
+    ]
+  },
+  {
+    "accountNumber": 2208,
+    "accountName": "Solidaritätszuschlag",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": -48.51 },
+      { "date": "Jun/2019", "amount": -48.51 },
+      { "date": "Jul/2019", "amount": -275 },
+      { "date": "Aug/2019", "amount": 275 },
+      { "date": "Sep/2019", "amount": -48.51 },
+      { "date": "Dez/2019", "amount": -48.51 }
+    ]
+  },
+  {
+    "accountNumber": 2213,
+    "accountName": "Kapitalertragsteuer 25%",
+    "transfers": [
+      { "date": "Jul/2019", "amount": -5000 },
+      { "date": "Dez/2019", "amount": 5000 }
+    ]
+  },
+  {
+    "accountNumber": 2216,
+    "accountName": "SolZ auf Kapitalertragsteuer 25%",
+    "transfers": [
+      { "date": "Aug/2019", "amount": -275 },
+      { "date": "Dez/2019", "amount": 275 }
+    ]
+  },
+  {
+    "accountNumber": 2300,
+    "accountName": "Sonstige Aufwendungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1257.57 },
+      { "date": "Mrz/2019", "amount": -148.75 },
+      { "date": "Apr/2019", "amount": -646.32 },
+      { "date": "Mai/2019", "amount": -739.5 },
+      { "date": "Jun/2019", "amount": -158.75 },
+      { "date": "Jul/2019", "amount": -158.75 },
+      { "date": "Aug/2019", "amount": -487.57 },
+      { "date": "Okt/2019", "amount": -646.32 },
+      { "date": "Dez/2019", "amount": -3900 }
+    ]
+  },
+  {
+    "accountNumber": 2310,
+    "accountName": "Abgänge Sachanlagen Restbuchwert bei BV",
+    "transfers": [{ "date": "Dez/2019", "amount": -10 }]
+  },
+  {
+    "accountNumber": 2315,
+    "accountName": "Abgänge Sachanlagen Restbuchwert bei BG",
+    "transfers": [{ "date": "Feb/2019", "amount": -1250 }]
+  },
+  {
+    "accountNumber": 2406,
+    "accountName": "Forderungsverluste 19% USt",
+    "transfers": [{ "date": "Dez/2019", "amount": -374.99 }]
+  },
+  {
+    "accountNumber": 2492,
+    "accountName": "abgeführte Gewinne EAV",
+    "transfers": [{ "date": "Dez/2019", "amount": -233225.15 }]
+  },
+  {
+    "accountNumber": 2494,
+    "accountName": "Ausgleichszahlung Minderheitsgesellschaf",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1666.63 },
+      { "date": "Feb/2019", "amount": -1666.63 },
+      { "date": "Mrz/2019", "amount": -1666.63 },
+      { "date": "Apr/2019", "amount": -1666.63 },
+      { "date": "Mai/2019", "amount": -1666.63 },
+      { "date": "Jun/2019", "amount": -1666.63 },
+      { "date": "Jul/2019", "amount": -1666.63 },
+      { "date": "Aug/2019", "amount": -1666.63 },
+      { "date": "Sep/2019", "amount": -1666.63 },
+      { "date": "Okt/2019", "amount": -1666.63 },
+      { "date": "Nov/2019", "amount": -1666.63 },
+      { "date": "Dez/2019", "amount": -1667.07 }
+    ]
+  },
+  {
+    "accountNumber": 2650,
+    "accountName": "Sonstige Zinsen und ähnliche Erträge",
+    "transfers": [{ "date": "Dez/2019", "amount": 27482.89 }]
+  },
+  {
+    "accountNumber": 2730,
+    "accountName": "Erträge aus Herabsetzung PWB auf Ford",
+    "transfers": [{ "date": "Dez/2019", "amount": 1300 }]
+  },
+  {
+    "accountNumber": 2731,
+    "accountName": "Erträge aus Herabsetzung EWB auf Ford",
+    "transfers": [{ "date": "Dez/2019", "amount": 6800 }]
+  },
+  {
+    "accountNumber": 2749,
+    "accountName": "Erstattungen AufwendungsausgleichsG",
+    "transfers": [{ "date": "Jan/2019", "amount": 1712.23 }]
+  },
+  {
+    "accountNumber": 2750,
+    "accountName": "Grundstückserträge Miete 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 4001.07 },
+      { "date": "Feb/2019", "amount": 4001.07 },
+      { "date": "Mrz/2019", "amount": 4001.07 },
+      { "date": "Apr/2019", "amount": 4001.07 },
+      { "date": "Mai/2019", "amount": 4001.07 },
+      { "date": "Jun/2019", "amount": 4001.07 },
+      { "date": "Jul/2019", "amount": 4001.07 },
+      { "date": "Aug/2019", "amount": 749.4 },
+      { "date": "Sep/2019", "amount": 4001.07 },
+      { "date": "Okt/2019", "amount": 4001.07 },
+      { "date": "Nov/2019", "amount": 4001.07 },
+      { "date": "Dez/2019", "amount": 4001.07 }
+    ]
+  },
+  {
+    "accountNumber": 3100,
+    "accountName": "Fremdleistungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -9723.75 },
+      { "date": "Feb/2019", "amount": -7277.07 },
+      { "date": "Mrz/2019", "amount": -8332.14 },
+      { "date": "Apr/2019", "amount": -8588.39 },
+      { "date": "Mai/2019", "amount": -11800.46 },
+      { "date": "Jun/2019", "amount": -9501.69 },
+      { "date": "Jul/2019", "amount": -17057.78 },
+      { "date": "Aug/2019", "amount": -60755.45 },
+      { "date": "Sep/2019", "amount": -11886.38 },
+      { "date": "Okt/2019", "amount": -15316.91 },
+      { "date": "Nov/2019", "amount": -11275.64 },
+      { "date": "Dez/2019", "amount": -27535.71 }
+    ]
+  },
+  {
+    "accountNumber": 3101,
+    "accountName": "Übertragungs- / TV-Arbeiten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -47802.3 },
+      { "date": "Feb/2019", "amount": -23267.7 },
+      { "date": "Mrz/2019", "amount": -37590 },
+      { "date": "Apr/2019", "amount": -53612.44 },
+      { "date": "Mai/2019", "amount": -54217.56 },
+      { "date": "Jun/2019", "amount": -115890 },
+      { "date": "Jul/2019", "amount": -51535 },
+      { "date": "Aug/2019", "amount": -115132.8 },
+      { "date": "Sep/2019", "amount": -63687.2 },
+      { "date": "Okt/2019", "amount": -23756 },
+      { "date": "Nov/2019", "amount": -84990 },
+      { "date": "Dez/2019", "amount": 44569.76 }
+    ]
+  },
+  {
+    "accountNumber": 3102,
+    "accountName": "Moderatoren & Kommentatoren",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -4000 },
+      { "date": "Feb/2019", "amount": -400 },
+      { "date": "Mrz/2019", "amount": -2600 },
+      { "date": "Apr/2019", "amount": -2800 },
+      { "date": "Mai/2019", "amount": -9850 },
+      { "date": "Jun/2019", "amount": -7180 },
+      { "date": "Jul/2019", "amount": -9700 },
+      { "date": "Aug/2019", "amount": -2400 },
+      { "date": "Sep/2019", "amount": -7425.8 },
+      { "date": "Okt/2019", "amount": -1800 },
+      { "date": "Nov/2019", "amount": -3400 },
+      { "date": "Dez/2019", "amount": -2800 }
+    ]
+  },
+  {
+    "accountNumber": 3103,
+    "accountName": "Streaming",
+    "transfers": [{ "date": "Jul/2019", "amount": -3197 }]
+  },
+  {
+    "accountNumber": 3104,
+    "accountName": "Marketing Konrad",
+    "transfers": [{ "date": "Dez/2019", "amount": -614.7 }]
+  },
+  {
+    "accountNumber": 3105,
+    "accountName": "Fremdleistung betriebswirtschaftlich",
+    "transfers": [{ "date": "Jan/2019", "amount": -4500 }]
+  },
+  {
+    "accountNumber": 3108,
+    "accountName": "Systemgebühren",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -2500 },
+      { "date": "Jul/2019", "amount": -2500 }
+    ]
+  },
+  {
+    "accountNumber": 3115,
+    "accountName": "Management - allocation",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1410.51 },
+      { "date": "Feb/2019", "amount": -1426.23 },
+      { "date": "Mrz/2019", "amount": -1259.15 },
+      { "date": "Apr/2019", "amount": -1283.11 },
+      { "date": "Mai/2019", "amount": -1295.23 },
+      { "date": "Jun/2019", "amount": -1280.17 },
+      { "date": "Jul/2019", "amount": -1280.61 },
+      { "date": "Aug/2019", "amount": -1284.67 },
+      { "date": "Sep/2019", "amount": -1254.05 },
+      { "date": "Okt/2019", "amount": -1256.42 },
+      { "date": "Nov/2019", "amount": -1492.28 },
+      { "date": "Dez/2019", "amount": -1036.86 }
+    ]
+  },
+  {
+    "accountNumber": 3116,
+    "accountName": "Support - allocation",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -11777.99 },
+      { "date": "Feb/2019", "amount": -11505.5 },
+      { "date": "Mrz/2019", "amount": -11488 },
+      { "date": "Apr/2019", "amount": -11539 },
+      { "date": "Mai/2019", "amount": -11682.01 },
+      { "date": "Jun/2019", "amount": -11641.01 },
+      { "date": "Jul/2019", "amount": -11913.5 },
+      { "date": "Aug/2019", "amount": -11846.5 },
+      { "date": "Sep/2019", "amount": -11746.5 },
+      { "date": "Okt/2019", "amount": -11358 },
+      { "date": "Nov/2019", "amount": -13979.53 },
+      { "date": "Dez/2019", "amount": -9332.97 }
+    ]
+  },
+  {
+    "accountNumber": 3117,
+    "accountName": "Controlling - allocation",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -3705.56 },
+      { "date": "Feb/2019", "amount": -3045.9 },
+      { "date": "Mrz/2019", "amount": -3046.4 },
+      { "date": "Apr/2019", "amount": -3430.47 },
+      { "date": "Mai/2019", "amount": -3216.13 },
+      { "date": "Jun/2019", "amount": -3099.13 },
+      { "date": "Jul/2019", "amount": -3135.13 },
+      { "date": "Aug/2019", "amount": -3282.13 },
+      { "date": "Sep/2019", "amount": -3099.13 },
+      { "date": "Okt/2019", "amount": -3099.13 },
+      { "date": "Nov/2019", "amount": -3687.96 },
+      { "date": "Dez/2019", "amount": -2551.3 }
+    ]
+  },
+  {
+    "accountNumber": 3118,
+    "accountName": "Finance - allocation",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -4200 },
+      { "date": "Feb/2019", "amount": -4200 },
+      { "date": "Mrz/2019", "amount": -4200 },
+      { "date": "Apr/2019", "amount": -4200 },
+      { "date": "Mai/2019", "amount": -4200 },
+      { "date": "Jun/2019", "amount": -4200 },
+      { "date": "Jul/2019", "amount": -4200 },
+      { "date": "Aug/2019", "amount": -4200 },
+      { "date": "Sep/2019", "amount": -4200 },
+      { "date": "Okt/2019", "amount": -4200 },
+      { "date": "Nov/2019", "amount": -4998 },
+      { "date": "Dez/2019", "amount": -3402 }
+    ]
+  },
+  {
+    "accountNumber": 3123,
+    "accountName": "Sonst. Leistung EU 19% Vorst., 19% USt",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1451.76 },
+      { "date": "Feb/2019", "amount": 391.29 },
+      { "date": "Mrz/2019", "amount": -603.81 },
+      { "date": "Apr/2019", "amount": -644.05 },
+      { "date": "Mai/2019", "amount": -591.6 },
+      { "date": "Jun/2019", "amount": -554.66 },
+      { "date": "Jul/2019", "amount": -660.65 },
+      { "date": "Aug/2019", "amount": -666.66 },
+      { "date": "Sep/2019", "amount": -594.66 },
+      { "date": "Okt/2019", "amount": -700.65 },
+      { "date": "Nov/2019", "amount": -922.34 },
+      { "date": "Dez/2019", "amount": -745.33 }
+    ]
+  },
+  {
+    "accountNumber": 3125,
+    "accountName": "Leistungen ausl. UN 19% Vorst., 19% USt",
+    "transfers": [
+      { "date": "Feb/2019", "amount": -1616.68 },
+      { "date": "Mrz/2019", "amount": -679.01 },
+      { "date": "Apr/2019", "amount": -709.95 },
+      { "date": "Mai/2019", "amount": -708.42 },
+      { "date": "Jun/2019", "amount": -715.05 },
+      { "date": "Jul/2019", "amount": -709.93 },
+      { "date": "Aug/2019", "amount": -986.74 },
+      { "date": "Sep/2019", "amount": -729.65 },
+      { "date": "Okt/2019", "amount": -715.51 },
+      { "date": "Nov/2019", "amount": -720.29 },
+      { "date": "Dez/2019", "amount": -707.79 }
+    ]
+  },
+  {
+    "accountNumber": 3730,
+    "accountName": "Erhaltene Skonti",
+    "transfers": [
+      { "date": "Nov/2019", "amount": -1 },
+      { "date": "Dez/2019", "amount": 1 }
+    ]
+  },
+  {
+    "accountNumber": 3736,
+    "accountName": "Erhaltene Skonti 19% Vorsteuer",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 3468 },
+      { "date": "Feb/2019", "amount": 1360.01 },
+      { "date": "Mrz/2019", "amount": 2008.52 },
+      { "date": "Apr/2019", "amount": 1545 },
+      { "date": "Mai/2019", "amount": 1928.24 },
+      { "date": "Jun/2019", "amount": 2276.2 },
+      { "date": "Jul/2019", "amount": 3115.49 },
+      { "date": "Aug/2019", "amount": 6332.01 },
+      { "date": "Sep/2019", "amount": 2473.5 },
+      { "date": "Okt/2019", "amount": 3612.52 },
+      { "date": "Nov/2019", "amount": 2793.5 },
+      { "date": "Dez/2019", "amount": -30912.99 }
+    ]
+  },
+  {
+    "accountNumber": 4120,
+    "accountName": "Gehälter",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -79524.96 },
+      { "date": "Feb/2019", "amount": -77098.5 },
+      { "date": "Mrz/2019", "amount": -78015.17 },
+      { "date": "Apr/2019", "amount": -43514.97 },
+      { "date": "Mai/2019", "amount": -42491.97 },
+      { "date": "Jun/2019", "amount": -44413.65 },
+      { "date": "Jul/2019", "amount": -43132.53 },
+      { "date": "Aug/2019", "amount": -43323.77 },
+      { "date": "Sep/2019", "amount": -43323.77 },
+      { "date": "Okt/2019", "amount": -43323.77 },
+      { "date": "Nov/2019", "amount": -45919.77 },
+      { "date": "Dez/2019", "amount": -44491.32 }
+    ]
+  },
+  {
+    "accountNumber": 4130,
+    "accountName": "Gesetzliche Sozialaufwendungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -16636.59 },
+      { "date": "Feb/2019", "amount": -16998.01 },
+      { "date": "Mrz/2019", "amount": -17701.37 },
+      { "date": "Apr/2019", "amount": -10147.64 },
+      { "date": "Mai/2019", "amount": -10187.64 },
+      { "date": "Jun/2019", "amount": -11040.23 },
+      { "date": "Jul/2019", "amount": -10565.83 },
+      { "date": "Aug/2019", "amount": -10705.83 },
+      { "date": "Sep/2019", "amount": -10725.48 },
+      { "date": "Okt/2019", "amount": -10716.56 },
+      { "date": "Nov/2019", "amount": -10974.35 },
+      { "date": "Dez/2019", "amount": -10099.48 }
+    ]
+  },
+  {
+    "accountNumber": 4138,
+    "accountName": "Beiträge zur Berufsgenossenschaft",
+    "transfers": [
+      { "date": "Apr/2019", "amount": -3150.73 },
+      { "date": "Dez/2019", "amount": 1300 }
+    ]
+  },
+  {
+    "accountNumber": 4140,
+    "accountName": "Freiwillige soziale Aufwendung. LSt-frei",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -354.99 },
+      { "date": "Feb/2019", "amount": -316.43 },
+      { "date": "Mrz/2019", "amount": -199.54 },
+      { "date": "Apr/2019", "amount": -302.48 },
+      { "date": "Mai/2019", "amount": -299.97 },
+      { "date": "Jun/2019", "amount": -213.61 },
+      { "date": "Jul/2019", "amount": -302.83 },
+      { "date": "Aug/2019", "amount": -333.4 },
+      { "date": "Sep/2019", "amount": -233.7 },
+      { "date": "Okt/2019", "amount": -272.6 },
+      { "date": "Nov/2019", "amount": -235.34 },
+      { "date": "Dez/2019", "amount": -140.33 }
+    ]
+  },
+  {
+    "accountNumber": 4156,
+    "accountName": "Aufwendung Veränderung Urlaubsrückst.",
+    "transfers": [{ "date": "Dez/2019", "amount": -6244.32 }]
+  },
+  {
+    "accountNumber": 4160,
+    "accountName": "Versorgungskassen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -713.95 },
+      { "date": "Feb/2019", "amount": -713.95 },
+      { "date": "Mai/2019", "amount": -2937.79 },
+      { "date": "Jun/2019", "amount": -810.82 },
+      { "date": "Jul/2019", "amount": -810.82 },
+      { "date": "Aug/2019", "amount": -810.82 },
+      { "date": "Sep/2019", "amount": -810.82 },
+      { "date": "Okt/2019", "amount": -810.82 },
+      { "date": "Nov/2019", "amount": -810.82 },
+      { "date": "Dez/2019", "amount": 489.18 }
+    ]
+  },
+  {
+    "accountNumber": 4165,
+    "accountName": "Aufwendungen für Altersversorgung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -55.7 },
+      { "date": "Feb/2019", "amount": -55.7 },
+      { "date": "Mrz/2019", "amount": -55.7 },
+      { "date": "Apr/2019", "amount": -19 },
+      { "date": "Mai/2019", "amount": -19 },
+      { "date": "Jun/2019", "amount": -19 },
+      { "date": "Jul/2019", "amount": -19 },
+      { "date": "Aug/2019", "amount": -19 },
+      { "date": "Sep/2019", "amount": -19 },
+      { "date": "Okt/2019", "amount": -19 },
+      { "date": "Nov/2019", "amount": -19 },
+      { "date": "Dez/2019", "amount": -19 }
+    ]
+  },
+  {
+    "accountNumber": 4170,
+    "accountName": "Vermögenswirksame Leistungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -140 },
+      { "date": "Feb/2019", "amount": -140 },
+      { "date": "Mrz/2019", "amount": -140 },
+      { "date": "Apr/2019", "amount": -80 },
+      { "date": "Mai/2019", "amount": -80 },
+      { "date": "Jun/2019", "amount": -80 },
+      { "date": "Jul/2019", "amount": -80 },
+      { "date": "Aug/2019", "amount": -80 },
+      { "date": "Sep/2019", "amount": -80 },
+      { "date": "Okt/2019", "amount": -80 },
+      { "date": "Nov/2019", "amount": -80 },
+      { "date": "Dez/2019", "amount": -80 }
+    ]
+  },
+  {
+    "accountNumber": 4194,
+    "accountName": "Pauschale Steuern Minijobber",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -86.7 },
+      { "date": "Feb/2019", "amount": -112.8 },
+      { "date": "Mrz/2019", "amount": -133.15 },
+      { "date": "Apr/2019", "amount": -92.75 },
+      { "date": "Mai/2019", "amount": -110.5 },
+      { "date": "Jun/2019", "amount": -144.55 },
+      { "date": "Jul/2019", "amount": -119.4 },
+      { "date": "Aug/2019", "amount": -130.54 },
+      { "date": "Sep/2019", "amount": -123.15 },
+      { "date": "Okt/2019", "amount": -143.39 },
+      { "date": "Nov/2019", "amount": -126.78 },
+      { "date": "Dez/2019", "amount": -119.4 }
+    ]
+  },
+  {
+    "accountNumber": 4195,
+    "accountName": "Löhne für Minijobs",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -5264.5 },
+      { "date": "Feb/2019", "amount": -7195 },
+      { "date": "Mrz/2019", "amount": -9769.5 },
+      { "date": "Apr/2019", "amount": -7927 },
+      { "date": "Mai/2019", "amount": -8212.5 },
+      { "date": "Jun/2019", "amount": -10164 },
+      { "date": "Jul/2019", "amount": -9724.5 },
+      { "date": "Aug/2019", "amount": -8806.5 },
+      { "date": "Sep/2019", "amount": -8827 },
+      { "date": "Okt/2019", "amount": -8911 },
+      { "date": "Nov/2019", "amount": -7607.5 },
+      { "date": "Dez/2019", "amount": -6661 }
+    ]
+  },
+  {
+    "accountNumber": 4199,
+    "accountName": "Pauschale Steuer für Aushilfen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -37.2 },
+      { "date": "Feb/2019", "amount": -23.54 },
+      { "date": "Mrz/2019", "amount": -23.54 },
+      { "date": "Apr/2019", "amount": -23.54 },
+      { "date": "Mai/2019", "amount": -23.54 },
+      { "date": "Jun/2019", "amount": -175.85 },
+      { "date": "Jul/2019", "amount": -146.21 },
+      { "date": "Aug/2019", "amount": -72.36 },
+      { "date": "Sep/2019", "amount": -81.66 },
+      { "date": "Okt/2019", "amount": -59.56 },
+      { "date": "Nov/2019", "amount": -54.66 },
+      { "date": "Dez/2019", "amount": -60.72 }
+    ]
+  },
+  {
+    "accountNumber": 4210,
+    "accountName": "Miete, unbewegliche Wirtschaftsgüter",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -7277.41 },
+      { "date": "Feb/2019", "amount": -7277.41 },
+      { "date": "Mrz/2019", "amount": -7277.41 },
+      { "date": "Apr/2019", "amount": -6827.41 },
+      { "date": "Mai/2019", "amount": -7576.81 },
+      { "date": "Jun/2019", "amount": -6827.41 },
+      { "date": "Jul/2019", "amount": -6078.01 },
+      { "date": "Aug/2019", "amount": -6827.41 },
+      { "date": "Sep/2019", "amount": -6827.41 },
+      { "date": "Okt/2019", "amount": -6827.41 },
+      { "date": "Nov/2019", "amount": -6827.41 },
+      { "date": "Dez/2019", "amount": -6827.41 }
+    ]
+  },
+  {
+    "accountNumber": 4240,
+    "accountName": "Gas, Strom, Wasser",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -363.87 },
+      { "date": "Feb/2019", "amount": -363.87 },
+      { "date": "Mrz/2019", "amount": -363.87 },
+      { "date": "Apr/2019", "amount": -363.87 },
+      { "date": "Mai/2019", "amount": -363.87 },
+      { "date": "Jun/2019", "amount": -363.87 },
+      { "date": "Jul/2019", "amount": -433 },
+      { "date": "Aug/2019", "amount": -294.74 },
+      { "date": "Sep/2019", "amount": -363.87 },
+      { "date": "Okt/2019", "amount": -363.87 },
+      { "date": "Nov/2019", "amount": -39.15 },
+      { "date": "Dez/2019", "amount": -374.79 }
+    ]
+  },
+  {
+    "accountNumber": 4360,
+    "accountName": "Versicherungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -24.93 },
+      { "date": "Feb/2019", "amount": -24.93 },
+      { "date": "Mrz/2019", "amount": -24.93 },
+      { "date": "Apr/2019", "amount": -43.03 },
+      { "date": "Mai/2019", "amount": -24.93 },
+      { "date": "Jun/2019", "amount": -600.9 },
+      { "date": "Jul/2019", "amount": -24.93 },
+      { "date": "Aug/2019", "amount": -24.93 },
+      { "date": "Sep/2019", "amount": -6691.51 },
+      { "date": "Okt/2019", "amount": -2901.98 },
+      { "date": "Nov/2019", "amount": -24.93 },
+      { "date": "Dez/2019", "amount": -24.95 }
+    ]
+  },
+  {
+    "accountNumber": 4380,
+    "accountName": "Beiträge / Gebühren",
+    "transfers": [
+      { "date": "Feb/2019", "amount": -64.09 },
+      { "date": "Mrz/2019", "amount": -144 },
+      { "date": "Apr/2019", "amount": -384.6 },
+      { "date": "Mai/2019", "amount": -77.47 },
+      { "date": "Jun/2019", "amount": -100 },
+      { "date": "Jul/2019", "amount": -225.47 },
+      { "date": "Aug/2019", "amount": -52.47 },
+      { "date": "Sep/2019", "amount": -127.98 },
+      { "date": "Okt/2019", "amount": 6.77 },
+      { "date": "Nov/2019", "amount": -52.47 },
+      { "date": "Dez/2019", "amount": -447.53 }
+    ]
+  },
+  {
+    "accountNumber": 4510,
+    "accountName": "Kfz-Steuern",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -46.83 },
+      { "date": "Feb/2019", "amount": 30.67 },
+      { "date": "Mrz/2019", "amount": -256.33 },
+      { "date": "Apr/2019", "amount": -1284.33 },
+      { "date": "Mai/2019", "amount": -68.33 },
+      { "date": "Jun/2019", "amount": -68.33 },
+      { "date": "Jul/2019", "amount": -37.33 },
+      { "date": "Aug/2019", "amount": -68.33 },
+      { "date": "Sep/2019", "amount": -402.33 },
+      { "date": "Okt/2019", "amount": -722.33 },
+      { "date": "Nov/2019", "amount": 228.52 },
+      { "date": "Dez/2019", "amount": 182.63 }
+    ]
+  },
+  {
+    "accountNumber": 4520,
+    "accountName": "Kfz-Versicherungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1132.05 },
+      { "date": "Feb/2019", "amount": -476.93 },
+      { "date": "Mrz/2019", "amount": -1170.69 },
+      { "date": "Apr/2019", "amount": -1009.2 },
+      { "date": "Mai/2019", "amount": -1063.41 },
+      { "date": "Jun/2019", "amount": -1045.12 },
+      { "date": "Jul/2019", "amount": -983.32 },
+      { "date": "Aug/2019", "amount": -1018.25 },
+      { "date": "Sep/2019", "amount": -1018.25 },
+      { "date": "Okt/2019", "amount": -991.38 },
+      { "date": "Nov/2019", "amount": -2054.95 },
+      { "date": "Dez/2019", "amount": -1700.31 }
+    ]
+  },
+  {
+    "accountNumber": 4530,
+    "accountName": "Laufende Kfz-Betriebskosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1536.67 },
+      { "date": "Feb/2019", "amount": -177.8 },
+      { "date": "Mrz/2019", "amount": -4020.92 },
+      { "date": "Apr/2019", "amount": -2230.32 },
+      { "date": "Mai/2019", "amount": -334.85 },
+      { "date": "Jun/2019", "amount": -4588.38 },
+      { "date": "Jul/2019", "amount": -6488.27 },
+      { "date": "Aug/2019", "amount": -2430.43 },
+      { "date": "Sep/2019", "amount": -2262.92 },
+      { "date": "Okt/2019", "amount": -1450.25 },
+      { "date": "Nov/2019", "amount": -4487.36 },
+      { "date": "Dez/2019", "amount": -2017.87 }
+    ]
+  },
+  {
+    "accountNumber": 4540,
+    "accountName": "Kfz-Reparaturen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -326.84 },
+      { "date": "Feb/2019", "amount": -869.31 },
+      { "date": "Mrz/2019", "amount": -1456.12 },
+      { "date": "Apr/2019", "amount": -765.95 },
+      { "date": "Mai/2019", "amount": -2157.09 },
+      { "date": "Jun/2019", "amount": 930 },
+      { "date": "Jul/2019", "amount": 65.13 },
+      { "date": "Sep/2019", "amount": -722.85 },
+      { "date": "Okt/2019", "amount": -972.58 },
+      { "date": "Dez/2019", "amount": -1962.75 }
+    ]
+  },
+  {
+    "accountNumber": 4570,
+    "accountName": "Mietleasing Kfz",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -6116.63 },
+      { "date": "Feb/2019", "amount": -7572.46 },
+      { "date": "Mrz/2019", "amount": -6939.78 },
+      { "date": "Apr/2019", "amount": -7180.8 },
+      { "date": "Mai/2019", "amount": -8065.49 },
+      { "date": "Jun/2019", "amount": -7318.71 },
+      { "date": "Jul/2019", "amount": -5601.11 },
+      { "date": "Aug/2019", "amount": -6571.93 },
+      { "date": "Sep/2019", "amount": -6571.93 },
+      { "date": "Okt/2019", "amount": -5966.46 },
+      { "date": "Nov/2019", "amount": -7888.74 },
+      { "date": "Dez/2019", "amount": -4234.05 }
+    ]
+  },
+  {
+    "accountNumber": 4580,
+    "accountName": "Sonstige Kfz-Kosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1680.68 },
+      { "date": "Feb/2019", "amount": -870.15 },
+      { "date": "Mrz/2019", "amount": -10.88 }
+    ]
+  },
+  {
+    "accountNumber": 4600,
+    "accountName": "Werbekosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -157 },
+      { "date": "Feb/2019", "amount": -697.7 },
+      { "date": "Mrz/2019", "amount": -323.2 },
+      { "date": "Apr/2019", "amount": -3220.81 },
+      { "date": "Mai/2019", "amount": 47.61 },
+      { "date": "Jun/2019", "amount": -2088.09 },
+      { "date": "Jul/2019", "amount": -1298.01 },
+      { "date": "Aug/2019", "amount": -25.17 },
+      { "date": "Sep/2019", "amount": -57.5 },
+      { "date": "Nov/2019", "amount": -4723.01 },
+      { "date": "Dez/2019", "amount": -3040 }
+    ]
+  },
+  {
+    "accountNumber": 4601,
+    "accountName": "Online Marketing (Google, Facebook)",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -7168.11 },
+      { "date": "Feb/2019", "amount": -5592.74 },
+      { "date": "Mrz/2019", "amount": -7178.11 },
+      { "date": "Apr/2019", "amount": -6416.47 },
+      { "date": "Mai/2019", "amount": -12074.11 },
+      { "date": "Jun/2019", "amount": -11161.3 },
+      { "date": "Jul/2019", "amount": -14248.91 },
+      { "date": "Aug/2019", "amount": -6101.54 },
+      { "date": "Sep/2019", "amount": -6395.73 },
+      { "date": "Okt/2019", "amount": -6151.04 },
+      { "date": "Nov/2019", "amount": -11007.06 },
+      { "date": "Dez/2019", "amount": -9365.34 }
+    ]
+  },
+  {
+    "accountNumber": 4630,
+    "accountName": "Geschenke abzugsfähig ohne § 37b EStG",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": -32.7 },
+      { "date": "Apr/2019", "amount": -31.59 }
+    ]
+  },
+  {
+    "accountNumber": 4637,
+    "accountName": "Pausch. Steuern für Zuwendungen n.abz.",
+    "transfers": [{ "date": "Jul/2019", "amount": -889.12 }]
+  },
+  {
+    "accountNumber": 4645,
+    "accountName": "Konferenz-/Tagungs-/Veranstaltungkosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -160.22 },
+      { "date": "Feb/2019", "amount": -71.44 },
+      { "date": "Mrz/2019", "amount": -137.98 },
+      { "date": "Mai/2019", "amount": -132.4 },
+      { "date": "Jun/2019", "amount": -173.83 },
+      { "date": "Jul/2019", "amount": -482.26 },
+      { "date": "Aug/2019", "amount": -186.35 },
+      { "date": "Sep/2019", "amount": -368.84 },
+      { "date": "Okt/2019", "amount": -1373.25 },
+      { "date": "Nov/2019", "amount": -297.25 },
+      { "date": "Dez/2019", "amount": -85.2 }
+    ]
+  },
+  {
+    "accountNumber": 4650,
+    "accountName": "Bewirtungskosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -156.86 },
+      { "date": "Feb/2019", "amount": -47.02 },
+      { "date": "Mrz/2019", "amount": -21.5 },
+      { "date": "Mai/2019", "amount": -143.87 },
+      { "date": "Jun/2019", "amount": -237.21 },
+      { "date": "Jul/2019", "amount": -107.58 },
+      { "date": "Sep/2019", "amount": -153.99 },
+      { "date": "Dez/2019", "amount": -119.11 }
+    ]
+  },
+  {
+    "accountNumber": 4653,
+    "accountName": "Aufmerksamkeiten",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": -42.17 },
+      { "date": "Mai/2019", "amount": -12.9 },
+      { "date": "Jun/2019", "amount": -38.45 },
+      { "date": "Jul/2019", "amount": -5.6 },
+      { "date": "Okt/2019", "amount": -76.59 },
+      { "date": "Nov/2019", "amount": -34.04 },
+      { "date": "Dez/2019", "amount": -12.51 }
+    ]
+  },
+  {
+    "accountNumber": 4654,
+    "accountName": "Nicht abzugsfähige Bewirtungskosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -15.67 },
+      { "date": "Feb/2019", "amount": -19.09 },
+      { "date": "Mrz/2019", "amount": -6.45 },
+      { "date": "Mai/2019", "amount": -49.66 },
+      { "date": "Jun/2019", "amount": -6.02 },
+      { "date": "Jul/2019", "amount": -46.11 },
+      { "date": "Sep/2019", "amount": -66.01 },
+      { "date": "Dez/2019", "amount": -51.06 }
+    ]
+  },
+  {
+    "accountNumber": 4656,
+    "accountName": "nicht abzugsfähige Bewirtungsk. 7% VSt",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 10.95 },
+      { "date": "Feb/2019", "amount": 2.51 },
+      { "date": "Mrz/2019", "amount": 6.45 },
+      { "date": "Mai/2019", "amount": 28.01 }
+    ]
+  },
+  {
+    "accountNumber": 4660,
+    "accountName": "Reisekosten Arbeitnehmer",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -991.43 },
+      { "date": "Feb/2019", "amount": -816.9 },
+      { "date": "Mrz/2019", "amount": -575.01 },
+      { "date": "Apr/2019", "amount": -679.62 },
+      { "date": "Mai/2019", "amount": -1543.77 },
+      { "date": "Jun/2019", "amount": -1270.13 },
+      { "date": "Jul/2019", "amount": -401.46 },
+      { "date": "Aug/2019", "amount": -2188.92 },
+      { "date": "Sep/2019", "amount": -1571.61 },
+      { "date": "Okt/2019", "amount": -216.34 },
+      { "date": "Nov/2019", "amount": -785.92 },
+      { "date": "Dez/2019", "amount": -763.97 }
+    ]
+  },
+  {
+    "accountNumber": 4662,
+    "accountName": "RK-Übernahme externe Dienstleister",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -222 },
+      { "date": "Feb/2019", "amount": -444.49 },
+      { "date": "Mrz/2019", "amount": -155.42 },
+      { "date": "Mai/2019", "amount": -1571.3 },
+      { "date": "Jun/2019", "amount": -275.8 },
+      { "date": "Jul/2019", "amount": -432.71 }
+    ]
+  },
+  {
+    "accountNumber": 4664,
+    "accountName": "Reisekosten AN Verpfleg.mehraufwand",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -165.6 },
+      { "date": "Feb/2019", "amount": -236.6 },
+      { "date": "Mrz/2019", "amount": -860.4 },
+      { "date": "Apr/2019", "amount": -110.8 },
+      { "date": "Mai/2019", "amount": -396 },
+      { "date": "Jun/2019", "amount": -211.2 },
+      { "date": "Jul/2019", "amount": -345.6 },
+      { "date": "Aug/2019", "amount": -333.6 },
+      { "date": "Sep/2019", "amount": -585.8 },
+      { "date": "Okt/2019", "amount": -384 },
+      { "date": "Nov/2019", "amount": -240 },
+      { "date": "Dez/2019", "amount": -355.2 }
+    ]
+  },
+  {
+    "accountNumber": 4665,
+    "accountName": "RK-Übernahme externe Dienstleister",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -2429.39 },
+      { "date": "Feb/2019", "amount": -3058.82 },
+      { "date": "Mrz/2019", "amount": -1893.91 },
+      { "date": "Apr/2019", "amount": -8419.04 },
+      { "date": "Mai/2019", "amount": -1816.99 },
+      { "date": "Jun/2019", "amount": -5033.86 },
+      { "date": "Jul/2019", "amount": -2709.69 },
+      { "date": "Aug/2019", "amount": -4725.52 },
+      { "date": "Sep/2019", "amount": -6339.13 },
+      { "date": "Okt/2019", "amount": -1771.45 },
+      { "date": "Nov/2019", "amount": -4120.19 },
+      { "date": "Dez/2019", "amount": -1088.06 }
+    ]
+  },
+  {
+    "accountNumber": 4666,
+    "accountName": "Reisekosten AN Übernachtungsaufwand",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1201.82 },
+      { "date": "Feb/2019", "amount": -580.97 },
+      { "date": "Mrz/2019", "amount": -1007.47 },
+      { "date": "Apr/2019", "amount": -769.52 },
+      { "date": "Mai/2019", "amount": -1014.54 },
+      { "date": "Jun/2019", "amount": -186.92 },
+      { "date": "Jul/2019", "amount": -610.56 },
+      { "date": "Aug/2019", "amount": -804.02 },
+      { "date": "Sep/2019", "amount": -5553.65 },
+      { "date": "Okt/2019", "amount": -647.12 },
+      { "date": "Nov/2019", "amount": -883.54 },
+      { "date": "Dez/2019", "amount": -6404.89 }
+    ]
+  },
+  {
+    "accountNumber": 4668,
+    "accountName": "Kilometergelderstattung Arbeitnehmer",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1628.7 },
+      { "date": "Feb/2019", "amount": -1767.36 },
+      { "date": "Mrz/2019", "amount": -2823.6 },
+      { "date": "Apr/2019", "amount": -1967.4 },
+      { "date": "Mai/2019", "amount": -1280.2 },
+      { "date": "Jun/2019", "amount": -1332 },
+      { "date": "Jul/2019", "amount": -1158.3 },
+      { "date": "Aug/2019", "amount": -556.65 },
+      { "date": "Sep/2019", "amount": -2621.2 },
+      { "date": "Okt/2019", "amount": -1499.7 },
+      { "date": "Nov/2019", "amount": -362.4 },
+      { "date": "Dez/2019", "amount": -1766.44 }
+    ]
+  },
+  {
+    "accountNumber": 4730,
+    "accountName": "Ausgangsfrachten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -50.34 },
+      { "date": "Feb/2019", "amount": -44.9 },
+      { "date": "Jun/2019", "amount": -17 },
+      { "date": "Jul/2019", "amount": -173.57 },
+      { "date": "Aug/2019", "amount": -1042.03 },
+      { "date": "Sep/2019", "amount": -751.25 },
+      { "date": "Dez/2019", "amount": -112.27 }
+    ]
+  },
+  {
+    "accountNumber": 4760,
+    "accountName": "Provisionen",
+    "transfers": [{ "date": "Jun/2019", "amount": -1500 }]
+  },
+  {
+    "accountNumber": 4806,
+    "accountName": "Wartungskosten für Hard- und Software",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -608 },
+      { "date": "Feb/2019", "amount": -608 },
+      { "date": "Mrz/2019", "amount": -608 },
+      { "date": "Apr/2019", "amount": -608 },
+      { "date": "Mai/2019", "amount": -608 },
+      { "date": "Jun/2019", "amount": -608 },
+      { "date": "Jul/2019", "amount": -1212.8 },
+      { "date": "Aug/2019", "amount": -608 },
+      { "date": "Sep/2019", "amount": -608 },
+      { "date": "Okt/2019", "amount": -608 },
+      { "date": "Nov/2019", "amount": -608 },
+      { "date": "Dez/2019", "amount": -608 }
+    ]
+  },
+  {
+    "accountNumber": 4811,
+    "accountName": "Miete Equipment für Veranstaltungen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -3728.5 },
+      { "date": "Feb/2019", "amount": -3833.4 },
+      { "date": "Mrz/2019", "amount": -4197 },
+      { "date": "Apr/2019", "amount": -2055 },
+      { "date": "Mai/2019", "amount": -300 },
+      { "date": "Jun/2019", "amount": -12777.5 },
+      { "date": "Jul/2019", "amount": -9809.3 },
+      { "date": "Aug/2019", "amount": -6148.75 },
+      { "date": "Sep/2019", "amount": -5920 },
+      { "date": "Nov/2019", "amount": -3800.5 },
+      { "date": "Dez/2019", "amount": -923.51 }
+    ]
+  },
+  {
+    "accountNumber": 4822,
+    "accountName": "Abschreibung immaterielle VermG",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -3653.01 },
+      { "date": "Feb/2019", "amount": -3653.03 },
+      { "date": "Mrz/2019", "amount": 1346.97 },
+      { "date": "Apr/2019", "amount": -1986.35 },
+      { "date": "Mai/2019", "amount": -1986.36 },
+      { "date": "Jun/2019", "amount": -1986.36 },
+      { "date": "Jul/2019", "amount": -1986.35 },
+      { "date": "Aug/2019", "amount": -937.51 },
+      { "date": "Sep/2019", "amount": -937.5 },
+      { "date": "Okt/2019", "amount": -937.5 },
+      { "date": "Nov/2019", "amount": -937.5 },
+      { "date": "Dez/2019", "amount": -20061.5 }
+    ]
+  },
+  {
+    "accountNumber": 4824,
+    "accountName": "Abschr. Geschäfts- oder Firmenwert",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -4166.66 },
+      { "date": "Feb/2019", "amount": -4166.67 },
+      { "date": "Mrz/2019", "amount": -4166.66 },
+      { "date": "Apr/2019", "amount": -4166.67 },
+      { "date": "Mai/2019", "amount": -4166.67 },
+      { "date": "Jun/2019", "amount": -4166.66 },
+      { "date": "Jul/2019", "amount": -4166.67 },
+      { "date": "Aug/2019", "amount": -4166.67 },
+      { "date": "Sep/2019", "amount": -4166.66 },
+      { "date": "Okt/2019", "amount": -4166.67 },
+      { "date": "Nov/2019", "amount": -4166.67 },
+      { "date": "Dez/2019", "amount": -4166.67 }
+    ]
+  },
+  {
+    "accountNumber": 4830,
+    "accountName": "Abschreibungen auf Sachanlagen",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -2846.59 },
+      { "date": "Feb/2019", "amount": -2693.13 },
+      { "date": "Mrz/2019", "amount": -2749.93 },
+      { "date": "Apr/2019", "amount": -2460.87 },
+      { "date": "Mai/2019", "amount": -2439.17 },
+      { "date": "Jun/2019", "amount": -2329.88 },
+      { "date": "Jul/2019", "amount": -2286.45 },
+      { "date": "Aug/2019", "amount": -2230.44 },
+      { "date": "Sep/2019", "amount": -2208.39 },
+      { "date": "Okt/2019", "amount": -2226.97 },
+      { "date": "Nov/2019", "amount": -2176.51 },
+      { "date": "Dez/2019", "amount": -1787.36 }
+    ]
+  },
+  {
+    "accountNumber": 4832,
+    "accountName": "Abschreibungen auf Kfz",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -619.25 },
+      { "date": "Feb/2019", "amount": -367.25 },
+      { "date": "Mrz/2019", "amount": -468.74 },
+      { "date": "Apr/2019", "amount": -234.42 },
+      { "date": "Mai/2019", "amount": -234.42 },
+      { "date": "Jun/2019", "amount": -234.41 },
+      { "date": "Jul/2019", "amount": -234.42 },
+      { "date": "Aug/2019", "amount": -234.42 },
+      { "date": "Sep/2019", "amount": -234.41 },
+      { "date": "Okt/2019", "amount": -234.42 },
+      { "date": "Nov/2019", "amount": -234.42 },
+      { "date": "Dez/2019", "amount": -234.42 }
+    ]
+  },
+  {
+    "accountNumber": 4855,
+    "accountName": "Sofortabschreibung GWG",
+    "transfers": [
+      { "date": "Sep/2019", "amount": -3138.42 },
+      { "date": "Nov/2019", "amount": -478.91 },
+      { "date": "Dez/2019", "amount": -3164.46 }
+    ]
+  },
+  {
+    "accountNumber": 4910,
+    "accountName": "Porto",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1049.03 },
+      { "date": "Feb/2019", "amount": -826.46 },
+      { "date": "Mrz/2019", "amount": -1216.35 },
+      { "date": "Apr/2019", "amount": -757.57 },
+      { "date": "Mai/2019", "amount": -772.34 },
+      { "date": "Jun/2019", "amount": -829.55 },
+      { "date": "Jul/2019", "amount": -900.6 },
+      { "date": "Aug/2019", "amount": -1176.64 },
+      { "date": "Sep/2019", "amount": -1082.72 },
+      { "date": "Okt/2019", "amount": -1369.81 },
+      { "date": "Nov/2019", "amount": -986.32 },
+      { "date": "Dez/2019", "amount": -787.33 }
+    ]
+  },
+  {
+    "accountNumber": 4920,
+    "accountName": "Telefon",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -609.5 },
+      { "date": "Feb/2019", "amount": -7976.54 },
+      { "date": "Mrz/2019", "amount": -2931.74 },
+      { "date": "Apr/2019", "amount": -2323.94 },
+      { "date": "Mai/2019", "amount": -2574.78 },
+      { "date": "Jun/2019", "amount": -3680.52 },
+      { "date": "Jul/2019", "amount": -5917.51 },
+      { "date": "Aug/2019", "amount": -3197.09 },
+      { "date": "Sep/2019", "amount": -3369.58 },
+      { "date": "Okt/2019", "amount": -3218.53 },
+      { "date": "Nov/2019", "amount": -2949.86 },
+      { "date": "Dez/2019", "amount": -6470.38 }
+    ]
+  },
+  {
+    "accountNumber": 4925,
+    "accountName": "Telefax und Internetkosten",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -972.34 },
+      { "date": "Feb/2019", "amount": -706.76 },
+      { "date": "Mrz/2019", "amount": -581.38 },
+      { "date": "Apr/2019", "amount": -179.71 },
+      { "date": "Mai/2019", "amount": -187.97 },
+      { "date": "Jun/2019", "amount": -481.97 },
+      { "date": "Jul/2019", "amount": -497.55 },
+      { "date": "Aug/2019", "amount": -187.97 },
+      { "date": "Sep/2019", "amount": -466.34 },
+      { "date": "Okt/2019", "amount": -350.94 },
+      { "date": "Nov/2019", "amount": -270.34 },
+      { "date": "Dez/2019", "amount": -1536 }
+    ]
+  },
+  {
+    "accountNumber": 4930,
+    "accountName": "Bürobedarf",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -858.87 },
+      { "date": "Feb/2019", "amount": -1164.17 },
+      { "date": "Mrz/2019", "amount": -638.91 },
+      { "date": "Apr/2019", "amount": -156.9 },
+      { "date": "Mai/2019", "amount": -62.11 },
+      { "date": "Jun/2019", "amount": -2024.24 },
+      { "date": "Jul/2019", "amount": -411.35 },
+      { "date": "Aug/2019", "amount": -847.47 },
+      { "date": "Sep/2019", "amount": -425.6 },
+      { "date": "Okt/2019", "amount": -793.82 },
+      { "date": "Nov/2019", "amount": -684.42 },
+      { "date": "Dez/2019", "amount": -486 }
+    ]
+  },
+  {
+    "accountNumber": 4940,
+    "accountName": "Zeitschriften, Bücher (Fachliteratur)",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -51.21 },
+      { "date": "Jul/2019", "amount": -97.05 },
+      { "date": "Aug/2019", "amount": 97.05 },
+      { "date": "Nov/2019", "amount": -61.68 }
+    ]
+  },
+  {
+    "accountNumber": 4945,
+    "accountName": "Fortbildungskosten",
+    "transfers": [{ "date": "Feb/2019", "amount": -132 }]
+  },
+  {
+    "accountNumber": 4950,
+    "accountName": "Rechts- und Beratungskosten",
+    "transfers": [
+      { "date": "Aug/2019", "amount": -14193.5 },
+      { "date": "Dez/2019", "amount": -15000 }
+    ]
+  },
+  {
+    "accountNumber": 4955,
+    "accountName": "Buchführungskosten",
+    "transfers": [
+      { "date": "Feb/2019", "amount": -2412.28 },
+      { "date": "Mrz/2019", "amount": -2154.5 },
+      { "date": "Apr/2019", "amount": -1976.42 },
+      { "date": "Mai/2019", "amount": -3397.84 },
+      { "date": "Jul/2019", "amount": -1662.32 },
+      { "date": "Aug/2019", "amount": -2265.34 },
+      { "date": "Sep/2019", "amount": -1424.42 },
+      { "date": "Okt/2019", "amount": -842 },
+      { "date": "Nov/2019", "amount": -1698.92 },
+      { "date": "Dez/2019", "amount": -3020.34 }
+    ]
+  },
+  {
+    "accountNumber": 4957,
+    "accountName": "Abschluss- und Prüfungskosten",
+    "transfers": [
+      { "date": "Jul/2019", "amount": -52.5 },
+      { "date": "Dez/2019", "amount": -8150 }
+    ]
+  },
+  {
+    "accountNumber": 4970,
+    "accountName": "Nebenkosten des Geldverkehrs",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -19 },
+      { "date": "Feb/2019", "amount": -124.4 },
+      { "date": "Mrz/2019", "amount": -112.45 },
+      { "date": "Apr/2019", "amount": -111.58 },
+      { "date": "Mai/2019", "amount": -663.83 },
+      { "date": "Jun/2019", "amount": -126.24 },
+      { "date": "Jul/2019", "amount": -95.99 },
+      { "date": "Aug/2019", "amount": -287.42 },
+      { "date": "Sep/2019", "amount": -114.63 },
+      { "date": "Okt/2019", "amount": -125.88 },
+      { "date": "Nov/2019", "amount": -101.91 },
+      { "date": "Dez/2019", "amount": -205.48 }
+    ]
+  },
+  {
+    "accountNumber": 4980,
+    "accountName": "Sonstiger Betriebsbedarf",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -1682.51 },
+      { "date": "Feb/2019", "amount": -2016.06 },
+      { "date": "Mrz/2019", "amount": -2531.05 },
+      { "date": "Apr/2019", "amount": -1719.86 },
+      { "date": "Mai/2019", "amount": -2300.37 },
+      { "date": "Jun/2019", "amount": -4338.69 },
+      { "date": "Jul/2019", "amount": -3420.45 },
+      { "date": "Aug/2019", "amount": -1919.47 },
+      { "date": "Sep/2019", "amount": -2455.26 },
+      { "date": "Okt/2019", "amount": -5876.81 },
+      { "date": "Nov/2019", "amount": -1879.67 },
+      { "date": "Dez/2019", "amount": -809.03 }
+    ]
+  },
+  {
+    "accountNumber": 8200,
+    "accountName": "Erlösabgrenzung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": -60117.44 },
+      { "date": "Feb/2019", "amount": -33316.88 },
+      { "date": "Mrz/2019", "amount": 16833.36 },
+      { "date": "Apr/2019", "amount": 38146.66 },
+      { "date": "Mai/2019", "amount": 17661.99 },
+      { "date": "Jun/2019", "amount": -16869.2 },
+      { "date": "Jul/2019", "amount": -10662.58 },
+      { "date": "Aug/2019", "amount": -13212.23 },
+      { "date": "Sep/2019", "amount": -16960.22 },
+      { "date": "Okt/2019", "amount": -20052.64 },
+      { "date": "Nov/2019", "amount": 3238.73 },
+      { "date": "Dez/2019", "amount": -58753.92 }
+    ]
+  },
+  {
+    "accountNumber": 8319,
+    "accountName": "Erlöse im and. EU-Land stpfl.Leistung RC",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 1545.85 },
+      { "date": "Feb/2019", "amount": 475.06 },
+      { "date": "Mrz/2019", "amount": 321.54 },
+      { "date": "Apr/2019", "amount": 401.64 },
+      { "date": "Mai/2019", "amount": 658.63 },
+      { "date": "Jun/2019", "amount": 833.7 },
+      { "date": "Jul/2019", "amount": 763.62 },
+      { "date": "Aug/2019", "amount": 2427.41 },
+      { "date": "Sep/2019", "amount": 2586.68 },
+      { "date": "Okt/2019", "amount": 930.57 },
+      { "date": "Nov/2019", "amount": 542.03 },
+      { "date": "Dez/2019", "amount": 1378.05 }
+    ]
+  },
+  {
+    "accountNumber": 8320,
+    "accountName": "D  -  im anderen EU-Land stpfl. Leistung",
+    "transfers": [
+      { "date": "Feb/2019", "amount": 1240.4 },
+      { "date": "Mrz/2019", "amount": 2912.3 },
+      { "date": "Apr/2019", "amount": 1199.2 },
+      { "date": "Mai/2019", "amount": 455 },
+      { "date": "Jun/2019", "amount": 1550 },
+      { "date": "Jul/2019", "amount": 2073.45 },
+      { "date": "Aug/2019", "amount": 2779.2 },
+      { "date": "Sep/2019", "amount": 2160.2 },
+      { "date": "Okt/2019", "amount": 1918 },
+      { "date": "Nov/2019", "amount": 1431.5 },
+      { "date": "Dez/2019", "amount": 2226.9 }
+    ]
+  },
+  {
+    "accountNumber": 8333,
+    "accountName": "n.stb.L.EU-Untern.MediaServ. Production",
+    "transfers": [
+      { "date": "Mrz/2019", "amount": 3404.67 },
+      { "date": "Aug/2019", "amount": 150 }
+    ]
+  },
+  {
+    "accountNumber": 8335,
+    "accountName": "n.stb.L. EU-Unternehmer - Werbung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 8461.17 },
+      { "date": "Feb/2019", "amount": 1666.66 },
+      { "date": "Mrz/2019", "amount": 12065.92 },
+      { "date": "Apr/2019", "amount": 4369.47 },
+      { "date": "Mai/2019", "amount": 3202.81 },
+      { "date": "Jun/2019", "amount": 3202.8 },
+      { "date": "Jul/2019", "amount": 1536.14 },
+      { "date": "Aug/2019", "amount": 5366.14 },
+      { "date": "Sep/2019", "amount": 1138.89 },
+      { "date": "Okt/2019", "amount": 1138.89 },
+      { "date": "Nov/2019", "amount": 1138.88 },
+      { "date": "Dez/2019", "amount": 555.54 }
+    ]
+  },
+  {
+    "accountNumber": 8340,
+    "accountName": "n.stb.L. Drittland - Werbung",
+    "transfers": [
+      { "date": "Feb/2019", "amount": 750 },
+      { "date": "Mrz/2019", "amount": 375 },
+      { "date": "Apr/2019", "amount": 375 },
+      { "date": "Mai/2019", "amount": 375 },
+      { "date": "Jun/2019", "amount": 375 },
+      { "date": "Jul/2019", "amount": 375 },
+      { "date": "Aug/2019", "amount": 375 },
+      { "date": "Sep/2019", "amount": 375 },
+      { "date": "Okt/2019", "amount": 375 },
+      { "date": "Nov/2019", "amount": 375 },
+      { "date": "Dez/2019", "amount": 375 }
+    ]
+  },
+  {
+    "accountNumber": 8341,
+    "accountName": "n.stb.L. Drittland - MediServ.Production",
+    "transfers": [
+      { "date": "Jun/2019", "amount": 20765 },
+      { "date": "Jul/2019", "amount": 610 },
+      { "date": "Aug/2019", "amount": 1592 },
+      { "date": "Sep/2019", "amount": 600 },
+      { "date": "Okt/2019", "amount": 2085 },
+      { "date": "Nov/2019", "amount": 494 },
+      { "date": "Dez/2019", "amount": 662.5 }
+    ]
+  },
+  {
+    "accountNumber": 8402,
+    "accountName": "Erl. 19% USt - Media Serv. - Production",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 23238 },
+      { "date": "Feb/2019", "amount": 26708.9 },
+      { "date": "Mrz/2019", "amount": 21696 },
+      { "date": "Apr/2019", "amount": 17341.36 },
+      { "date": "Mai/2019", "amount": 29803.95 },
+      { "date": "Jun/2019", "amount": 39358.47 },
+      { "date": "Jul/2019", "amount": 8487.65 },
+      { "date": "Aug/2019", "amount": 48030 },
+      { "date": "Sep/2019", "amount": 17340 },
+      { "date": "Okt/2019", "amount": 29552 },
+      { "date": "Nov/2019", "amount": 31881.74 },
+      { "date": "Dez/2019", "amount": 15777 }
+    ]
+  },
+  {
+    "accountNumber": 8403,
+    "accountName": "Erlöse 19% USt - Werbung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 47092.18 },
+      { "date": "Feb/2019", "amount": -62.9 },
+      { "date": "Mrz/2019", "amount": 29580.04 },
+      { "date": "Apr/2019", "amount": 17364.16 },
+      { "date": "Mai/2019", "amount": 35377.35 },
+      { "date": "Jun/2019", "amount": 36999.35 },
+      { "date": "Jul/2019", "amount": 27839.84 },
+      { "date": "Aug/2019", "amount": 66678.5 },
+      { "date": "Sep/2019", "amount": 41836.88 },
+      { "date": "Okt/2019", "amount": 41071.01 },
+      { "date": "Nov/2019", "amount": 73895.04 },
+      { "date": "Dez/2019", "amount": 83692.97 }
+    ]
+  },
+  {
+    "accountNumber": 8404,
+    "accountName": "Erlöse 19% USt - Contentverkauf",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 580.5 },
+      { "date": "Feb/2019", "amount": 52.5 },
+      { "date": "Aug/2019", "amount": 24.17 },
+      { "date": "Okt/2019", "amount": 50 },
+      { "date": "Nov/2019", "amount": 83.61 },
+      { "date": "Dez/2019", "amount": 84.03 }
+    ]
+  },
+  {
+    "accountNumber": 8405,
+    "accountName": "Erlöse 19% USt - Mitgliedschaften",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 197504.43 },
+      { "date": "Feb/2019", "amount": 174073.56 },
+      { "date": "Mrz/2019", "amount": 119791.55 },
+      { "date": "Apr/2019", "amount": 104927.25 },
+      { "date": "Mai/2019", "amount": 128002.42 },
+      { "date": "Jun/2019", "amount": 169316.79 },
+      { "date": "Jul/2019", "amount": 169148.49 },
+      { "date": "Aug/2019", "amount": 170737.82 },
+      { "date": "Sep/2019", "amount": 174250.59 },
+      { "date": "Okt/2019", "amount": 175117.87 },
+      { "date": "Nov/2019", "amount": 152726.92 },
+      { "date": "Dez/2019", "amount": 218166.95 }
+    ]
+  },
+  {
+    "accountNumber": 8407,
+    "accountName": "Erlöse 19% USt - WL Kosten (Tanken,...)",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 681.37 },
+      { "date": "Feb/2019", "amount": 681.37 },
+      { "date": "Mrz/2019", "amount": 2542.64 },
+      { "date": "Apr/2019", "amount": 681.37 },
+      { "date": "Mai/2019", "amount": 681.37 },
+      { "date": "Jun/2019", "amount": 681.37 },
+      { "date": "Jul/2019", "amount": 681.37 },
+      { "date": "Aug/2019", "amount": 681.37 },
+      { "date": "Sep/2019", "amount": 681.37 },
+      { "date": "Okt/2019", "amount": 681.37 },
+      { "date": "Dez/2019", "amount": 7296 }
+    ]
+  },
+  {
+    "accountNumber": 8408,
+    "accountName": "Erlöse 19% USt Personalkostenerstattung",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 53138.71 },
+      { "date": "Feb/2019", "amount": 46755.9 },
+      { "date": "Mrz/2019", "amount": 44539.74 },
+      { "date": "Apr/2019", "amount": 1185.53 },
+      { "date": "Mai/2019", "amount": 1185.53 },
+      { "date": "Jun/2019", "amount": 2371.06 },
+      { "date": "Jul/2019", "amount": 1185.53 },
+      { "date": "Aug/2019", "amount": 1185.53 },
+      { "date": "Sep/2019", "amount": 1185.53 },
+      { "date": "Okt/2019", "amount": 1185.53 },
+      { "date": "Nov/2019", "amount": 1185.53 },
+      { "date": "Dez/2019", "amount": 1185.53 }
+    ]
+  },
+  {
+    "accountNumber": 8409,
+    "accountName": "Erl.19% USt - Media Serv.-Cont.Marketing",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 3000 },
+      { "date": "Feb/2019", "amount": 4155 },
+      { "date": "Mrz/2019", "amount": 6106.7 },
+      { "date": "Apr/2019", "amount": 2355 },
+      { "date": "Jun/2019", "amount": 39411.13 },
+      { "date": "Jul/2019", "amount": 13340 },
+      { "date": "Aug/2019", "amount": 9000 },
+      { "date": "Sep/2019", "amount": 15030 },
+      { "date": "Dez/2019", "amount": 29830.01 }
+    ]
+  },
+  {
+    "accountNumber": 8410,
+    "accountName": "Erlöse Minijo19% USt",
+    "transfers": [
+      { "date": "Feb/2019", "amount": 3475 },
+      { "date": "Mrz/2019", "amount": 8110 },
+      { "date": "Apr/2019", "amount": 1000 },
+      { "date": "Mai/2019", "amount": 1622 },
+      { "date": "Jun/2019", "amount": 2961 },
+      { "date": "Jul/2019", "amount": 1350 },
+      { "date": "Aug/2019", "amount": 500 },
+      { "date": "Sep/2019", "amount": 724 },
+      { "date": "Okt/2019", "amount": 1292.5 }
+    ]
+  },
+  {
+    "accountNumber": 8611,
+    "accountName": "Verrechn. sonstige Sachbezüge Kfz 19%",
+    "transfers": [
+      { "date": "Jan/2019", "amount": 2835.94 },
+      { "date": "Feb/2019", "amount": 2262.65 },
+      { "date": "Mrz/2019", "amount": 2262.65 },
+      { "date": "Apr/2019", "amount": 2561.6 },
+      { "date": "Mai/2019", "amount": 1701.93 },
+      { "date": "Jun/2019", "amount": 3316.79 },
+      { "date": "Jul/2019", "amount": 2240.22 },
+      { "date": "Aug/2019", "amount": 2358.91 },
+      { "date": "Sep/2019", "amount": 2358.91 },
+      { "date": "Okt/2019", "amount": 2358.91 },
+      { "date": "Nov/2019", "amount": 2439.58 },
+      { "date": "Dez/2019", "amount": 2846.27 }
+    ]
+  },
+  {
+    "accountNumber": 8736,
+    "accountName": "Gewährte Skonti 19% USt",
+    "transfers": [
+      { "date": "Okt/2019", "amount": -0.25 },
+      { "date": "Dez/2019", "amount": -37.82 }
+    ]
+  },
+  {
+    "accountNumber": 8820,
+    "accountName": "Erlöse Sachanlageverkäufe 19% USt, BG",
+    "transfers": [{ "date": "Feb/2019", "amount": 2100.84 }]
+  }
+]

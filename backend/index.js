@@ -42,11 +42,17 @@ async function checkDB() {
 // eslint-disable-next-line
 async function syncDB(force = false) {
   try {
+    // eslint-disable-next-line no-restricted-syntax
+    console.log("Syncing database");
+    await db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0", { raw: true });
     await db.sequelize.sync({ force });
+
+    // eslint-disable-next-line no-restricted-syntax
+    console.log("Inserting default datev accounts");
     await db.setupData();
 
     // eslint-disable-next-line no-restricted-syntax
-    console.log(`DB synced`);
+    console.log(`Database synced`);
   } catch (err) {
     console.error("DB CONNECTION FAILED", err);
     throw err;
@@ -57,4 +63,4 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 startServer();
 checkDB();
-syncDB(true);
+// syncDB(true);

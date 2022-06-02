@@ -12,7 +12,11 @@ export default function MyMenu(props) {
         primaryText="Analysis"
         leftIcon={<GridViewIcon />}
       />
-      <MenuItemLink to="/test" primaryText="Trang 2" leftIcon={<BookIcon />} />
+      <MenuItemLink
+        to="/test2"
+        primaryText="Analysis 2"
+        leftIcon={<GridViewIcon />}
+      />
       <MenuItemLink to="/test" primaryText="Andras 1" leftIcon={<BookIcon />} />
       <MenuItemLink to="/test" primaryText="Andras 1" leftIcon={<BookIcon />} />
       <MenuItemLink

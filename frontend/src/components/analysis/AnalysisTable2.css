@@ -14,9 +14,10 @@
 
   align-items: center;
 }
+
 .datev-number {
   width: 2.5rem;
-  padding-left: 4rem;
+  padding-left: 6rem;
   padding-right: 0;
 }
 

@@ -1,19 +1,9 @@
+// Test Table using mui-datatable
+
+// eslint-disable
 import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import "./AnalysisTable2.css";
-
-// VERSION 2
-// recreating a suitable data structure for the response data for mapping the analysis table
-
-const monthsData = ["Jan 2022", "Feb 2022"];
+import MUIDataTable from "mui-datatables";
+import { TableCell, TableRow } from "@mui/material";
 
 const financeData = [
   {
@@ -309,112 +299,86 @@ const financeData = [
   },
 ];
 
-function AnalysisTable2() {
-  return (
-    <Paper sx={{ width: "100", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: "90vh" }}>
-        <Table stickyHeader aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              {monthsData.map((month) => (
-                <>
-                  <TableCell colSpan={2} style={{ textAlign: "center" }}>
-                    {month}
-                  </TableCell>
-                  <TableCell colSpan={2} style={{ textAlign: "center" }}>
-                    {month} vs. Budget
-                  </TableCell>
-                </>
-              ))}
-            </TableRow>
-            <TableRow>
-              <TableCell />
-              {financeData[0].months.map((month) => (
-                <>
-                  <TableCell key={month.name}>Actual</TableCell>
-                  <TableCell key={month.name}>Budget</TableCell>
-                  <TableCell key={month.name}>Abs.</TableCell>
-                  <TableCell key={month.name}>%</TableCell>
-                </>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {/* Category rows */}
-            {financeData.map((category) => (
-              <>
-                <TableRow key={category.id}>
-                  {/* Category columns */}
-                  <TableCell className="category">
-                    <IconButton>
-                      <KeyboardArrowDownIcon />
-                    </IconButton>{" "}
-                    {category.cat_name}
-                  </TableCell>
-                  {category.months.map((month) => (
-                    <>
-                      <TableCell className="category">
-                        {month.transfer}
-                      </TableCell>
-                      <TableCell className="category">{month.budget}</TableCell>
-                      <TableCell className="category">{month.abs}</TableCell>
-                      <TableCell className="category">{month.pct}</TableCell>
-                    </>
-                  ))}
-                </TableRow>
-                {/* Subcategory rows */}
-                {category.subcategories.map((subcategory) => (
-                  <>
-                    <TableRow key={subcategory.id}>
-                      {/* Subcategory columns */}
-                      <TableCell className="subcategory-desc">
-                        <IconButton>
-                          <KeyboardArrowDownIcon />
-                        </IconButton>{" "}
-                        {subcategory.name}
-                      </TableCell>
-                      {subcategory.months.map((month) => (
-                        <>
-                          <TableCell>{month.transfer}</TableCell>
-                          <TableCell>{month.budget}</TableCell>
-                          <TableCell>{month.abs}</TableCell>
-                          <TableCell>{month.pct}</TableCell>
-                        </>
-                      ))}
-                    </TableRow>
+export default function TestTable() {
+  // defining columns based on number of months
+  const columns = [];
+  columns.push("");
+  financeData[0].months.map(() => columns.push("Actual", "Budget", "Abs", "%"));
+  console.log(columns);
 
-                    {/* Datev Accounts rows */}
-                    {subcategory.datev_accounts.map((datevAcc) => (
-                      <TableRow key={datevAcc.id}>
-                        {/* Datev Account columns */}
-                        <Table className="datev-desc-container">
-                          <TableCell className="datev-number">
-                            {datevAcc.number}
-                          </TableCell>
-                          <TableCell className="datev-name">
-                            {datevAcc.name}
-                          </TableCell>
-                        </Table>
-                        {datevAcc.months.map((month) => (
-                          <>
-                            <TableCell>{month.transfer}</TableCell>
-                            <TableCell>{month.budget}</TableCell>
-                            <TableCell>{month.abs}</TableCell>
-                            <TableCell>{month.pct}</TableCell>
-                          </>
-                        ))}
-                      </TableRow>
-                    ))}
-                  </>
-                ))}
-              </>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+  const data = [
+    ["Revenues", "100", "100", "0", "0%", "100", "100", "0", "0%"],
+    [
+      "Revenue Stream 1",
+      "200",
+      "100",
+      "100",
+      "50%",
+      "200",
+      "100",
+      "100",
+      "50%",
+    ],
+    [
+      "Cost of Sold Goods",
+      "200",
+      "300",
+      "100",
+      "33%",
+      "200",
+      "300",
+      "100",
+      "33%",
+    ],
+    ["COGS", "500", "100", "400", "36%", "500", "100", "400", "36%"],
+  ];
+
+  const options = {
+    expandableRows: true,
+    expandableRowsHeader: false,
+    expandableRowsOnClick: true,
+    // define which rows are expandable
+    isRowExpandable: (dataIndex) => {
+      if (dataIndex === 1 || dataIndex === 3) return false;
+      return true;
+    },
+    // define which rows are expanded from the beginning
+    /*  rowsExpanded: [0, 2, 3], */
+    renderExpandableRow: (rowData, rowMeta) => {
+      return data.map((row) => (
+        <TableRow>
+          <TableCell />
+          {row.map((cell) => (
+            <TableCell>{cell}</TableCell>
+          ))}
+        </TableRow>
+      ));
+    },
+  };
+
+  /*   const data2 = [];
+  financeData.map((category) =>
+    data2.push([
+      category.cat_name,
+      category.months.map((month) => month.transfer).join(", "),
+    ])
+  ); */
+
+  /*  console.log(data2); */
+  const components = {
+    ExpandButton: function (props) {
+      if (props.dataIndex === 3 || props.dataIndex === 4)
+        return <div style={{ width: "24px" }} />;
+      return <ExpandButton {...props} />;
+    },
+  };
+
+  return (
+    <MUIDataTable
+      title="Finance planning"
+      data={data}
+      columns={columns}
+      options={options}
+    ></MUIDataTable>
   );
 }
-
-export default AnalysisTable2;

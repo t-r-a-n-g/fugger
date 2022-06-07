@@ -18,9 +18,5 @@
   "devDependencies": {
     "concurrently": "^7.2.1",
     "husky": "^8.0.1"
-  },
-  "dependencies": {
-    "@mui/material": "^5.8.1",
-    "react-admin": "^4.1.0"
   }
 }

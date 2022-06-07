@@ -1,0 +1,12 @@
+.even {
+  background: #fff;
+}
+
+.uneven {
+  background: #ddd;
+}
+
+th,
+td {
+  border-right: 1px solid black;
+}

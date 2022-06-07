@@ -1,5 +1,8 @@
 import * as React from "react";
 import DataTable from "@components/DataTable";
+import ResponsiveDrawer from "@components/drawer/Drawer";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 
 const tableHeadCells = [
   {
@@ -102,8 +105,29 @@ const data = [
     ],
   },
 ];
+
+const theme = createTheme({
+  components: {
+    // Name of the component
+    MuiDrawer: {
+      styleOverrides: {
+        // Name of the slot
+        paper: {
+          // Some CSS
+          color: "rgba(255,255,255, 0.6)",
+          backgroundColor: "#7C179F",
+        },
+      },
+    },
+  },
+});
 function App() {
-  return <DataTable headCells={tableHeadCells} data={data} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <ResponsiveDrawer />
+      <DataTable headCells={tableHeadCells} data={data} />;
+    </ThemeProvider>
+  );
 }
 
 export default App;

@@ -37,19 +37,19 @@ function getNestedData(key, data) {
   return val;
 }
 
-function CheckBoxColumn({onClick, id}) {
+function CheckBoxColumn({ onClick, id }) {
   return (
     <TableCell key={`checkbox_${id}`}>
       <CheckBox></CheckBox>
     </TableCell>
-  )
+  );
 }
 
-function getColumns(rowData, columnHeaders, columns=[], parent=null) {
+function getColumns(rowData, columnHeaders, columns = [], parent = null) {
   for (const [index, column] of columnHeaders.entries()) {
     let className = null;
 
-    if(!parent) {
+    if (!parent) {
       className = (index + 1) % 2 === 0 ? "even" : "uneven";
       column.className = className;
     } else className = parent.className;
@@ -62,28 +62,29 @@ function getColumns(rowData, columnHeaders, columns=[], parent=null) {
         }
       } else getColumns(rowData, column.children, columns, column);
     } else {
-      const key = parent ? `${parent.id}_${column.id}` : column.id
+      const key = parent ? `${parent.id}_${column.id}` : column.id;
 
       columns.push(
         <TableCell key={key} className={className}>
-          { rowData[column.name] }
+          {rowData[column.name]}
         </TableCell>
       );
     }
   }
-  
+
   return columns;
 }
 
-function getRows(rowData, columnHeaders, depth = 0, rows=[], parent=null) {
+function getRows(rowData, columnHeaders, depth = 0, rows = [], parent = null) {
   for (const row of rowData) {
     let columnData = getColumns(row, columnHeaders);
     const key = parent ? `${row.id}_${parent.id}` : row.id;
     rows.push(
       <TableRow key={key}>
-        <CheckBoxColumn key={key} /> 
+        <CheckBoxColumn key={key} />
         {columnData}
-      </TableRow>);
+      </TableRow>
+    );
 
     if (row.children) {
       getRows(row.children, columnHeaders, depth + 1, rows, row);
@@ -97,14 +98,8 @@ function FuTableBody({ headCells, data }) {
   // const rows = getRows(data, headCells);
   // return rows.map((row) => <TableRow>{row}</TableRow>);
   const rows = getRows(data, headCells);
-  console.log(rows)
-  return (
-    <TableBody>
-      {
-        rows
-      }
-    </TableBody>
-  )
+  console.log(rows);
+  return <TableBody>{rows}</TableBody>;
   // return d;
 }
 

@@ -4,6 +4,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import CheckBox from "@mui/material/Checkbox";
 
+import "./FuDataTable.css";
 /* function getColumns(rowData, columnHeaders) {
   return columnHeaders.map((column) => {
     if (column.children) {
@@ -36,38 +37,57 @@ function getNestedData(key, data) {
   return val;
 }
 
-function getColumns(rowData, columnHeaders) {
-  const columns = [];
-  for (const column of columnHeaders) {
-    let columnData = null;
+function CheckBoxColumn({onClick, id}) {
+  return (
+    <TableCell key={`checkbox_${id}`}>
+      <CheckBox></CheckBox>
+    </TableCell>
+  )
+}
+
+function getColumns(rowData, columnHeaders, columns=[], parent=null) {
+  for (const [index, column] of columnHeaders.entries()) {
+    let className = null;
+
+    if(!parent) {
+      className = (index + 1) % 2 === 0 ? "even" : "uneven";
+      column.className = className;
+    } else className = parent.className;
+
     if (column.children) {
       if (column.name) {
         const nestedData = getNestedData(column.name, rowData);
         if (nestedData) {
-          columnData = getColumns(nestedData, column.children);
+          getColumns(nestedData, column.children, columns, column);
         }
-      } else columnData = getColumns(rowData, column.children);
+      } else getColumns(rowData, column.children, columns, column);
     } else {
-      columnData = [rowData[column.name]] || [null];
+      const key = parent ? `${parent.id}_${column.id}` : column.id
+
+      columns.push(
+        <TableCell key={key} className={className}>
+          { rowData[column.name] }
+        </TableCell>
+      );
     }
-
-    columns.push(...columnData);
   }
-
+  
   return columns;
 }
 
-function getRows(rowData, columnHeaders, depth = 0) {
-  const rows = [];
+function getRows(rowData, columnHeaders, depth = 0, rows=[], parent=null) {
   for (const row of rowData) {
-    let columnData = null;
-    if (row.children)
-      columnData = getRows(row.children, columnHeaders, depth + 1);
-    else {
-      columnData = getColumns(row, columnHeaders);
-    }
+    let columnData = getColumns(row, columnHeaders);
+    const key = parent ? `${row.id}_${parent.id}` : row.id;
+    rows.push(
+      <TableRow key={key}>
+        <CheckBoxColumn key={key} /> 
+        {columnData}
+      </TableRow>);
 
-    rows.push(columnData);
+    if (row.children) {
+      getRows(row.children, columnHeaders, depth + 1, rows, row);
+    }
   }
 
   return rows;
@@ -76,8 +96,16 @@ function getRows(rowData, columnHeaders, depth = 0) {
 function FuTableBody({ headCells, data }) {
   // const rows = getRows(data, headCells);
   // return rows.map((row) => <TableRow>{row}</TableRow>);
-  const d = getRows(data, headCells);
-  return d;
+  const rows = getRows(data, headCells);
+  console.log(rows)
+  return (
+    <TableBody>
+      {
+        rows
+      }
+    </TableBody>
+  )
+  // return d;
 }
 
 export default FuTableBody;

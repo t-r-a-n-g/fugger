@@ -96,7 +96,7 @@ function LoginPage() {
   return (
     <Container sx={styleContainer}>
       <div style={styleBrand}>
-        <Avatar src="src\components\assets\logos\fugger_logo.svg" />
+        <Avatar src="src\assets\fugger_logo.svg" />
         <Typography sx={styleCreateUser} variant="h5">
           Fugger
         </Typography>

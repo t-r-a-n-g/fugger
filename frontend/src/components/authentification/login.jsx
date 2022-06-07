@@ -1,5 +1,4 @@
 import {
-  Alert,
   Avatar,
   Button,
   Card,
@@ -38,9 +37,9 @@ function LoginPage() {
     if (validEmail === true) {
       console.warn(password);
       // TO DO: IMPLEMENT FETCH DATA FROM DB
-      <Alert severity="error">Invalid email or password</Alert>;
+      console.warn("Invalid email or password");
     } else {
-      <Alert severity="error">Invalid email format</Alert>;
+      console.warn("Invalid email format");
     }
   };
 

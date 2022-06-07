@@ -304,7 +304,7 @@ export default function TestTable() {
   const columns = [];
   columns.push("");
   financeData[0].months.map(() => columns.push("Actual", "Budget", "Abs", "%"));
-  console.log(columns);
+  /*  console.log(columns); */
 
   const data = [
     ["Revenues", "100", "100", "0", "0%", "100", "100", "0", "0%"],
@@ -344,7 +344,7 @@ export default function TestTable() {
     },
     // define which rows are expanded from the beginning
     /*  rowsExpanded: [0, 2, 3], */
-    renderExpandableRow: (rowData, rowMeta) => {
+    renderExpandableRow: () => {
       return data.map((row) => (
         <TableRow>
           <TableCell />
@@ -356,6 +356,19 @@ export default function TestTable() {
     },
   };
 
+  /*  renderExpandableRow: () => {
+      const columns2 = ["test", "test2", "test3"];
+      const data2 = [["hi", "hi", "hi"]];
+      const options2 = {
+        selectToolbarPlacement: "none",
+        search: false,
+      };
+      return (
+        <MUIDataTable data={data2} columns={columns2} options={options2} />
+      );
+    }, */
+  /* }; */
+
   /*   const data2 = [];
   financeData.map((category) =>
     data2.push([
@@ -365,20 +378,20 @@ export default function TestTable() {
   ); */
 
   /*  console.log(data2); */
-  const components = {
-    ExpandButton: function (props) {
+  /*  const components = {
+    ExpandButton(props) {
       if (props.dataIndex === 3 || props.dataIndex === 4)
         return <div style={{ width: "24px" }} />;
       return <ExpandButton {...props} />;
     },
   };
-
+ */
   return (
     <MUIDataTable
       title="Finance planning"
       data={data}
       columns={columns}
       options={options}
-    ></MUIDataTable>
+    />
   );
 }

@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
+const cookieParser = require("cookie-parser");
 const swaggerFile = require("./swagger/output.json");
 
 const db = require("./src/models");
@@ -11,7 +12,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
+// creating routes by looping over the routes/index.js file
 Object.keys(routes).forEach((route) => {
   app.use(`/api/${route}`, routes[route]);
 });
@@ -42,6 +45,7 @@ async function checkDB() {
 // eslint-disable-next-line
 async function syncDB(force = false) {
   try {
+    /* await db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0", { raw: true }); */
     await db.sequelize.sync({ force });
 
     // eslint-disable-next-line no-restricted-syntax
@@ -56,4 +60,5 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 startServer();
 checkDB();
-/* syncDB(true); */
+/* syncDB(true);
+ */

@@ -139,8 +139,14 @@ function LoginPage() {
                 sx={styleForgottPassword}
                 variant="body2"
               >
-                Forgott password?
+                Forgot password?
               </Typography>
+              {errorStatus === 403 ? (
+                <p>E-Mail or Password is not correct</p>
+              ) : null}
+              {errorStatus === 500 || errorStatus === 0 ? (
+                <p>We are very sorry. Please try again later!</p>
+              ) : null}
               <Button
                 id="login-button"
                 fullWidth
@@ -155,9 +161,8 @@ function LoginPage() {
         <Typography sx={styleCreateUser} variant="caption">
           New User?{" "}
           <Link style={styleCreateUser} to="/signup">
-          Create Account
-        </Link>
-          Create Account
+            Create Account
+          </Link>
         </Typography>
       </Stack>
     </Box>

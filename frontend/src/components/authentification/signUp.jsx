@@ -15,17 +15,21 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import * as React from "react";
 import { useState } from "react";
-//   import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import validator from "validator";
+import { signupEndpoint } from "../../apiEndpoints";
 
-function SignUp() {
+function SignUpPage() {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
   const [password, setPassword] = useState("");
   const [strongPassword, setStrongPassword] = useState(true);
   const [passwordCheck, setPasswordCheck] = useState("");
+  const [emailCheck, setEmailCheck] = useState(true);
   const [hidden, setHidden] = useState(false);
-  // const navigate = useNavigate();
 
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
@@ -56,20 +60,37 @@ function SignUp() {
     setValidEmail(validator.isEmail(email));
   };
 
+  // CHECKS IF EMAILS MATCHING --> BOOLEAN
+  const handleEmailCheck = (e) => {
+    setEmailCheck(validator.equals(e.target.value, email));
+  };
+
   // CHECKS IF PASSWORDS MATCHING --> BOOLEAN
   const handlePasswordCheck = (e) => {
     setPasswordCheck(validator.equals(e.target.value, password));
   };
 
+  // POST REQUEST TO BACKEND
+  const userData = {
+    lastname,
+    firstname,
+    email,
+    password,
+  };
+
+  const [errorStatus, setErrorStatus] = useState();
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passwordCheck === false) {
-      console.warn("Password is not matching");
-    } else if (strongPassword === false) {
-      console.warn("Password is weak");
-    } else {
-      console.warn("Welcome aboard!");
-      // navigate("/users");
+    if (validEmail && strongPassword && passwordCheck && emailCheck) {
+      axios
+        .post(signupEndpoint, userData)
+        .then(() => navigate("/analysis"))
+        .catch((err) => {
+          setErrorStatus(err.response.status);
+        });
     }
   };
 
@@ -139,15 +160,17 @@ function SignUp() {
               sx={styleTextField}
               required
               id="signup-firstname-textfield"
-              label="Firstname"
+              label="First Name"
               variant="outlined"
+              onChange={(e) => setFirstname(e.target.value)}
             />
             <TextField
               sx={styleTextField}
               required
               id="signup-lastname-textfield"
-              label="Lastname"
+              label="Last Name"
               variant="outlined"
+              onChange={(e) => setLastname(e.target.value)}
             />
             <TextField
               sx={styleTextField}
@@ -161,6 +184,18 @@ function SignUp() {
               }}
               onBlur={handleValidEmail}
               error={!(validEmail === true || validEmail === "")}
+              helperText={!validEmail ? "Please provide a valid E-Mail." : null}
+            />
+            <TextField
+              sx={styleTextField}
+              required
+              id="signup-email-confirm-textfield"
+              label="Confirm E-Mail"
+              variant="outlined"
+              type="email"
+              onChange={handleEmailCheck}
+              error={!(emailCheck || emailCheck === "")}
+              helperText={!emailCheck ? "Your E-Mails are not matching." : null}
             />
             <TextField
               sx={styleTextField}
@@ -283,7 +318,16 @@ function SignUp() {
                 ),
               }}
             />
+            {errorStatus === 409 ? (
+              <p>An Account with this E-Mail already exists.</p>
+            ) : null}
+            {errorStatus === 400 ? (
+              <p>Please check if your E-Mail and Password are valid.</p>
+            ) : null}
 
+            {errorStatus === 500 || errorStatus === 0 ? (
+              <p>We are very sorry. Please try again later!</p>
+            ) : null}
             <Button sx={styleTextField} type="submit" variant="contained">
               Create Account
             </Button>
@@ -292,13 +336,12 @@ function SignUp() {
       </Card>
       <Typography sx={styleCreateUser} variant="caption">
         Already have an Account?{" "}
-        {/* <Link style={styleCreateUser} to="/login">
-            Log in
-          </Link> */}
-        Log in
+        <Link style={styleCreateUser} to="/login">
+          Log in
+        </Link>
       </Typography>
     </Container>
   );
 }
 
-export default SignUp;
+export default SignUpPage;

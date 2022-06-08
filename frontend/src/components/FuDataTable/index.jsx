@@ -1,11 +1,5 @@
-// import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
-// import TableContainer from "@mui/material/TableContainer";
-// import TablePagination from "@mui/material/TablePagination";
-// import TableRow from "@mui/material/TableRow";
-// import TableSortLabel from "@mui/material/TableSortLabel";
-// import Toolbar from "@mui/material/Toolbar";
-// import CheckBox from "@mui/material/Checkbox";
+import PropTypes from "prop-types";
 
 import FuTableHead from "./FuTableHead";
 import FuTableBody from "./FuTableBody";
@@ -18,5 +12,10 @@ function FuDataTable({ headCells, data }) {
     </Table>
   );
 }
+
+FuDataTable.propTypes = {
+  headCells: PropTypes.arrayOf().isRequired,
+  data: PropTypes.arrayOf().isRequired,
+};
 
 export default FuDataTable;

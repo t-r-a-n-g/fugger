@@ -124,8 +124,9 @@ const theme = createTheme({
         // Name of the slot
         root: {
           // Some CSS
-          color: "#fff",
-          backgroundColor: "#7C179F",
+          color: "#342F35",
+          backgroundColor: "#FCFCFC",
+          height: "50px",
         },
       },
     },

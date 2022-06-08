@@ -15,10 +15,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import GppMaybeIcon from "@mui/icons-material/GppMaybe";
 import * as React from "react";
 import { useState } from "react";
-//   import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import validator from "validator";
+import { signupEndpoint } from "../../apiEndpoints";
 
-function SignUp() {
+function SignUpPage() {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
   const [password, setPassword] = useState("");
@@ -26,7 +30,6 @@ function SignUp() {
   const [passwordCheck, setPasswordCheck] = useState(true);
   const [emailCheck, setEmailCheck] = useState(true);
   const [hidden, setHidden] = useState(false);
-  // const navigate = useNavigate();
 
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
@@ -67,15 +70,27 @@ function SignUp() {
     setPasswordCheck(validator.equals(e.target.value, password));
   };
 
+  // POST REQUEST TO BACKEND
+  const userData = {
+    lastname,
+    firstname,
+    email,
+    password,
+  };
+
+  const [errorStatus, setErrorStatus] = useState();
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passwordCheck === false) {
-      console.warn("Password is not matching");
-    } else if (strongPassword === false) {
-      console.warn("Password is weak");
-    } else {
-      console.warn("Welcome aboard!");
-      // navigate("/users");
+    if (validEmail && strongPassword && passwordCheck && emailCheck) {
+      axios
+        .post(signupEndpoint, userData)
+        .then(() => navigate("/analysis"))
+        .catch((err) => {
+          setErrorStatus(err.response.status);
+        });
     }
   };
 
@@ -129,6 +144,7 @@ function SignUp() {
                 label="Firstname"
                 variant="outlined"
                 size="small"
+                onChange={(e) => setFirstname(e.target.value)}
               />
               <TextField
                 fullWidth
@@ -137,6 +153,7 @@ function SignUp() {
                 label="Lastname"
                 variant="outlined"
                 size="small"
+                onChange={(e) => setLastname(e.target.value)}
               />
               <TextField
                 fullWidth
@@ -151,6 +168,7 @@ function SignUp() {
                 }}
                 onBlur={handleValidEmail}
                 error={!(validEmail === true || validEmail === "")}
+                helperText={!validEmail ? "Please provide a valid E-Mail." : null}
               />
               <TextField
                 fullWidth
@@ -294,7 +312,16 @@ function SignUp() {
                   ),
                 }}
               />
+              {errorStatus === 409 ? (
+              <p>An Account with this E-Mail already exists.</p>
+            ) : null}
+            {errorStatus === 400 ? (
+              <p>Please check if your E-Mail and Password are valid.</p>
+            ) : null}
 
+            {errorStatus === 500 || errorStatus === 0 ? (
+              <p>We are very sorry. Please try again later!</p>
+            ) : null}
               <Button fullWidth type="submit" variant="contained">
                 Create Account
               </Button>
@@ -303,14 +330,13 @@ function SignUp() {
         </Card>
         <Typography sx={styleCreateUser} variant="caption">
           Already have an Account?{" "}
-          {/* <Link style={styleCreateUser} to="/login">
-            Log in
-          </Link> */}
+          <Link style={styleCreateUser} to="/login">
           Log in
+        </Link>
         </Typography>
       </Stack>
     </Box>
   );
 }
 
-export default SignUp;
+export default SignUpPage;

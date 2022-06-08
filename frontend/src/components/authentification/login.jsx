@@ -13,8 +13,10 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import * as React from "react";
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import validator from "validator";
+import { loginEndpoint } from "../../apiEndpoints";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -32,15 +34,22 @@ function LoginPage() {
     setValidEmail(validator.isEmail(email));
   };
 
+  // POST REQUEST TO BACKEND
+  const userData = {
+    email,
+    password,
+  };
+
+  const [errorStatus, setErrorStatus] = useState();
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validEmail === true) {
-      console.warn(password);
-      // TO DO: IMPLEMENT FETCH DATA FROM DB
-      console.warn("Invalid email or password");
-    } else {
-      console.warn("Invalid email format");
-    }
+    axios
+      .post(loginEndpoint, userData)
+      .then(() => navigate("/analysis"))
+      .catch((err) => setErrorStatus(err.response.status));
   };
 
   // VARIABLES FOR STYLING --- START ---
@@ -145,9 +154,9 @@ function LoginPage() {
         </Card>
         <Typography sx={styleCreateUser} variant="caption">
           New User?{" "}
-          {/* <Link style={styleCreateUser} to="/sign-up">
+          <Link style={styleCreateUser} to="/signup">
           Create Account
-        </Link> */}
+        </Link>
           Create Account
         </Typography>
       </Stack>

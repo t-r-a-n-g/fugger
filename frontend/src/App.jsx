@@ -1,8 +1,9 @@
-// import LoginPage from "@components/authentification/login";
-// import SignUp from "@components/authentification/signUp";
 import * as React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DataTable from "@components/DataTable";
+import LoginPage from "@components/authentification/login";
+import SignUpPage from "@components/authentification/signUp";
 
 const tableHeadCells = [
   {
@@ -108,11 +109,16 @@ const data = [
 
 function App() {
   return (
-    <div>
-      {/* <LoginPage /> */}
-      {/* <SignUp /> */}
-      <DataTable headCells={tableHeadCells} data={data} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/analysis"
+          element={<DataTable headCells={tableHeadCells} data={data} />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

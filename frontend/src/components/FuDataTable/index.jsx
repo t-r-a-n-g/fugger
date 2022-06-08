@@ -1,4 +1,3 @@
-/* eslint-disable */
 // import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 // import TableContainer from "@mui/material/TableContainer";
@@ -11,7 +10,7 @@ import Table from "@mui/material/Table";
 import FuTableHead from "./FuTableHead";
 import FuTableBody from "./FuTableBody";
 
-function DataTable({ headCells, data }) {
+function FuDataTable({ headCells, data }) {
   return (
     <Table>
       <FuTableHead cells={headCells} />
@@ -20,4 +19,4 @@ function DataTable({ headCells, data }) {
   );
 }
 
-export default DataTable;
+export default FuDataTable;

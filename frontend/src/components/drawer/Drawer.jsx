@@ -19,8 +19,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+/* import InboxIcon from "@mui/icons-material/MoveToInbox"; */
 import MailIcon from "@mui/icons-material/Mail";
+/* import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+import Icon from '@mui/material/Icon'; */
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
+import DashboardCustomizeOutlinedIcon from "@mui/icons-material/DashboardCustomizeOutlined";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 
@@ -102,13 +113,41 @@ export default function MiniDrawer() {
   };
   const menuId = "primary-search-account-menu";
   const menuItems = [
-    { title: "Analysis", icon: <InboxIcon /> },
-    { title: "Uploads Files", icon: <MailIcon /> },
-    { title: "Dashboard", icon: <MailIcon /> },
-    { title: "Customers", icon: <MailIcon /> },
-    { title: "Orders", icon: <MailIcon /> },
-    { title: "Products", icon: <MailIcon /> },
-    { title: "Invoices", icon: <MailIcon /> },
+    {
+      title: "Analysis",
+      icon: <AnalyticsOutlinedIcon style={{ color: "#fff" }} />,
+    },
+    {
+      title: "Uploads Files",
+      icon: <UploadFileIcon style={{ color: "#fff" }} />,
+    },
+    {
+      title: "Dashboard",
+      icon: <DashboardCustomizeOutlinedIcon style={{ color: "#fff" }} />,
+    },
+    { title: "Customers", icon: <PeopleAltIcon style={{ color: "#fff" }} /> },
+    {
+      title: "Orders",
+      icon: <BorderColorOutlinedIcon style={{ color: "#fff" }} />,
+    },
+    {
+      title: "Products",
+      icon: <Inventory2OutlinedIcon style={{ color: "#fff" }} />,
+    },
+    {
+      title: "Invoices",
+      icon: <DescriptionOutlinedIcon style={{ color: "#fff" }} />,
+    },
+  ];
+  const menuItems2 = [
+    {
+      title: "Settings",
+      icon: <SettingsIcon style={{ color: "#fff" }} />,
+    },
+    {
+      title: "Logout",
+      icon: <LogoutIcon style={{ color: "#fff" }} />,
+    },
   ];
   return (
     <Box sx={{ display: "flex" }}>
@@ -165,7 +204,7 @@ export default function MiniDrawer() {
       </AppBar>
 
       {/* ===== DRAWER ===== */}
-      <Drawer className="Drawer--color" variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -179,7 +218,7 @@ export default function MiniDrawer() {
 
         {/* ===== DRAWER FIRST SECTION ===== */}
         <List>
-          {menuItems.map((element, index) => (
+          {menuItems.map((element) => (
             <ListItem
               key={element.title}
               disablePadding
@@ -214,8 +253,12 @@ export default function MiniDrawer() {
 
         {/* ===== DRAWER  SECOND SECTION ===== */}
         <List>
-          {["Settings", "Log Out"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          {menuItems2.map((element) => (
+            <ListItem
+              key={element.title}
+              disablePadding
+              sx={{ display: "block" }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -230,9 +273,12 @@ export default function MiniDrawer() {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {element.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText
+                  primary={element.title}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
               </ListItemButton>
             </ListItem>
           ))}

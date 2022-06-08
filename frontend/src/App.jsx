@@ -2,7 +2,6 @@ import * as React from "react";
 import DataTable from "@components/DataTable";
 import ResponsiveDrawer from "@components/drawer/Drawer";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Button from "@mui/material/Button";
 
 const tableHeadCells = [
   {
@@ -115,6 +114,17 @@ const theme = createTheme({
         paper: {
           // Some CSS
           color: "rgba(255,255,255, 0.6)",
+          backgroundColor: "#7C179F",
+        },
+      },
+    },
+
+    MuiAppBar: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          color: "#fff",
           backgroundColor: "#7C179F",
         },
       },

@@ -49,9 +49,8 @@ class AuthService {
 
     const encryptedPassword = await bcrypt.hash(password, 10);
 
-    let user = {};
     try {
-      user = await User.create({
+      const user = await User.create({
         lastname,
         firstname,
         email,
@@ -65,11 +64,10 @@ class AuthService {
         email: user.email,
       };
     } catch (err) {
-      if (err)
+      if (err.name === "SequelizeValidationError")
         throw new ValidationEmailError("invalid email format", ["email"]);
+      else throw new Error();
     }
-
-    return user;
   }
 }
 

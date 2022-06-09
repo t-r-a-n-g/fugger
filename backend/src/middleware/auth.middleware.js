@@ -20,12 +20,11 @@ async function verifyToken(req, res, next) {
 
       if (!user) errors.auth = "err-auth-invalid-user";
       else {
-        req.user = user; // why?
+        req.user = user;
         return next();
       }
     } catch (err) {
       console.error(err);
-      // throw new AuthorizationError("Not authorized!"); why?
       errors.auth = "err-auth-forbidden";
     }
   }

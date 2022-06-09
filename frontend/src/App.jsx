@@ -4,6 +4,7 @@ import "./App.css";
 import DataTable from "@components/DataTable";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const tableHeadCells = [
   {
@@ -107,18 +108,39 @@ const data = [
   },
 ];
 
+const theme = createTheme({
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontSize: 12,
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: 12,
+        },
+      },
+    },
+  },
+});
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route
-          path="/analysis"
-          element={<DataTable headCells={tableHeadCells} data={data} />}
-        />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/analysis"
+            element={<DataTable headCells={tableHeadCells} data={data} />}
+          />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 

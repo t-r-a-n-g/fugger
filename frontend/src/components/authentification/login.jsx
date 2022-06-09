@@ -63,7 +63,7 @@ function LoginPage() {
   };
 
   const styleCard = {
-    width: "fit-content",
+    width: "300px",
     height: "fit-content",
     borderRadius: "20px",
     padding: "20px",

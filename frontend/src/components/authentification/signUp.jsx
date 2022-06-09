@@ -168,7 +168,9 @@ function SignUpPage() {
                 }}
                 onBlur={handleValidEmail}
                 error={!(validEmail === true || validEmail === "")}
-                helperText={!validEmail ? "Please provide a valid E-Mail." : null}
+                helperText={
+                  !validEmail ? "Please provide a valid E-Mail." : null
+                }
               />
               <TextField
                 fullWidth
@@ -313,15 +315,15 @@ function SignUpPage() {
                 }}
               />
               {errorStatus === 409 ? (
-              <p>An Account with this E-Mail already exists.</p>
-            ) : null}
-            {errorStatus === 400 ? (
-              <p>Please check if your E-Mail and Password are valid.</p>
-            ) : null}
+                <p>An Account with this E-Mail already exists.</p>
+              ) : null}
+              {errorStatus === 400 ? (
+                <p>Please check if your E-Mail and Password are valid.</p>
+              ) : null}
 
-            {errorStatus === 500 || errorStatus === 0 ? (
-              <p>We are very sorry. Please try again later!</p>
-            ) : null}
+              {errorStatus === 500 || errorStatus === 0 ? (
+                <p>We are very sorry. Please try again later!</p>
+              ) : null}
               <Button fullWidth type="submit" variant="contained">
                 Create Account
               </Button>
@@ -331,8 +333,8 @@ function SignUpPage() {
         <Typography sx={styleCreateUser} variant="caption">
           Already have an Account?{" "}
           <Link style={styleCreateUser} to="/login">
-          Log in
-        </Link>
+            Log in
+          </Link>
         </Typography>
       </Stack>
     </Box>

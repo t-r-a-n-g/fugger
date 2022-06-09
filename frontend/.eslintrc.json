@@ -30,7 +30,8 @@
     "linebreak-style": ["error", "unix"],
     "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "no-param-reassign": "off"
   },
   "settings": {
     "import/resolver": {

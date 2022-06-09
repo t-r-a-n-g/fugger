@@ -1,17 +1,17 @@
 import * as React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import DataTable from "@components/DataTable";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
+import FuDataTable from "@components/FuDataTable";
 
 const tableHeadCells = [
   {
     id: 1,
     label: "",
     children: [
-      { id: 1, label: "Account Number", name: "accountNumber" },
-      { id: 2, label: "Account", name: "accountName" },
+      //  { id: 1, label: "Account Number", name: "accountNumber" },
+      { id: 2, label: "", name: "accountName" },
     ],
   },
   {
@@ -36,12 +36,79 @@ const tableHeadCells = [
       { id: 4, label: "%", name: "perct" },
     ],
   },
+  {
+    id: 4,
+    label: "Mar22",
+    name: "months.Jan22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "budget" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
+  {
+    id: 5,
+    label: "Apr22",
+    name: "months.Feb22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
+  {
+    id: 6,
+    label: "May22",
+    name: "months.Jan22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "budget" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
+  {
+    id: 7,
+    label: "Jun22",
+    name: "months.Feb22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
+  {
+    id: 8,
+    label: "Jul22",
+    name: "months.Jan22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "budget" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
+  {
+    id: 9,
+    label: "Aug22",
+    name: "months.Feb22",
+    children: [
+      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 2, label: "Budget", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
+      { id: 4, label: "%", name: "perct" },
+    ],
+  },
 ];
 
 const data = [
   {
     id: 1,
     accountName: "Revenues",
+    type: "category",
 
     months: {
       Jan22: {
@@ -63,6 +130,7 @@ const data = [
       {
         id: 1,
         accountName: "Revenue Stream 1",
+        type: "subcategory",
 
         months: {
           Jan22: {
@@ -82,8 +150,10 @@ const data = [
 
         children: [
           {
+            id: 1,
             accountName: "Umsatzerlöse 1",
             accountNumber: 1234,
+            type: "datev_account",
 
             months: {
               Jan22: {
@@ -115,7 +185,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route
           path="/analysis"
-          element={<DataTable headCells={tableHeadCells} data={data} />}
+          element={<FuDataTable headCells={tableHeadCells} data={data} />}
         />
       </Routes>
     </Router>

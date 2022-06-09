@@ -45,7 +45,7 @@ async function checkDB() {
 // eslint-disable-next-line
 async function syncDB(force = false) {
   try {
-    /* await db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0", { raw: true }); */
+    await db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0", { raw: true });
     await db.sequelize.sync({ force });
 
     // eslint-disable-next-line no-restricted-syntax
@@ -60,5 +60,6 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 startServer();
 checkDB();
-/* syncDB(true);
- */
+
+// syncDB(true);
+

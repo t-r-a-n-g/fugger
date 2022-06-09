@@ -57,6 +57,7 @@ function getRows(rowData, columnHeaders, depth = 0, rows = [], parent = null) {
       id: row.id,
     };
 
+    rowObject.type = row.type;
     rowObject.key = key;
     rowObject.columns = columnData;
     rowObject.depth = depth;
@@ -115,6 +116,7 @@ function FuTableBody({ headCells, data }) {
             rows[i].toggleCollapse();
             setRows([...rows]);
           }}
+          id={`${row.type}-${row.id}`}
         >
           {row.columns}
         </FuTableRow>

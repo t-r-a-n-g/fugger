@@ -107,6 +107,7 @@ const data = [
   {
     id: 1,
     accountName: "Revenues",
+    type: "category",
 
     months: {
       Jan22: {
@@ -128,6 +129,7 @@ const data = [
       {
         id: 1,
         accountName: "Revenue Stream 1",
+        type: "subcategory",
 
         months: {
           Jan22: {
@@ -150,6 +152,7 @@ const data = [
             id: 1,
             accountName: "Umsatzerlöse 1",
             accountNumber: 1234,
+            type: "datev_account",
 
             months: {
               Jan22: {

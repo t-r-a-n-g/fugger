@@ -1,5 +1,6 @@
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
@@ -30,13 +31,15 @@ function FuTableRow({
   onCollapseClick,
   isHidden,
   className,
+  id,
+  name,
 }) {
   if (isHidden) return null;
 
   return (
-    <TableRow className={className}>
+    <TableRow className={`${className} ${name}`} id={id} name={name}>
       <TableCell>
-        <DragIndicatorIcon />
+        <DragIndicatorIcon className="dragHandle" />
         {collapsable === true ? (
           <CollapseIcon isCollapsed={isCollapsed} onClick={onCollapseClick} />
         ) : null}
@@ -52,12 +55,14 @@ CollapseIcon.propTypes = {
 };
 
 FuTableRow.propTypes = {
-  children: PropTypes.arrayOf().isRequired,
+  children: PropTypes.arrayOf({}).isRequired,
   collapsable: PropTypes.bool.isRequired,
   isCollapsed: PropTypes.bool,
   onCollapseClick: PropTypes.func,
   isHidden: PropTypes.bool,
   className: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 FuTableRow.defaultProps = {
@@ -65,6 +70,8 @@ FuTableRow.defaultProps = {
   onCollapseClick: () => {},
   isHidden: false,
   className: "",
+  id: "",
+  name: "",
 };
 
 export default FuTableRow;

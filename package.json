@@ -21,6 +21,9 @@
   },
   "dependencies": {
     "@mui/material": "^5.8.1",
-    "react-admin": "^4.1.0"
+    "axios": "0.27.2",
+    "prop-types": "^15.8.1",
+    "react-admin": "^4.1.0",
+    "react-toastify": "^9.0.3"
   }
 }

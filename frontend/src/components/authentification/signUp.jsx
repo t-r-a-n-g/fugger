@@ -109,7 +109,7 @@ function SignUpPage() {
   };
 
   const styleCard = {
-    width: "40vw",
+    width: "500px",
     minWidth: "fit-content",
     height: "fit-content",
     borderRadius: "20px",

@@ -19,7 +19,5 @@
     "concurrently": "^7.2.1",
     "husky": "^8.0.1"
   },
-  "dependencies": {
-    "validator": "^13.7.0"
-  }
+  "dependencies": {}
 }

@@ -6,6 +6,7 @@ class AnalysisController {
     const uploadPath = `${req.app.get("upload_dir")}/${user.id}/datev_files/`;
 
     FileService.uploadFile(req.files.datev_export_file, uploadPath);
+    res.send("Thanks");
   }
 }
 

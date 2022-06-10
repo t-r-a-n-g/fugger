@@ -4,7 +4,6 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
-const session = require("express-session");
 
 const swaggerFile = require("./swagger/output.json");
 
@@ -17,13 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// For Passport
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 
 // creating routes by looping over the routes/index.js file
 Object.keys(routes).forEach((route) => {

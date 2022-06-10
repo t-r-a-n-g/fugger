@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function FileUploader({ onSuccess }) {
   const [files, setFiles] = useState([]);
@@ -44,5 +45,11 @@ function FileUploader({ onSuccess }) {
     </form>
   );
 }
+FileUploader.defaultProps = {
+  onSuccess: PropTypes.func,
+};
+FileUploader.propTypes = {
+  onSuccess: PropTypes.func,
+};
 
 export default FileUploader;

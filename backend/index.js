@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
 const swaggerFile = require("./swagger/output.json");
 
 const db = require("./src/models");
@@ -13,7 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(fileUpload());
 
+app.set("upload_dir", `${__dirname}/${process.env.UPLOAD_DIR}`);
 // creating routes by looping over the routes/index.js file
 Object.keys(routes).forEach((route) => {
   app.use(`/api/${route}`, routes[route]);

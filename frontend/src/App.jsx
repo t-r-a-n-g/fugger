@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
-import DataTable from "@components/FuDataTable";
+import FuDataTable from "@components/FuDataTable";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 const tableHeadCells = [
@@ -206,7 +206,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route
             path="/analysis"
-            element={<DataTable headCells={tableHeadCells} data={data} />}
+            element={<FuDataTable headCells={tableHeadCells} data={data} />}
           />
         </Routes>
       </Router>

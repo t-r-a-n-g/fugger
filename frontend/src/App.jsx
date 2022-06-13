@@ -1,6 +1,6 @@
 import * as React from "react";
 import DataTable from "@components/DataTable";
-import ResponsiveDrawer from "@components/drawer/Drawer";
+import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const tableHeadCells = [
@@ -135,8 +135,9 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ResponsiveDrawer />
-      <DataTable headCells={tableHeadCells} data={data} />;
+      <DrawerLayout>
+        <DataTable headCells={tableHeadCells} data={data} />;
+      </DrawerLayout>
     </ThemeProvider>
   );
 }

@@ -9,7 +9,6 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -100,7 +99,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function DrawerLayout({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -166,7 +165,14 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              ...(open && { display: "none" }),
+            }}
+          >
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
@@ -206,6 +212,15 @@ export default function MiniDrawer() {
       {/* ===== DRAWER ===== */}
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          {/* LOGO */}
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ margin: "auto" }}
+          >
+            LOGO
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -214,7 +229,6 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </DrawerHeader>
-        <Divider />
 
         {/* ===== DRAWER FIRST SECTION ===== */}
         <List>
@@ -248,9 +262,7 @@ export default function MiniDrawer() {
             </ListItem>
           ))}
         </List>
-
-        <Divider />
-
+        <Box sx={{ flexGrow: 1 }} />
         {/* ===== DRAWER  SECOND SECTION ===== */}
         <List>
           {menuItems2.map((element) => (
@@ -284,10 +296,10 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
+      {/* ===== PAGE CONTENT ===== */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {/* CONTENT HERE */}
-        CONTENT HERE
+        {children}
       </Box>
     </Box>
   );

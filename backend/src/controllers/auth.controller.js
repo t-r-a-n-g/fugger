@@ -8,7 +8,8 @@ class AuthController {
       const token = await AuthService.login(email, password);
 
       resData = { sucess: true };
-      res.cookie("user_token", token); // storing token in a cookie
+      // enable secure attribute later, ensures that cookies are only send via https
+      res.cookie("user_token", token, { httpOnly: true /* , secure: true  */ });
     } catch (err) {
       switch (err.name) {
         case "AuthentificationError":
@@ -58,7 +59,8 @@ class AuthController {
       const token = await AuthService.login(email, password);
 
       resData = { success: true, user };
-      res.cookie("user_token", token); // storing token in a cookie
+      // enable secure attribute later, ensures that cookies are only send via https
+      res.cookie("user_token", token, { httpOnly: true /* , secure: true  */ });
     } catch (err) {
       switch (err.name) {
         case "DuplicationError":

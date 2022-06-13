@@ -18,13 +18,19 @@ module.exports = function createRelations() {
   Subcategory.hasMany(DatevAccount);
   DatevAccount.belongsTo(Subcategory);
 
+  Category.belongsTo(User);
+  User.hasMany(Category);
+
+  Subcategory.belongsTo(User);
+  User.hasMany(Subcategory);
+
   // One-to-Many Transfers & DatevAccounts
-  Transfer.hasMany(DatevAccount);
-  DatevAccount.belongsTo(Transfer);
+  Transfer.belongsTo(DatevAccount);
+  DatevAccount.hasMany(Transfer);
 
   // One-to-Many Budgets & Subcategories
-  Budget.hasMany(Subcategory);
-  Subcategory.belongsTo(Budget);
+  Budget.belongsTo(Subcategory);
+  Subcategory.hasMany(Budget);
 
   // One-To-Many User & Uploads
   User.hasMany(Upload);
@@ -39,9 +45,9 @@ module.exports = function createRelations() {
   Budget.belongsTo(User);
 
   // Many-to-Many User Relations
-  User.belongsToMany(Category, { through: "UserCategory" });
-  Category.belongsToMany(User, { through: "UserCategory" });
+  // User.belongsToMany(Category, { through: "UserCategory" });
+  // Category.belongsToMany(User, { through: "UserCategory" });
 
-  User.belongsToMany(Subcategory, { through: "UserSubategory" });
-  Subcategory.belongsToMany(User, { through: "UserSubategory" });
+  // User.belongsToMany(Subcategory, { through: "UserSubategory" });
+  // Subcategory.belongsToMany(User, { through: "UserSubategory" });
 };

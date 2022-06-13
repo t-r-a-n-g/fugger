@@ -1,7 +1,7 @@
 const AuthService = require("./auth.service");
-const FileService = require("./file.service");
+const UploadService = require("./upload.service");
 
 module.exports = {
   AuthService,
-  FileService,
+  UploadService,
 };

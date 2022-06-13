@@ -136,7 +136,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <DrawerLayout>
+        {/* ROUTES HERE */}
         <DataTable headCells={tableHeadCells} data={data} />;
+        {/* END OF ROUTES */}
       </DrawerLayout>
     </ThemeProvider>
   );

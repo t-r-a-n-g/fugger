@@ -1,36 +1,37 @@
-import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Badge from "@mui/material/Badge";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DashboardCustomizeOutlinedIcon from "@mui/icons-material/DashboardCustomizeOutlined";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import LogoutIcon from "@mui/icons-material/Logout";
+/* import InboxIcon from "@mui/icons-material/MoveToInbox"; */
+import MailIcon from "@mui/icons-material/Mail";
+import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import SettingsIcon from "@mui/icons-material/Settings";
+/* import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+import Icon from '@mui/material/Icon'; */
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import MuiAppBar from "@mui/material/AppBar";
+import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import MuiDrawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-/* import InboxIcon from "@mui/icons-material/MoveToInbox"; */
-import MailIcon from "@mui/icons-material/Mail";
-/* import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
-import Icon from '@mui/material/Icon'; */
-import UploadFileIcon from "@mui/icons-material/UploadFile";
-import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
-import DashboardCustomizeOutlinedIcon from "@mui/icons-material/DashboardCustomizeOutlined";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
-import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { styled, useTheme } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
+import PropTypes from "prop-types";
 
 const drawerWidth = 240;
 
@@ -304,3 +305,6 @@ export default function DrawerLayout({ children }) {
     </Box>
   );
 }
+DrawerLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};

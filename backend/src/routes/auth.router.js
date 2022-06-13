@@ -32,16 +32,35 @@ router.post(
 );
 
 // GOOGLE ROUTES
-/* router.post(
+router.get("/login/failed", (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: "failed",
+  });
+});
+
+router.get(
   "/google",
-  passport.authenticate("google-signup", { session: false })
+  passport.authenticate("google", { session: false, scope: ["profile"] })
 );
 
-router.post("/google/callback", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-  session: false,
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    session: false,
+    successRedirect: "http://localhost:3000/analysis",
+    failureRedirect: "/login/failed",
+  })
+);
+/* eslint consistent-return: 0 */
+/* eslint func-names: 0 */
+router.get("/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+  });
+  res.redirect("http://localhost:3000/login");
 });
- */
 
 module.exports = router;

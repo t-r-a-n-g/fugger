@@ -57,6 +57,12 @@ function LoginPage() {
       .catch((err) => setErrorStatus(err.response.status));
   };
 
+  // Testing google
+  const google = () => {
+    /* axios.get("http://localhost:5000/api/auth/google"); */
+    window.open("http://localhost:5000/api/auth/google", "_self");
+  };
+
   // VARIABLES FOR STYLING --- START ---
   const styleContainer = {
     height: "100vh",
@@ -181,6 +187,7 @@ function LoginPage() {
                   fullWidth
                   variant="outlined"
                   startIcon={<GoogleLogo />}
+                  onClick={google}
                 >
                   Google
                 </Button>

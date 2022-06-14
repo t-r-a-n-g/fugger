@@ -19,12 +19,12 @@ module.exports = function createRelations() {
   DatevAccount.belongsTo(Subcategory);
 
   // One-to-Many Transfers & DatevAccounts
-  Transfer.hasMany(DatevAccount);
-  DatevAccount.belongsTo(Transfer);
+  Transfer.belongsTo(DatevAccount);
+  DatevAccount.hasMany(Transfer);
 
-  // One-to-Many Budgets & Subcategories
-  Budget.hasMany(Subcategory);
-  Subcategory.belongsTo(Budget);
+  // One-to-Many Budgets & DatevAccounts
+  Budget.belongsTo(DatevAccount);
+  DatevAccount.hasMany(Budget);
 
   // One-To-Many User & Uploads
   User.hasMany(Upload);

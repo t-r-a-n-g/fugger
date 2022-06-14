@@ -5,6 +5,8 @@ import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
 import FuDataTable from "@components/FuDataTable";
 import { createTheme, ThemeProvider } from "@mui/material";
+import ConfirmationDialog from "@components/budget/BudgetCard";
+import Accounts from "@components/budget/AccountsDropDown";
 
 const tableHeadCells = [
   {
@@ -202,6 +204,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
+          <Route path="dropdown" element={<Accounts />} />
+          <Route path="/budget" element={<ConfirmationDialog />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route

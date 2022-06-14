@@ -1,0 +1,26 @@
+table {
+  table-layout: fixed;
+  display: block !important;
+  overflow: auto;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+table td,
+th {
+  width: 60px;
+  position: sticky;
+}
+
+table th:first-child,
+table td:first-child {
+  padding: 0;
+  position: sticky;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 200px;
+  padding: 0;
+  position: sticky;
+}

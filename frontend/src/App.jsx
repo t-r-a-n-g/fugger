@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
-import FuDataTable from "@components/FuDataTable";
 import { createTheme, ThemeProvider } from "@mui/material";
+import AnalysisTable from "@components/Datatable/AnalysisTable";
 
 const tableHeadCells = [
   {
@@ -20,9 +20,9 @@ const tableHeadCells = [
     label: "Jan22",
     name: "months.Jan22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
-      { id: 3, label: "Abs", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
     ],
   },
@@ -31,7 +31,7 @@ const tableHeadCells = [
     label: "Feb22",
     name: "months.Feb22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
       { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
@@ -42,9 +42,9 @@ const tableHeadCells = [
     label: "Mar22",
     name: "months.Jan22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
-      { id: 3, label: "Abs", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
     ],
   },
@@ -53,7 +53,7 @@ const tableHeadCells = [
     label: "Apr22",
     name: "months.Feb22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
       { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
@@ -64,9 +64,9 @@ const tableHeadCells = [
     label: "May22",
     name: "months.Jan22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
-      { id: 3, label: "Abs", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
     ],
   },
@@ -75,7 +75,7 @@ const tableHeadCells = [
     label: "Jun22",
     name: "months.Feb22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
       { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
@@ -86,9 +86,9 @@ const tableHeadCells = [
     label: "Jul22",
     name: "months.Jan22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
-      { id: 3, label: "Abs", name: "budget" },
+      { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
     ],
   },
@@ -97,7 +97,7 @@ const tableHeadCells = [
     label: "Aug22",
     name: "months.Feb22",
     children: [
-      { id: 1, label: "Transfer", name: "transfer" },
+      { id: 1, label: "Actual", name: "actual" },
       { id: 2, label: "Budget", name: "budget" },
       { id: 3, label: "Abs", name: "abs" },
       { id: 4, label: "%", name: "perct" },
@@ -114,16 +114,14 @@ const data = [
     months: {
       Jan22: {
         budget: 100000,
-        transfer: 50000,
-        abs: 50000,
-        perct: 50,
+        actual: 110000,
+        perct: 10,
       },
 
       Feb22: {
-        budget: 50000,
-        transfer: 25000,
-        abs: 25000,
-        perct: 50,
+        budget: 200000,
+        actual: 20000,
+        perct: 20,
       },
     },
 
@@ -136,15 +134,13 @@ const data = [
         months: {
           Jan22: {
             budget: 100000,
-            transfer: 50000,
-            abs: 50000,
+            actual: 50000,
             perct: 50,
           },
 
           Feb22: {
             budget: 50000,
-            transfer: 25000,
-            abs: 25000,
+            actual: 25000,
             perct: 50,
           },
         },
@@ -159,15 +155,13 @@ const data = [
             months: {
               Jan22: {
                 budget: 100000,
-                transfer: 50000,
-                abs: 50000,
+                actual: 50000,
                 perct: 50,
               },
 
               Feb22: {
-                budget: 50000,
-                transfer: 25000,
-                abs: 25000,
+                budget: 30000,
+                actual: 17000,
                 perct: 50,
               },
             },
@@ -204,10 +198,11 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route
+          <Route path="/analysis" element={<AnalysisTable />} />
+          {/* <Route
             path="/analysis"
             element={<FuDataTable headCells={tableHeadCells} data={data} />}
-          />
+          /> */}
         </Routes>
       </Router>
     </ThemeProvider>

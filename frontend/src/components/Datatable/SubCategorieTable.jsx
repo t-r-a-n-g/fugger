@@ -23,8 +23,8 @@ function createData(name, actual, budget, carbs, protein) {
 }
 // To round number on two digits
 function round(num) {
-  var m = Number((Math.abs(num) * 100).toPrecision(15));
-  return Math.round(m) / 100 * Math.sign(num);
+  const m = Number((Math.abs(num) * 100).toPrecision(15));
+  return (Math.round(m) / 100) * Math.sign(num);
 }
 
 export default function SubCategorieTable(props) {
@@ -74,7 +74,6 @@ const subCategories = [
   createData("Sub 4", 305, 3.7, 67, 4.3, 2.5),
   createData("Sub 5", 356, 16.0, 49, 3.9, 1.5),
 ];
-
 
 // SubCategories.propTypes = {
 //   row: PropTypes.shape({

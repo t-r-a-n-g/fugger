@@ -22,8 +22,8 @@ function createData(name, actual, budget, carbs, protein) {
 }
 // To round number on two digits
 function round(num) {
-  var m = Number((Math.abs(num) * 100).toPrecision(15));
-  return Math.round(m) / 100 * Math.sign(num);
+  const m = Number((Math.abs(num) * 100).toPrecision(15));
+  return (Math.round(m) / 100) * Math.sign(num);
 }
 
 export default function AccountsTable(props) {
@@ -76,8 +76,14 @@ export default function AccountsTable(props) {
                         </TableCell>
                         <TableCell align="center">{row.actual}</TableCell>
                         <TableCell align="center">{row.budget}</TableCell>
-                        <TableCell align="center">{row.actual-row.budget}</TableCell>
-                        <TableCell align="center">{round((row.actual-row.budget)/row.budget*100)}</TableCell>
+                        <TableCell align="center">
+                          {row.actual - row.budget}
+                        </TableCell>
+                        <TableCell align="center">
+                          {round(
+                            ((row.actual - row.budget) / row.budget) * 100
+                          )}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableRow>
@@ -89,8 +95,7 @@ export default function AccountsTable(props) {
       </TableRow>
     </>
   );
-};
-
+}
 
 const accounts = [
   createData("Acc 1", 1000, 1100),
@@ -99,7 +104,6 @@ const accounts = [
   createData("Acc 4", 4000, 5000),
   createData("Acc 5", 5000, 4050),
 ];
-
 
 // SubCategories.propTypes = {
 //   row: PropTypes.shape({

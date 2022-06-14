@@ -34,7 +34,7 @@ const mainCategories = [
 ];
 
 /* -------------------------------------- */
-/* STORE RESPONSE Json FROM DB IN VARIABLE*/
+/* STORE RESPONSE Json FROM DB IN VARIABLE */
 /* -------------------------------------- */
 const response = TestData;
 

@@ -19,6 +19,7 @@ function round(num) {
 
 export default function SubCategorieTable(props) {
   const { data } = props;
+  const [open, setOpen] = React.useState(false);
 
   // sum all "budget" values for one maincategory
   function sumSubActual() {
@@ -54,33 +55,39 @@ export default function SubCategorieTable(props) {
   const absolute = round(budget + actual);
   const percent = round((absolute / budget) * 100);
 
-  const [open, setOpen] = React.useState(false);
+  const cellStyle = {
+    maxWidth: "150px",
+    // whiteSpace: "nowrap",
+    whiteSpace: "normal",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    wordWrap: "break-word",
+  };
+
   return (
     <>
-      <TableRow>
-        <TableCell className="firstColumn">
-          <IconButton aria-label="expand row" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell className="categorieColumn">{data.accountName}</TableCell>
-        <TableCell className="actualColumn" align="center">
-          {actual}
-        </TableCell>
-        <TableCell className="budgetColumn" align="center">
-          {budget}
-        </TableCell>
-        <TableCell className="absoluteColumn" align="center">
-          {absolute}
-        </TableCell>
-        <TableCell className="percentColumn" align="center">
-          {percent ? percent : 0}
-        </TableCell>
-      </TableRow>
+      <TableCell className="firstColumn">
+        <IconButton sx={{ml:"-10px"}} aria-label="expand row" onClick={() => setOpen(!open)}>
+          {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </IconButton>
+      </TableCell>
+      <TableCell className="categoryColumn">{data.accountName}</TableCell>
+      <TableCell className="actualColumn" align="center">
+        {actual}
+      </TableCell>
+      <TableCell className="budgetColumn" align="center">
+        {budget}
+      </TableCell>
+      <TableCell className="absoluteColumn" align="center">
+        {absolute}
+      </TableCell>
+      <TableCell className="percentColumn" align="center">
+        {percent ? percent : 0}
+      </TableCell>
       <TableRow>
         <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Table sx={{ padding: "0", border: "0" }} aria-label="purchases">
+            <Table size="small" aria-label="purchases">
               <TableBody>
                 {data.subcategories.map((subcategories) => (
                   <AccountsTable

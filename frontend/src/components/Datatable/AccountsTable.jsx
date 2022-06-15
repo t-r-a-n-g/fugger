@@ -50,15 +50,24 @@ export default function AccountsTable(props) {
   const absoluteSub = round(budgetSub + actualSub);
   const percentSub = round((absoluteSub / budgetSub) * 100);
 
+  const cellStyle = {
+    maxWidth: "150px",
+    whiteSpace: "nowrap",
+    // whiteSpace: "normal",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    wordWrap: "break-word",
+  };
+
   return (
     <>
       <TableRow>
         <TableCell className="firstColumn" align="center">
-          <IconButton aria-label="expand row" onClick={() => setOpen(!open)}>
+          <IconButton sx={{mr:"-30px"}} aria-label="expand row" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell className="categorieColumn">{data.accountName}</TableCell>
+        <TableCell className="categoryColumn">{data.accountName}</TableCell>
         <TableCell className="actualColumn" align="center">
           {actualSub}
         </TableCell>
@@ -74,15 +83,15 @@ export default function AccountsTable(props) {
       </TableRow>
       <TableRow>
         <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Table aria-label="purchases">
+          <Collapse in={open} timeout="auto">
+            <Table size="small" aria-label="purchases">
               <TableBody>
                 {data.datev_accounts.map((data) => (
                   <TableRow>
-                    <TableCell sx={{ width: "30px" }} className="firstColumn" />
+                    <TableCell className="firstColumn" />
                     <TableCell
                       key={data.accountName}
-                      className="categorieColumn"
+                      className="categoryColumn"
                     >
                       {data.accountName}
                     </TableCell>

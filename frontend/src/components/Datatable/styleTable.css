@@ -3,25 +3,49 @@ table {
   scrollbar-width: Name=none; /* Firefox */
 }
 
-.firstColumn {
-  background-color: aquamarine;
+/* collaps icon column */
+
+.firstColumn.MuiTableCell-root.MuiTableCell-body {
+  background-color: yellow;
+  max-width: 50px;
+  min-width: 50px;
 }
 
-.categorieColumn {
-  background-color: rebeccapurple;
+:root {
+  --cell-width: 80px;
 }
 
-.actualColumn {
+/* category column */
+.categoryColumn.MuiTableCell-root.MuiTableCell-body {
+  background-color: lightcoral;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+/* actual column */
+.actualColumn.MuiTableCell-root.MuiTableCell-body {
   background-color: #ffc107;
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
 }
 
-.budgetColumn {
+/* budget column */
+.budgetColumn.MuiTableCell-root.MuiTableCell-body {
   background-color: #fff108;
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
 }
 
-.absoluteColumn {
+/* absolute column */
+.absoluteColumn.MuiTableCell-root.MuiTableCell-body {
   background-color: #dfc107;
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
 }
-.percentColumn {
+
+/* percent column */
+.percentColumn.MuiTableCell-root.MuiTableCell-body {
   background-color: #aac107;
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
 }

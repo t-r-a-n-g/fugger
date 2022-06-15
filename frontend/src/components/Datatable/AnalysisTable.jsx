@@ -26,26 +26,25 @@ const response = TestData;
 export default function AnalysisTable() {
   return (
     <TableContainer className={Paper}>
-      <Table  aria-label="collapsible table">
-        <TableHead >
-          <TableRow align="center">
+      <Table size="small" aria-label="collapsible table">
+        <TableHead>
+          <TableRow>
             <TableCell className="firstColumn" />
-            <TableCell className="categorieColumn" />
+            <TableCell className="categoryColumn" />
             {/* ----------------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE COLUMNS IN TABLE BY MONTH */}
             {/* ----------------------------------------------------------------------- */}
             {Object.keys(response.headers).map((month) => (
               <>
-                <TableCell />
-                <TableCell align="center">{month}</TableCell>
-                <TableCell />
-                <TableCell />
+                <TableCell colSpan={4} align="center">
+                  {month}
+                </TableCell>
               </>
             ))}
           </TableRow>
           <TableRow>
             <TableCell className="firstColumn" />
-            <TableCell sx={{width:"1000px"}} className="categorieColumn">Categorie</TableCell>
+            <TableCell className="categoryColumn">Category</TableCell>
             {/* ----------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE SUBCOLUMNS IN TABLE */}
             {/* ----------------------------------------------------------------- */}

@@ -6,21 +6,11 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import "./styleTable.css";
-import AccountsTable from "./AccountTable";
+import AccountsTable from "./AccountsTable";
 
-function createData(name, actual, budget, carbs, protein) {
-  return {
-    name,
-    actual,
-    budget,
-    carbs,
-    protein,
-  };
-}
 // To round number on two digits
 function round(num) {
   const m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -29,34 +19,74 @@ function round(num) {
 
 export default function SubCategorieTable(props) {
   const { data } = props;
+
+  // sum all "budget" values for one maincategory
+  function sumSubActual() {
+    let sum = 0;
+    data.subcategories.map((subcategories) =>
+      subcategories.datev_accounts.map(
+        (data) =>
+          (sum += data.months.hasOwnProperty("Jan2019")
+            ? data.months.Jan2019.actual
+            : 0)
+      )
+    );
+    return sum;
+  }
+
+  // sum all "budget" values for one maincategory
+  function sumSubBudget() {
+    let sum = 0;
+    data.subcategories.map((subcategories) =>
+      subcategories.datev_accounts.map(
+        (data) =>
+          (sum += data.months.hasOwnProperty("Jan2019")
+            ? data.months.Jan2019.budget
+            : 0)
+      )
+    );
+    return sum;
+  }
+
+  // stores values of sum functions in variables and make some calculation for absolute and percent fields
+  const actual = sumSubActual();
+  const budget = sumSubBudget();
+  const absolute = round(budget + actual);
+  const percent = round((absolute / budget) * 100);
+
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
+      <TableRow>
+        <TableCell className="firstColumn">
+          <IconButton aria-label="expand row" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          <Typography variant="body2">{data.accountName}</Typography>
+        <TableCell className="categorieColumn">{data.accountName}</TableCell>
+        <TableCell className="actualColumn" align="center">
+          {actual}
         </TableCell>
-        <TableCell align="center">{data.actual}</TableCell>
-        <TableCell align="center">{data.budget}</TableCell>
-        <TableCell align="center">{data.carbs}</TableCell>
-        <TableCell align="center">{data.protein}</TableCell>
+        <TableCell className="budgetColumn" align="center">
+          {budget}
+        </TableCell>
+        <TableCell className="absoluteColumn" align="center">
+          {absolute}
+        </TableCell>
+        <TableCell className="percentColumn" align="center">
+          {percent ? percent : 0}
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Table size="small" aria-label="purchases">
+            <Table sx={{ padding: "0", border: "0" }} aria-label="purchases">
               <TableBody>
-                {subCategories.map((row) => (
-                  <AccountsTable key={row.name} row={row} />
+                {data.subcategories.map((subcategories) => (
+                  <AccountsTable
+                    key={subcategories.accountName}
+                    data={subcategories}
+                  />
                 ))}
               </TableBody>
             </Table>
@@ -66,14 +96,6 @@ export default function SubCategorieTable(props) {
     </>
   );
 }
-
-const subCategories = [
-  createData("Sub 1", 159, 6.0, 24, 4.0, 3.99),
-  createData("Sub 2", 237, 9.0, 37, 4.3, 4.99),
-  createData("Sub 3", 262, 16.0, 24, 6.0, 3.79),
-  createData("Sub 4", 305, 3.7, 67, 4.3, 2.5),
-  createData("Sub 5", 356, 16.0, 49, 3.9, 1.5),
-];
 
 // SubCategories.propTypes = {
 //   row: PropTypes.shape({

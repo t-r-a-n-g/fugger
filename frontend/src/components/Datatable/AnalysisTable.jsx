@@ -16,23 +16,6 @@ import "./styleTable.css";
 import SubCategorieTable from "./SubCategorieTable";
 import TestData from "./TestData.json";
 
-function createData(name, actual, budget, carbs, protein) {
-  return {
-    name,
-    actual,
-    budget,
-    carbs,
-    protein,
-  };
-}
-const mainCategories = [
-  createData("Revenue", 159, 6.0, 24, 4.0, 3.99),
-  createData("Cost of Goods Sold (COGS)", 237, 9.0, 37, 4.3, 4.99),
-  createData("Operating Expenses", 262, 16.0, 24, 6.0, 3.79),
-  createData("Extraordinary Result", 305, 3.7, 67, 4.3, 2.5),
-  createData("EBITDA", 356, 16.0, 49, 3.9, 1.5),
-];
-
 /* -------------------------------------- */
 /* STORE RESPONSE Json FROM DB IN VARIABLE */
 /* -------------------------------------- */
@@ -42,32 +25,44 @@ const response = TestData;
 
 export default function AnalysisTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table size="small" aria-label="collapsible table">
-        <TableHead>
+    <TableContainer className={Paper}>
+      <Table  aria-label="collapsible table">
+        <TableHead >
           <TableRow align="center">
-            <TableCell align="center" colSpan={2} />
+            <TableCell className="firstColumn" />
+            <TableCell className="categorieColumn" />
             {/* ----------------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE COLUMNS IN TABLE BY MONTH */}
             {/* ----------------------------------------------------------------------- */}
             {Object.keys(response.headers).map((month) => (
-              <TableCell align="center" colSpan={4}>
-                {month}
-              </TableCell>
+              <>
+                <TableCell />
+                <TableCell align="center">{month}</TableCell>
+                <TableCell />
+                <TableCell />
+              </>
             ))}
           </TableRow>
           <TableRow>
-            <TableCell />
-            <TableCell>Categorie</TableCell>
+            <TableCell className="firstColumn" />
+            <TableCell sx={{width:"1000px"}} className="categorieColumn">Categorie</TableCell>
             {/* ----------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE SUBCOLUMNS IN TABLE */}
             {/* ----------------------------------------------------------------- */}
             {Object.keys(response.headers).map(() => (
               <>
-                <TableCell align="center">Actual</TableCell>
-                <TableCell align="center">Budget</TableCell>
-                <TableCell align="center">Abs</TableCell>
-                <TableCell align="center">%</TableCell>
+                <TableCell className="actualColumn" align="center">
+                  Actual
+                </TableCell>
+                <TableCell className="budgetColumn" align="center">
+                  Budget
+                </TableCell>
+                <TableCell className="absoluteColumn" align="center">
+                  Abs
+                </TableCell>
+                <TableCell className="percentColumn" align="center">
+                  %
+                </TableCell>
               </>
             ))}
           </TableRow>

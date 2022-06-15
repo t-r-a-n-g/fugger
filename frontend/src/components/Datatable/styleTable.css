@@ -1,26 +1,27 @@
 table {
-  table-layout: fixed;
-  display: block !important;
-  overflow: auto;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: Name=none; /* Firefox */
 }
 
-table td,
-th {
-  width: 60px;
-  position: sticky;
+.firstColumn {
+  background-color: aquamarine;
 }
 
-table th:first-child,
-table td:first-child {
-  padding: 0;
-  position: sticky;
+.categorieColumn {
+  background-color: rebeccapurple;
 }
 
-table th:nth-child(2),
-table td:nth-child(2) {
-  width: 200px;
-  padding: 0;
-  position: sticky;
+.actualColumn {
+  background-color: #ffc107;
+}
+
+.budgetColumn {
+  background-color: #fff108;
+}
+
+.absoluteColumn {
+  background-color: #dfc107;
+}
+.percentColumn {
+  background-color: #aac107;
 }

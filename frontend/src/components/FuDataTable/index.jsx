@@ -1,15 +1,29 @@
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import PropTypes from "prop-types";
-
+import { Button } from "@mui/material";
+import BudgetEditing from "@components/budget/BudgetCard";
 import FuTableHead from "./FuTableHead";
 import FuTableBody from "./FuTableBody";
 
 function FuDataTable({ headCells, data }) {
+  // state for opening the budget dialog
+  const [open, setOpen] = useState(false);
   return (
-    <Table>
-      <FuTableHead cells={headCells} />
-      <FuTableBody headCells={headCells} data={data} />
-    </Table>
+    <>
+      <Button
+        sx={{ borderRadius: "10px" }}
+        variant="contained"
+        onClick={() => setOpen(true)}
+      >
+        Edit budget
+      </Button>
+      <BudgetEditing open={open} setOpen={setOpen} />
+      <Table>
+        <FuTableHead cells={headCells} />
+        <FuTableBody headCells={headCells} data={data} />
+      </Table>
+    </>
   );
 }
 

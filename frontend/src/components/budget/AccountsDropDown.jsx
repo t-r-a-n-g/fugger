@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import PropTypes from "prop-types";
 
 // TO DO: API get requests to get all datev accounts, for now use dummy data
 // hand over data as props
@@ -25,10 +26,24 @@ const datevAccounts = [
   { label: "6787 Versicherung für Gebäude", id: 16 },
 ];
 
-export default function Accounts() {
+export default function Accounts(props) {
+  const { accountSelected, setAccountSelected } = props;
+
   // state for value that user chooses (move this up to parent component)
   const [valueAccount, setValueAccount] = useState("");
-  /* console.log("value: ", valueAccount); */
+  /* console.log("Selected account: ", valueAccount); */
+
+  // check if user chose a datev account
+  useEffect(() => {
+    if (valueAccount) {
+      setAccountSelected(true);
+    }
+    if (!valueAccount) {
+      setAccountSelected(false);
+    }
+  }, [valueAccount]);
+
+  console.warn("Account selected: ", accountSelected);
 
   return (
     <Autocomplete
@@ -44,3 +59,8 @@ export default function Accounts() {
     />
   );
 }
+
+Accounts.propTypes = {
+  accountSelected: PropTypes.bool.isRequired,
+  setAccountSelected: PropTypes.func.isRequired,
+};

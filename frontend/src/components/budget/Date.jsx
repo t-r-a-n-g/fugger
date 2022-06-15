@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -24,10 +25,24 @@ const months = [
   { month: "Mar 2020", year: 2020 },
 ];
 
-export default function Dates() {
+export default function Dates(props) {
+  const { dateSelected, setDateSelected } = props;
+
   // state for value that user chooses (move this up to parent component)
   const [valueDate, setValueDate] = useState("");
-  console.warn("dates: ", valueDate);
+  /*  console.log("dates: ", valueDate); */
+
+  // check if user chose at least one date
+  useEffect(() => {
+    if (valueDate) {
+      setDateSelected(true);
+    }
+    if (valueDate.length === 0) {
+      setDateSelected(false);
+    }
+  }, [valueDate]);
+
+  console.warn("Date selected: ", dateSelected);
 
   return (
     <Autocomplete
@@ -55,3 +70,8 @@ export default function Dates() {
     />
   );
 }
+
+Dates.propTypes = {
+  dateSelected: PropTypes.bool.isRequired,
+  setDateSelected: PropTypes.func.isRequired,
+};

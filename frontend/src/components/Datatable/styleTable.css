@@ -1,3 +1,8 @@
+:root {
+  --cell-width: 60px;
+  --text-size: 0.7rem;
+}
+
 table {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: Name=none; /* Firefox */
@@ -5,14 +10,16 @@ table {
 
 /* collaps icon column */
 
+.monthColumn{
+  border-right: 1px grey solid;
+  border-left: 1px grey solid;
+
+}
+
 .firstColumn.MuiTableCell-root.MuiTableCell-body {
   /* background-color: yellow; */
   max-width: 50px;
   min-width: 50px;
-}
-
-:root {
-  --cell-width: 60px;
 }
 
 /* category column */
@@ -20,6 +27,11 @@ table {
   /* background-color: lightcoral; */
   min-width: 250px;
   max-width: 250px;
+  border-right: 1px grey solid;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
 }
 
 /* actual column */
@@ -27,6 +39,7 @@ table {
   /* background-color: #ffc107; */
   max-width: var(--cell-width);
   min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
 }
 
 /* budget column */
@@ -34,6 +47,7 @@ table {
   /* background-color: #fff108; */
   max-width: var(--cell-width);
   min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
 }
 
 /* absolute column */
@@ -41,6 +55,7 @@ table {
   /* background-color: #dfc107; */
   max-width: var(--cell-width);
   min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
 }
 
 /* percent column */
@@ -48,4 +63,6 @@ table {
   /* background-color: #aac107; */
   max-width: var(--cell-width);
   min-width: var(--cell-width);
+  border-right: 1px grey solid;
 }
+

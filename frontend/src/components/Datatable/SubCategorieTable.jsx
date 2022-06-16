@@ -18,7 +18,7 @@ function round(num) {
 }
 
 export default function SubCategorieTable(props) {
-  const { data, userMonths } = props;
+  const { data, userMonths, filter } = props;
   const [open, setOpen] = React.useState(false);
 
   // sum all "actual" values for one maincategory
@@ -34,7 +34,6 @@ export default function SubCategorieTable(props) {
     );
     return round(sum);
   }
-
   // sum all "budget" values for one maincategory
   function sumSubBudget(month) {
     let sum = 0;
@@ -49,7 +48,6 @@ export default function SubCategorieTable(props) {
     return round(sum);
   }
 
-  // stores values of sum functions in variables and make some calculation for absolute and percent fields
   return (
     <>
       {
@@ -99,12 +97,13 @@ export default function SubCategorieTable(props) {
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Table size="small" aria-label="purchases">
-              <TableBody sx={{ backgroundColor: "grey.A200" }}>
+              <TableBody sx={{ backgroundColor: "grey.A100" }}>
                 {data.subcategories.map((subcategories) => (
                   <AccountsTable
                     key={subcategories.accountName}
                     data={subcategories}
                     userMonths={userMonths}
+                    filter={filter}
                   />
                 ))}
               </TableBody>

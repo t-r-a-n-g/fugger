@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import "./styleTable.css";
 import SubCategorieTable from "./SubCategorieTable";
 import TestData from "./TestData.json";
+import FilterMenu from "./FilterMenu";
 
 /* -------------------------------------- */
 /* STORE RESPONSE Json FROM DB IN VARIABLE */
@@ -18,80 +19,145 @@ import TestData from "./TestData.json";
 const response = TestData;
 const months = Object.keys(response.headers);
 
+const filter = [];
+
 export default function AnalysisTable() {
   return (
     <TableContainer>
       <Table size="small" aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell className="firstColumn" />
-            <TableCell className="categoryColumn" />
+            <TableCell sx={{ borderBottom: "0" }} className="firstColumn" />
+            <TableCell
+              align="right"
+              sx={{ borderBottom: "0" }}
+              className="categoryColumn"
+            >
+              <FilterMenu />
+            </TableCell>
             {/* ----------------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE COLUMNS IN TABLE BY MONTH */}
             {/* ----------------------------------------------------------------------- */}
-            {months.map((month, index) => (
-              <>
-                <TableCell
-                  key={response.headers + index}
-                  colSpan={4}
-                  align="center"
-                >
-                  {month}
-                </TableCell>
-              </>
-            ))}
+            {filter.length !== 0
+              ? filter.map((month, index) => (
+                  <>
+                    <TableCell
+                      key={response.headers + index}
+                      colSpan={4}
+                      align="center"
+                      className="monthColumn"
+                    >
+                      {month}
+                    </TableCell>
+                  </>
+                ))
+              : months.map((month, index) => (
+                  <>
+                    <TableCell
+                      key={response.headers + index}
+                      colSpan={4}
+                      align="center"
+                      className="monthColumn"
+                    >
+                      {month}
+                    </TableCell>
+                  </>
+                ))}
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
             <TableCell className="firstColumn" />
-            <TableCell className="categoryColumn">Category</TableCell>
+            <TableCell className="categoryColumn" />
             {/* ----------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE SUBCOLUMNS IN TABLE */}
             {/* ----------------------------------------------------------------- */}
-            {months.map(() => (
-              <>
-                <TableCell
-                  key={response.headers.id}
-                  className="actualColumn"
-                  align="center"
-                >
-                  Actual
-                </TableCell>
-                <TableCell
-                  key={response.headers.id}
-                  className="budgetColumn"
-                  align="center"
-                >
-                  Budget
-                </TableCell>
-                <TableCell
-                  key={response.headers.id}
-                  className="absoluteColumn"
-                  align="center"
-                >
-                  Abs
-                </TableCell>
-                <TableCell
-                  key={response.headers.id}
-                  className="percentColumn"
-                  align="center"
-                >
-                  %
-                </TableCell>
-              </>
-            ))}
+            {filter.length !== 0
+              ? filter.map(() => (
+                  <>
+                    <TableCell
+                      key={response.headers.id}
+                      className="actualColumn"
+                      align="center"
+                    >
+                      Actual
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="budgetColumn"
+                      align="center"
+                    >
+                      Budget
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="absoluteColumn"
+                      align="center"
+                    >
+                      Abs
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="percentColumn"
+                      align="center"
+                    >
+                      %
+                    </TableCell>
+                  </>
+                ))
+              : months.map(() => (
+                  <>
+                    <TableCell
+                      key={response.headers.id}
+                      className="actualColumn"
+                      align="center"
+                    >
+                      Actual
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="budgetColumn"
+                      align="center"
+                    >
+                      Budget
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="absoluteColumn"
+                      align="center"
+                    >
+                      Abs
+                    </TableCell>
+                    <TableCell
+                      key={response.headers.id}
+                      className="percentColumn"
+                      align="center"
+                    >
+                      %
+                    </TableCell>
+                  </>
+                ))}
           </TableRow>
           {/* --------------------------------------------------------------- */}
           {/* MAPS OVER DATA FROM RESPONSE JSON TO CREATE THE TABLE */}
           {/* --------------------------------------------------------------- */}
-          {response.data.map((mainCategories) => (
-            <SubCategorieTable
-              key={mainCategories.accountName}
-              data={mainCategories}
-              userMonths={months}
-            />
-          ))}
+          {filter.length !== 0
+            ? response.data.map((mainCategories) => (
+                <SubCategorieTable
+                  key={mainCategories.accountName}
+                  data={mainCategories}
+                  userMonths={filter}
+                  filter={filter}
+                />
+              ))
+            : response.data.map((mainCategories) => (
+                <SubCategorieTable
+                  key={mainCategories.accountName}
+                  data={mainCategories}
+                  userMonths={months}
+                  filter={filter}
+                />
+              ))}
         </TableBody>
       </Table>
     </TableContainer>

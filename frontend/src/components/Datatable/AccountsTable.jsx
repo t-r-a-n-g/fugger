@@ -17,7 +17,7 @@ function round(num) {
 }
 
 export default function AccountsTable(props) {
-  const { data, userMonths } = props;
+  const { data, userMonths, filter } = props;
   const [open, setOpen] = React.useState(false);
 
   // sum all "actual" values for one subcategory
@@ -43,8 +43,6 @@ export default function AccountsTable(props) {
     );
     return round(sum);
   }
-
-  // stores values of sum functions in variables and make some calculation for absolute and percent fields
 
   return (
     <>
@@ -92,8 +90,8 @@ export default function AccountsTable(props) {
           colSpan={userMonths.length * 4 + 2}
         >
           <Collapse in={open} timeout="auto">
-            <Table size="small" aria-label="purchases">
-              <TableBody sx={{ backgroundColor: "grey.300" }}>
+            <Table aria-label="purchases">
+              <TableBody sx={{ backgroundColor: "grey.200" }}>
                 {data.datev_accounts.map((data) => (
                   <TableRow key={data.accountName}>
                     <TableCell className="firstColumn" />

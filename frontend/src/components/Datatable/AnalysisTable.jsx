@@ -8,7 +8,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import "./styleTable.css";
 import SubCategorieTable from "./SubCategorieTable";
 import TestData from "./TestData.json";
@@ -17,12 +16,11 @@ import TestData from "./TestData.json";
 /* STORE RESPONSE Json FROM DB IN VARIABLE */
 /* -------------------------------------- */
 const response = TestData;
-
-// console.log(response.data.map((main) => main.accountName));
+const months = Object.keys(response.headers);
 
 export default function AnalysisTable() {
   return (
-    <TableContainer className={Paper}>
+    <TableContainer>
       <Table size="small" aria-label="collapsible table">
         <TableHead>
           <TableRow>
@@ -31,7 +29,7 @@ export default function AnalysisTable() {
             {/* ----------------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE COLUMNS IN TABLE BY MONTH */}
             {/* ----------------------------------------------------------------------- */}
-            {Object.keys(response.headers).map((month, index) => (
+            {months.map((month, index) => (
               <>
                 <TableCell
                   key={response.headers + index}
@@ -51,7 +49,7 @@ export default function AnalysisTable() {
             {/* ----------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE SUBCOLUMNS IN TABLE */}
             {/* ----------------------------------------------------------------- */}
-            {Object.keys(response.headers).map(() => (
+            {months.map(() => (
               <>
                 <TableCell
                   key={response.headers.id}
@@ -87,15 +85,13 @@ export default function AnalysisTable() {
           {/* --------------------------------------------------------------- */}
           {/* MAPS OVER DATA FROM RESPONSE JSON TO CREATE THE TABLE */}
           {/* --------------------------------------------------------------- */}
-          {Object.keys(response.headers).map((month) =>
-            response.data.map((mainCategories) => (
-              <SubCategorieTable
-                key={mainCategories.accountName}
-                data={mainCategories}
-                month={month}
-              />
-            ))
-          )}
+          {response.data.map((mainCategories) => (
+            <SubCategorieTable
+              key={mainCategories.accountName}
+              data={mainCategories}
+              userMonths={months}
+            />
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

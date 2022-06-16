@@ -18,73 +18,85 @@ function round(num) {
 }
 
 export default function SubCategorieTable(props) {
-  const { data } = props;
+  const { data, userMonths } = props;
   const [open, setOpen] = React.useState(false);
-  const currentMonth = props.month;
 
   // sum all "actual" values for one maincategory
-  function sumSubActual() {
+  function sumSubActual(month) {
     let sum = 0;
     data.subcategories.map((subcategories) =>
       subcategories.datev_accounts.map(
         (data) =>
-          (sum += data.months.hasOwnProperty(currentMonth)
-            ? data.months[currentMonth].actual
+          (sum += data.months.hasOwnProperty(month)
+            ? data.months[month].actual
             : 0)
       )
     );
-    return sum;
+    return round(sum);
   }
 
   // sum all "budget" values for one maincategory
-  function sumSubBudget() {
+  function sumSubBudget(month) {
     let sum = 0;
     data.subcategories.map((subcategories) =>
       subcategories.datev_accounts.map(
         (data) =>
-          (sum += data.months.hasOwnProperty(currentMonth)
-            ? data.months[currentMonth].budget
+          (sum += data.months.hasOwnProperty(month)
+            ? data.months[month].budget
             : 0)
       )
     );
-    return sum;
+    return round(sum);
   }
 
   // stores values of sum functions in variables and make some calculation for absolute and percent fields
-  const actual = sumSubActual();
-  const budget = sumSubBudget();
-  const absolute = round(budget + actual);
-  const percent = round((absolute / budget) * 100);
-
-
   return (
     <>
-      <TableRow >
-        <TableCell className="firstColumn">
-          <IconButton
-            sx={{ ml: "-10px" }}
-            aria-label="expand row"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell className="categoryColumn">{data.accountName}</TableCell>
-        <TableCell className="actualColumn" align="center">
-          {actual}
-        </TableCell>
-        <TableCell className="budgetColumn" align="center">
-          {budget}
-        </TableCell>
-        <TableCell className="absoluteColumn" align="center">
-          {absolute}
-        </TableCell>
-        <TableCell className="percentColumn" align="center">
-          {percent ? percent : 0}
-        </TableCell>
-      </TableRow>
+      {
+        <>
+          <TableCell className="firstColumn">
+            <IconButton
+              sx={{ ml: "-10px" }}
+              aria-label="expand row"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell className="categoryColumn">{data.accountName}</TableCell>
+        </>
+      }
+      {userMonths.map((month) => (
+        <>
+          <TableCell key={month.id} className="actualColumn" align="center">
+            {sumSubActual(month)}
+          </TableCell>
+          <TableCell key={month.id} className="budgetColumn" align="center">
+            {sumSubBudget(month)}
+          </TableCell>
+          <TableCell key={month.id} className="absoluteColumn" align="center">
+            {round(sumSubBudget(month) + sumSubActual(month))}
+          </TableCell>
+          <TableCell key={month.id} className="percentColumn" align="center">
+            {round(
+              ((sumSubBudget(month) + sumSubActual(month)) /
+                sumSubBudget(month)) *
+                100
+            )
+              ? round(
+                  ((sumSubBudget(month) + sumSubActual(month)) /
+                    sumSubBudget(month)) *
+                    100
+                )
+              : 0}
+          </TableCell>
+        </>
+      ))}
       <TableRow>
-        <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
+        <TableCell
+          sx={{ padding: "0", border: "0" }}
+          colSpan={userMonths.length * 4 + 2}
+        >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Table size="small" aria-label="purchases">
               <TableBody sx={{ backgroundColor: "grey.A200" }}>
@@ -92,7 +104,7 @@ export default function SubCategorieTable(props) {
                   <AccountsTable
                     key={subcategories.accountName}
                     data={subcategories}
-                    month={props.month}
+                    userMonths={userMonths}
                   />
                 ))}
               </TableBody>

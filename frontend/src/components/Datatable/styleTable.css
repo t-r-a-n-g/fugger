@@ -12,7 +12,7 @@ table {
 }
 
 :root {
-  --cell-width: 80px;
+  --cell-width: 60px;
 }
 
 /* category column */

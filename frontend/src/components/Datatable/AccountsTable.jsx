@@ -9,7 +9,6 @@ import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import "./styleTable.css";
-import { Paper } from "@mui/material";
 
 // To round number on two digits
 function round(num) {
@@ -18,43 +17,38 @@ function round(num) {
 }
 
 export default function AccountsTable(props) {
-  const { data } = props;
+  const { data, userMonths } = props;
   const [open, setOpen] = React.useState(false);
-  const currentMonth = props.month;
 
   // sum all "actual" values for one subcategory
-  function sumAccActual() {
+  function sumAccActual(month) {
     let sum = 0;
     data.datev_accounts.map(
       (data) =>
-        (sum += data.months.hasOwnProperty(currentMonth)
-          ? data.months[currentMonth].actual
+        (sum += data.months.hasOwnProperty(month)
+          ? data.months[month].actual
           : 0)
     );
-    return sum;
+    return round(sum);
   }
 
   // sum all "budget" values for one subcategory
-  function sumAccBudget() {
+  function sumAccBudget(month) {
     let sum = 0;
     data.datev_accounts.map(
       (data) =>
-        (sum += data.months.hasOwnProperty(currentMonth)
-          ? data.months[currentMonth].budget
+        (sum += data.months.hasOwnProperty(month)
+          ? data.months[month].budget
           : 0)
     );
-    return sum;
+    return round(sum);
   }
 
   // stores values of sum functions in variables and make some calculation for absolute and percent fields
-  const actualSub = sumAccActual();
-  const budgetSub = sumAccBudget();
-  const absoluteSub = round(budgetSub + actualSub);
-  const percentSub = round((absoluteSub / budgetSub) * 100);
 
   return (
     <>
-      <TableRow>
+      <>
         <TableCell className="firstColumn" align="center">
           <IconButton
             sx={{ mr: "-30px" }}
@@ -65,67 +59,91 @@ export default function AccountsTable(props) {
           </IconButton>
         </TableCell>
         <TableCell className="categoryColumn">{data.accountName}</TableCell>
-        <TableCell className="actualColumn" align="center">
-          {actualSub}
-        </TableCell>
-        <TableCell className="budgetColumn" align="center">
-          {budgetSub}
-        </TableCell>
-        <TableCell className="absoluteColumn" align="center">
-          {absoluteSub}
-        </TableCell>
-        <TableCell className="percentColumn" align="center">
-          {percentSub ? percentSub : 0}
-        </TableCell>
-      </TableRow>
+      </>
+      {userMonths.map((month) => (
+        <>
+          <TableCell key={month.id} className="actualColumn" align="center">
+            {sumAccActual(month)}
+          </TableCell>
+          <TableCell key={month.id} className="budgetColumn" align="center">
+            {sumAccBudget(month)}
+          </TableCell>
+          <TableCell key={month.id} className="absoluteColumn" align="center">
+            {round(sumAccBudget(month) + sumAccActual(month))}
+          </TableCell>
+          <TableCell key={month.id} className="percentColumn" align="center">
+            {round(
+              ((sumAccBudget(month) + sumAccActual(month)) /
+                sumAccBudget(month)) *
+                100
+            )
+              ? round(
+                  ((sumAccBudget(month) + sumAccActual(month)) /
+                    sumAccBudget(month)) *
+                    100
+                )
+              : 0}
+          </TableCell>
+        </>
+      ))}
       <TableRow>
-        <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
+        <TableCell
+          sx={{ padding: "0", border: "0" }}
+          colSpan={userMonths.length * 4 + 2}
+        >
           <Collapse in={open} timeout="auto">
             <Table size="small" aria-label="purchases">
-                <TableBody sx={{ backgroundColor: "grey.300" }}>
-                  {data.datev_accounts.map((data) => (
-                    <TableRow  key={data.accountName}>
-                      <TableCell className="firstColumn" />
-                      <TableCell
-                        key={data.accountName}
-                        className="categoryColumn"
-                      >
-                        {data.accountName}
-                      </TableCell>
-                      <TableCell className="actualColumn" align="center">
-                        {data.months.hasOwnProperty(currentMonth)
-                          ? data.months[currentMonth].actual
-                          : 0}
-                      </TableCell>
-                      <TableCell className="budgetColumn" align="center">
-                        {data.months.hasOwnProperty(currentMonth)
-                          ? data.months[currentMonth].budget
-                          : 0}
-                      </TableCell>
-                      <TableCell className="absoluteColumn" align="center">
-                        {(data.months.hasOwnProperty(currentMonth)
-                          ? data.months[currentMonth].actual
-                          : 0) -
-                          (data.months.hasOwnProperty(currentMonth)
-                            ? data.months[currentMonth].budget
-                            : 0)}
-                      </TableCell>
-                      <TableCell className="percentColumn" align="center">
-                        {round(
-                          ((data.months.hasOwnProperty(currentMonth)
-                            ? data.months[currentMonth].actual
-                            : 0) -
-                            (data.months.hasOwnProperty(currentMonth)
-                              ? data.months[currentMonth].budget
-                              : 0)) /
-                            (data.months.hasOwnProperty(currentMonth)
-                              ? data.months[currentMonth].budget
-                              : 1)
-                        ) * 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+              <TableBody sx={{ backgroundColor: "grey.300" }}>
+                {data.datev_accounts.map((data) => (
+                  <TableRow key={data.accountName}>
+                    <TableCell className="firstColumn" />
+                    <TableCell
+                      key={data.accountName}
+                      className="categoryColumn"
+                    >
+                      {data.accountName}
+                    </TableCell>
+                    {userMonths.map((month) => (
+                      <>
+                        <TableCell className="actualColumn" align="center">
+                          {data.months.hasOwnProperty(month)
+                            ? data.months[month].actual
+                            : 0}
+                        </TableCell>
+                        <TableCell className="budgetColumn" align="center">
+                          {data.months.hasOwnProperty(month)
+                            ? data.months[month].budget
+                            : 0}
+                        </TableCell>
+                        <TableCell className="absoluteColumn" align="center">
+                          {round(
+                            (data.months.hasOwnProperty(month)
+                              ? data.months[month].budget
+                              : 0) +
+                              (data.months.hasOwnProperty(month)
+                                ? data.months[month].actual
+                                : 0)
+                          )}
+                        </TableCell>
+                        <TableCell className="percentColumn" align="center">
+                          {round(
+                            (((data.months.hasOwnProperty(month)
+                              ? data.months[month].budget
+                              : 0) +
+                              (data.months.hasOwnProperty(month)
+                                ? data.months[month].actual
+                                : 0)) /
+                              (data.months.hasOwnProperty(month)
+                                ? data.months[month].budget
+                                : 1)) *
+                              100
+                          )}
+                        </TableCell>
+                      </>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
             </Table>
           </Collapse>
         </TableCell>

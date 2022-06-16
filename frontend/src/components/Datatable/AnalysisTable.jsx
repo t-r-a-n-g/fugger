@@ -8,10 +8,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import "./styleTable.css";
 import SubCategorieTable from "./SubCategorieTable";
 import TestData from "./TestData.json";
@@ -34,14 +31,20 @@ export default function AnalysisTable() {
             {/* ----------------------------------------------------------------------- */}
             {/* MAPS OVER HEADER FROM RESPONSE JSON TO CREATE COLUMNS IN TABLE BY MONTH */}
             {/* ----------------------------------------------------------------------- */}
-            {Object.keys(response.headers).map((month) => (
+            {Object.keys(response.headers).map((month, index) => (
               <>
-                <TableCell colSpan={4} align="center">
+                <TableCell
+                  key={response.headers + index}
+                  colSpan={4}
+                  align="center"
+                >
                   {month}
                 </TableCell>
               </>
             ))}
           </TableRow>
+        </TableHead>
+        <TableBody>
           <TableRow>
             <TableCell className="firstColumn" />
             <TableCell className="categoryColumn">Category</TableCell>
@@ -50,32 +53,49 @@ export default function AnalysisTable() {
             {/* ----------------------------------------------------------------- */}
             {Object.keys(response.headers).map(() => (
               <>
-                <TableCell className="actualColumn" align="center">
+                <TableCell
+                  key={response.headers.id}
+                  className="actualColumn"
+                  align="center"
+                >
                   Actual
                 </TableCell>
-                <TableCell className="budgetColumn" align="center">
+                <TableCell
+                  key={response.headers.id}
+                  className="budgetColumn"
+                  align="center"
+                >
                   Budget
                 </TableCell>
-                <TableCell className="absoluteColumn" align="center">
+                <TableCell
+                  key={response.headers.id}
+                  className="absoluteColumn"
+                  align="center"
+                >
                   Abs
                 </TableCell>
-                <TableCell className="percentColumn" align="center">
+                <TableCell
+                  key={response.headers.id}
+                  className="percentColumn"
+                  align="center"
+                >
                   %
                 </TableCell>
               </>
             ))}
           </TableRow>
-        </TableHead>
-        <TableBody>
           {/* --------------------------------------------------------------- */}
-          {/* MAPS OVER DATA FROM RESPONSE JSON TO CREATE SUBCOLUMNS IN TABLE */}
+          {/* MAPS OVER DATA FROM RESPONSE JSON TO CREATE THE TABLE */}
           {/* --------------------------------------------------------------- */}
-          {response.data.map((mainCategories) => (
-            <SubCategorieTable
-              key={mainCategories.accountName}
-              data={mainCategories}
-            />
-          ))}
+          {Object.keys(response.headers).map((month) =>
+            response.data.map((mainCategories) => (
+              <SubCategorieTable
+                key={mainCategories.accountName}
+                data={mainCategories}
+                month={month}
+              />
+            ))
+          )}
         </TableBody>
       </Table>
     </TableContainer>

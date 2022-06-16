@@ -20,15 +20,16 @@ function round(num) {
 export default function SubCategorieTable(props) {
   const { data } = props;
   const [open, setOpen] = React.useState(false);
+  const currentMonth = props.month;
 
-  // sum all "budget" values for one maincategory
+  // sum all "actual" values for one maincategory
   function sumSubActual() {
     let sum = 0;
     data.subcategories.map((subcategories) =>
       subcategories.datev_accounts.map(
         (data) =>
-          (sum += data.months.hasOwnProperty("Jan2019")
-            ? data.months.Jan2019.actual
+          (sum += data.months.hasOwnProperty(currentMonth)
+            ? data.months[currentMonth].actual
             : 0)
       )
     );
@@ -41,8 +42,8 @@ export default function SubCategorieTable(props) {
     data.subcategories.map((subcategories) =>
       subcategories.datev_accounts.map(
         (data) =>
-          (sum += data.months.hasOwnProperty("Jan2019")
-            ? data.months.Jan2019.budget
+          (sum += data.months.hasOwnProperty(currentMonth)
+            ? data.months[currentMonth].budget
             : 0)
       )
     );
@@ -55,44 +56,43 @@ export default function SubCategorieTable(props) {
   const absolute = round(budget + actual);
   const percent = round((absolute / budget) * 100);
 
-  const cellStyle = {
-    maxWidth: "150px",
-    // whiteSpace: "nowrap",
-    whiteSpace: "normal",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    wordWrap: "break-word",
-  };
 
   return (
     <>
-      <TableCell className="firstColumn">
-        <IconButton sx={{ml:"-10px"}} aria-label="expand row" onClick={() => setOpen(!open)}>
-          {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-        </IconButton>
-      </TableCell>
-      <TableCell className="categoryColumn">{data.accountName}</TableCell>
-      <TableCell className="actualColumn" align="center">
-        {actual}
-      </TableCell>
-      <TableCell className="budgetColumn" align="center">
-        {budget}
-      </TableCell>
-      <TableCell className="absoluteColumn" align="center">
-        {absolute}
-      </TableCell>
-      <TableCell className="percentColumn" align="center">
-        {percent ? percent : 0}
-      </TableCell>
+      <TableRow >
+        <TableCell className="firstColumn">
+          <IconButton
+            sx={{ ml: "-10px" }}
+            aria-label="expand row"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell className="categoryColumn">{data.accountName}</TableCell>
+        <TableCell className="actualColumn" align="center">
+          {actual}
+        </TableCell>
+        <TableCell className="budgetColumn" align="center">
+          {budget}
+        </TableCell>
+        <TableCell className="absoluteColumn" align="center">
+          {absolute}
+        </TableCell>
+        <TableCell className="percentColumn" align="center">
+          {percent ? percent : 0}
+        </TableCell>
+      </TableRow>
       <TableRow>
         <TableCell sx={{ padding: "0", border: "0" }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Table size="small" aria-label="purchases">
-              <TableBody>
+              <TableBody sx={{ backgroundColor: "grey.A200" }}>
                 {data.subcategories.map((subcategories) => (
                   <AccountsTable
                     key={subcategories.accountName}
                     data={subcategories}
+                    month={props.month}
                   />
                 ))}
               </TableBody>

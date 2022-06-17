@@ -18,10 +18,6 @@ const Budget = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    file_name: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
   },
   { tableName: "budgets" }
 );

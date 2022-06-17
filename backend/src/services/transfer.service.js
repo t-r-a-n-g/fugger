@@ -1,7 +1,40 @@
+const { Op } = require("sequelize");
 const { Transfer } = require("../models");
 const DatevService = require("./datev.service");
+const { Category, Subcategory, DatevAccount } = require("../models");
+const parseDate = require("../utils/dateParser");
+const BudgetService = require("./budget.service");
 
 class TransferService {
+  static async getTransfers(from, to, userId) {
+    const transfers = await Transfer.findAll({
+      where: {
+        date: {
+          [Op.between]: [from, to],
+        },
+        userId,
+      },
+      include: [
+        {
+          model: DatevAccount,
+          as: "datevAccount",
+          include: [
+            {
+              model: Subcategory,
+              include: [
+                {
+                  model: Category,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    return transfers;
+  }
+
   static async createTransfers(transfers, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbTransfers = [];
@@ -28,16 +61,18 @@ class TransferService {
 
       if (userDatevAccount) {
         for (const transfer of datevTransfer.transfers) {
-          const tDate = transfer.date.split("/"); // 0: month, 1: year
+          // const tDate = transfer.date.split("/"); // 0: month, 1: year
+          const tDate = parseDate(transfer.date);
           dbTransfers.push({
             datevAccountId: userDatevAccount.id,
             amount: transfer.amount,
-            date: new Date(Date.UTC(tDate[1], monthIndex[tDate[0]])),
+            date: tDate.date,
+            userId,
           });
         }
       }
     }
-
+    await BudgetService.createBudgets(transfers, userId);
     return Transfer.bulkCreate(dbTransfers);
   }
 }

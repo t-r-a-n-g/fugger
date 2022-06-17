@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
 import FuDataTable from "@components/FuDataTable";
 import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "@components/themes";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { theme1, theme2 } from "@components/themes";
+import LooksOneIcon from "@mui/icons-material/LooksOne";
+import LooksTwoIcon from "@mui/icons-material/LooksTwo";
 
 const tableHeadCells = [
   {
@@ -179,10 +181,17 @@ const data = [
     ],
   },
 ];
-
 function App() {
+  const [theme, setTheme] = useState(true);
+  const themeMode = !theme ? (
+    <LooksTwoIcon onClick={() => setTheme(!theme)} />
+  ) : (
+    <LooksOneIcon onClick={() => setTheme(!theme)} />
+  ); // Icons imported from `@material-ui/icons`
+  const appliedTheme = createTheme(theme ? theme1 : theme2);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appliedTheme}>
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -192,7 +201,7 @@ function App() {
             <Route
               path="/analysis"
               element={
-                <DrawerLayout>
+                <DrawerLayout themeMode={themeMode}>
                   <FuDataTable headCells={tableHeadCells} data={data} />
                 </DrawerLayout>
               }

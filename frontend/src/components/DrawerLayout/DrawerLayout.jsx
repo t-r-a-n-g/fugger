@@ -102,7 +102,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function DrawerLayout({ children }) {
+export default function DrawerLayout({ children, themeMode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -203,6 +203,7 @@ export default function DrawerLayout({ children }) {
           </Stack>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Stack justifyContent="center">{themeMode}</Stack>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
@@ -350,4 +351,5 @@ export default function DrawerLayout({ children }) {
 }
 DrawerLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  themeMode: PropTypes.node.isRequired,
 };

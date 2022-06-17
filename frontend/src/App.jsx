@@ -4,7 +4,8 @@ import "./App.css";
 import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
 import FuDataTable from "@components/FuDataTable";
-import { createTheme, ThemeProvider } from "@mui/material";
+import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const tableHeadCells = [
   {
@@ -194,9 +195,31 @@ const theme = createTheme({
         },
       },
     },
+    // Name of the component
+    MuiDrawer: {
+      styleOverrides: {
+        // Name of the slot
+        paper: {
+          // Some CSS
+          color: "rgba(255,255,255, 0.6)",
+          backgroundColor: "#7C179F",
+        },
+      },
+    },
+
+    MuiAppBar: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          color: "#342F35",
+          backgroundColor: "#FCFCFC",
+          height: "50px",
+        },
+      },
+    },
   },
 });
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -204,10 +227,18 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route
-            path="/analysis"
-            element={<FuDataTable headCells={tableHeadCells} data={data} />}
-          />
+          <Route>
+            {/* ROUTES HERE */}
+            <Route
+              path="/analysis"
+              element={
+                <DrawerLayout>
+                  <FuDataTable headCells={tableHeadCells} data={data} />
+                </DrawerLayout>
+              }
+            ></Route>
+            {/* END OF ROUTES */}
+          </Route>
         </Routes>
       </Router>
     </ThemeProvider>

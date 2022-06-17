@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/db");
 
-const Upload = sequelize.define(
-  "upload",
+const DatevAccountDefaults = sequelize.define(
+  "datev_account_defaults",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,20 +10,24 @@ const Upload = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    file_path: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    file_name: {
+    name: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    org_file_name: {
+    number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    category_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    subcategory_name: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
   },
-  { tableName: "uploads" }
+  { tableName: "datev_account_defaults" }
 );
 
-module.exports = Upload;
+module.exports = DatevAccountDefaults;

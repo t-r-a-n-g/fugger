@@ -1,0 +1,1387 @@
+{
+  "COGS": {
+    "Aufwendungen für bezogene Leistungen": {
+      "accounts": [
+        { "name": "Fremdleistungen", "number": 3100 },
+        { "name": "Übertragungs- / TV-Arbeiten", "number": 3101 },
+        { "name": "Moderatoren & Kommentatoren", "number": 3102 },
+        { "name": "Streaming", "number": 3103 },
+        { "name": "Verwaltung Mitglieder, alt", "number": 3106 },
+        { "name": "Webserver", "number": 3107 },
+        { "name": "Systemgebühren", "number": 3108 },
+        { "name": "Fremdleistungen ohne Vorsteuer", "number": 3109 },
+        { "name": "PM-Leistung Niederlande BV 19% VSt/USt", "number": 3111 }
+      ]
+    }
+  },
+  "Consulting, Legal and Accounting": {
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Rechts- und Beratungskosten", "number": 4950 },
+        { "name": "Beratung IT", "number": 4951 },
+        { "name": "Buchführungskosten", "number": 4955 },
+        { "name": "Abschluss- und Prüfungskosten", "number": 4957 }
+      ]
+    }
+  },
+  "Depreciation": {
+    "Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen": {
+      "accounts": [
+        { "name": "Abschreibung immaterielle VermG", "number": 4822 },
+        { "name": "Abschreibung selbst geschaffene imm. VG", "number": 4823 },
+        { "name": "Abschr. Geschäfts- oder Firmenwert", "number": 4824 },
+        { "name": "Apl. Abschreib. Geschäfts-, Firmenwert", "number": 4825 },
+        { "name": "kalk. Abschreibung Fernsehrechte", "number": 4826 },
+        { "name": "Apl. Abschreibung selbst gesch. imm.VG", "number": 4827 },
+        { "name": "Abschreibungen auf Sachanlagen", "number": 4830 },
+        { "name": "Abschreibungen auf Gebäude", "number": 4831 },
+        { "name": "Abschreibungen auf Kfz", "number": 4832 },
+        { "name": "Apl. Abschreibungen auf Sachanlagen", "number": 4840 },
+        { "name": "Außergewöhnliche Abschreibung Gebäude", "number": 4841 },
+        { "name": "Außergewöhnliche Abschreibung auf Kfz", "number": 4842 },
+        { "name": "Außergewöhnliche Abschreibung so. WG", "number": 4843 },
+        { "name": "Sofortabschreibung GWG", "number": 4855 },
+        { "name": "Abschreibungen auf aktivierte GWG", "number": 4860 },
+        { "name": "Abschreibungen auf WG Sammelposten", "number": 4862 },
+        { "name": "Apl. Abschreibungen auf aktivierte GWG", "number": 4865 }
+      ]
+    },
+    "Abschreibungen auf Finanzanlagen und Wertpapiere des Umlaufvermögens": {
+      "accounts": [
+        { "name": "Abschr. Finanzanlagen (n. dauerhaft)", "number": 4866 },
+        { "name": "Abschreibung Finanzanlagen (dauerhaft)", "number": 4870 },
+        { "name": "Abschr. Finanzanl., zT.n.abz.(dauerhaft)", "number": 4871 },
+        { "name": "Verlustanteile Mitunternehmerschaften", "number": 4872 },
+        { "name": "Abschreibungen Wertpapiere des UV", "number": 4875 },
+        { "name": "Abschreibungen Wertpap. UV z.T. n.abz.", "number": 4876 },
+        { "name": "Abschreibungen Finanzanlagen, verb.UN", "number": 4877 },
+        { "name": "Abschreibungen auf WP des UV, verb. UN", "number": 4878 }
+      ]
+    },
+    "Abschreibungen auf sonstige Vermögensgegenstände des Umlaufvermögens (soweit unüblich hoch)": {
+      "accounts": [
+        { "name": "Abschr. sonst. VG des UV (unübl.Höhe)", "number": 4880 },
+        { "name": "Abschreibungen RHB/Waren, unüblich hoch", "number": 4892 },
+        { "name": "Abschr. fertige, unfert. EZ, unübl.hoch", "number": 4893 }
+      ]
+    },
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "AfA UV außer Vorr Wertp UV (übl. Höhe)", "number": 4886 }
+      ]
+    }
+  },
+  "Employee expenses": {
+    "Löhne und Gehälter": {
+      "accounts": [
+        { "name": "Löhne und Gehälter", "number": 4100 },
+        { "name": "Löhne", "number": 4110 },
+        { "name": "KFZ-Nutzung", "number": 4111 },
+        { "name": "Gehälter", "number": 4120 },
+        { "name": "Erstattungen LFZG", "number": 4121 },
+        { "name": "Geschäftsführergehälter GmbH-Gesells.", "number": 4124 },
+        { "name": "Tantiemen Gesellschafter-Geschäftsf.", "number": 4126 },
+        { "name": "Geschäftsführergehälter", "number": 4127 },
+        { "name": "Tantiemen Arbeitnehmer", "number": 4129 },
+        { "name": "Vermögenswirksame Leistungen", "number": 4170 },
+        { "name": "Fahrtkostenerstatt. Whg./Arbeitsstätte", "number": 4175 },
+        { "name": "Bedienungsgelder", "number": 4180 },
+        { "name": "Aushilfslöhne", "number": 4190 },
+        { "name": "Pauschale Steuer für Minijobber", "number": 4194 },
+        { "name": "Löhne für Minijobs", "number": 4195 },
+        { "name": "Pauschale Steuer für Gesellschafter-GF", "number": 4196 },
+        { "name": "Pauschale Steuer für Arbeitnehmer", "number": 4198 },
+        { "name": "Pauschale Steuer für Aushilfen", "number": 4199 }
+      ]
+    },
+    "Soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung": {
+      "accounts": [
+        { "name": "Gesetzliche Sozialaufwendungen", "number": 4130 },
+        { "name": "Beiträge zur Berufsgenossenschaft", "number": 4138 },
+        { "name": "Freiwillige soziale Aufwendung. LSt-frei", "number": 4140 },
+        { "name": "Sonstige soziale Abgaben", "number": 4141 },
+        { "name": "Soziale Abgaben für Minijobber", "number": 4144 },
+        { "name": "Versorgungskassen", "number": 4160 },
+        { "name": "Aufwendungen für Altersversorgung", "number": 4165 },
+        { "name": "Aufwendungen Altersversorgung Ges.er-GF", "number": 4166 },
+        { "name": "Pauschale Steuer für Versicherungen", "number": 4167 },
+        { "name": "Aufwendungen für Unterstützung", "number": 4169 }
+      ]
+    },
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Ausgleichsabgabe n.d.SchwerbehindertenG.", "number": 4139 }
+      ]
+    },
+    "Löhne und Gehälter": {
+      "accounts": [
+        { "name": "Freiwillige soziale Aufwendung. LSt-pfl.", "number": 4145 },
+        { "name": "Freiwillige Zuwendungen an Minijobber", "number": 4146 },
+        { "name": "Freiwillige Zuwendungen an Ges.er-GF", "number": 4147 },
+        { "name": "Pauschale Steuer auf sonstige Bezüge", "number": 4149 },
+        { "name": "Krankengeldzuschüsse", "number": 4150 },
+        { "name": "Eingliederungszuschüsse", "number": 4151 },
+        { "name": "Sachzuwendungen und Dienstleistg. an AN", "number": 4152 },
+        { "name": "Sachzuwend., Dienstleistungen Ges.er-GF", "number": 4153 },
+        { "name": "Zuschüsse Agenturen für Arbeit", "number": 4155 },
+        { "name": "Aufwendung Veränderung Urlaubsrückst.", "number": 4156 },
+        { "name": "Aufwendung Urlaubsrückstellg Ges.er-GF", "number": 4157 },
+        { "name": "Aufwendung Urlaubsrückst. Minijobber", "number": 4159 }
+      ]
+    }
+  },
+  "extraordinary Costs": {
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Erlöse Sachanlageverkäufe Buchverlust", "number": 8800 },
+        { "name": "Erlöse Sachanlageverkäufe 19% USt, BV", "number": 8801 },
+        { "name": "Erl. Sachanlageverk. § 4 Nr.1a UStG (BV)", "number": 8807 },
+        { "name": "Erl. Sachanlageverk. § 4 Nr.1b UStG (BV)", "number": 8808 },
+        { "name": "Erlöse Verkäufe immaterielle VermG, BV", "number": 8817 },
+        { "name": "Erlöse Verkäufe Finanzanlagen, BV", "number": 8818 },
+        { "name": "Erlöse Verkäufe Finanzanl. z.T.stfr,BV", "number": 8819 }
+      ]
+    }
+  },
+  "extraordinary Revenue": {
+    "Erträge aus Beteiligungen": {
+      "accounts": [
+        { "name": "Erträge aus Beteiligungen", "number": 2600 },
+        { "name": "Ertr. Beteiligungen an PersG, verb. UN", "number": 2603 },
+        { "name": "Erträge aus Beteiligungen z.T. stfrei", "number": 2615 },
+        { "name": "Ertr Ant Kap verb UN z.T.stfr (Beteilig)", "number": 2616 },
+        { "name": "Gewinnanteile Mitunternehmerschaften", "number": 2618 },
+        { "name": "Erträge a.Beteilig. an verbundenen UN", "number": 2619 }
+      ]
+    },
+    "Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens": {
+      "accounts": [
+        { "name": "Erträge Wertpapiere/Ausleihungen FAV", "number": 2620 },
+        { "name": "Ertr. Ausleihungen Finanzanlagevermögen", "number": 2621 },
+        { "name": "Ertr. Ausleihungen FAV an verbund. UN", "number": 2622 },
+        { "name": "Erträge Anteile an PersG, FAV", "number": 2623 },
+        { "name": "Erträge a.Beteilig. FAV z.T. steuerfrei", "number": 2625 },
+        { "name": "Ertr Ant KapG verb UN z.T.stfr (Wertpap)", "number": 2626 },
+        { "name": "Erhaltene Ausgleichszahlungen", "number": 2641 },
+        { "name": "Erträge Anteile PersG, verbundene UN", "number": 2646 },
+        { "name": "Erträge andere WP FAV an KapG, verb.UN", "number": 2647 },
+        { "name": "Erträge andere WP FAV an PersG,verb.UN", "number": 2648 },
+        { "name": "Erträge Wertpapiere/FAV-Ausl.verb.UN", "number": 2649 }
+      ]
+    },
+    "Sonstige betriebliche Erträg": {
+      "accounts": [
+        { "name": "Erträge Aktivierung unentgeltl.erworb VG", "number": 2760 },
+        { "name": "Kostenerstatt.,Rückvergütg. früh. Jahre", "number": 2762 }
+      ]
+    },
+    "Umsatzerlöse": {
+      "accounts": [
+        { "name": "Erträge aus Verwaltungskostenumlagen", "number": 2764 }
+      ]
+    },
+    "Erträge aus Verlustübernahme": {
+      "accounts": [{ "name": "Erträge aus Verlustübernahme", "number": 2790 }]
+    },
+    "Auf Grund einer Gewinngemeinschaft, eines Gewinn- oder Teil- gewinnabführungsvertrags erhaltene Gewinne": {
+      "accounts": [
+        { "name": "Gewinne auf Grund Gewinngemeinschaft", "number": 2792 },
+        { "name": "Gewinne auf Grund Gewinn/Teilgewinnabf", "number": 2794 }
+      ]
+    },
+    "Entnahmen aus der Kapitalrücklage": {
+      "accounts": [{ "name": "Entnahmen aus Kapitalrücklagen", "number": 2795 }]
+    },
+    "Entnahmen aus Gewinnrücklagen aus der gesetzlichen Rücklage": {
+      "accounts": [
+        { "name": "Entnahmen aus der gesetzlichen Rücklage", "number": 2796 }
+      ]
+    },
+    "Entnahmen aus Gewinnrücklagen aus satzungsmäßigen Rücklagen": {
+      "accounts": [
+        { "name": "Entnahmen aus satzungsm.Rücklagen", "number": 2797 }
+      ]
+    },
+    "Entnahmen aus Gewinnrücklagen aus anderen Gewinnrücklagen": {
+      "accounts": [
+        { "name": "Entnahmen aus anderen Gewinnrücklagen", "number": 2799 }
+      ]
+    },
+    "Entnahmen aus Gewinnrücklagen aus der Rücklage für Anteile an einem herrschenden oder mehrheitlich beteiligten Unternehmen": {
+      "accounts": [
+        { "name": "Entnahme Rücklage Anteile herrsch. UN", "number": 2840 }
+      ]
+    },
+    "Gewinnvortrag oder Verlustvortrag": {
+      "accounts": [
+        { "name": "Gewinnvortrag nach Verwendung", "number": 2860 },
+        { "name": "Verlustvortrag nach Verwendung", "number": 2868 }
+      ]
+    },
+    "Ausschüttung": {
+      "accounts": [{ "name": "Vorabausschüttung", "number": 2870 }]
+    },
+    "Sonstige betriebliche Erträge": {
+      "accounts": [
+        { "name": "Erlöse Sachanlageverkäufe 19% USt, BG", "number": 8820 },
+        { "name": "Erl. Sachanlageverk.§ 4 Nr.1a UStG,Buchg", "number": 8827 },
+        { "name": "Erl. Sachanlageverk.§ 4 Nr.1b UStG,Buchg", "number": 8828 },
+        { "name": "Erlöse Sachanlageverkäufe Buchgewinn", "number": 8829 },
+        { "name": "Erlöse Verkäufe immaterielle VermG, BG", "number": 8837 },
+        { "name": "Erlöse Verkäufe Finanzanlagen, BG", "number": 8838 },
+        { "name": "Erlöse Verkäufe Finanzanl. z.T.stfr,BG", "number": 8839 },
+        { "name": "Unentgeltliche Wertabgaben", "number": 8900 },
+        { "name": "Unentgeltl. Erbringung Leist.19% USt", "number": 8925 },
+        { "name": "Unentgeltl. Erbringung Leist. ohne USt", "number": 8929 },
+        { "name": "Unentgeltl. Erbringung Leist. 7% USt", "number": 8932 },
+        { "name": "Unentgeltl. Erbringung Leist. 7% USt", "number": 8933 },
+        { "name": "Unentgeltl.Zuwendung Gegenstände 19% USt", "number": 8935 },
+        { "name": "Unentgeltl. Zuwend. Gegenstände ohne USt", "number": 8939 },
+        { "name": "Unentgeltl. Zuwendung von Waren 19% USt", "number": 8940 },
+        { "name": "Unentgeltl. Zuwendung von Waren 7% USt", "number": 8945 },
+        { "name": "Unentgeltl. Zuwendung von Waren 7% USt", "number": 8947 },
+        { "name": "Unentgeltl. Zuwendung von Waren ohne USt", "number": 8949 }
+      ]
+    }
+  },
+  "Interests expenses": {
+    "Zinsen und ähnliche Aufwendungen": {
+      "accounts": [
+        { "name": "Zinsen und ähnliche Aufwendungen", "number": 2100 },
+        { "name": "N. abzugsf. and.Nebenleistg §4 (5b) EStG", "number": 2102 },
+        { "name": "Abzugsfäh. and. Nebenleist. zu Steuern", "number": 2103 },
+        { "name": "Nicht abzugsfäh.and.Nebenleist.z.Steuern", "number": 2104 },
+        { "name": "Zinsaufw. § 233a AO nicht abzugsfähig", "number": 2105 },
+        { "name": "Zinsaufw. § 233a AO abzugsfähig", "number": 2107 },
+        { "name": "Zinsaufw. §§ 234 bis 237 AO n. abzugsf.", "number": 2108 },
+        { "name": "Zinsaufwendungen an verbund. Unternehmen", "number": 2109 },
+        { "name": "Zinsaufwendungen f.kfr.Verbindlichkeit.", "number": 2110 },
+        { "name": "Zinsaufw. §§ 234 bis 237 AO abzugsfähig", "number": 2111 },
+        { "name": "Zinsen für Gesellschafterdarlehen (KapG)", "number": 2114 },
+        { "name": "Zinsen und ähnliche Aufw.z.T. nicht abz.", "number": 2115 },
+        { "name": "Zinsen, Aufwendg. verb. UN z.T. n.abz.", "number": 2116 },
+        { "name": "Zinsen an Gesell., Beteilig. >25% (KapG)", "number": 2117 },
+        { "name": "Zinsen auf Kontokorrentkonten", "number": 2118 },
+        { "name": "Zinsaufwend. f.kfr. Verb.an verbund. UN", "number": 2119 },
+        { "name": "Zinsaufwendungen f.lfr.Verbindlichkeit.", "number": 2120 },
+        { "name": "Zinsaufwand Verrechnungskonten", "number": 2121 },
+        { "name": "Verzinsung Verr.kto Plönzke Holding AG", "number": 2122 },
+        { "name": "Abschreibg. Disagio zur Finanzierung", "number": 2123 },
+        { "name": "Abschreibg. Disagio zur Finanzierung AV", "number": 2124 },
+        { "name": "Zinsen für Gebäude im Betriebsvermögen", "number": 2125 },
+        { "name": "Zinsen zur Finanzierung Anlagevermögen", "number": 2126 },
+        { "name": "Renten und dauernde Lasten", "number": 2127 },
+        { "name": "Zinsaufw. für lfr. Verbindlichk.verb.UN", "number": 2129 },
+        { "name": "Diskontaufwendungen", "number": 2130 },
+        { "name": "Diskontaufwendungen an verbundene UN", "number": 2139 },
+        { "name": "Zinsähnliche Aufwendungen", "number": 2140 },
+        { "name": "Kreditprovision,Verwaltungskostenbeitr.", "number": 2141 },
+        { "name": "Zinsant. Zuführung Pensionsrückstellung", "number": 2142 },
+        { "name": "Zinsaufwand Abzinsung Verbindlichkeit", "number": 2143 },
+        { "name": "Zinsaufwand Abzinsung Rückstellungen", "number": 2144 },
+        { "name": "Aufw. Abzinsung Pensions-/ähnl. Rückst.", "number": 2145 },
+        { "name": "Aufw. Abzins. Pensions-/ähnl. RS,Verr", "number": 2146 },
+        { "name": "Aufwendungen VG zur Verrg § 246 (2) HGB", "number": 2147 },
+        { "name": "Aufw. Abzinsung Rückstellung n. abz.", "number": 2148 },
+        { "name": "Zinsähnliche Aufwendungen an verb.UN", "number": 2149 }
+      ]
+    },
+    "Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens": {
+      "accounts": [{ "name": "Zins- und Dividendenerträge", "number": 2640 }]
+    }
+  },
+  "Interests income": {
+    "Sonstige Zinsen und ähnliche Erträge": {
+      "accounts": [
+        { "name": "Sonstige Zinsen und ähnliche Erträge", "number": 2650 },
+        { "name": "Zinsertrag Darlehenskonten", "number": 2651 },
+        { "name": "Zinsertr.§ 233a AO, §4 (5b) EStG, stfrei", "number": 2653 },
+        { "name": "Erträge Wertpapiere/Ausleihungen UV", "number": 2654 },
+        { "name": "Erträge aus Anteilen KapG UV z.T. stfr", "number": 2655 },
+        { "name": "Ertr Ant KapG verb UN z.T.stfr (Zinsen)", "number": 2656 },
+        { "name": "Zinserträge § 233a AO, steuerpflichtig", "number": 2657 },
+        { "name": "Zinserträge § 233a AO,Anlage GK KSt,stf", "number": 2658 },
+        { "name": "Sonst. Zinsen u.ä. Erträge aus verb.UN", "number": 2659 },
+        { "name": "Diskonterträge", "number": 2670 },
+        { "name": "Diskonterträge verbundene Unternehmen", "number": 2679 },
+        { "name": "Zinsähnliche Erträge", "number": 2680 },
+        { "name": "Ertrag Abzinsung Rückstellung stfrei", "number": 2682 },
+        { "name": "Zinsertrag Abzinsung Verbindlichkeit", "number": 2683 },
+        { "name": "Zinsertrag Abzinsung Rückstellungen", "number": 2684 },
+        { "name": "Ertr. Abzinsung Pensions-/ähnl. Rückst.", "number": 2685 },
+        { "name": "Zinsähnliche Erträge verbundene UN", "number": 2689 },
+        { "name": "Erlöse Zinsen und Diskontspesen", "number": 8650 }
+      ]
+    },
+    "Sonstige Zinsen HB und ähnliche Erträge oder Zinsen und ähnliche Aufwendungen": {
+      "accounts": [
+        { "name": "Ertr. Abzins. Pensions-/ähnl. RS,Verr", "number": 2686 },
+        { "name": "Erträge VG zur Verrechnung § 246 (2) HGB", "number": 2687 }
+      ]
+    }
+  },
+  "Office": {
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Raumkosten", "number": 4200 },
+        { "name": "Miete, unbewegliche Wirtschaftsgüter", "number": 4210 },
+        { "name": "Aufwendungen für unbewegliche WG, GewSt", "number": 4211 },
+        { "name": "Leasing, unbewegliche Wirtschaftsgüter", "number": 4215 },
+        { "name": "Pacht, unbewegliche Wirtschaftsgüter", "number": 4220 },
+        { "name": "Vergütung Ges.er Miete,Pacht unbew.WG", "number": 4222 },
+        { "name": "Miet- und Pachtnebenkosten", "number": 4228 },
+        { "name": "Heizung", "number": 4230 },
+        { "name": "Gas, Strom, Wasser", "number": 4240 },
+        { "name": "Reinigung", "number": 4250 },
+        { "name": "Instandhaltung betrieblicher Räume", "number": 4260 },
+        { "name": "Abgaben betrieblich genutzt. Grundbesitz", "number": 4270 },
+        { "name": "Sonstige Raumkosten", "number": 4280 },
+        { "name": "Porto", "number": 4910 },
+        { "name": "Telefon", "number": 4920 },
+        { "name": "Telefax und Internetkosten", "number": 4925 },
+        { "name": "Bürobedarf", "number": 4930 },
+        { "name": "Verwaltungskosten", "number": 4997 }
+      ]
+    }
+  },
+  "Other Expenses": {
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Verluste durch Verschmelzg./Umwandlung", "number": 2004 },
+        { "name": "Verl.d.außergew.Schad.fälle(Bilanzierer)", "number": 2006 },
+        { "name": "Aufw. für Restrukturierung u. Sanierung", "number": 2007 },
+        { "name": "Verlust Veräuß/Aufg.Geschäftsaktivität", "number": 2008 },
+        { "name": "Betriebsfremde Aufwendungen", "number": 2010 },
+        { "name": "Periodenfremde Aufwendungen", "number": 2020 },
+        { "name": "Aufwendungen Übergangsvorschr. BilMoG", "number": 2090 },
+        { "name": "Aufwendungen Pensionsrückstellungen", "number": 2091 },
+        { "name": "Aufwendungen latente Steuern BilMoG", "number": 2094 },
+        { "name": "Aufwendungen aus Währungsumrechnungen", "number": 2150 },
+        { "name": "Aufw.Währungsumrechnung nicht §256a HGB", "number": 2151 },
+        { "name": "Aufwendg. Bewertung Finanzmittelfonds", "number": 2166 },
+        { "name": "Nicht abziehbare Vorsteuer", "number": 2170 },
+        { "name": "Nicht abziehbare Vorsteuer 7%", "number": 2171 },
+        { "name": "Nicht abziehbare Vorsteuer 19%", "number": 2176 },
+        { "name": "Sonstige Aufwendungen", "number": 2300 },
+        { "name": "Sonst.Aufwendungen, betriebsfr.u.regelm.", "number": 2307 },
+        { "name": "Sonst. nicht abziehbare Aufwendungen", "number": 2308 },
+        { "name": "Sonstige Aufwendungen unregelmäßig", "number": 2309 },
+        { "name": "Abgänge Sachanlagen Restbuchwert bei BV", "number": 2310 },
+        { "name": "Abgang immaterielle VermögensG, RBW, BV", "number": 2311 },
+        { "name": "Abgänge Finanzanlagen Restbuchwert, BV", "number": 2312 },
+        { "name": "Abgänge Finanzanlagen RBW z.T.stf., BV", "number": 2313 },
+        { "name": "Verluste aus Anlagenabgang", "number": 2320 },
+        { "name": "Verlust Veräuß.Ant. KapGes z.T. n. abz.", "number": 2323 },
+        { "name": "Verluste aus Abgang von Umlaufvermögen", "number": 2325 },
+        { "name": "Verluste aus Abgang UV z.T. n. abziehbar", "number": 2326 },
+        { "name": "Aufwendungen aus Erwerb eigener Anteile", "number": 2347 },
+        { "name": "Sonst. Grundstücksaufwendungen neutral", "number": 2350 },
+        { "name": "Zuwendungen,Spenden steuerl. n. abziehb.", "number": 2380 },
+        { "name": "Zuwendg.Spenden wissensch./kult. Zweck", "number": 2381 },
+        { "name": "Zuwendungen,Spenden mildtätige Zwecke", "number": 2382 },
+        { "name": "Zuwendungen,Spenden kirchl./rel./gemein.", "number": 2383 },
+        { "name": "Zuwendungen,Spenden an politische Partei", "number": 2384 },
+        { "name": "Nicht abziehbare AR-Vergütungen", "number": 2385 },
+        { "name": "Abziehbare Aufsichtsratsvergütung", "number": 2386 },
+        { "name": "Zuwendg. an Stiftg. gemeinnützige Zwecke", "number": 2387 },
+        { "name": "Zuwendg. an Stiftg. kirchl./rel./gemein.", "number": 2389 },
+        { "name": "Zuwendg. an Stiftg. wiss./mildt./kultur.", "number": 2390 },
+        { "name": "Forderungsverluste (übliche Höhe)", "number": 2400 },
+        { "name": "Forderungsverluste 7% USt", "number": 2401 },
+        { "name": "Ford.verluste a.stfrei.EU-Lieferungen", "number": 2402 },
+        { "name": "Forderungsverluste EU-Lieferungen 7%", "number": 2403 },
+        { "name": "Forderungsverluste 19% USt", "number": 2406 },
+        { "name": "Forderungsverluste EU-Lieferung 19% USt", "number": 2408 },
+        { "name": "Einstellung in die PWB auf Forderungen", "number": 2450 },
+        { "name": "Einstellung in die EWB auf Forderungen", "number": 2451 },
+        { "name": "Verrechneter kalkul.Unternehmerlohn", "number": 2890 },
+        { "name": "Verrechnete kalkul. Miete und Pacht", "number": 2891 },
+        { "name": "Verrechnete kalkulatorische Zinsen", "number": 2892 },
+        { "name": "Verrechnete kalkul. Abschreibungen", "number": 2893 },
+        { "name": "Verrechnete kalkulatorische Wagnisse", "number": 2894 },
+        { "name": "Verrechneter kalk. Lohn, unentgeltl. AN", "number": 2895 },
+        { "name": "Grundstücksaufwendungen, betrieblich", "number": 4290 },
+        { "name": "Nicht abziehb. VoSt (so betr Aufwand)", "number": 4300 },
+        { "name": "Nicht abziehb. VoSt 7% (so betr Aufwand)", "number": 4301 },
+        { "name": "Nicht abziehb. VoSt 19% (so betr Aufw)", "number": 4306 },
+        { "name": "Versicherungen", "number": 4360 },
+        { "name": "Versicherung für Gebäude", "number": 4366 },
+        { "name": "Prämie Rückdeckung f. Versorgungsleistg", "number": 4370 },
+        { "name": "Beiträge / Gebühren", "number": 4380 },
+        { "name": "Sonstige Abgaben", "number": 4390 },
+        { "name": "Abzugsf.Verspätungszuschlag/Zwangsgeld", "number": 4396 },
+        { "name": "Nicht abzf.Verspät.zuschlag/Zwangsgeld", "number": 4397 },
+        { "name": "Fahrzeugkosten", "number": 4500 },
+        { "name": "Kfz-Versicherungen", "number": 4520 },
+        { "name": "Laufende Kfz-Betriebskosten", "number": 4530 },
+        { "name": "Kfz-Reparaturen", "number": 4540 },
+        { "name": "Garagenmieten", "number": 4550 },
+        { "name": "Mautgebühren", "number": 4560 },
+        { "name": "Mietleasing Kfz", "number": 4570 },
+        { "name": "Leasing-Ablöse", "number": 4571 },
+        { "name": "Mietleasing Elektrofahrzeuge", "number": 4575 },
+        { "name": "Sonstige Kfz-Kosten", "number": 4580 },
+        { "name": "Fremdfahrzeugkosten", "number": 4595 },
+        { "name": "Streuartikel", "number": 4605 },
+        { "name": "Geschenke abzugsfähig ohne § 37b EStG", "number": 4630 },
+        { "name": "Geschenke abzugsfähig mit § 37b EStG", "number": 4631 },
+        { "name": "Pausch. Steuer Geschenke/Zuwend. abz.", "number": 4632 },
+        { "name": "Geschenke n. abzugsfähig ohne §37b EStG", "number": 4635 },
+        { "name": "Geschenke n. abzugsfähig mit § 37b EStG", "number": 4636 },
+        { "name": "Pausch. Steuer Geschenke/Zuwend. n.abz.", "number": 4637 },
+        { "name": "Geschenke ausschl.betrieblich genutzt", "number": 4638 },
+        { "name": "Zugaben mit § 37b EStG", "number": 4639 },
+        { "name": "Repräsentationskosten", "number": 4640 },
+        { "name": "Konferenz-/Tagungs-/Veranstaltungkosten", "number": 4645 },
+        { "name": "Bewirtungskosten", "number": 4650 },
+        { "name": "Eingeschr. abziehb.BA, abz. Anteil", "number": 4651 },
+        { "name": "Eingeschr. abziehb.BA, n. abz. Anteil", "number": 4652 },
+        { "name": "Aufmerksamkeiten", "number": 4653 },
+        { "name": "Nicht abzugsfähige Bewirtungskosten", "number": 4654 },
+        { "name": "Nicht abzugsfähige Betriebsausgaben", "number": 4655 },
+        { "name": "nicht abzugsfähige Bewirtungsk. 7% VSt", "number": 4656 },
+        { "name": "nicht abzugsfähige Bewirtungsk. o VSt", "number": 4657 },
+        { "name": "Reisekosten Arbeitnehmer", "number": 4660 },
+        { "name": "Messekosten", "number": 4661 },
+        { "name": "RK-Übernahme externe Dienstleister", "number": 4662 },
+        { "name": "Reisekosten Arbeitnehmer, Fahrtkosten", "number": 4663 },
+        { "name": "Reisekosten AN Verpfleg.mehraufwand", "number": 4664 },
+        { "name": "RK-Übernahme externe Dienstleister", "number": 4665 },
+        { "name": "Reisekosten AN Übernachtungsaufwand", "number": 4666 },
+        { "name": "Kilometergelderstattung Arbeitnehmer", "number": 4668 },
+        { "name": "Kosten Warenabgabe", "number": 4700 },
+        { "name": "Verpackungsmaterial", "number": 4710 },
+        { "name": "Ausgangsfrachten", "number": 4730 },
+        { "name": "Sonstige Transportkosten", "number": 4750 },
+        { "name": "Provisionen", "number": 4760 },
+        { "name": "Fremdarbeiten (Vertrieb)", "number": 4780 },
+        { "name": "Aufwand für Gewährleistungen", "number": 4790 },
+        { "name": "Reparatur/Instandh. Anlagen u. Maschinen", "number": 4800 },
+        { "name": "Reparatur u.Instandhaltung von Bauten", "number": 4801 },
+        { "name": "Reparatur/Instandh.v.and.Anlagen u. BGA", "number": 4805 },
+        { "name": "Wartungskosten für Hard- und Software", "number": 4806 },
+        { "name": "Zuführung zu Aufwandsrückstellungen", "number": 4808 },
+        { "name": "Sonstige Reparaturen u.Instandhaltungen", "number": 4809 },
+        { "name": "Mietleasing bewegl. WG techn. Anlagen", "number": 4810 },
+        { "name": "Miete Equipment für Veranstaltungen", "number": 4811 },
+        { "name": "Anschaffung für Sale&Lease back", "number": 4812 },
+        { "name": "Sonstige betriebliche Aufwendungen", "number": 4900 },
+        { "name": "Interimskonto Vorsteuervergütung", "number": 4902 },
+        { "name": "Sonstige betriebl.u.regelm.Aufwendungen", "number": 4905 },
+        { "name": "Personalvermittlung / Headhunter", "number": 4909 },
+        { "name": "Zeitschriften, Bücher (Fachliteratur)", "number": 4940 },
+        { "name": "Fortbildungskosten", "number": 4945 },
+        { "name": "Freiwillige Sozialleistungen", "number": 4946 },
+        { "name": "Vergütung Ges.er Miete, Pacht bew. WG", "number": 4958 },
+        { "name": "Mieten für Einrichtungen bewegliche WG", "number": 4960 },
+        { "name": "Pacht (bewegliche Wirtschaftsgüter)", "number": 4961 },
+        { "name": "Aufwendungen für bewegliche WG, GewSt", "number": 4963 },
+        { "name": "Mietleasing bewegl. WG Betriebsausstatt.", "number": 4965 },
+        { "name": "Aufwand Abraum-/Abfallbeseitigung", "number": 4969 },
+        { "name": "Nebenkosten des Geldverkehrs", "number": 4970 },
+        { "name": "Kosten Kreditkartenabrechnungen", "number": 4971 },
+        { "name": "Aufwendg. Anteile KapGes z.T. n. abz.", "number": 4975 },
+        { "name": "Veräußerungskosten (bei Veräuß.gewinn)", "number": 4976 },
+        { "name": "Veräußerungskosten (bei Veräuß.verlust)", "number": 4977 },
+        { "name": "Sonstiger Betriebsbedarf", "number": 4980 },
+        { "name": "Werkzeuge und Kleingeräte", "number": 4985 },
+        { "name": "Kalkulatorischer Unternehmerlohn", "number": 4990 },
+        { "name": "Kalkulatorische Miete und Pacht", "number": 4991 },
+        { "name": "Kalkulatorische Zinsen", "number": 4992 },
+        { "name": "Kalkulatorische Abschreibungen", "number": 4993 },
+        { "name": "Kalkulatorische Wagnisse", "number": 4994 },
+        { "name": "Kalkulatorischer Lohn, unentgeltl. AN", "number": 4995 },
+        { "name": "Herstellungskosten", "number": 4996 },
+        { "name": "Vertriebskosten", "number": 4998 },
+        { "name": "Gegenkonto zu 4996 bis 4998", "number": 4999 }
+      ]
+    },
+    "Sonstige betriebliche Erträge": {
+      "accounts": [
+        { "name": "Abgänge Sachanlagen Restbuchwert bei BG", "number": 2315 },
+        { "name": "Abgang immaterielle VermögensG, RBW, BG", "number": 2316 },
+        { "name": "Abgänge Finanzanlagen Restbuchwert, BG", "number": 2317 },
+        { "name": "Abgänge Finanzanlagen RBW z.T. stf.,BG", "number": 2318 },
+        { "name": "Erträge Verschmelzung und Umwandlung", "number": 2504 },
+        { "name": "Gewinn Veräuß/Aufg. Geschäftsaktivität", "number": 2508 }
+      ]
+    },
+    "Abschreibungen auf Vermögensgegenstände des Umlaufsvermögens, soweit diese die in der kapitalgesellschaft üblichen Abschreibungen überschreiten": {
+      "accounts": [
+        { "name": "Forderungsverluste", "number": 2430 },
+        { "name": "Forderungsverluste 7% USt (unübl. hoch)", "number": 2431 },
+        { "name": "Forderungsverluste 19% USt (unübl.hoch)", "number": 2436 },
+        { "name": "Abschr. Forderungen ggb.KapG, unübl.hoch", "number": 2440 },
+        { "name": "Abschr. Ford. ggb. Ges.ern, unübl. hoch", "number": 2441 }
+      ]
+    },
+    "Einstellungen in Gewinnrücklagen in die Rücklage für Anteile an einem herrschenden oder mehrheitlich beteiligten Un- ternehmen": {
+      "accounts": [
+        { "name": "Einstellung Rücklage Anteil herrsch.UN", "number": 2480 }
+      ]
+    },
+    "Aufwendungen aus Verlustübernahme": {
+      "accounts": [
+        { "name": "Aufwendungen aus Verlustübernahme", "number": 2490 }
+      ]
+    },
+    "Auf Grund einer Gewinngemeinschaft, eines Gewinn- oder Teilgewinnabführungsvertrags abgeführte Gewinne": {
+      "accounts": [
+        { "name": "abgeführte Gewinne EAV", "number": 2492 },
+        { "name": "Ausgleichszahlung Minderheitsgesellschaf", "number": 2494 }
+      ]
+    },
+    "Auf Grund einer Gewinngemeinschaft, eines Gewinn- oder Teilgewinnabführungsvertragsabgeführte Gewinne oder Erträge aus Verlustübernahme": {
+      "accounts": [
+        { "name": "Gewinn-/Verlustant.stille Bet § 8 GewStG", "number": 2493 }
+      ]
+    },
+    "Einstellung in die Kapitalrücklage nach den Vorschriften über die vereinfachte Kapitalherabsetzung": {
+      "accounts": [{ "name": "Einstellungen Kapitalrücklage", "number": 2495 }]
+    },
+    "Einstellungen in Gewinnrücklagen in die gesetzliche Rücklage": {
+      "accounts": [
+        { "name": "Einstellungen gesetzliche Rücklage", "number": 2496 }
+      ]
+    },
+    "Einstellungen in Gewinnrücklagen in satzungsmäßige Rücklagen": {
+      "accounts": [
+        { "name": "Einstellungen i.satzungsmäß.Rücklagen", "number": 2497 }
+      ]
+    },
+    "Einstellungen in Gewinnrücklagen in andere Gewinnrücklagen": {
+      "accounts": [
+        { "name": "Einstellungen andere Gewinnrücklagen", "number": 2499 }
+      ]
+    },
+    "Aufwendungen für bezogene Leistungen": {
+      "accounts": [
+        { "name": "Fremdleistung betriebswirtschaftlich", "number": 3105 },
+        { "name": "Bauleistungen §13b UStG 7% Vorst./USt", "number": 3110 },
+        { "name": "Sonstige Leistungen EU 7% Vorst./USt", "number": 3113 },
+        { "name": "Management - allocation", "number": 3115 },
+        { "name": "Support - allocation", "number": 3116 },
+        { "name": "Controlling - allocation", "number": 3117 },
+        { "name": "Finance - allocation", "number": 3118 },
+        { "name": "Bauleistungen §13b UStG 19% Vorst./USt", "number": 3120 },
+        { "name": "Sonstige Leistungen EU 19% Vorst./USt", "number": 3123 },
+        { "name": "Leistungen ausländ.Untern.19% Vorst./USt", "number": 3125 },
+        { "name": "Bauleistungen §13b UStG o.Vorst.,7% USt", "number": 3130 },
+        { "name": "Sonstige Leistungen EU o.Vorst.,7% USt", "number": 3133 },
+        { "name": "Leistungen ausl.Untern.o.Vorst.,7% USt", "number": 3135 },
+        { "name": "Bauleistungen §13b UStG o.Vorst.,19% USt", "number": 3140 },
+        { "name": "Sonstige Leistungen EU o.Vorst.,19% USt", "number": 3143 },
+        { "name": "Leistungen ausl.Untern.o.Vorst.,19% USt", "number": 3145 },
+        { "name": "Erhaltene Skonti Leistungen §13b UStG", "number": 3150 },
+        { "name": "Erhalt. Skonti § 13b UStG 19% Vorst./USt", "number": 3151 },
+        { "name": "Erhalt. Skonti § 13b UStG 16% Vorst./USt", "number": 3152 },
+        { "name": "Erhaltene Skonti § 13b UStG o.VoSt/m.USt", "number": 3153 },
+        { "name": "Erhalt. Skonti § 13b UStG o.VoSt/19% USt", "number": 3154 },
+        { "name": "Erhalt. Skonti § 13b UStG o.VoSt/16% USt", "number": 3155 },
+        { "name": "Leistungen § 13b UStG mit VoSt-Abzug", "number": 3160 },
+        { "name": "Leistungen § 13b UStG ohne VoSt-Abzug", "number": 3165 },
+        { "name": "Fremdleistung (Miet- u.Pachtz. bew. WG)", "number": 3170 },
+        { "name": "Fremdleistung (Miet- u.Pachtz. unbew.WG)", "number": 3175 },
+        { "name": "Fremdleistung (Entgelte Rechte u.Liz.)", "number": 3180 }
+      ]
+    },
+    "Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren": {
+      "accounts": [
+        { "name": "Wareneingang", "number": 3200 },
+        { "name": "Wareneingang 7% Vorsteuer", "number": 3300 },
+        { "name": "Wareneingang 7% Vorsteuer", "number": 3347 },
+        { "name": "Wareneingang 5% Vorsteuer", "number": 3348 },
+        { "name": "Wareneingang ohne Vorsteuerabzug", "number": 3349 },
+        { "name": "Wareneingang 19% Vorsteuer", "number": 3400 },
+        { "name": "Wareneingang 19% Vorsteuer", "number": 3418 },
+        { "name": "Wareneingang 16% Vorsteuer", "number": 3419 },
+        { "name": "EU-Erwerb 7% Vorst./USt", "number": 3420 },
+        { "name": "EU-Erwerb 19% Vorst./USt", "number": 3425 },
+        { "name": "EU-Erwerb ohne Vorsteuer, 7% USt", "number": 3430 },
+        { "name": "EU-Erwerb ohne Vorsteuer, 19% USt", "number": 3435 },
+        { "name": "EU-Erwerb Nfz ohne UStID 19% Vorst./USt", "number": 3440 },
+        { "name": "Wareneingang 5,5% Vorsteuer", "number": 3505 },
+        { "name": "Wareneingang 10,7% Vorsteuer", "number": 3540 },
+        { "name": "Steuerfreier EU-Erwerb", "number": 3550 },
+        { "name": "Wareneingang, im Drittland steuerbar", "number": 3551 },
+        { "name": "Erwerb 1. Abnehmer im Dreiecksgeschäft", "number": 3552 },
+        { "name": "Erwerb Waren letzt.Abn.DG 19% Vorst./USt", "number": 3553 },
+        { "name": "Wareneingang, im anderen EU-Land stb.", "number": 3558 },
+        { "name": "Steuerfreie Einfuhren", "number": 3559 },
+        { "name": "Waren aus USt-Lager 7% Vorst./USt", "number": 3560 },
+        { "name": "Waren aus USt-Lager 19% Vorst./USt", "number": 3565 },
+        { "name": "Nicht abziehb. VoSt (Materialaufwand)", "number": 3600 },
+        { "name": "Nicht abziehb. VoSt 7% (Materialaufwand)", "number": 3610 },
+        { "name": "Nicht abziehb. VoSt 19% (Materialaufw.)", "number": 3660 },
+        { "name": "Nachlässe", "number": 3700 },
+        { "name": "Nachlässe aus Einkauf RHB", "number": 3701 },
+        { "name": "Nachlässe 7% Vorsteuer", "number": 3710 },
+        { "name": "Nachlässe aus Einkauf RHB 7% Vorst.", "number": 3714 },
+        { "name": "Nachlässe aus Einkauf RHB 19% Vorst.", "number": 3715 },
+        { "name": "Nachlässe RHB, EU-Erwerb 7% Vorst./USt", "number": 3717 },
+        { "name": "Nachlässe RHB, EU-Erwerb 19% Vorst./USt", "number": 3718 },
+        { "name": "Nachlässe 19% Vorsteuer", "number": 3720 },
+        { "name": "Nachlässe aus EU-Erwerb 7% Vorst./USt", "number": 3724 },
+        { "name": "Nachlässe aus EU-Erwerb 19% Vorst./USt", "number": 3725 },
+        { "name": "Erhaltene Skonti", "number": 3730 },
+        { "name": "Erhaltene Skonti 7% Vorsteuer", "number": 3731 },
+        { "name": "Erhaltene Skonti 5% Vorsteuer", "number": 3732 },
+        { "name": "Erhaltene Skonti Einkauf RHB", "number": 3733 },
+        { "name": "Erhaltene Skonti Einkauf RHB 7% Vorst.", "number": 3734 },
+        { "name": "Erhaltene Skonti Einkauf RHB 5% Vorst.", "number": 3735 },
+        { "name": "Erhaltene Skonti 19% Vorsteuer", "number": 3736 },
+        { "name": "Erhaltene Skonti 16% Vorsteuer", "number": 3737 },
+        { "name": "Erhaltene Skonti Einkauf RHB 19% Vorst.", "number": 3738 },
+        { "name": "Erhaltene Skonti Einkauf RHB 16% Vorst.", "number": 3739 },
+        { "name": "Erhalt. Skonti RHB EU-Erw.16% Vorst./USt", "number": 3740 },
+        { "name": "Erhalt. Skonti RHB EU-Erw.19% Vorst./USt", "number": 3741 },
+        { "name": "Erhalt. Skonti RHB EU-Erw. 5% Vorst./USt", "number": 3742 },
+        { "name": "Erhalt. Skonti RHB EU-Erw. 7% Vorst./USt", "number": 3743 },
+        { "name": "Erhaltene Skonti RHB EU-Erwerb", "number": 3744 },
+        { "name": "Erhaltene Skonti EU-Erwerb", "number": 3745 },
+        { "name": "Erhalt. Skonti EU-Erwerb 7% Vorst./USt", "number": 3746 },
+        { "name": "Erhalt. Skonti EU-Erwerb 5% Vorst./USt", "number": 3747 },
+        { "name": "Erhalt. Skonti EU-Erwerb 19% Vorst./USt", "number": 3748 },
+        { "name": "Erhalt. Skonti EU-Erwerb 16% Vorst./USt", "number": 3749 },
+        { "name": "Erhaltene Boni 7% Vorsteuer", "number": 3750 },
+        { "name": "Erhaltene Boni aus Einkauf RHB", "number": 3753 },
+        { "name": "Erhaltene Boni Einkauf RHB 7% Vorst.", "number": 3754 },
+        { "name": "Erhaltene Boni Einkauf RHB 19% Vorst.", "number": 3755 },
+        { "name": "Erhaltene Boni 19% Vorsteuer", "number": 3760 },
+        { "name": "Erhaltene Boni", "number": 3769 },
+        { "name": "Erhaltene Rabatte", "number": 3770 },
+        { "name": "Erhaltene Rabatte 7% Vorsteuer", "number": 3780 },
+        { "name": "Erhaltene Rabatte aus Einkauf RHB", "number": 3783 },
+        { "name": "Erhaltene Rabatte Einkauf RHB 7% Vorst", "number": 3784 },
+        { "name": "Erhaltene Rabatte Einkauf RHB 19% Vorst", "number": 3785 },
+        { "name": "Erhaltene Skonti RHB 10,7% Vorsteuer", "number": 3788 },
+        { "name": "Erhaltene Rabatte 19% Vorsteuer", "number": 3790 },
+        { "name": "Erh.Skonti RHB letz.Abn.DG 19% Vorst/USt", "number": 3792 },
+        { "name": "Erh.Skonti Waren DG letz.Abn.19%VoSt/USt", "number": 3793 },
+        { "name": "Erhaltene Skonti 5,5% Vorsteuer", "number": 3794 },
+        { "name": "Erhaltene Skonti 10,7% Vorsteuer", "number": 3796 },
+        { "name": "Erhaltene Skonti RHB 5,5% Vorsteuer", "number": 3798 },
+        { "name": "Bezugsnebenkosten", "number": 3800 },
+        { "name": "Leergut", "number": 3830 },
+        { "name": "Zölle und Einfuhrabgaben", "number": 3850 },
+        { "name": "Bestandsveränderungen Waren", "number": 3950 },
+        { "name": "Bestandsveränderungen RHB", "number": 3955 },
+        { "name": "Bestandsveränderung RHB-Stoffe / Waren", "number": 3960 },
+        { "name": "Verrechnete Stoffkosten", "number": 3990 },
+        { "name": "Material- und Stoffverbrauch", "number": 4000 }
+      ]
+    },
+    "Roh-, Hilfs- und Betriebsstoffe": {
+      "accounts": [
+        { "name": "Bestand Roh-,Hilfs- und Betriebsstoffe", "number": 3970 }
+      ]
+    },
+    "Fertige Erzeugnisse und Waren": {
+      "accounts": [
+        { "name": "Bestand Waren", "number": 3980 },
+        { "name": "Fertige Erzeugnisse und Waren", "number": 7100 },
+        { "name": "Fertige Erzeugnisse", "number": 7110 },
+        { "name": "Waren", "number": 7140 }
+      ]
+    },
+    "Sonstige Steuern": {
+      "accounts": [{ "name": "Kfz-Steuern", "number": 4510 }]
+    },
+    "Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen": {
+      "accounts": [{ "name": "Kaufleasing", "number": 4815 }]
+    },
+    "Unfertige Erzeugnisse und Leistungen": {
+      "accounts": [
+        { "name": "Unfertige Erzeugnisse und Leistungen", "number": 7000 },
+        { "name": "Unfertige Erzeugnisse", "number": 7050 },
+        { "name": "Unfertige Leistungen", "number": 7080 }
+      ]
+    },
+    "In Ausführung befindliche Bauaufträge": {
+      "accounts": [
+        { "name": "In Ausführung befindl. Bauaufträge", "number": 7090 }
+      ]
+    },
+    "In Arbeit befindliche Aufträge": {
+      "accounts": [{ "name": "In Arbeit befindliche Aufträge", "number": 7095 }]
+    },
+    "Sonstige Zinsen und ähnliche Erträge": {
+      "accounts": [
+        { "name": "Erl.Zinsen /Diskontspesen aus verb.UN", "number": 8660 }
+      ]
+    },
+    "Saldenvorträge Sachkonten": {
+      "accounts": [
+        { "name": "Saldenvorträge Sachkonten", "number": 9000 },
+        { "name": "Saldenvorträge Sachkonten", "number": 9001 }
+      ]
+    },
+    "Saldenvorträge Debitoren": {
+      "accounts": [{ "name": "Saldenvorträge Debitoren", "number": 9008 }]
+    },
+    "Saldenvorträge Kreditoren": {
+      "accounts": [{ "name": "Saldenvorträge Kreditoren", "number": 9009 }]
+    },
+    "Offene Posten 2020": {
+      "accounts": [{ "name": "Offene Posten 2020", "number": 9050 }]
+    },
+    "Offene Posten 2021": {
+      "accounts": [{ "name": "Offene Posten 2021", "number": 9051 }]
+    },
+    "Offene Posten 2000": {
+      "accounts": [{ "name": "Offene Posten 2000", "number": 9070 }]
+    },
+    "Offene Posten 2001": {
+      "accounts": [{ "name": "Offene Posten 2001", "number": 9071 }]
+    },
+    "Offene Posten 2002": {
+      "accounts": [{ "name": "Offene Posten 2002", "number": 9072 }]
+    },
+    "Offene Posten 2003": {
+      "accounts": [{ "name": "Offene Posten 2003", "number": 9073 }]
+    },
+    "Offene Posten 2004": {
+      "accounts": [{ "name": "Offene Posten 2004", "number": 9074 }]
+    },
+    "Offene Posten 2005": {
+      "accounts": [{ "name": "Offene Posten 2005", "number": 9075 }]
+    },
+    "Offene Posten 2006": {
+      "accounts": [{ "name": "Offene Posten 2006", "number": 9076 }]
+    },
+    "Offene Posten 2007": {
+      "accounts": [{ "name": "Offene Posten 2007", "number": 9077 }]
+    },
+    "Offene Posten 2008": {
+      "accounts": [{ "name": "Offene Posten 2008", "number": 9078 }]
+    },
+    "Offene Posten 2009": {
+      "accounts": [{ "name": "Offene Posten 2009", "number": 9079 }]
+    },
+    "Offene Posten 2010": {
+      "accounts": [{ "name": "Offene Posten 2010", "number": 9080 }]
+    },
+    "Offene Posten 2011": {
+      "accounts": [{ "name": "Offene Posten 2011", "number": 9081 }]
+    },
+    "Offene Posten 2012": {
+      "accounts": [{ "name": "Offene Posten 2012", "number": 9082 }]
+    },
+    "Offene Posten 2013": {
+      "accounts": [{ "name": "Offene Posten 2013", "number": 9083 }]
+    },
+    "Offene Posten 2014": {
+      "accounts": [{ "name": "Offene Posten 2014", "number": 9084 }]
+    },
+    "Offene Posten 2015": {
+      "accounts": [{ "name": "Offene Posten 2015", "number": 9085 }]
+    },
+    "Offene Posten 2016": {
+      "accounts": [{ "name": "Offene Posten 2016", "number": 9086 }]
+    },
+    "Offene Posten 2017": {
+      "accounts": [{ "name": "Offene Posten 2017", "number": 9087 }]
+    },
+    "Offene Posten 2018": {
+      "accounts": [{ "name": "Offene Posten 2018", "number": 9088 }]
+    },
+    "Offene Posten 2019": {
+      "accounts": [{ "name": "Offene Posten 2019", "number": 9089 }]
+    },
+    "Summenvortrag": {
+      "accounts": [{ "name": "Summenvortrag", "number": 9090 }]
+    },
+    "Verkaufstage": {
+      "accounts": [{ "name": "Verkaufstage", "number": 9101 }]
+    },
+    "Anzahl der Barkunden": {
+      "accounts": [{ "name": "Anzahl der Barkunden", "number": 9102 }]
+    },
+    "Beschäftigte Personen (BWA)": {
+      "accounts": [{ "name": "Beschäftigte Personen (BWA)", "number": 9103 }]
+    },
+    "Unbezahlte Personen": {
+      "accounts": [{ "name": "Unbezahlte Personen", "number": 9104 }]
+    },
+    "Verkaufskräfte": {
+      "accounts": [{ "name": "Verkaufskräfte", "number": 9105 }]
+    },
+    "Geschäftsraum qm": {
+      "accounts": [{ "name": "Geschäftsraum qm", "number": 9106 }]
+    },
+    "Verkaufsraum qm": {
+      "accounts": [{ "name": "Verkaufsraum qm", "number": 9107 }]
+    },
+    "Anzahl Rechnungen": {
+      "accounts": [{ "name": "Anzahl Rechnungen", "number": 9116 }]
+    },
+    "Anzahl Kreditkunden monatlich": {
+      "accounts": [{ "name": "Anzahl Kreditkunden monatlich", "number": 9117 }]
+    },
+    "Anzahl Kreditkunden aufgelaufen": {
+      "accounts": [
+        { "name": "Anzahl Kreditkunden aufgelaufen", "number": 9118 }
+      ]
+    },
+    "Erweiterungsinvestitionen": {
+      "accounts": [{ "name": "Erweiterungsinvestitionen", "number": 9120 }]
+    },
+    "Auftragseingang im Geschäftsjahr": {
+      "accounts": [
+        { "name": "Auftragseingang im Geschäftsjahr", "number": 9135 }
+      ]
+    },
+    "Auftragsbestand": {
+      "accounts": [{ "name": "Auftragsbestand", "number": 9140 }]
+    },
+    "Gegenkto. zu Konten 9101-9107, 9116-9118": {
+      "accounts": [
+        { "name": "Gegenkto. zu Konten 9101-9107, 9116-9118", "number": 9190 }
+      ]
+    },
+    "Gegenkonto zu Konten 9120, 9135-9140": {
+      "accounts": [
+        { "name": "Gegenkonto zu Konten 9120, 9135-9140", "number": 9199 }
+      ]
+    },
+    "Beschäftigte Personen (Bilanz)": {
+      "accounts": [{ "name": "Beschäftigte Personen (Bilanz)", "number": 9200 }]
+    },
+    "Gegenkonto zu 9200": {
+      "accounts": [{ "name": "Gegenkonto zu 9200", "number": 9209 }]
+    },
+    "Produktive Löhne": {
+      "accounts": [{ "name": "Produktive Löhne", "number": 9210 }]
+    },
+    "Gegenkonto zu 9210": {
+      "accounts": [{ "name": "Gegenkonto zu 9210", "number": 9219 }]
+    },
+    "Gez. Kapital in DM Art. 42 (3) S.1 EGHGB": {
+      "accounts": [
+        { "name": "Gez. Kapital in DM Art. 42 (3) S.1 EGHGB", "number": 9220 }
+      ]
+    },
+    "Gez.Kapital in Euro Art.42 (3) S.2 EGHGB": {
+      "accounts": [
+        { "name": "Gez.Kapital in Euro Art.42 (3) S.2 EGHGB", "number": 9221 }
+      ]
+    },
+    "Gegenkonto zu Konten 9220-9221": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9220-9221", "number": 9229 }]
+    },
+    "Investitionsverbindlichk.b.Leistg.Verb.": {
+      "accounts": [
+        { "name": "Investitionsverbindlichk.b.Leistg.Verb.", "number": 9240 }
+      ]
+    },
+    "Investitionsverbindlichk. Sachanlagen": {
+      "accounts": [
+        { "name": "Investitionsverbindlichk. Sachanlagen", "number": 9241 }
+      ]
+    },
+    "Investitionsverbindlichk. immat. VG": {
+      "accounts": [
+        { "name": "Investitionsverbindlichk. immat. VG", "number": 9242 }
+      ]
+    },
+    "Investitionsverbindlichk. Finanzanlagen": {
+      "accounts": [
+        { "name": "Investitionsverbindlichk. Finanzanlagen", "number": 9243 }
+      ]
+    },
+    "Gegenkonto zu Konten 9240 - 43": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9240 - 43", "number": 9244 }]
+    },
+    "Forderungen Sachanlagenverkäufe": {
+      "accounts": [
+        { "name": "Forderungen Sachanlagenverkäufe", "number": 9245 }
+      ]
+    },
+    "Forderungen Verkäufe immat.Vermögensg.": {
+      "accounts": [
+        { "name": "Forderungen Verkäufe immat.Vermögensg.", "number": 9246 }
+      ]
+    },
+    "Forderungen Verkäufe von Finanzanlagen": {
+      "accounts": [
+        { "name": "Forderungen Verkäufe von Finanzanlagen", "number": 9247 }
+      ]
+    },
+    "Gegenkonto zu Konten 9245 - 47": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9245 - 47", "number": 9249 }]
+    },
+    "Kurzfristige Rückstellungen": {
+      "accounts": [{ "name": "Kurzfristige Rückstellungen", "number": 9260 }]
+    },
+    "Mittelfristige Rückstellungen": {
+      "accounts": [{ "name": "Mittelfristige Rückstellungen", "number": 9262 }]
+    },
+    "Langfristige Rückstellung o.Pensionen": {
+      "accounts": [
+        { "name": "Langfristige Rückstellung o.Pensionen", "number": 9264 }
+      ]
+    },
+    "Gegenkonto zu Konten 9260-9268": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9260-9268", "number": 9269 }]
+    },
+    "Gegenkonto zu Konten 9271-9279": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9271-9279", "number": 9270 }]
+    },
+    "Verbindl. Wechselbegebung/-übertragung": {
+      "accounts": [
+        { "name": "Verbindl. Wechselbegebung/-übertragung", "number": 9271 }
+      ]
+    },
+    "Verbindl. Wechsel verb./assoziierte UN": {
+      "accounts": [
+        { "name": "Verbindl. Wechsel verb./assoziierte UN", "number": 9272 }
+      ]
+    },
+    "Verbindl. Bürgsch.,Wechsel-/Scheckbürg.": {
+      "accounts": [
+        { "name": "Verbindl. Bürgsch.,Wechsel-/Scheckbürg.", "number": 9273 }
+      ]
+    },
+    "Verbindl.Bürgschaft verb./assoziierte UN": {
+      "accounts": [
+        { "name": "Verbindl.Bürgschaft verb./assoziierte UN", "number": 9274 }
+      ]
+    },
+    "Verbindl.a. Gewährleistungsverträgen": {
+      "accounts": [
+        { "name": "Verbindl.a. Gewährleistungsverträgen", "number": 9275 }
+      ]
+    },
+    "Verbindl. Gewährleistg. verb./assoz. UN": {
+      "accounts": [
+        { "name": "Verbindl. Gewährleistg. verb./assoz. UN", "number": 9276 }
+      ]
+    },
+    "Haftung fremde Verbindlichkeiten": {
+      "accounts": [
+        { "name": "Haftung fremde Verbindlichkeiten", "number": 9277 }
+      ]
+    },
+    "Haftung Verbindl. verb./assoziierte UN": {
+      "accounts": [
+        { "name": "Haftung Verbindl. verb./assoziierte UN", "number": 9278 }
+      ]
+    },
+    "Verpflichtungen aus Treuhandvermögen": {
+      "accounts": [
+        { "name": "Verpflichtungen aus Treuhandvermögen", "number": 9279 }
+      ]
+    },
+    "Gegenkonto zu Konten 9281-9284": {
+      "accounts": [{ "name": "Gegenkonto zu Konten 9281-9284", "number": 9280 }]
+    },
+    "Verpflichtungen Leasing u.Mietverträgen": {
+      "accounts": [
+        { "name": "Verpflichtungen Leasing u.Mietverträgen", "number": 9281 }
+      ]
+    },
+    "Verpflichtungen Leasing-/Mietvertr.v.UN": {
+      "accounts": [
+        { "name": "Verpflichtungen Leasing-/Mietvertr.v.UN", "number": 9282 }
+      ]
+    },
+    "Andere Verpflichtungen § 285 Nr. 3a HGB": {
+      "accounts": [
+        { "name": "Andere Verpflichtungen § 285 Nr. 3a HGB", "number": 9283 }
+      ]
+    },
+    "Andere Verpflichtg. §285 Nr. 3a HGB v.UN": {
+      "accounts": [
+        { "name": "Andere Verpflichtg. §285 Nr. 3a HGB v.UN", "number": 9284 }
+      ]
+    },
+    "UB Abzinsg Altersversorg. § 253 (6) HGB": {
+      "accounts": [
+        { "name": "UB Abzinsg Altersversorg. § 253 (6) HGB", "number": 9285 }
+      ]
+    },
+    "Gegenkonto zu 9285": {
+      "accounts": [{ "name": "Gegenkonto zu 9285", "number": 9286 }]
+    },
+    "Statistisches Konto steuerfreie Auslagen": {
+      "accounts": [
+        { "name": "Statistisches Konto steuerfreie Auslagen", "number": 9290 }
+      ]
+    },
+    "Gegenkonto zu 9290": {
+      "accounts": [{ "name": "Gegenkonto zu 9290", "number": 9291 }]
+    },
+    "Statistisches Konto Fremdgeld": {
+      "accounts": [{ "name": "Statistisches Konto Fremdgeld", "number": 9292 }]
+    },
+    "Gegenkonto zu 9292": {
+      "accounts": [{ "name": "Gegenkonto zu 9292", "number": 9293 }]
+    },
+    "Einlagen stiller Gesellschafter": {
+      "accounts": [
+        { "name": "Einlagen stiller Gesellschafter", "number": 9295 }
+      ]
+    },
+    "Bewertungskorrektur zu Forderungen L+L": {
+      "accounts": [
+        { "name": "Bewertungskorrektur zu Forderungen L+L", "number": 9960 }
+      ]
+    },
+    "Bewertungskorrektur zu sonst. Verbindl.": {
+      "accounts": [
+        { "name": "Bewertungskorrektur zu sonst. Verbindl.", "number": 9961 }
+      ]
+    },
+    "Bewertungskorrektur Guth. Kreditinstitut": {
+      "accounts": [
+        { "name": "Bewertungskorrektur Guth. Kreditinstitut", "number": 9962 }
+      ]
+    },
+    "Bewertungskorr. Verbindl.Kreditinstitut": {
+      "accounts": [
+        { "name": "Bewertungskorr. Verbindl.Kreditinstitut", "number": 9963 }
+      ]
+    },
+    "Bewertungskorrektur zu Verbindlichk. L+L": {
+      "accounts": [
+        { "name": "Bewertungskorrektur zu Verbindlichk. L+L", "number": 9964 }
+      ]
+    },
+    "Bewertungskorrektur zu sonstigen VermG": {
+      "accounts": [
+        { "name": "Bewertungskorrektur zu sonstigen VermG", "number": 9965 }
+      ]
+    },
+    "Gewinnkorrektur § 60 (2) EStDV": {
+      "accounts": [{ "name": "Gewinnkorrektur § 60 (2) EStDV", "number": 9984 }]
+    },
+    "Gegenkonto zu 9984": {
+      "accounts": [{ "name": "Gegenkonto zu 9984", "number": 9985 }]
+    },
+    "Ergebnisverteilung auf Fremdkapital": {
+      "accounts": [
+        { "name": "Ergebnisverteilung auf Fremdkapital", "number": 9986 }
+      ]
+    },
+    "Korrekturkto. für Überleitungsrechnung": {
+      "accounts": [
+        { "name": "Korrekturkto. für Überleitungsrechnung", "number": 9987 }
+      ]
+    },
+    "Gegenkonto zu 9986-9988": {
+      "accounts": [{ "name": "Gegenkonto zu 9986-9988", "number": 9989 }]
+    },
+    "Ertr. außergewöhnl. Größe oder Bedeutung": {
+      "accounts": [
+        { "name": "Ertr. außergewöhnl. Größe oder Bedeutung", "number": 9990 }
+      ]
+    },
+    "Erträge aperiodisch": {
+      "accounts": [{ "name": "Erträge aperiodisch", "number": 9991 }]
+    },
+    "Ertr. außerg. Größe / Bedeutung aperiod.": {
+      "accounts": [
+        { "name": "Ertr. außerg. Größe / Bedeutung aperiod.", "number": 9992 }
+      ]
+    },
+    "Aufw. außergewöhnl. Größe oder Bedeutung": {
+      "accounts": [
+        { "name": "Aufw. außergewöhnl. Größe oder Bedeutung", "number": 9993 }
+      ]
+    },
+    "Aufwendungen aperiodisch": {
+      "accounts": [{ "name": "Aufwendungen aperiodisch", "number": 9994 }]
+    },
+    "Aufw. außerg. Größe / Bedeutung aperiod.": {
+      "accounts": [
+        { "name": "Aufw. außerg. Größe / Bedeutung aperiod.", "number": 9995 }
+      ]
+    },
+    "Gegenkonto zu 9990-9997": {
+      "accounts": [{ "name": "Gegenkonto zu 9990-9997", "number": 9998 }]
+    }
+  },
+  "Other Expenses ": {
+    "Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren": {
+      "accounts": [
+        { "name": "Einkauf Roh-,Hilfs- und Betriebsstoffe", "number": 3000 },
+        { "name": "Einkauf RHB 7% Vorsteuer", "number": 3010 },
+        { "name": "Einkauf RHB ohne Vorsteuerabzug", "number": 3029 },
+        { "name": "Einkauf RHB 19 % Vorsteuer", "number": 3030 },
+        { "name": "Einkauf RHB, EU-Erwerb 7% Vorst./USt", "number": 3060 },
+        { "name": "Einkauf RHB,EU-Erwerb 19% Vorst./USt", "number": 3062 },
+        { "name": "Eink.RHB,EU-Erwerb ohne Vorst., 7% USt", "number": 3066 },
+        { "name": "Eink.RHB,EU-Erwerb ohne Vorst.,19% USt", "number": 3067 },
+        { "name": "Einkauf RHB 5,5% Vorsteuer", "number": 3070 },
+        { "name": "Einkauf RHB 10,7% Vorsteuer", "number": 3071 },
+        { "name": "Einkauf RHB aus USt-Lager 7% Vorst./USt", "number": 3075 },
+        { "name": "Einkauf RHB aus USt-Lager 19% Vorst/USt", "number": 3076 },
+        { "name": "Erwerb RHB letzter Abn.DG 19% Vorst./USt", "number": 3089 },
+        { "name": "Energiestoffe", "number": 3090 },
+        { "name": "Energiestoffe (Fertigung) 7% Vorsteuer", "number": 3091 },
+        { "name": "Energiestoffe (Fertigung) 19% Vorsteuer", "number": 3092 }
+      ]
+    }
+  },
+  "Other Income": {
+    "Sonstige betriebliche Erträge": {
+      "accounts": [
+        { "name": "Betriebsfremde Erträge", "number": 2510 },
+        { "name": "Periodenfremde Erträge - Abrg. DL", "number": 2520 },
+        { "name": "Erträge Übergangsvorschrift BilMoG", "number": 2590 },
+        { "name": "Erträge Übergangsvorschr. latente St.", "number": 2594 },
+        { "name": "Erträge aus der Währungsumrechnung", "number": 2660 },
+        { "name": "Ertr.Währungsumrechnung nicht § 256a HGB", "number": 2661 },
+        { "name": "Erträge Bewertung Finanzmittelfonds", "number": 2666 },
+        { "name": "Sonstige Erträge betriebs/periodenfremd", "number": 2700 },
+        { "name": "Sonstige betriebl. regelm. Erträge", "number": 2705 },
+        { "name": "Sonstige betriebsfr.regelm. Erträge", "number": 2707 },
+        { "name": "Sonstige Erträge unregelmäßig", "number": 2709 },
+        { "name": "Erträge Zuschreibg. Sachanlagevermögen", "number": 2710 },
+        { "name": "Erträge Zuschreibg. immat. Anlagevermög.", "number": 2711 },
+        { "name": "Erträge Zuschreibg. Finanzanlagevermögen", "number": 2712 },
+        { "name": "Erträge Zuschreibg. FAV z.T. steuerfrei", "number": 2713 },
+        { "name": "Erträge Zuschreibg. z.T. steuerfrei", "number": 2714 },
+        { "name": "Erträge a.Zuschreibung Umlaufvermögen", "number": 2715 },
+        { "name": "Erträge Zuschreibg. UV z.T. steuerfrei", "number": 2716 },
+        { "name": "Erträge aus Abgang von AV-Gegenständen", "number": 2720 },
+        { "name": "Erträge Veräuß.Ant. KapGes z.T. stfrei", "number": 2723 },
+        { "name": "Erträge aus Abgang von UV-Gegenständen", "number": 2725 },
+        { "name": "Erträge aus Abgang UV z.T. steuerfrei", "number": 2726 },
+        { "name": "Ertr.Auflösg stl. Rücklage § 6b (3) EStG", "number": 2727 },
+        { "name": "Erträge aus Herabsetzung PWB auf Ford", "number": 2730 },
+        { "name": "Erträge aus Herabsetzung EWB auf Ford", "number": 2731 },
+        { "name": "Erträge aus abgeschriebenen Forderg.", "number": 2732 },
+        { "name": "Erträge Auflösung von Rückstellungen", "number": 2735 },
+        { "name": "Erträge Herabsetzung Verbindlichkeit", "number": 2736 },
+        { "name": "Erträge Auflösung sonst.stl.Rücklagen", "number": 2740 },
+        { "name": "Erträge Auflösung stl. Sonderabschr.", "number": 2741 },
+        { "name": "Versich.entschädigung, Schadenersatz", "number": 2742 },
+        { "name": "Investitionszuschüsse", "number": 2743 },
+        { "name": "Investitionszulage", "number": 2744 },
+        { "name": "Stfreie Erträge Auflösung stl. Rücklage", "number": 2746 },
+        { "name": "Sonstige steuerfr. Betriebseinnahmen", "number": 2747 },
+        { "name": "Erstattungen AufwendungsausgleichsG", "number": 2749 },
+        { "name": "Verr. sonstige Sachbezüge (keine Waren)", "number": 8590 },
+        { "name": "Sachbezüge 7% USt (Waren)", "number": 8591 },
+        { "name": "Sachbezüge 19% USt (Waren)", "number": 8595 },
+        { "name": "Sonst. Erlöse betr. u. regelmäßig", "number": 8600 },
+        { "name": "Sonstige betriebliche Erträge", "number": 8603 },
+        { "name": "Erstattete Vorsteuer anderer Länder", "number": 8604 },
+        { "name": "Sonst. Erträge betriebl. und regelmäßig", "number": 8605 },
+        { "name": "Sonstige betriebliche Erträge verbUN", "number": 8606 },
+        { "name": "Sonstige Erträge stfrei §4 Nr.8 ff.UStG", "number": 8609 },
+        { "name": "Verrechnete sonstige Sachbezüge", "number": 8610 },
+        { "name": "Verrech. sonstige Sachbezüge Kfz 19% USt", "number": 8611 },
+        { "name": "Verrechn. sonstige Sachbezüge 19% USt", "number": 8613 },
+        { "name": "Verrechn. sonstige Sachbezüge ohne USt", "number": 8614 },
+        { "name": "Sonst. Erträge betr.u. regelmäßig stfrei", "number": 8625 },
+        { "name": "Sonst. Erträge betriebl., regelm.7% USt", "number": 8630 },
+        { "name": "Sonst. Erträge betriebl,, regelm.19% USt", "number": 8640 },
+        { "name": "Sonst. Erträge betriebl,, regelm.16% USt", "number": 8649 }
+      ]
+    },
+    "Ertrag aus Kapitalherabsetzung": {
+      "accounts": [{ "name": "Erträge a. Kapitalherabsetzung", "number": 2745 }]
+    },
+    "Erhöhung des Bestands an fertigen und unfertigen Erzeugnissen oder Verminderung des Bestands an fertigen und unfertigen Erzeugnissen": {
+      "accounts": [
+        { "name": "Bestandsveränd.unfertige Erzeugnisse", "number": 8960 },
+        { "name": "Bestandsveränderung unfertige Leistung", "number": 8970 },
+        { "name": "Bestandsveränderung fertige Erzeugnisse", "number": 8980 }
+      ]
+    },
+    "Erhöhung des Bestands in Ausführung befindlicher Bauaufträge oder Verminderung des Bestands in Ausführung befindlicher Bauaufträge": {
+      "accounts": [
+        { "name": "Bestandsveränderung Bauaufträge", "number": 8975 }
+      ]
+    },
+    "Erhöhung des Bestands in Arbeit befindlicher Aufträge oder Verminderung des Bestands in Arbeit befindlicher Aufträge": {
+      "accounts": [
+        { "name": "Bestandsveränderung Aufträge in Arbeit", "number": 8977 }
+      ]
+    },
+    "Andere aktivierte Eigenleistungen": {
+      "accounts": [
+        { "name": "Andere aktivierte Eigenleistungen", "number": 8990 },
+        { "name": "Akt.Eigenleistg. FK-Zins zu Herst.kosten", "number": 8994 },
+        { "name": "Akt. Eigenleistung selbst gesch. imm.VG", "number": 8995 }
+      ]
+    }
+  },
+  "Revenue": {
+    "Umsatzerlöse": {
+      "accounts": [
+        { "name": "Grundstückserträge Miete 19%", "number": 2750 },
+        { "name": "Grundstückserträge Miete 16%", "number": 2751 },
+        { "name": "Erlöse Vermietung u.Verpachtung 19% USt", "number": 2752 },
+        { "name": "Umsatzerlöse", "number": 8000 },
+        { "name": "Steuerfreie Umsätze § 4 Nr. 8 ff. UStG", "number": 8100 },
+        { "name": "Steuerfreie Umsätze V+V § 4 Nr. 12 UStG", "number": 8105 },
+        { "name": "Sonstige steuerfr. Umsätze Inland", "number": 8110 },
+        { "name": "Steuerfreie Umsätze § 4 Nr. 1a UStG", "number": 8120 },
+        { "name": "Steuerfr. EU-Lieferungen § 4 Nr. 1b UStG", "number": 8125 },
+        { "name": "Innergemeinschaftl. Dreiecksgeschäft", "number": 8130 },
+        { "name": "Steuerfr. EU-Lief.v.Neufahrzg.ohne UStID", "number": 8135 },
+        { "name": "Steuerfreie Umsätze Offshore usw.", "number": 8140 },
+        { "name": "Steuerfreie Umsätze § 4 Nr. 2-7 UStG", "number": 8150 },
+        { "name": "Stfreie Umsätze ohne VoSt-Abzug § 4 UStG", "number": 8160 },
+        { "name": "Steuerfreie Umsätze ohne Vorsteuerabzug", "number": 8165 },
+        { "name": "Erlöse nach § 24 UStG", "number": 8190 },
+        { "name": "Umsatzerlöse §§ 25 und 25a UStG 19% USt", "number": 8191 },
+        { "name": "Umsatzerlöse §§ 25 u. 25a UStG ohne USt", "number": 8193 },
+        { "name": "Umsatzerl.Reiseleist § 25(2) UStG stfrei", "number": 8194 },
+        { "name": "Erlöse Kleinunternehmer § 19 (1) UStG", "number": 8195 },
+        { "name": "Erlöse Geldspielautomaten 19% USt", "number": 8196 },
+        { "name": "Erlösabgrenzung", "number": 8200 },
+        { "name": "Erlöse 7% USt", "number": 8300 },
+        { "name": "Erlöse EU-Lieferungen 7% USt", "number": 8310 },
+        { "name": "Erlöse EU-Lieferungen 19% USt", "number": 8315 },
+        { "name": "Erlöse im and. EU-Land stpfl.Leistung RC", "number": 8319 },
+        { "name": "D  -  im anderen EU-Land stpfl. Leistung", "number": 8320 },
+        { "name": "NL - im anderen EU-Land stpfl. Leistung", "number": 8321 },
+        { "name": "BE - im anderen EU-Land stpfl. Leistung", "number": 8322 },
+        { "name": "FR - im anderen EU-Land stpfl. Leistung", "number": 8323 },
+        { "name": "Im anderen EU-Land stpfl. Lieferungen", "number": 8324 },
+        { "name": "Nicht steuerb. sonst.Leist. EU §13b UStG", "number": 8330 },
+        { "name": "Erlöse elektr.DL im anderen EU-Land stpf", "number": 8331 },
+        { "name": "n.stb.L.EU-Untern.MediaServ. Production", "number": 8333 },
+        { "name": "Erlöse 7% USt", "number": 8334 },
+        { "name": "n.stb.L. EU-Unternehmer - Werbung", "number": 8335 },
+        { "name": "n.stb.L.EU-Untern.MediaServ Content Mark", "number": 8336 },
+        { "name": "Erlöse aus Leistungen nach § 13b UStG", "number": 8337 },
+        { "name": "n.stb.L. Drittland - Mitgliedschaften", "number": 8338 },
+        { "name": "Nicht steuerbare Umsätze EU-Land", "number": 8339 },
+        { "name": "n.stb.L. Drittland - Werbung", "number": 8340 },
+        { "name": "n.stb.L. Drittland - MediServ.Production", "number": 8341 },
+        { "name": "Erlöse 16% USt", "number": 8342 },
+        { "name": "n.stb.L. Drittl.MedServ Content Marketin", "number": 8343 },
+        { "name": "Erlöse 16% USt", "number": 8344 },
+        { "name": "sonstige Erlöse an EU-Unternehmer", "number": 8345 },
+        { "name": "FR - n.stb. L. EU-Unternehmer Mitgliedsc", "number": 8346 },
+        { "name": "Erlöse 16% USt", "number": 8347 },
+        { "name": "BE - n.stb.L. EU-Unternehmer - Mediaserv", "number": 8360 },
+        { "name": "FR - n.stb.L. EU-Unternehmer - Mitglieds", "number": 8361 },
+        { "name": "Erlöse 19% USt", "number": 8400 },
+        { "name": "Erlöse 19% USt - Kreditkartenabrechnung", "number": 8401 },
+        { "name": "Erl. 19% USt - Media Serv. - Production", "number": 8402 },
+        { "name": "Erlöse 19% USt - Werbung", "number": 8403 },
+        { "name": "Erlöse 19% USt - Contentverkauf", "number": 8404 },
+        { "name": "Erlöse 19% USt - Mitgliedschaften", "number": 8405 },
+        { "name": "Erlöse aus Rücklast-Gebühren 19% USt", "number": 8406 },
+        { "name": "Erlöse 19% USt - WL Kosten (Tanken,...)", "number": 8407 },
+        { "name": "Erlöse 19% USt Personalkostenerstattung", "number": 8408 },
+        { "name": "Erl.19% USt - Media Serv.-Cont.Marketing", "number": 8409 },
+        { "name": "Erlöse Minijob 19% UStG", "number": 8410 },
+        { "name": "Erlöse Minijob 16% UStG", "number": 8411 },
+        { "name": "Erlöse 19% USt", "number": 8412 },
+        { "name": "Erlöse elektr.DL Inland stpf 19% USt", "number": 8449 },
+        { "name": "Nebenerlöse (Bezug zu Materialaufwand)", "number": 8499 },
+        { "name": "Provisionsumsätze", "number": 8510 },
+        { "name": "Provisionsumsätze, stfr.§4 Nr.8 ff.UStG", "number": 8514 },
+        { "name": "Provisionsumsätze, stfrei §4 Nr. 5 UStG", "number": 8515 },
+        { "name": "Provisionsumsätze 7% USt", "number": 8516 },
+        { "name": "Provisionsumsätze 19% USt", "number": 8519 },
+        { "name": "Erlöse Abfallverwertung", "number": 8520 },
+        { "name": "Erlöse Leergut", "number": 8540 },
+        { "name": "Provision, sonstige Erträge", "number": 8570 },
+        { "name": "Provision so.Ertr.stfr. § 4 Nr.8 ff UStG", "number": 8574 },
+        { "name": "Provision so.Ertr.stfr. § 4 Nr. 5 UStG", "number": 8575 },
+        { "name": "Provision, sonstige Erträge 7% USt", "number": 8576 },
+        { "name": "Provision, sonstige Erträge 19% USt", "number": 8579 },
+        { "name": "Andere Nebenerlöse", "number": 8607 },
+        { "name": "Erlösschmälerungen", "number": 8700 },
+        { "name": "Erlösschmälerungen stfr.§ 4 Nr.8 ff UStG", "number": 8701 },
+        { "name": "Erlösschmälerungen stfr.§4 Nr. 2-7 UStG", "number": 8702 },
+        { "name": "Erlösschmälerungen sonst.stfr. ohne VoSt", "number": 8703 },
+        { "name": "Erlösschmälerungen sonst.stfr. mit VoSt", "number": 8704 },
+        { "name": "Erlösschmälerungen stfrei §4 Nr.1a UStG", "number": 8705 },
+        { "name": "Erlösschm.stfr.Dreiecksg.§ 25b(2,4) UStG", "number": 8706 },
+        { "name": "Erlösschmälerungen 7% USt", "number": 8710 },
+        { "name": "Erlösschmälerungen 19% USt", "number": 8720 },
+        { "name": "Erlösschmälerung stfrei innerg.Lieferung", "number": 8724 },
+        { "name": "Erlösschmälerung EU-Lieferung 7% USt", "number": 8725 },
+        { "name": "Erlösschmälerung EU-Lieferung 19% USt", "number": 8726 },
+        { "name": "Erlösschmälg a.i.and.EU-Land stpfl.Liefg", "number": 8727 },
+        { "name": "Gewährte Skonti", "number": 8730 },
+        { "name": "Gewährte Skonti 7 % USt", "number": 8731 },
+        { "name": "Gewährte Skonti 5 % USt", "number": 8732 },
+        { "name": "Gewährte Skonti 16 % USt", "number": 8735 },
+        { "name": "Gewährte Skonti 19 % USt", "number": 8736 },
+        { "name": "Gew.Skonti Leistg.§ 13b (2) Nr.10 UStG", "number": 8738 },
+        { "name": "Gewährte Skonti Leistungen § 13b UStG", "number": 8741 },
+        { "name": "Gewährte Skonti s. Leistung § 18b UStG", "number": 8742 },
+        { "name": "Gewährte Skonti stfreie EU-Lieferung", "number": 8743 },
+        { "name": "Gewährte Skonti stpfl. EU-Lieferung", "number": 8745 },
+        { "name": "Gewährte Skonti EU-Lieferungen 7% USt", "number": 8746 },
+        { "name": "Gewährte Skonti EU-Lieferungen 5% USt", "number": 8747 },
+        { "name": "Gewährte Skonti EU-Lieferungen 19% USt", "number": 8748 },
+        { "name": "Gewährte Skonti EU-Lieferungen 16% USt", "number": 8749 },
+        { "name": "Gewährte Boni 7% USt", "number": 8750 },
+        { "name": "Gewährte Boni 19% USt", "number": 8760 },
+        { "name": "Gewährte Boni", "number": 8769 },
+        { "name": "Gewährte Rabatte", "number": 8770 },
+        { "name": "Gewährte Rabatte 7 % USt", "number": 8780 },
+        { "name": "Gewährte Rabatte 19 % USt", "number": 8790 },
+        { "name": "Nicht steuerb.Umsätze (Innenumsätze)", "number": 8950 },
+        { "name": "USt-Vergütungen, z.B. nach § 24 UStG", "number": 8955 },
+        { "name": "Direkt mit dem Umsatz verb. Steuern", "number": 8959 }
+      ]
+    }
+  },
+  "Sales and Marketing": {
+    "Aufwendungen für bezogene Leistungen": {
+      "accounts": [
+        { "name": "Marketing Konrad", "number": 3104 },
+        { "name": "Werbeleistungen Niederlande 19% VSt/USt", "number": 3112 }
+      ]
+    },
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Werbekosten", "number": 4600 },
+        { "name": "Online Marketing (Google, Facebook)", "number": 4601 }
+      ]
+    }
+  },
+  "Software / IT Infrastructure": {
+    "Sonstige betriebliche Aufwendungen": {
+      "accounts": [
+        { "name": "Aufwendungen für Lizenzen, Konzessionen", "number": 4964 }
+      ]
+    }
+  },
+  "Taxes": {
+    "Steuern vom Einkommen und Ertrag": {
+      "accounts": [
+        { "name": "Körperschaftsteuer", "number": 2200 },
+        { "name": "Körperschaftsteuer für Vorjahre", "number": 2203 },
+        { "name": "Körperschaftsteuererstattung Vorjahre", "number": 2204 },
+        { "name": "Solidaritätszuschlag", "number": 2208 },
+        { "name": "Solidaritätszuschlag für Vorjahre", "number": 2209 },
+        { "name": "Solidaritätszuschl.-Erstattung Vorjahre", "number": 2210 },
+        { "name": "Kapitalertragsteuer 25 % (KapG)", "number": 2213 },
+        { "name": "SolZ auf Kapitalertragsteuer 25 % (KapG)", "number": 2216 },
+        { "name": "Ausländ. Steuer auf stfr. DBA-Einkünfte", "number": 2218 },
+        { "name": "Anrechn./Abzug ausländ. Quellensteuer", "number": 2219 },
+        { "name": "Aufw. Zuführg/Auflösung latente Steuern", "number": 2250 },
+        { "name": "Erträge Zuführg/Auflösg latente Steuern", "number": 2255 },
+        { "name": "Aufw. Zuführung zu Steuerrückst. BStBK", "number": 2260 },
+        { "name": "Erträge Auflösung Steuerrückst. BStBK", "number": 2265 },
+        { "name": "GewSt-NZ/Erstattung VJ § 4 (5b) EStG", "number": 2281 },
+        { "name": "Ertr. Auflösung GewSt-RSt § 4 (5b) EStG", "number": 2283 },
+        { "name": "Gewerbesteuer", "number": 4320 }
+      ]
+    },
+    "Sonstige Steuern": {
+      "accounts": [
+        { "name": "Steuernachzahlg. VJ sonstige Steuern", "number": 2285 },
+        { "name": "Erstattung VJ für sonstige Steuern", "number": 2287 },
+        { "name": "Auflösung Rückstellung s. Steuern", "number": 2289 },
+        { "name": "Grundsteuer", "number": 2375 },
+        { "name": "Sonstige Betriebssteuern", "number": 4340 },
+        { "name": "Verbrauchsteuer (sonstige Steuern)", "number": 4350 },
+        { "name": "Ökosteuer", "number": 4355 }
+      ]
+    }
+  }
+}

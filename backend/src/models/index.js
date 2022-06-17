@@ -1,10 +1,12 @@
 const createRelations = require("./createRelations");
+const { setupData, setupDummyData } = require("./setupData");
 
 const User = require("./user.model");
 
 const Category = require("./category.model");
 const Subcategory = require("./subcategory.model");
 const DatevAccount = require("./datevAccount.model");
+const DatevAccountDefaults = require("./datevAccountDefaults.model");
 
 const Transfer = require("./transfer.model");
 const Budget = require("./budget.model");
@@ -19,6 +21,7 @@ module.exports = {
   Category,
   Subcategory,
   DatevAccount,
+  DatevAccountDefaults,
 
   Transfer,
   Budget,
@@ -26,5 +29,7 @@ module.exports = {
   Upload,
 
   createRelations,
+  setupData,
+  setupDummyData,
   sequelize,
 };

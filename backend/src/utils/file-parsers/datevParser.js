@@ -81,16 +81,22 @@ class DatevParser {
   }
 
   parseFinancialExportFile() {
-    const workbook = XLSX.readFile(this.file);
-    const parsedSheets = {};
+    return new Promise((resolve, reject) => {
+      try {
+        const workbook = XLSX.readFile(this.file);
+        const parsedSheets = [];
 
-    workbook.SheetNames.forEach((sheetName) => {
-      const worksheet = workbook.Sheets[sheetName];
-      const jsonSheet = XLSX.utils.sheet_to_json(worksheet);
-      parsedSheets[sheetName] = this.parseFinancialExportSheet(jsonSheet);
+        workbook.SheetNames.forEach((sheetName) => {
+          const worksheet = workbook.Sheets[sheetName];
+          const jsonSheet = XLSX.utils.sheet_to_json(worksheet);
+          parsedSheets.push(...this.parseFinancialExportSheet(jsonSheet));
+        });
+
+        resolve(parsedSheets);
+      } catch (err) {
+        reject(err);
+      }
     });
-
-    return parsedSheets;
   }
 
   // eslint-disable-next-line class-methods-use-this

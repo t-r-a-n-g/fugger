@@ -5,7 +5,8 @@ import LoginPage from "@components/authentification/login";
 import SignUpPage from "@components/authentification/signUp";
 import FuDataTable from "@components/FuDataTable";
 import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@components/themes";
 
 const tableHeadCells = [
   {
@@ -179,47 +180,6 @@ const data = [
   },
 ];
 
-const theme = createTheme({
-  components: {
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    // Name of the component
-    MuiDrawer: {
-      styleOverrides: {
-        // Name of the slot
-        paper: {
-          // Some CSS
-          color: "rgba(255,255,255, 0.6)",
-          backgroundColor: "#7C179F",
-        },
-      },
-    },
-
-    MuiAppBar: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          // Some CSS
-          color: "#342F35",
-          backgroundColor: "#FCFCFC",
-          height: "50px",
-        },
-      },
-    },
-  },
-});
 function App() {
   return (
     <ThemeProvider theme={theme}>

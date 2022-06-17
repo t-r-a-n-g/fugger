@@ -33,6 +33,7 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Avatar, Stack } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -116,49 +117,49 @@ export default function DrawerLayout({ children }) {
   const menuItems = [
     {
       title: "Analysis",
-      icon: <AnalyticsOutlinedIcon style={{ color: "#fff" }} />,
+      icon: <AnalyticsOutlinedIcon />,
       path: "/analysis",
     },
     {
       title: "Uploads Files",
-      icon: <UploadFileIcon style={{ color: "#fff" }} />,
+      icon: <UploadFileIcon />,
       path: "/analysis",
     },
     {
       title: "Dashboard",
-      icon: <DashboardCustomizeOutlinedIcon style={{ color: "#fff" }} />,
+      icon: <DashboardCustomizeOutlinedIcon />,
       path: "/analysis",
     },
     {
       title: "Customers",
-      icon: <PeopleAltIcon style={{ color: "#fff" }} />,
+      icon: <PeopleAltIcon />,
       path: "/analysis",
     },
     {
       title: "Orders",
-      icon: <BorderColorOutlinedIcon style={{ color: "#fff" }} />,
+      icon: <BorderColorOutlinedIcon />,
       path: "/analysis",
     },
     {
       title: "Products",
-      icon: <Inventory2OutlinedIcon style={{ color: "#fff" }} />,
+      icon: <Inventory2OutlinedIcon />,
       path: "/analysis",
     },
     {
       title: "Invoices",
-      icon: <DescriptionOutlinedIcon style={{ color: "#fff" }} />,
+      icon: <DescriptionOutlinedIcon />,
       path: "/analysis",
     },
   ];
   const menuItems2 = [
     {
       title: "Settings",
-      icon: <SettingsIcon style={{ color: "#fff" }} />,
+      icon: <SettingsIcon />,
       path: "/analysis",
     },
     {
       title: "Logout",
-      icon: <LogoutIcon style={{ color: "#fff" }} />,
+      icon: <LogoutIcon />,
       path: "/login",
     },
   ];
@@ -168,30 +169,38 @@ export default function DrawerLayout({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        sx={{ backgroundColor: "primary.contrast" }}
+        position="fixed"
+        open={open}
+      >
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
+              color: "primary.contrastText",
               marginRight: 5,
               ...(open && { display: "none" }),
             }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
+          <Stack
             sx={{
+              color: "primary.contrastText",
               ...(open && { display: "none" }),
             }}
+            direction="row"
+            spacing={1}
+            alignItems="center"
           >
-            Fugger
-          </Typography>
+            <Avatar src="src\assets\fugger_logo.svg" />
+            <Typography variant="h6" noWrap component="div">
+              Fugger
+            </Typography>
+          </Stack>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
@@ -228,27 +237,37 @@ export default function DrawerLayout({ children }) {
 
       {/* ===== DRAWER ===== */}
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        <DrawerHeader
+          sx={{ justifyContent: "center", backgroundColor: "primary.contrast" }}
+        >
           {/* LOGO */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ margin: "auto" }}
+          <Stack
+            sx={{ pl: "40px" }}
+            direction="row"
+            spacing={1}
+            alignItems="center"
           >
-            LOGO
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
+            <Avatar src="src\assets\fugger_logo.svg" />
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ margin: "auto", color: "primary.contrastText" }}
+            >
+              Fugger
+            </Typography>
+          </Stack>
+          <IconButton sx={{ ml: "35px" }} onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon sx={{ color: "primary.contrastText" }} />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "primary.contrastText" }} />
             )}
           </IconButton>
         </DrawerHeader>
 
         {/* ================================================== DRAWER FIRST SECTION ================================================== */}
-        <List>
+        <List sx={{ backgroundColor: "primary.main" }}>
           {menuItems.map((element) => (
             <ListItem
               key={element.title}
@@ -258,6 +277,7 @@ export default function DrawerLayout({ children }) {
               <Link style={linkStyle} to={element.path}>
                 <ListItemButton
                   sx={{
+                    color: "primary.contrastText",
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
@@ -265,6 +285,7 @@ export default function DrawerLayout({ children }) {
                 >
                   <ListItemIcon
                     sx={{
+                      color: "primary.contrastText",
                       minWidth: 0,
                       mr: open ? 3 : "auto",
                       justifyContent: "center",
@@ -281,9 +302,9 @@ export default function DrawerLayout({ children }) {
             </ListItem>
           ))}
         </List>
-        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ flexGrow: 1, backgroundColor: "primary.main" }} />
         {/* ================================================== DRAWER  SECOND SECTION ================================================== */}
-        <List>
+        <List sx={{ backgroundColor: "primary.main" }}>
           {menuItems2.map((element) => (
             <ListItem
               key={element.title}
@@ -293,6 +314,7 @@ export default function DrawerLayout({ children }) {
               <Link style={linkStyle} to={element.path}>
                 <ListItemButton
                   sx={{
+                    color: "primary.contrastText",
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
@@ -300,6 +322,7 @@ export default function DrawerLayout({ children }) {
                 >
                   <ListItemIcon
                     sx={{
+                      color: "primary.contrastText",
                       minWidth: 0,
                       mr: open ? 3 : "auto",
                       justifyContent: "center",

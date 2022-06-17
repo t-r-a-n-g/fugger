@@ -10,6 +10,7 @@ import {
   Stack,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -18,10 +19,32 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GoogleLogo from "@assets/GoogleLogo";
 import * as React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import {
+  Link as RouterLink,
+  useNavigate,
+  MemoryRouter,
+} from "react-router-dom";
+import { StaticRouter } from "react-router-dom/server";
 import axios from "axios";
 import validator from "validator";
 import { loginEndpoint } from "../../apiEndpoints";
+
+// To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
+function Router(props) {
+  const { children } = props;
+  if (typeof window === "undefined") {
+    return <StaticRouter location="/">{children}</StaticRouter>;
+  }
+
+  return <MemoryRouter>{children}</MemoryRouter>;
+}
+
+Router.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+// ----------------------------------- end ----------------------------------- //
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -83,7 +106,7 @@ function LoginPage() {
     pb: "20px",
   };
 
-  const styleCreateUser = { color: "#FFFFFF" };
+  const styleText = { color: "primary.contrastText" };
   // VARIABLES FOR STYLING --- END ---
 
   return (
@@ -91,7 +114,7 @@ function LoginPage() {
       <Stack alignItems="center" spacing={1}>
         <Stack direction="row" spacing={1} alignItems="center">
           <Avatar src="src\assets\fugger_logo.svg" />
-          <Typography sx={styleCreateUser} variant="h5">
+          <Typography sx={styleText} variant="h5">
             Fugger
           </Typography>
         </Stack>
@@ -211,9 +234,9 @@ function LoginPage() {
             </Stack>
           </form>
         </Card>
-        <Typography sx={styleCreateUser} variant="caption">
+        <Typography sx={styleText} variant="caption">
           New User?{" "}
-          <Link style={styleCreateUser} to="/signup">
+          <Link color="primary.linkColor" component={RouterLink} to="/signup">
             Create Account
           </Link>
         </Typography>

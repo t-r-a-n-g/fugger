@@ -163,7 +163,7 @@ export default function DrawerLayout({ children }) {
     },
   ];
 
-const linkStyle = {textDecoration:"none", color:"#fff"}
+  const linkStyle = { textDecoration: "none", color: "#fff" };
 
   return (
     <Box sx={{ display: "flex" }}>

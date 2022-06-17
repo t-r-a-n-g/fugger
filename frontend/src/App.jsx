@@ -236,7 +236,7 @@ function App() {
                   <FuDataTable headCells={tableHeadCells} data={data} />
                 </DrawerLayout>
               }
-            ></Route>
+            />
             {/* END OF ROUTES */}
           </Route>
         </Routes>

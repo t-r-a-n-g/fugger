@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
@@ -7,7 +7,6 @@ import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Collapse from "@mui/material/Collapse";
-import PropTypes from "prop-types";
 
 import AnTableCell from "./AnTableCell";
 import "./AnalysisTable.css";
@@ -24,35 +23,39 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
       {row.name}
     </AnTableCell>
   );
+
   Object.keys(row.monthlyTotal).forEach((month) => {
     const transfer = row.monthlyTotal[month];
     cells.push(
       <AnTableCell
         key={`${row.name}-${month}-actual`}
         isEditable={transfer.isEditable}
-        onValueChange={(v) =>
-          onTransferEdit(v, { key: month, ...transfer }, "actual")
+        onValueChange={(v, pv) =>
+          onTransferEdit(v, pv, row, { month, ...transfer }, "actual")
         }
       >
         {transfer.actual}
       </AnTableCell>
     );
+
     cells.push(
       <AnTableCell
         key={`${row.name}-${month}-budget`}
         isEditable={transfer.isEditable}
-        onValueChange={(v) =>
-          onTransferEdit(v, { key: month, ...transfer }, "budget")
+        onValueChange={(v, pv) =>
+          onTransferEdit(v, pv, { key: month, ...transfer }, "budget")
         }
       >
         {transfer.budget}
       </AnTableCell>
     );
+
     cells.push(
       <AnTableCell key={`${row.name}-${month}-abs`}>
         {transfer.budget - transfer.actual}
       </AnTableCell>
     );
+
     cells.push(
       <AnTableCell key={`${row.name}-${month}-perct`}>
         {(transfer.actual / transfer.budget) * 100}
@@ -64,9 +67,22 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
 }
 
 function AnCollapsibleChildRow(props) {
-  const { row, children, depth, onNameEdit, onTransferEdit, isOpen } = props;
-  const [open, setOpen] = useState(false);
+  const {
+    row,
+    children,
+    depth,
+    onNameEdit,
+    onTransferEdit,
+    isOpen,
+    openState,
+    setOpen,
+  } = props;
   const cells = getRowCells(row, onNameEdit, onTransferEdit);
+
+  const rowKey = `${row.type}${row.id}`;
+
+  let open = openState[rowKey];
+  if (open === undefined) open = false;
 
   return (
     <>
@@ -83,7 +99,7 @@ function AnCollapsibleChildRow(props) {
                     <IconButton
                       aria-label="expand row"
                       size="small"
-                      onClick={() => setOpen(!open)}
+                      onClick={() => setOpen(rowKey, !open)}
                     >
                       {open ? (
                         <KeyboardArrowUpIcon />
@@ -105,6 +121,8 @@ function AnCollapsibleChildRow(props) {
           <AnCollapsibleChildRow
             row={child}
             isOpen={open}
+            openState={openState}
+            setOpen={setOpen}
             depth={depth + 1}
             onNameEdit={onNameEdit}
             onTransferEdit={onTransferEdit}
@@ -127,9 +145,15 @@ function AnCollapsibleChildRow(props) {
 }
 
 function AnCollapsibleRow(props) {
-  const { row, children, onNameEdit, onTransferEdit } = props;
-  const [open, setOpen] = useState(false);
+  const { row, children, onNameEdit, onTransferEdit, openState, setOpen } =
+    props;
+
   const cells = getRowCells(row, onNameEdit, onTransferEdit);
+
+  const rowKey = `${row.type}${row.id}`;
+
+  let open = openState[rowKey];
+  if (open === undefined) open = false;
 
   return (
     <>
@@ -138,7 +162,7 @@ function AnCollapsibleRow(props) {
           <IconButton
             aria-label="expand row"
             size="small"
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen(rowKey, !open)}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
@@ -151,6 +175,8 @@ function AnCollapsibleRow(props) {
         <AnCollapsibleChildRow
           row={child}
           isOpen={open}
+          openState={openState}
+          setOpen={setOpen}
           key={`${row.id}-${child.id}`}
           depth={1}
           onNameEdit={onNameEdit}
@@ -184,33 +210,5 @@ function AnTableRow(props) {
     </TableRow>
   );
 }
-
-/* eslint-disable react/no-unused-prop-types */
-const rowPropTypes = {
-  row: PropTypes.objectOf({
-    id: PropTypes.number.isRequired,
-  }).isRequired,
-  onNameEdit: PropTypes.func.isRequired,
-  onTransferEdit: PropTypes.func.isRequired,
-  children: PropTypes.arrayOf(),
-  isOpen: PropTypes.bool,
-  depth: PropTypes.number,
-};
-/* eslint-enable react/no-unused-prop-types */
-
-const rowDefaultProps = {
-  isOpen: false,
-  children: [],
-  depth: 0,
-};
-
-AnTableRow.propTypes = rowPropTypes;
-AnTableRow.defaultProps = rowDefaultProps;
-
-AnCollapsibleRow.propTypes = rowPropTypes;
-AnCollapsibleRow.defaultProps = rowDefaultProps;
-
-AnCollapsibleChildRow.propTypes = rowPropTypes;
-AnCollapsibleChildRow.defaultProps = rowDefaultProps;
 
 export default AnCollapsibleRow;

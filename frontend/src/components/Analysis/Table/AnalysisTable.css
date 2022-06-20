@@ -1,7 +1,65 @@
-.first-cell {
-  width: 50px;
+:root {
+  --cell-width: 60px;
+  --text-size: 0.7rem;
 }
 
-td {
-  width: 100px;
+table {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: Name=none; /* Firefox */
+}
+
+/* collaps icon column */
+
+.monthColumn {
+  border-right: 1px grey solid;
+  border-left: 1px grey solid;
+}
+
+.firstColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: yellow; */
+  max-width: 50px;
+  min-width: 50px;
+}
+
+/* category column */
+.categoryColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: lightcoral; */
+  min-width: 250px;
+  max-width: 250px;
+  border-right: 1px grey solid;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* actual column */
+.actualColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #ffc107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
+}
+
+/* budget column */
+.budgetColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #fff108; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
+}
+
+/* absolute column */
+.absoluteColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #dfc107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: 1px lightgrey solid;
+}
+
+/* percent column */
+.percentColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #aac107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: 1px grey solid;
 }

@@ -19,6 +19,7 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
       key={`${row.name}-${row.id}-name`}
       isEditable={row.isEditable}
       onValueChange={(v) => onNameEdit(v, row)}
+      className="categoryColumn"
     >
       {row.name}
     </AnTableCell>
@@ -33,6 +34,7 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
         onValueChange={(v, pv) =>
           onTransferEdit(v, pv, row, { month, ...transfer }, "actual")
         }
+        className="actualColumn"
       >
         {transfer.actual}
       </AnTableCell>
@@ -45,19 +47,20 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
         onValueChange={(v, pv) =>
           onTransferEdit(v, pv, { key: month, ...transfer }, "budget")
         }
+        className="budgetColumn"
       >
         {transfer.budget}
       </AnTableCell>
     );
 
     cells.push(
-      <AnTableCell key={`${row.name}-${month}-abs`}>
+      <AnTableCell key={`${row.name}-${month}-abs`} className="absoluteColumn">
         {transfer.budget - transfer.actual}
       </AnTableCell>
     );
 
     cells.push(
-      <AnTableCell key={`${row.name}-${month}-perct`}>
+      <AnTableCell key={`${row.name}-${month}-perct`} className="percentColumn">
         {(transfer.actual / transfer.budget) * 100}
       </AnTableCell>
     );
@@ -95,7 +98,7 @@ function AnCollapsibleChildRow(props) {
             <Table size="small">
               <TableBody>
                 <TableRow className={`child-${depth}`}>
-                  <TableCell className="first-cell">
+                  <TableCell className="firstColumn">
                     <IconButton
                       aria-label="expand row"
                       size="small"
@@ -158,7 +161,7 @@ function AnCollapsibleRow(props) {
   return (
     <>
       <TableRow>
-        <TableCell className="first-cell">
+        <TableCell className="firstColumn">
           <IconButton
             aria-label="expand row"
             size="small"
@@ -200,7 +203,7 @@ function AnTableRow(props) {
           <Table size="small">
             <TableBody>
               <TableRow className={`child-${depth}`}>
-                <TableCell className="first-cell" />
+                <TableCell className="firstColumn" />
                 {cells}
               </TableRow>
             </TableBody>

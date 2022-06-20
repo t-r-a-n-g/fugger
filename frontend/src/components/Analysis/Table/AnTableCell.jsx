@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from "react";
 import TableCell from "@mui/material/TableCell";
+import "./AnalysisTable.css";
 
 export default class AnTableCell extends React.Component {
   constructor(props) {
@@ -58,9 +59,10 @@ export default class AnTableCell extends React.Component {
 
   render() {
     const { value, isEditing } = this.state;
+    const { className } = this.props;
     if (isEditing) {
       return (
-        <TableCell>
+        <TableCell className={className}>
           <input
             type="text"
             value={value}
@@ -77,7 +79,7 @@ export default class AnTableCell extends React.Component {
     }
 
     return (
-      <TableCell onClick={(e) => this.onCellClick(e)}>
+      <TableCell onClick={(e) => this.onCellClick(e)} className={className}>
         <span>{value}</span>
       </TableCell>
     );

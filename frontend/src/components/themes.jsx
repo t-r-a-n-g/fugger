@@ -7,6 +7,10 @@ const theme1 = {
       contrastText: "#ffef62",
       linkColor: "#33eaff",
     },
+    background: {
+      color: "#00a0b2ad",
+      default: "#ffffff",
+    },
   },
 
   // Overrides specific components
@@ -39,6 +43,10 @@ const theme2 = {
       contrastText: "#ffffff",
       linkColor: "#3369ff",
     },
+    background: {
+      color: "#b20000ad",
+      default: "#ffffff",
+    },
   },
 
   // Overrides specific components
@@ -62,4 +70,54 @@ const theme2 = {
   },
 };
 
-export { theme1, theme2 };
+const themeDark = {
+  // Overrides color palette
+  palette: {
+    primary: {
+      main: "#353535",
+      contrast: "#303030",
+      contrastText: "#ffffffb9",
+      linkColor: "#e49310b9",
+    },
+    text: {
+      primary: "#ffffffad",
+      secondary: "#ffffffad",
+    },
+    background: {
+      color: "#272727",
+      paper: "#404040",
+      none: "#ffffff",
+      default: "#272727",
+    },
+  },
+  // Overrides specific components
+  components: {
+    // outlinedInput
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontSize: 12,
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.variant === "outlined" &&
+            ownerState.color === "primary" && {
+              border: "#303030 1px solid",
+            }),
+        }),
+      },
+    },
+    // inputLabel
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: 12,
+        },
+      },
+    },
+  },
+};
+export { theme1, theme2, themeDark };

@@ -103,7 +103,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function DrawerLayout({ children, themeMode }) {
+export default function DrawerLayout({ children, themeMode, currentTheme }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation(); // i18next
@@ -169,7 +169,13 @@ export default function DrawerLayout({ children, themeMode }) {
   const linkStyle = { textDecoration: "none", color: "#fff" };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={
+        currentTheme === "themeDark"
+          ? { display: "flex", backgroundColor: "#272727" }
+          : { display: "flex", backgroundColor: "background.none" }
+      }
+    >
       <CssBaseline />
       <AppBar
         sx={{ backgroundColor: "primary.contrast" }}
@@ -354,4 +360,5 @@ export default function DrawerLayout({ children, themeMode }) {
 DrawerLayout.propTypes = {
   children: PropTypes.node.isRequired,
   themeMode: PropTypes.node.isRequired,
+  currentTheme: PropTypes.node.isRequired,
 };

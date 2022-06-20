@@ -86,7 +86,7 @@ function LoginPage() {
   const styleContainer = {
     height: "100vh",
     width: "100vw",
-    backgroundColor: "primary.main",
+    backgroundColor: "background.color",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -106,6 +106,7 @@ function LoginPage() {
     justifyContent: "center",
     alignItems: "center",
     pb: "20px",
+    color: "text.primary",
   };
 
   const styleText = { color: "primary.contrastText" };
@@ -159,9 +160,11 @@ function LoginPage() {
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -192,14 +195,21 @@ function LoginPage() {
               {/* -------------------------------- LOG IN WITH THIRD PARTY PROVIDER -------------------------------------------------------------- */}
               <Stack sx={{ width: "50%" }} spacing={2}>
                 <Typography
-                  sx={{ color: "grey.700" }}
+                  sx={{ color: "text.secondary" }}
                   variant="body2"
                   align="center"
                 >
                   {t("third-party-login-text")}
                 </Typography>
                 <Button
-                  sx={{ color: "grey.700", borderRadius: "10px" }}
+                  sx={{
+                    color: "text.secondary",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                  }}
                   id="login-button-google"
                   fullWidth
                   variant="outlined"
@@ -208,7 +218,14 @@ function LoginPage() {
                   {t("third-party-google")}
                 </Button>
                 <Button
-                  sx={{ color: "#4267B2", borderRadius: "10px" }}
+                  sx={{
+                    color: "#4267B2",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                  }}
                   id="login-button-facebook"
                   fullWidth
                   variant="outlined"
@@ -222,7 +239,12 @@ function LoginPage() {
                     fontSize: "medium",
                     color: "#0A66C2",
                     borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
                   }}
+                  color="primary"
                   id="login-button-linkedin"
                   fullWidth
                   variant="outlined"

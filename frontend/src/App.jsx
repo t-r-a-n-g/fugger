@@ -6,31 +6,62 @@ import SignUpPage from "@components/authentification/signUp";
 import Analysis from "@components/Analysis";
 import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { theme1, theme2 } from "@components/themes";
+import { theme1, theme2, themeDark } from "@components/themes";
 import LooksOneIcon from "@mui/icons-material/LooksOne";
 import LooksTwoIcon from "@mui/icons-material/LooksTwo";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import IconButton from "@mui/material/IconButton";
 
 function App() {
-  const [theme, setTheme] = useState(true);
-  const themeMode = !theme ? (
-    <LooksTwoIcon onClick={() => setTheme(!theme)} />
-  ) : (
-    <LooksOneIcon onClick={() => setTheme(!theme)} />
-  ); // Icons imported from `@material-ui/icons`
-  const appliedTheme = createTheme(theme ? theme1 : theme2);
+  // Current theme
+  const [theme, setTheme] = useState("theme1");
+
+  // Theme mode toggle buttons. Set theme on click to next theme and displays matching button
+  const themeMode = (
+    <IconButton>
+      <LooksOneIcon
+        sx={
+          theme === "theme1"
+            ? { display: "block", color: "primary.contrastText" }
+            : { display: "none" }
+        }
+        onClick={() => setTheme("theme2")}
+      />
+      <LooksTwoIcon
+        sx={
+          theme === "theme2"
+            ? { display: "block", color: "primary.contrastText" }
+            : { display: "none" }
+        }
+        onClick={() => setTheme("themeDark")}
+      />
+      <DarkModeIcon
+        sx={
+          theme === "themeDark"
+            ? { display: "block", color: "primary.contrastText" }
+            : { display: "none" }
+        }
+        onClick={() => setTheme("theme1")}
+      />
+    </IconButton>
+  );
+
+  // Set the applied theme depending on themeMode button group
+
+  const appliedTheme = { theme1, theme2, themeDark };
 
   return (
-    <ThemeProvider theme={appliedTheme}>
+    <ThemeProvider theme={createTheme(appliedTheme[theme])}>
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signup" element={<SignUpPage theme={theme} />} />
           <Route>
             {/* ROUTES HERE */}
             <Route
               path="/analysis"
               element={
-                <DrawerLayout themeMode={themeMode}>
+                <DrawerLayout themeMode={themeMode} currentTheme={theme}>
                   <Analysis />
                 </DrawerLayout>
               }

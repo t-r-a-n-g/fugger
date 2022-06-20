@@ -127,7 +127,7 @@ function SignUpPage() {
   const styleContainer = {
     height: "100vh",
     width: "100vw",
-    backgroundColor: "primary.main",
+    backgroundColor: "background.color",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -147,6 +147,7 @@ function SignUpPage() {
     justifyContent: "center",
     alignItems: "center",
     pb: "20px",
+    color: "text.primary",
   };
 
   const styleText = { color: "primary.contrastText" };
@@ -308,9 +309,11 @@ function SignUpPage() {
                         )}
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -336,9 +339,11 @@ function SignUpPage() {
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -369,14 +374,21 @@ function SignUpPage() {
               alignItems="center"
             >
               <Typography
-                sx={{ color: "grey.700" }}
+                sx={{ color: "text.secondary" }}
                 variant="body2"
                 align="center"
               >
                 {t("third-party-signup-text")}
               </Typography>
               <Button
-                sx={{ color: "grey.700", borderRadius: "10px" }}
+                sx={{
+                  color: "text.secondary",
+                  borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
+                }}
                 id="signup-button-google"
                 fullWidth
                 variant="outlined"
@@ -385,7 +397,14 @@ function SignUpPage() {
                 {t("third-party-google")}
               </Button>
               <Button
-                sx={{ color: "#4267B2", borderRadius: "10px" }}
+                sx={{
+                  color: "#4267B2",
+                  borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
+                }}
                 id="signup-button-facebook"
                 fullWidth
                 variant="outlined"
@@ -399,6 +418,10 @@ function SignUpPage() {
                   fontSize: "medium",
                   color: "#0A66C2",
                   borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
                 }}
                 id="signup-button-linkedin"
                 fullWidth

@@ -5,8 +5,6 @@ import TableBody from "@mui/material/TableBody";
 import AnTableHead from "./AnTableHead";
 import AnCollapsibleRow from "./AnTableRow";
 
-// import FuCategoryTable from "./FuCategoryTable";
-
 export default class AnTable extends React.Component {
   constructor(props) {
     super(props);
@@ -80,12 +78,41 @@ export default class AnTable extends React.Component {
     });
   }
 
+  // ToDo: move to helper class
+  // eslint-disable-next-line
+  getObjectCopies(objects, from) {
+    const copies = {};
+    for (const o of objects) {
+      if (from[o]) {
+        if (Array.isArray(from[o])) copies[o] = [...from[o]];
+        else if (typeof from[o] === "object") copies[o] = { ...from[o] };
+        else copies[o] = from[o];
+      }
+    }
+
+    return copies;
+  }
+
   calculateTotalTransfers() {
     const { monthlyData, datevAccounts, subcategories, categories } =
-      this.state;
+      this.getObjectCopies(Object.keys(this.state), this.state);
+
     const localCategories = {};
     const localSubcategories = {};
 
+    // console.log(monthlyData);
+    // for (const month of monthlyData) {
+    //   const datevAccount = datevAccounts[month.datevAccountId];
+    //   const subcategory = subcategories[datevAccount.subcategoryId];
+    //   const category = categories[subcategory.categoryId];
+    //
+    //   if (!category.children) category.children = [];
+    //   if (!subcategory.children) subcategory.children = [];
+    //
+    //   for (const transfer of month.transfers) {
+    //   }
+    // }
+    // return null;
     for (const month of monthlyData) {
       for (const transfer of month.transfers) {
         const datevAccount = datevAccounts.find(

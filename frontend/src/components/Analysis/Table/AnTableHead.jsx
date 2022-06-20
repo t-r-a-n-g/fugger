@@ -14,7 +14,10 @@ function AnTableHead(props) {
         <TableCell colSpan={2} align="center" />
         {months.map((m) => (
           <TableCell key={m.key} colSpan={4} align="center">
-            {m.date}
+            {new Date(m.date).toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+            })}
           </TableCell>
         ))}
       </TableRow>

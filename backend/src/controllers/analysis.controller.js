@@ -11,6 +11,7 @@ class AnalysisController {
   static async getAnalysisData(req, res) {
     const from = parseDate(req.query.from).date;
     const to = parseDate(req.query.to).date;
+
     const transfers = await TransferService.getTransfers(from, to, req.user.id);
     const budgets = await BudgetService.getBudgets(from, to, req.user.id);
 
@@ -32,6 +33,7 @@ class AnalysisController {
           id: dt.id,
           name: dt.name,
           subcategoryId,
+          type: "datev",
         };
       }
 
@@ -41,11 +43,17 @@ class AnalysisController {
           id: sc.id,
           name: sc.name,
           categoryId,
+          type: "subcategory",
         };
       }
 
-      if (!categories[categoryId])
-        categories[categoryId] = trsf.datevAccount.subcategory.category;
+      if (!categories[categoryId]) {
+        const cat = trsf.datevAccount.subcategory.category;
+        categories[categoryId] = {
+          ...cat,
+          type: "category",
+        };
+      }
 
       const dateKey = `${trsf.date.toLocaleDateString("en-US", {
         month: "short",
@@ -74,6 +82,13 @@ class AnalysisController {
         datevAccountId,
       });
     }
+
+    // res.json({
+    //   categories,
+    //   subcategories,
+    //   datevAccounts,
+    //   monthlyData: Object.values(monthlyData),
+    // });
     res.json({
       categories: Object.values(categories),
       subcategories: Object.values(subcategories),

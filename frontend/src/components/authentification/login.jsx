@@ -29,6 +29,7 @@ import { StaticRouter } from "react-router-dom/server";
 import axios from "axios";
 import validator from "validator";
 import { loginEndpoint } from "../../apiEndpoints";
+import { useTranslation } from "react-i18next";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
@@ -51,6 +52,7 @@ function LoginPage() {
   const [validEmail, setValidEmail] = useState(true);
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(false);
+  const { t } = useTranslation(); // i18next
 
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
@@ -120,7 +122,7 @@ function LoginPage() {
         </Stack>
         <Card sx={styleCard}>
           <Typography sx={styleTitle} variant="h6">
-            Log in to your account
+            {t("log-in")}
           </Typography>
           <form onSubmit={handleSubmit}>
             <Stack
@@ -134,7 +136,7 @@ function LoginPage() {
                   required
                   size="small"
                   id="login-textfield-email"
-                  label="E-Mail"
+                  label={t("input-label-email")}
                   variant="outlined"
                   type="email"
                   onChange={(e) => {
@@ -148,7 +150,7 @@ function LoginPage() {
                   required
                   size="small"
                   id="login-textfield-password"
-                  label="Password"
+                  label={t("input-label-password")}
                   variant="outlined"
                   type={hidden === false ? "password" : "text"}
                   onChange={(e) => setPassword(e.target.value)}
@@ -167,17 +169,15 @@ function LoginPage() {
                   }}
                 />
                 <Typography color="text.secondary" variant="body2">
-                  Forgot password?
+                  {t("forgot-password")}
                 </Typography>
                 {errorStatus === 403 ? (
                   <Alert severity="error">
-                    E-Mail or Password is not correct
+                    {t("incorrect-email-or-password")}
                   </Alert>
                 ) : null}
                 {errorStatus === 500 || errorStatus === 0 ? (
-                  <Alert severity="error">
-                    We are very sorry. Please try again later!
-                  </Alert>
+                  <Alert severity="error">{t("500-error-message")}</Alert>
                 ) : null}
                 <Button
                   sx={{ borderRadius: "10px" }}
@@ -186,7 +186,7 @@ function LoginPage() {
                   type="submit"
                   variant="contained"
                 >
-                  Log In
+                  {t("log-in-button")}
                 </Button>
               </Stack>
               {/* -------------------------------- LOG IN WITH THIRD PARTY PROVIDER -------------------------------------------------------------- */}
@@ -196,7 +196,7 @@ function LoginPage() {
                   variant="body2"
                   align="center"
                 >
-                  Or log in with:
+                  {t("third-party-login-text")}
                 </Typography>
                 <Button
                   sx={{ color: "grey.700", borderRadius: "10px" }}
@@ -205,7 +205,7 @@ function LoginPage() {
                   variant="outlined"
                   startIcon={<GoogleLogo />}
                 >
-                  Google
+                  {t("third-party-google")}
                 </Button>
                 <Button
                   sx={{ color: "#4267B2", borderRadius: "10px" }}
@@ -214,7 +214,7 @@ function LoginPage() {
                   variant="outlined"
                   startIcon={<FacebookIcon />}
                 >
-                  Facebook
+                  {t("third-party-facebook")}
                 </Button>
                 <Button
                   sx={{
@@ -228,16 +228,16 @@ function LoginPage() {
                   variant="outlined"
                   endIcon={<LinkedInIcon sx={{ margin: "-9px" }} />}
                 >
-                  Linked
+                  {t("third-party-linkedin")}
                 </Button>
               </Stack>
             </Stack>
           </form>
         </Card>
         <Typography sx={styleText} variant="caption">
-          New User?{" "}
+          {t("new-user")}{" "}
           <Link color="primary.linkColor" component={RouterLink} to="/signup">
-            Create Account
+            {t("create-account")}
           </Link>
         </Typography>
       </Stack>

@@ -30,6 +30,8 @@ class TransferService {
           ],
         },
       ],
+      raw: true,
+      nest: true,
     });
 
     return transfers;

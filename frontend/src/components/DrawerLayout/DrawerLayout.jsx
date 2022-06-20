@@ -36,7 +36,6 @@ import { Link } from "react-router-dom";
 import { Avatar, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({

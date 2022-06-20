@@ -31,13 +31,13 @@
   "input-label-confirm-email": "Confirm E-Mail",
   "input-label-create-password": "Create Password",
   "input-label-confirm-password": "Confirm Password",
-  "menu-item-analysis":"Analysis",
-  "menu-item-upload":"Uploads Files",
-  "menu-item-dashboard":"Dashboard",
-  "menu-item-customers":"Customers",
-  "menu-item-orders":"Orders",
-  "menu-item-products":"Products",
-  "menu-item-invoices":"Invoices",
-  "menu-item-settings":"Settings",
-  "menu-item-logout":"Logout"
+  "menu-item-analysis": "Analysis",
+  "menu-item-upload": "Uploads Files",
+  "menu-item-dashboard": "Dashboard",
+  "menu-item-customers": "Customers",
+  "menu-item-orders": "Orders",
+  "menu-item-products": "Products",
+  "menu-item-invoices": "Invoices",
+  "menu-item-settings": "Settings",
+  "menu-item-logout": "Logout"
 }

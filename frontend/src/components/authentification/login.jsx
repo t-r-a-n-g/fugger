@@ -28,8 +28,8 @@ import {
 import { StaticRouter } from "react-router-dom/server";
 import axios from "axios";
 import validator from "validator";
-import { loginEndpoint } from "../../apiEndpoints";
 import { useTranslation } from "react-i18next";
+import { loginEndpoint } from "../../apiEndpoints";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {

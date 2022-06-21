@@ -49,7 +49,8 @@ export default function ThemeToggle({ setTheme }) {
         }}
       >
         <MenuItem
-          sx={{color:"text.secondary",
+          sx={{
+            color: "text.secondary",
             "&:hover": {
               backgroundColor: "primary.light",
               color: "primary.contrastText",
@@ -63,7 +64,8 @@ export default function ThemeToggle({ setTheme }) {
           Standard
         </MenuItem>
         <MenuItem
-          sx={{color:"text.secondary",
+          sx={{
+            color: "text.secondary",
             "&:hover": {
               backgroundColor: "primary.light",
               color: "primary.contrastText",
@@ -77,7 +79,8 @@ export default function ThemeToggle({ setTheme }) {
           Red Valvet
         </MenuItem>
         <MenuItem
-          sx={{color:"text.secondary",
+          sx={{
+            color: "text.secondary",
             "&:hover": {
               backgroundColor: "primary.light",
               color: "primary.contrastText",

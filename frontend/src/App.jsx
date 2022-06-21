@@ -1,68 +1,40 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import LoginPage from "@components/authentification/login";
-import SignUpPage from "@components/authentification/signUp";
+import LoginPage from "@components/authentification/Login";
+import SignUpPage from "@components/authentification/SignUp";
 import Analysis from "@components/Analysis";
 import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { theme1, theme2, themeDark } from "@components/themes";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
-import LooksTwoIcon from "@mui/icons-material/LooksTwo";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import IconButton from "@mui/material/IconButton";
+import Settings from "@components/settings/Settings";
 
 function App() {
-  // Current theme
-  const [theme, setTheme] = useState("theme1");
-
-  // Theme mode toggle buttons. Set theme on click to next theme and displays matching button
-  const themeMode = (
-    <IconButton>
-      <LooksOneIcon
-        sx={
-          theme === "theme1"
-            ? { display: "block", color: "primary.contrastText" }
-            : { display: "none" }
-        }
-        onClick={() => setTheme("theme2")}
-      />
-      <LooksTwoIcon
-        sx={
-          theme === "theme2"
-            ? { display: "block", color: "primary.contrastText" }
-            : { display: "none" }
-        }
-        onClick={() => setTheme("themeDark")}
-      />
-      <DarkModeIcon
-        sx={
-          theme === "themeDark"
-            ? { display: "block", color: "primary.contrastText" }
-            : { display: "none" }
-        }
-        onClick={() => setTheme("theme1")}
-      />
-    </IconButton>
-  );
-
   // Set the applied theme depending on themeMode button group
-
   const appliedTheme = { theme1, theme2, themeDark };
+  const [theme, setTheme] = useState("theme1");
 
   return (
     <ThemeProvider theme={createTheme(appliedTheme[theme])}>
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage theme={theme} />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route>
             {/* ROUTES HERE */}
             <Route
               path="/analysis"
               element={
-                <DrawerLayout themeMode={themeMode} currentTheme={theme}>
+                <DrawerLayout currentTheme={theme}>
                   <Analysis />
+                </DrawerLayout>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <DrawerLayout currentTheme={theme}>
+                  <Settings theme={theme} setTheme={setTheme} />
                 </DrawerLayout>
               }
             />

@@ -39,5 +39,7 @@
   "menu-item-products": "Products",
   "menu-item-invoices": "Invoices",
   "menu-item-settings": "Settings",
-  "menu-item-logout": "Logout"
+  "menu-item-logout": "Logout",
+  "language-toggle": "Language",
+  "theme-toggle": "Theme"
 }

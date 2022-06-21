@@ -103,7 +103,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function DrawerLayout({ children, themeMode, currentTheme }) {
+export default function DrawerLayout({ children, currentTheme }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation(); // i18next
@@ -157,7 +157,7 @@ export default function DrawerLayout({ children, themeMode, currentTheme }) {
     {
       title: t("menu-item-settings"),
       icon: <SettingsIcon />,
-      path: "/analysis",
+      path: "/settings",
     },
     {
       title: t("menu-item-logout"),
@@ -211,7 +211,7 @@ export default function DrawerLayout({ children, themeMode, currentTheme }) {
           </Stack>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Stack justifyContent="center">{themeMode}</Stack>
+            <Stack justifyContent="center" />
             <IconButton
               size="large"
               aria-label="show 4 new mails"
@@ -359,6 +359,5 @@ export default function DrawerLayout({ children, themeMode, currentTheme }) {
 }
 DrawerLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  themeMode: PropTypes.node.isRequired,
   currentTheme: PropTypes.node.isRequired,
 };

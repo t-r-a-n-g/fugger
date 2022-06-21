@@ -68,33 +68,30 @@ export default class AnTable extends React.Component {
   }
 
   onNameEdit(value, row) {
-    let index = 0;
-    const { categories, subcategories, datevAccounts } = this.state;
+    const { dataObject } = this.state;
+    const newDataObject = { ...dataObject };
+    const { categories } = newDataObject;
+
     switch (row.type) {
-      case "category": {
-        const newCategories = [...categories];
-        index = newCategories.findIndex((cat) => cat.id === row.id);
-        newCategories[index].name = value;
-        this.setState({ categories: newCategories, dataObject: null });
+      case "category":
+        categories[row.id].name = value;
         break;
-      }
-      case "subcategory": {
-        const newSubcategories = [...subcategories];
-        index = newSubcategories.findIndex((cat) => cat.id === row.id);
-        newSubcategories[index].name = value;
-        this.setState({ subcategories: newSubcategories, dataObject: null });
+
+      case "subcategory":
+        categories[row.categoryId].children[row.id].name = value;
         break;
-      }
-      case "datev": {
-        const newDatev = [...datevAccounts];
-        index = newDatev.findIndex((dtv) => dtv.id === row.id);
-        newDatev[index].name = value;
-        this.setState({ datevAccounts: newDatev, dataObject: null });
+
+      case "datev":
+        categories[row.categoryId].children[row.subcategoryId].children[
+          row.id
+        ].name = value;
         break;
-      }
+
       default:
-        break;
+        return;
     }
+
+    this.updateRows(newDataObject);
   }
 
   onTransferEdit(value, prevValue, row, transfer, type) {

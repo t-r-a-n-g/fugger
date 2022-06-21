@@ -5,7 +5,6 @@ import AnTableHead from "./AnTableHead";
 import AnCollapsibleRow from "./AnTableRow";
 
 import "./style.css";
-// import styles from "./Styles";
 
 export default class AnTable extends React.Component {
   constructor(props) {

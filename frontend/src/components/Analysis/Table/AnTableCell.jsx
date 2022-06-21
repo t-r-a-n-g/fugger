@@ -3,7 +3,6 @@
 import React from "react";
 import TableCell from "@mui/material/TableCell";
 
-// import "./AnalysisTable.css";
 import "./style.css";
 
 export default class AnTableCell extends React.Component {

@@ -11,7 +11,6 @@ import Collapse from "@mui/material/Collapse";
 
 import AnTableCell from "./AnTableCell";
 
-// import "./AnalysisTable.css";
 import "./style.css";
 
 function round(num) {

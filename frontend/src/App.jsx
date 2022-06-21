@@ -34,7 +34,7 @@ function App() {
               path="/settings"
               element={
                 <DrawerLayout currentTheme={theme}>
-                  <Settings theme={theme} setTheme={setTheme} />
+                  <Settings setTheme={setTheme} />
                 </DrawerLayout>
               }
             />

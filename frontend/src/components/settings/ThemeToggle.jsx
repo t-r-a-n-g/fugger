@@ -7,7 +7,7 @@ import LooksOneIcon from "@mui/icons-material/LooksOne";
 import LooksTwoIcon from "@mui/icons-material/LooksTwo";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-export default function ThemeToggle({ setTheme, theme }) {
+export default function ThemeToggle({ setTheme }) {
   const { t } = useTranslation(); // i18next
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -48,32 +48,44 @@ export default function ThemeToggle({ setTheme, theme }) {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={() => handleCloseItem("theme1")}>
-          <ListItemIcon
-            sx={
-              theme === "themeDark" ? { color: "primary.contrastText" } : "none"
-            }
-          >
+        <MenuItem
+          sx={{color:"text.secondary",
+            "&:hover": {
+              backgroundColor: "primary.light",
+              color: "primary.contrastText",
+            },
+          }}
+          onClick={() => handleCloseItem("theme1")}
+        >
+          <ListItemIcon sx={{ color: "inherit" }}>
             <LooksOneIcon fontSize="small" />
           </ListItemIcon>
           Standard
         </MenuItem>
-        <MenuItem onClick={() => handleCloseItem("theme2")}>
-          <ListItemIcon
-            sx={
-              theme === "themeDark" ? { color: "primary.contrastText" } : "none"
-            }
-          >
+        <MenuItem
+          sx={{color:"text.secondary",
+            "&:hover": {
+              backgroundColor: "primary.light",
+              color: "primary.contrastText",
+            },
+          }}
+          onClick={() => handleCloseItem("theme2")}
+        >
+          <ListItemIcon sx={{ color: "inherit" }}>
             <LooksTwoIcon fontSize="small" />
           </ListItemIcon>
           Red Valvet
         </MenuItem>
-        <MenuItem onClick={() => handleCloseItem("themeDark")}>
-          <ListItemIcon
-            sx={
-              theme === "themeDark" ? { color: "primary.contrastText" } : "none"
-            }
-          >
+        <MenuItem
+          sx={{color:"text.secondary",
+            "&:hover": {
+              backgroundColor: "primary.light",
+              color: "primary.contrastText",
+            },
+          }}
+          onClick={() => handleCloseItem("themeDark")}
+        >
+          <ListItemIcon sx={{ color: "inherit" }}>
             <DarkModeIcon fontSize="small" />
           </ListItemIcon>
           Dark
@@ -85,5 +97,4 @@ export default function ThemeToggle({ setTheme, theme }) {
 
 ThemeToggle.propTypes = {
   setTheme: PropTypes.node.isRequired,
-  theme: PropTypes.node.isRequired,
 };

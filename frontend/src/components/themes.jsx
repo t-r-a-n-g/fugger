@@ -3,6 +3,7 @@ const theme1 = {
   palette: {
     primary: {
       main: "#00a0b2",
+      light: "#00a0b27b",
       contrast: "#006471",
       contrastText: "#ffef62",
       linkColor: "#33eaff",
@@ -31,6 +32,19 @@ const theme1 = {
         },
       },
     },
+    // menuItem
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          marginLeft: "5px",
+          marginRight: "5px",
+          paddingLeft: "15px",
+          "&:hover": {
+            borderRadius: "10px",
+          },
+        },
+      },
+    },
   },
 };
 
@@ -39,6 +53,7 @@ const theme2 = {
   palette: {
     primary: {
       main: "#b20000",
+      light: "#b200007b",
       contrast: "#710000",
       contrastText: "#ffffff",
       linkColor: "#3369ff",
@@ -67,6 +82,19 @@ const theme2 = {
         },
       },
     },
+    // menuItem
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          marginLeft: "5px",
+          marginRight: "5px",
+          paddingLeft: "15px",
+          "&:hover": {
+            borderRadius: "10px",
+          },
+        },
+      },
+    },
   },
 };
 
@@ -75,6 +103,7 @@ const themeDark = {
   palette: {
     primary: {
       main: "#353535",
+      light: "#3535357b",
       contrast: "#303030",
       contrastText: "#ffffffb9",
       linkColor: "#e49310b9",
@@ -115,6 +144,19 @@ const themeDark = {
       styleOverrides: {
         root: {
           fontSize: 12,
+        },
+      },
+    },
+    // menuItem
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          marginLeft: "5px",
+          marginRight: "5px",
+          paddingLeft: "15px",
+          "&:hover": {
+            borderRadius: "10px",
+          },
         },
       },
     },

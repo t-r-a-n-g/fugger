@@ -51,8 +51,28 @@ export default function LanguageToggle() {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={() => changeLanguage("de")}>Deutsch</MenuItem>
-        <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
+        <MenuItem
+          sx={{
+            "&:hover": {
+              backgroundColor: "primary.light",
+              color: "primary.contrastText",
+            },
+          }}
+          onClick={() => changeLanguage("de")}
+        >
+          Deutsch
+        </MenuItem>
+        <MenuItem
+          sx={{
+            "&:hover": {
+              backgroundColor: "primary.light",
+              color: "primary.contrastText",
+            },
+          }}
+          onClick={() => changeLanguage("en")}
+        >
+          English
+        </MenuItem>
       </Menu>
     </div>
   );

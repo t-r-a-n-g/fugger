@@ -160,7 +160,7 @@ export default function DrawerLayout({ children, themeMode }) {
     {
       title: "Logout",
       icon: <LogoutIcon />,
-      path: "/login",
+      path: "/logout",
     },
   ];
 

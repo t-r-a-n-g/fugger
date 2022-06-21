@@ -47,14 +47,15 @@ class AuthService {
     if (!strongPassword)
       throw new ValidationPasswordError("password to weak", ["password"]);
 
-    const encryptedPassword = await bcrypt.hash(password, 10);
+    // const encryptedPassword = await bcrypt.hash(password, 10);
 
     try {
       const user = await User.create({
         lastname,
         firstname,
         email,
-        password: encryptedPassword,
+        password,
+        // password: encryptedPassword,
       });
 
       return {

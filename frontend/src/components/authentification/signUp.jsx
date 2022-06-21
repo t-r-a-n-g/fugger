@@ -27,9 +27,8 @@ import {
   MemoryRouter,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import axios from "axios";
 import validator from "validator";
-import { signupEndpoint } from "../../apiEndpoints";
+import Api from "@services/Api";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
@@ -47,7 +46,7 @@ Router.propTypes = {
 
 // ----------------------------------- end ----------------------------------- //
 
-function SignUpPage() {
+function SignUpPage({ setUser }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -108,16 +107,16 @@ function SignUpPage() {
   const [errorStatus, setErrorStatus] = useState();
 
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validEmail && strongPassword && passwordCheck && emailCheck) {
-      axios
-        .post(signupEndpoint, userData)
-        .then(() => navigate("/analysis"))
-        .catch((err) => {
-          setErrorStatus(err.response.status);
-        });
+      try {
+        const user = await Api.signup(userData);
+        setUser(user);
+        navigate("/");
+      } catch (err) {
+        setErrorStatus(err.response.status);
+      }
     }
   };
 

@@ -4,13 +4,14 @@ const theme1 = {
     primary: {
       main: "#00a0b2",
       light: "#00a0b27b",
+      thin: "#00a0b234",
       contrast: "#006471",
       contrastText: "#ffef62",
       linkColor: "#33eaff",
     },
     background: {
       color: "#00a0b2ad",
-      default: "#ffffff",
+      default: "#ececec",
     },
   },
 
@@ -54,13 +55,14 @@ const theme2 = {
     primary: {
       main: "#b20000",
       light: "#b200007b",
+      thin: "#b2000034",
       contrast: "#710000",
-      contrastText: "#ffffff",
+      contrastText: "#ececec",
       linkColor: "#3369ff",
     },
     background: {
       color: "#b20000ad",
-      default: "#ffffff",
+      default: "#ececec",
     },
   },
 
@@ -103,7 +105,8 @@ const themeDark = {
   palette: {
     primary: {
       main: "#353535",
-      light: "#3535357b",
+      light: "#2d2d2d",
+      thin: "#3f3f3f",
       contrast: "#303030",
       contrastText: "#ffffffb9",
       linkColor: "#e49310b9",
@@ -115,7 +118,7 @@ const themeDark = {
     background: {
       color: "#272727",
       paper: "#404040",
-      none: "#ffffff",
+      none: "#ececec",
       default: "#272727",
     },
   },

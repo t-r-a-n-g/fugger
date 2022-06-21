@@ -123,9 +123,9 @@ export default function DrawerLayout({ children, currentTheme }) {
       path: "/analysis",
     },
     {
-      title: t("menu-item-upload"),
+      title: t("menu-item-files"),
       icon: <UploadFileIcon />,
-      path: "/analysis",
+      path: "/files",
     },
     {
       title: t("menu-item-dashboard"),

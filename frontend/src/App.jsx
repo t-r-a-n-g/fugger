@@ -8,6 +8,7 @@ import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { theme1, theme2, themeDark } from "@components/themes";
 import Settings from "@components/settings/Settings";
+import Files from "@components/files/Files";
 
 function App() {
   // Set the applied theme depending on themeMode button group
@@ -35,6 +36,14 @@ function App() {
               element={
                 <DrawerLayout currentTheme={theme}>
                   <Settings setTheme={setTheme} />
+                </DrawerLayout>
+              }
+            />
+             <Route
+              path="/files"
+              element={
+                <DrawerLayout currentTheme={theme}>
+                  <Files />
                 </DrawerLayout>
               }
             />

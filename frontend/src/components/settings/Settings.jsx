@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
-
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 

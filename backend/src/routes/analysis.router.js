@@ -5,8 +5,7 @@ const router = express.Router();
 const { AnalysisController } = require("../controllers");
 const { verifyToken } = require("../middleware/auth.middleware");
 
-router.get("/", (req, res) => {
-  req.user = { id: 1 };
+router.get("/", verifyToken, (req, res) => {
   AnalysisController.getAnalysisData(req, res);
 });
 

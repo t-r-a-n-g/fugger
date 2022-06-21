@@ -3,30 +3,68 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import AnTableHead from "./AnTableHead";
 import AnCollapsibleRow from "./AnTableRow";
-import "./AnalysisTable.css";
+
+import "./style.css";
+// import styles from "./Styles";
 
 export default class AnTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dataObject: props.data,
-      openState: {},
+      rowUpdated: false,
     };
 
     this.tmpDataObject = null;
     this.onTransferEdit = this.onTransferEdit.bind(this);
+    this.onRowCollapseToggle = this.onRowCollapseToggle.bind(this);
   }
 
   componentDidUpdate() {
-    const { transferUpdated } = this.state;
-    if (transferUpdated === true) {
+    const { rowUpdated } = this.state;
+    if (rowUpdated === true) {
       this.setState({
-        transferUpdated: false,
+        rowUpdated: false,
         dataObject: this.tmpDataObject,
       });
 
       this.tmpDataObject = null;
     }
+  }
+
+  onRowCollapseToggle(row, isOpen) {
+    const { dataObject } = this.state;
+    const newDataObject = { ...dataObject };
+    const { categories } = newDataObject;
+
+    switch (row.type) {
+      case "category": {
+        categories[row.id].isOpen = isOpen;
+        break;
+      }
+
+      case "subcategory": {
+        categories[row.categoryId].children[row.id].isOpen = isOpen;
+        break;
+      }
+
+      case "datev": {
+        categories[row.categoryId].children[row.subcategoryId].children[
+          row.id
+        ].isOpen = isOpen;
+        break;
+      }
+
+      default:
+        return;
+    }
+
+    if (isOpen === false && row.children) {
+      Object.values(row.children).forEach((child) => {
+        this.onRowCollapseToggle(child, false);
+      });
+    }
+    this.updateRows(newDataObject);
   }
 
   onNameEdit(value, row) {
@@ -76,10 +114,7 @@ export default class AnTable extends React.Component {
       Number.parseFloat(prevValue)
     );
 
-    this.tmpDataObject = newDataObject;
-
-    // set dataObject to null to force an update
-    this.setState({ transferUpdated: true, dataObject: null });
+    this.updateRows(newDataObject);
   }
 
   // eslint-disable-next-line
@@ -90,8 +125,13 @@ export default class AnTable extends React.Component {
     }
   }
 
+  updateRows(newDataObject) {
+    this.tmpDataObject = newDataObject;
+    this.setState({ rowUpdated: true, dataObject: null });
+  }
+
   render() {
-    const { dataObject, openState } = this.state;
+    const { dataObject } = this.state;
 
     if (dataObject === null) return "Loading...";
 
@@ -112,12 +152,7 @@ export default class AnTable extends React.Component {
         <TableBody>
           {data.map((cat) => (
             <AnCollapsibleRow
-              openState={openState}
-              setOpen={(row, isOpen) =>
-                this.setState((state) => ({
-                  openState: { ...state.openState, [row]: isOpen },
-                }))
-              }
+              toggleOpen={this.onRowCollapseToggle}
               key={cat.name}
               row={cat}
               rowId={cat.id}

@@ -4,10 +4,21 @@
 }
 
 table {
+  table-layout: fixed;
+  display: block !important;
+  overflow: auto;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: Name=none; /* Firefox */
 }
 
+.MuiTableCell-root.MuiTableCell-body {
+  padding: 0;
+  width: 100px;
+}
+
+.MuiButtonBase-root.MuiIconButton-root {
+  padding: 0;
+}
 /* collaps icon column */
 
 .monthColumn {
@@ -17,8 +28,8 @@ table {
 
 .firstColumn.MuiTableCell-root.MuiTableCell-body {
   /* background-color: yellow; */
-  max-width: 50px;
-  min-width: 50px;
+  width: 50px;
+  padding: 0;
 }
 
 /* category column */

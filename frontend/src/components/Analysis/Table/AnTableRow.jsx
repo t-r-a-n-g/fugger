@@ -6,10 +6,18 @@ import TableCell from "@mui/material/TableCell";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import Collapse from "@mui/material/Collapse";
 
 import AnTableCell from "./AnTableCell";
-import "./AnalysisTable.css";
+
+// import "./AnalysisTable.css";
+import "./style.css";
+
+function round(num) {
+  const m = Number((Math.abs(num) * 100).toPrecision(15));
+  return (Math.round(m) / 100) * Math.sign(num);
+}
 
 function getRowCells(row, onNameEdit, onTransferEdit) {
   const cells = [];
@@ -27,6 +35,23 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
 
   Object.keys(row.monthlyTotal).forEach((month) => {
     const transfer = row.monthlyTotal[month];
+    let transferAbs = null;
+
+    if (transfer.type === "S") {
+      transferAbs = transfer.budget - transfer.actual;
+    } else {
+      transferAbs = transfer.actual - transfer.budget;
+    }
+
+    let transferPerct = null;
+    if (transfer.budget > 0)
+      transferPerct = (transferAbs / transfer.budget) * 100;
+    else transferPerct = transfer.type === "H" ? 100 : -100;
+
+    let transferColor = null;
+    if (transferAbs < 0) transferColor = "error.main";
+    else if (transferAbs > 0) transferColor = "success.main";
+
     cells.push(
       <AnTableCell
         key={`${row.name}-${month}-actual`}
@@ -35,8 +60,11 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
           onTransferEdit(v, pv, row, { month, ...transfer }, "actual")
         }
         className="actualColumn"
+        sx={{
+          color: transfer.type === "H" ? "success.main" : "error.main",
+        }}
       >
-        {transfer.actual}
+        {round(transfer.actual)}
       </AnTableCell>
     );
 
@@ -45,23 +73,31 @@ function getRowCells(row, onNameEdit, onTransferEdit) {
         key={`${row.name}-${month}-budget`}
         isEditable={transfer.isEditable}
         onValueChange={(v, pv) =>
-          onTransferEdit(v, pv, { key: month, ...transfer }, "budget")
+          onTransferEdit(v, pv, row, { month, ...transfer }, "budget")
         }
         className="budgetColumn"
       >
-        {transfer.budget}
+        {round(transfer.budget)}
       </AnTableCell>
     );
 
     cells.push(
-      <AnTableCell key={`${row.name}-${month}-abs`} className="absoluteColumn">
-        {transfer.budget - transfer.actual}
+      <AnTableCell
+        key={`${row.name}-${month}-abs`}
+        className="absoluteColumn"
+        sx={{ color: transferColor }}
+      >
+        {round(transferAbs)}
       </AnTableCell>
     );
 
     cells.push(
-      <AnTableCell key={`${row.name}-${month}-perct`} className="percentColumn">
-        {(transfer.actual / transfer.budget) * 100}
+      <AnTableCell
+        key={`${row.name}-${month}-perct`}
+        className="percentColumn"
+        sx={{ color: transferColor }}
+      >
+        {round(transferPerct)}%
       </AnTableCell>
     );
   });
@@ -77,14 +113,11 @@ function AnCollapsibleChildRow(props) {
     onNameEdit,
     onTransferEdit,
     isOpen,
-    openState,
-    setOpen,
+    toggleOpen,
   } = props;
   const cells = getRowCells(row, onNameEdit, onTransferEdit);
 
-  const rowKey = `${row.type}${row.id}`;
-
-  let open = openState[rowKey];
+  let open = row.isOpen;
   if (open === undefined) open = false;
 
   return (
@@ -95,14 +128,17 @@ function AnCollapsibleChildRow(props) {
           sx={{ padding: "0", border: "0" }}
         >
           <Collapse in={isOpen}>
-            <Table size="small">
+            <Table size="small" className={`child-${depth}`}>
               <TableBody>
                 <TableRow className={`child-${depth}`}>
                   <TableCell className="firstColumn">
+                    <IconButton aria-label="expand row" size="small">
+                      <DragIndicatorIcon />
+                    </IconButton>
                     <IconButton
                       aria-label="expand row"
                       size="small"
-                      onClick={() => setOpen(rowKey, !open)}
+                      onClick={() => toggleOpen(row, !open)}
                     >
                       {open ? (
                         <KeyboardArrowUpIcon />
@@ -124,8 +160,7 @@ function AnCollapsibleChildRow(props) {
           <AnCollapsibleChildRow
             row={child}
             isOpen={open}
-            openState={openState}
-            setOpen={setOpen}
+            toggleOpen={toggleOpen}
             depth={depth + 1}
             onNameEdit={onNameEdit}
             onTransferEdit={onTransferEdit}
@@ -148,24 +183,21 @@ function AnCollapsibleChildRow(props) {
 }
 
 function AnCollapsibleRow(props) {
-  const { row, children, onNameEdit, onTransferEdit, openState, setOpen } =
-    props;
+  const { row, children, onNameEdit, onTransferEdit, toggleOpen } = props;
 
   const cells = getRowCells(row, onNameEdit, onTransferEdit);
 
-  const rowKey = `${row.type}${row.id}`;
-
-  let open = openState[rowKey];
+  let open = row.isOpen;
   if (open === undefined) open = false;
 
   return (
     <>
       <TableRow>
-        <TableCell className="firstColumn">
+        <TableCell className="firstColumn" sx={{ textAlign: "center" }}>
           <IconButton
             aria-label="expand row"
             size="small"
-            onClick={() => setOpen(rowKey, !open)}
+            onClick={() => toggleOpen(row, !open)}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
@@ -178,8 +210,7 @@ function AnCollapsibleRow(props) {
         <AnCollapsibleChildRow
           row={child}
           isOpen={open}
-          openState={openState}
-          setOpen={setOpen}
+          toggleOpen={toggleOpen}
           key={`${row.id}-${child.id}`}
           depth={1}
           onNameEdit={onNameEdit}
@@ -200,10 +231,14 @@ function AnTableRow(props) {
     <TableRow>
       <TableCell colSpan={cells.length + 1} sx={{ padding: "0", border: "0" }}>
         <Collapse in={isOpen}>
-          <Table size="small">
+          <Table size="small" className={`child-${depth}`}>
             <TableBody>
               <TableRow className={`child-${depth}`}>
-                <TableCell className="firstColumn" />
+                <TableCell className="firstColumn">
+                  <IconButton aria-label="expand row" size="small">
+                    <DragIndicatorIcon />
+                  </IconButton>
+                </TableCell>
                 {cells}
               </TableRow>
             </TableBody>

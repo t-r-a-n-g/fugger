@@ -91,12 +91,16 @@ class AnalysisController {
     const self = AnalysisController;
     for (const trsf of transfers) {
       self.fillPropsFromTransfer(trsf);
+
       const [category, subcategory, datevAccount] =
         self.getTransferParents(trsf);
 
       const dateKey = `${trsf.date.toLocaleDateString("en-US", {
         month: "short",
       })}${trsf.date.getFullYear()}`; // e.g. Jan2019
+
+      const transferAmount = Math.abs(trsf.amount);
+      const transferType = trsf.amount < 0 ? "S" : "H";
 
       if (!self.transferMonths[dateKey])
         self.transferMonths[dateKey] = { date: trsf.date, key: dateKey };
@@ -110,22 +114,31 @@ class AnalysisController {
 
       datevAccount.monthlyTotal[dateKey] = {
         id: trsf.id,
-        actual: trsf.amount,
+        type: transferType,
+        actual: transferAmount,
         budget: budget.amount,
         isEditable: true,
         datevAccountId: datevAccount.id,
       };
 
       if (!subcategory.monthlyTotal[dateKey])
-        subcategory.monthlyTotal[dateKey] = { actual: 0, budget: 0 };
+        subcategory.monthlyTotal[dateKey] = {
+          actual: 0,
+          budget: 0,
+          type: transferType,
+        };
 
-      subcategory.monthlyTotal[dateKey].actual += trsf.amount;
+      subcategory.monthlyTotal[dateKey].actual += transferAmount;
       subcategory.monthlyTotal[dateKey].budget += budget.amount;
 
       if (!category.monthlyTotal[dateKey])
-        category.monthlyTotal[dateKey] = { actual: 0, budget: 0 };
+        category.monthlyTotal[dateKey] = {
+          actual: 0,
+          budget: 0,
+          type: transferType,
+        };
 
-      category.monthlyTotal[dateKey].actual += trsf.amount;
+      category.monthlyTotal[dateKey].actual += transferAmount;
       category.monthlyTotal[dateKey].budget += budget.amount;
 
       if (!subcategory.children[datevAccount.id])

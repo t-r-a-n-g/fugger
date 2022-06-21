@@ -39,7 +39,7 @@ function App() {
                 </DrawerLayout>
               }
             />
-             <Route
+            <Route
               path="/files"
               element={
                 <DrawerLayout currentTheme={theme}>

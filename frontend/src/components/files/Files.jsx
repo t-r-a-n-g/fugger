@@ -22,12 +22,8 @@ export default function Files() {
   return (
     <Stack spacing={2}>
       <h1>{t("menu-item-files")}</h1>
-      <div
-        {...getRootProps({ className: "dropzone" })}
-      >
-        <Input
-          {...getInputProps()}
-        />
+      <div {...getRootProps({ className: "dropzone" })}>
+        <Input {...getInputProps()} />
 
         <Button
           sx={
@@ -55,10 +51,10 @@ export default function Files() {
                   },
                 }
           }
-          fullWidth={true}
+          fullWidth
           variant="outlined"
         >
-          <Stack spacing={1} alignItems={"center"}>
+          <Stack spacing={1} alignItems="center">
             <InsertDriveFileOutlinedIcon sx={{ color: "inherit" }} />
             <Typography color="inherit">Drag and Drop, or Browse</Typography>
             <Typography color="inherit" variant="caption">

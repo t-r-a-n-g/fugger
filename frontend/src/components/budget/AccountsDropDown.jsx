@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
@@ -27,13 +27,13 @@ const datevAccounts = [
 ];
 
 export default function Accounts(props) {
-  const { accountSelected, setAccountSelected } = props;
+  const { accountValues, setAccountValues /* setAccountSelected, open */ } =
+    props;
 
   // state for value that user chooses (move this up to parent component)
-  const [valueAccount, setValueAccount] = useState("");
-  /* console.log("Selected account: ", valueAccount); */
+  /*  const [valueAccount, setValueAccount] = useState(""); */
 
-  // check if user chose a datev account
+  /*  // check if user chose a datev account
   useEffect(() => {
     if (valueAccount) {
       setAccountSelected(true);
@@ -43,12 +43,25 @@ export default function Accounts(props) {
     }
   }, [valueAccount]);
 
-  console.warn("Account selected: ", accountSelected);
+  // reset valueAccount when user closes and reopens budget box
+  useEffect(() => {
+    if (!open) setValueAccount("");
+  }, [open]); */
 
+  // function to fill value state when user chooses account
+  function handleChange(event) {
+    const vals = [...accountValues.val];
+    vals[this] = event.target.value;
+    setAccountValues({ val: vals });
+  }
+
+  /* console.log("Prop accountValues: ", accountValues); */
+  /*  console.log("Value array in accountValues: ", accountValues.val); */
   return (
     <Autocomplete
-      value={valueAccount}
-      onChange={(event, newValue) => setValueAccount(newValue)}
+      /* value={accountValues.val} */
+      /*  onChange={(event, newValue) => setValueAccount(newValue)} */
+      onChange={() => handleChange}
       id="accounts-dropdown"
       options={datevAccounts}
       sx={{ width: 400 }}
@@ -61,6 +74,8 @@ export default function Accounts(props) {
 }
 
 Accounts.propTypes = {
-  accountSelected: PropTypes.bool.isRequired,
-  setAccountSelected: PropTypes.func.isRequired,
+  accountValues: PropTypes.string.isRequired,
+  setAccountValues: PropTypes.func.isRequired,
+  /* setAccountSelected: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired, */
 };

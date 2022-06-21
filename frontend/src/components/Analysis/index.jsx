@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@mui/material";
+import BudgetEditing from "@components/budget_2/BudgetCard";
 
 import API from "@services/Api";
 import AnTable from "./Table/AnTable";
@@ -6,6 +8,8 @@ import AnTable from "./Table/AnTable";
 function Analysis() {
   const [isLoading, setIsLoading] = useState(true);
   const [financeData, setFinanceData] = useState(null);
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,7 +30,19 @@ function Analysis() {
 
   if (isLoading) return "Loading data...";
 
-  return <AnTable data={financeData} />;
+  return (
+    <>
+      <Button
+        sx={{ borderRadius: "10px", float: "right" }}
+        variant="contained"
+        onClick={() => setOpen(true)}
+      >
+        Specify budget
+      </Button>
+      <BudgetEditing open={open} setOpen={setOpen} />
+      <AnTable data={financeData} />
+    </>
+  );
 }
 
 export default Analysis;

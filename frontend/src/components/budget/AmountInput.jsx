@@ -4,11 +4,10 @@ import PropTypes from "prop-types";
 
 // TO DO: restrict input field to only 2 decimals and run validation check
 function AmountInput(props) {
-  const { amountSelected, setAmountSelected } = props;
+  const { setAmountSelected, open } = props;
 
   // state for value that user enters (move this up to parent component, convert into float)
   const [valueAmount, setValueAmount] = useState("");
-  /* console.log("value amount: ", valueAmount); */
 
   // check if user entered amount in input field
   useEffect(() => {
@@ -20,10 +19,14 @@ function AmountInput(props) {
     }
   }, [valueAmount]);
 
-  console.warn("Amount selected: ", amountSelected);
+  // reset valueAmount when user closes and reopens budget box
+  useEffect(() => {
+    if (!open) setValueAmount("");
+  }, [open]);
 
   return (
     <TextField
+      value={valueAmount}
       id="outlined-basic"
       label="EUR"
       variant="outlined"
@@ -35,8 +38,8 @@ function AmountInput(props) {
 }
 
 AmountInput.propTypes = {
-  amountSelected: PropTypes.bool.isRequired,
   setAmountSelected: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 export default AmountInput;

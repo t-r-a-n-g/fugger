@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -8,8 +8,6 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
-
-// TO DO: use npm package react month picker? https://www.npmjs.com/package/react-month-picker
 
 // Which dates should be provided? Ask Marcus
 const months = [
@@ -25,31 +23,11 @@ const months = [
   { month: "Mar 2020", year: 2020 },
 ];
 
-export default function Dates(props) {
-  const { setDateSelected, open } = props;
-
-  // state for value that user chooses (move this up to parent component)
-  const [valueDate, setValueDate] = useState([]);
-
-  // check if user chose at least one date
-  useEffect(() => {
-    if (valueDate) {
-      setDateSelected(true);
-    }
-    if (valueDate.length === 0) {
-      setDateSelected(false);
-    }
-  }, [valueDate]);
-
-  // reset valueDate when user closes and reopens budget box
-  useEffect(() => {
-    if (!open) setValueDate([]);
-  }, [open]);
-
+export default function Date() {
   return (
     <Autocomplete
-      value={valueDate}
-      onChange={(event, newValue) => setValueDate(newValue)}
+      /* value={valueDate}
+      onChange={(event, newValue) => setValueDate(newValue)} */
       multiple
       id="dates"
       options={months}
@@ -73,8 +51,3 @@ export default function Dates(props) {
     />
   );
 }
-
-Dates.propTypes = {
-  setDateSelected: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-};

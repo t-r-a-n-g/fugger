@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import PropTypes from "prop-types";
 import { Button } from "@mui/material";
-import BudgetEditing from "@components/budget/BudgetCard";
+import BudgetEditing from "@components/budget_2/BudgetCard";
 import FuTableHead from "./FuTableHead";
 import FuTableBody from "./FuTableBody";
 

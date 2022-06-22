@@ -118,7 +118,33 @@ function AnCollapsibleChildRow(props) {
 
   let open = row.isOpen;
   if (open === undefined) open = false;
+  let childRows = null;
 
+  if (open) {
+    childRows = Object.values(children).map((child) =>
+      child.children ? (
+        <AnCollapsibleChildRow
+          row={child}
+          isOpen={open}
+          toggleOpen={toggleOpen}
+          depth={depth + 1}
+          onNameEdit={onNameEdit}
+          onTransferEdit={onTransferEdit}
+        >
+          {child.children}
+        </AnCollapsibleChildRow>
+      ) : (
+        <AnTableRow
+          row={child}
+          isOpen={open}
+          key={`${row.id}-${child.id}`}
+          depth={depth + 1}
+          onNameEdit={onNameEdit}
+          onTransferEdit={onTransferEdit}
+        />
+      )
+    );
+  }
   return (
     <>
       <TableRow>
@@ -154,29 +180,8 @@ function AnCollapsibleChildRow(props) {
           </Collapse>
         </TableCell>
       </TableRow>
-      {Object.values(children).map((child) =>
-        child.children ? (
-          <AnCollapsibleChildRow
-            row={child}
-            isOpen={open}
-            toggleOpen={toggleOpen}
-            depth={depth + 1}
-            onNameEdit={onNameEdit}
-            onTransferEdit={onTransferEdit}
-          >
-            {child.children}
-          </AnCollapsibleChildRow>
-        ) : (
-          <AnTableRow
-            row={child}
-            isOpen={open}
-            key={`${row.id}-${child.id}`}
-            depth={depth + 1}
-            onNameEdit={onNameEdit}
-            onTransferEdit={onTransferEdit}
-          />
-        )
-      )}
+
+      {childRows}
     </>
   );
 }
@@ -188,6 +193,23 @@ function AnCollapsibleRow(props) {
 
   let open = row.isOpen;
   if (open === undefined) open = false;
+  let childRows = null;
+
+  if (open) {
+    childRows = Object.values(children).map((child) => (
+      <AnCollapsibleChildRow
+        row={child}
+        isOpen={open}
+        toggleOpen={toggleOpen}
+        key={`${row.id}-${child.id}`}
+        depth={1}
+        onNameEdit={onNameEdit}
+        onTransferEdit={onTransferEdit}
+      >
+        {child.children}
+      </AnCollapsibleChildRow>
+    ));
+  }
 
   return (
     <>
@@ -205,19 +227,7 @@ function AnCollapsibleRow(props) {
         {cells}
       </TableRow>
 
-      {Object.values(children).map((child) => (
-        <AnCollapsibleChildRow
-          row={child}
-          isOpen={open}
-          toggleOpen={toggleOpen}
-          key={`${row.id}-${child.id}`}
-          depth={1}
-          onNameEdit={onNameEdit}
-          onTransferEdit={onTransferEdit}
-        >
-          {child.children}
-        </AnCollapsibleChildRow>
-      ))}
+      {childRows}
     </>
   );
 }

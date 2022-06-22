@@ -32,7 +32,7 @@ function App() {
 
   if (user === null) {
     return (
-      <ThemeProvider theme={appliedTheme}>
+      <ThemeProvider theme={createTheme(appliedTheme[theme])}>
         <Router>
           <Routes>
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />

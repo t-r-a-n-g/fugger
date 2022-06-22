@@ -3,8 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
 
-// TO DO: API get requests to get all datev accounts, for now use dummy data
-// hand over data as props
+// TO DO: fetch all datev accounts from db
 
 // Dummy data for accounts
 const datevAccounts = [
@@ -26,29 +25,23 @@ const datevAccounts = [
   { label: "6787 Versicherung für Gebäude", id: 16 },
 ];
 
-export default function Accounts(props) {
-  const { accountSelected, setAccountSelected } = props;
+export default function Account(props) {
+  const { values, setValues, index } = props;
 
-  // state for value that user chooses (move this up to parent component)
-  const [valueAccount, setValueAccount] = useState("");
-  /* console.log("Selected account: ", valueAccount); */
+  // state to store user input of account they chose
+  const [accountValue, setAccountValue] = useState("");
 
-  // check if user chose a datev account
+  // pushing chosen accountValue into overall values array when accountValues changes
   useEffect(() => {
-    if (valueAccount) {
-      setAccountSelected(true);
-    }
-    if (!valueAccount) {
-      setAccountSelected(false);
-    }
-  }, [valueAccount]);
-
-  console.warn("Account selected: ", accountSelected);
+    const vals = values.val;
+    vals[index].account = accountValue;
+    setValues({ val: vals });
+  }, [accountValue]);
 
   return (
     <Autocomplete
-      value={valueAccount}
-      onChange={(event, newValue) => setValueAccount(newValue)}
+      value={values.val[index].account}
+      onChange={(event, newValue) => setAccountValue(newValue)}
       id="accounts-dropdown"
       options={datevAccounts}
       sx={{ width: 400 }}
@@ -60,7 +53,8 @@ export default function Accounts(props) {
   );
 }
 
-Accounts.propTypes = {
-  accountSelected: PropTypes.bool.isRequired,
-  setAccountSelected: PropTypes.func.isRequired,
+Account.propTypes = {
+  values: PropTypes.objectOf().isRequired,
+  setValues: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };

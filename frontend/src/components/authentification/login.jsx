@@ -22,14 +22,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Link as RouterLink,
-  useNavigate,
   MemoryRouter,
+  useNavigate,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import axios from "axios";
 import validator from "validator";
 import { useTranslation } from "react-i18next";
-import { loginEndpoint } from "../../apiEndpoints";
+import Api from "@services/Api";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
@@ -47,7 +46,7 @@ Router.propTypes = {
 
 // ----------------------------------- end ----------------------------------- //
 
-function LoginPage() {
+function LoginPage({ setUser }) {
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
   const [password, setPassword] = useState("");
@@ -65,21 +64,19 @@ function LoginPage() {
   };
 
   // POST REQUEST TO BACKEND
-  const userData = {
-    email,
-    password,
-  };
 
   const [errorStatus, setErrorStatus] = useState();
-
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post(loginEndpoint, userData)
-      .then(() => navigate("/analysis"))
-      .catch((err) => setErrorStatus(err.response.status));
+    try {
+      const user = await Api.login(email, password);
+      setUser(user);
+      navigate("/");
+    } catch (err) {
+      setErrorStatus(err.response.status);
+    }
   };
 
   // VARIABLES FOR STYLING --- START ---

@@ -101,5 +101,4 @@ class AuthController {
     return res.json(resData);
   }
 }
-
 module.exports = AuthController;

@@ -162,7 +162,7 @@ export default function DrawerLayout({ children, currentTheme }) {
     {
       title: t("menu-item-logout"),
       icon: <LogoutIcon />,
-      path: "/login",
+      path: "/logout",
     },
   ];
 

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -10,8 +9,8 @@ function AnTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
-        <TableCell colSpan={2} align="center" />
+      <TableRow key="header-row-1">
+        <TableCell colSpan={2} align="center" key="header-row-1-cell-1" />
         {months.map((m) => (
           <TableCell key={m.key} colSpan={4} align="center">
             {new Date(m.date).toLocaleDateString("en-US", {
@@ -21,9 +20,9 @@ function AnTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-      <TableRow>
-        <TableCell />
-        <TableCell>Account</TableCell>
+      <TableRow key="header-row-2">
+        <TableCell key="header-row-2-cell-1" />
+        <TableCell key="header-row-2-cell-2">Account</TableCell>
 
         {months.map((m) =>
           monthHeaders.map((h) => (
@@ -34,21 +33,5 @@ function AnTableHead(props) {
     </TableHead>
   );
 }
-
-AnTableHead.propTypes = {
-  months: PropTypes.arrayOf({
-    id: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
-    transfers: PropTypes.arrayOf({
-      id: PropTypes.number.isRequired,
-      actual: PropTypes.number.isRequired,
-      budget: PropTypes.number.isRequired,
-      datevAccountId: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-
-  monthHeaders: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 
 export default AnTableHead;

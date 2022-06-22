@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -23,11 +23,25 @@ const months = [
   { month: "Mar 2020", year: 2020 },
 ];
 
-export default function Date() {
+export default function Date(props) {
+  const { values, setValues, index } = props;
+
+  // state to store user input of dates
+  const [dateValue, setDateValue] = useState([]);
+  /* console.log("values: ", values); */
+  /* console.log("dateValue: ", dateValue); */
+
+  // pushing chosen dates into overall values array when dateValue changes
+  useEffect(() => {
+    const vals = values.val;
+    vals[index].date = dateValue;
+    setValues({ val: vals });
+  }, [dateValue]);
+
   return (
     <Autocomplete
-      /* value={valueDate}
-      onChange={(event, newValue) => setValueDate(newValue)} */
+      value={values.val[index].date}
+      onChange={(event, newValue) => setDateValue(newValue)}
       multiple
       id="dates"
       options={months}
@@ -51,3 +65,9 @@ export default function Date() {
     />
   );
 }
+
+Date.propTypes = {
+  values: PropTypes.objectOf.isRequired,
+  setValues: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+};

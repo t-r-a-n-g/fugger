@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
@@ -24,15 +24,25 @@ const datevAccounts = [
 ];
 
 export default function Account(props) {
-  const { setAccountValue, valueLabel } = props;
-  /* console.log("valueLabel: ", valueLabel); */
+  const { values, setValues, index } = props;
+
+  // state to store user input of account they chose
+  const [accountValue, setAccountValue] = useState("");
+  /*  console.log("values: ", values); */
+  /* console.log("accountValue: ", accountValue); */
+  /*  console.log("TEST: ", values.val[index].account.label); */
+
+  // pushing chosen accountValue into overall values array when accountValues changes
+  useEffect(() => {
+    const vals = values.val;
+    vals[index].account = accountValue;
+    setValues({ val: vals });
+  }, [accountValue]);
 
   return (
     <Autocomplete
-      value={valueLabel} // here take the value of values.val array passed as props from BudgetCard
-      onChange={(event, newValue, prevArr) =>
-        setAccountValue([prevArr, newValue])
-      }
+      value={values.val[index].account}
+      onChange={(event, newValue) => setAccountValue(newValue)}
       id="accounts-dropdown"
       options={datevAccounts}
       sx={{ width: 400 }}
@@ -45,6 +55,7 @@ export default function Account(props) {
 }
 
 Account.propTypes = {
-  setAccountValue: PropTypes.func.isRequired,
-  valueLabel: PropTypes.string.isRequired,
+  values: PropTypes.objectOf().isRequired,
+  setValues: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };

@@ -32,13 +32,13 @@ function ConfirmationDialogRaw(props) {
   /* ---------------------- ADDING AND REMOVING ROWS -------------------------*/
   // creating values state that contains an object for the different value types
   const [values, setValues] = useState({
-    val: [{ account: "test account", amount: "", date: [] }],
+    val: [{ account: "", amount: "", date: [] }],
   });
 
   // addClick function to add more rows: adding elements to values.val array
   const addClick = () => {
     setValues({
-      val: [...values.val, { account: "test add", amount: "", date: [] }],
+      val: [...values.val, { account: "", amount: "", date: [] }],
     });
   };
 
@@ -48,11 +48,9 @@ function ConfirmationDialogRaw(props) {
     vals.splice(i, 1);
     setValues({ val: vals });
   };
-  /* --------------------------------------------------------------------------- */
+  /* 
 
-  // test for setting values of account
-  const [accountValue, setAccountValue] = useState(["testarray"]);
-  console.warn("accountValue in BudgetCard: ", accountValue);
+  /* --------------------------------------------------------------------------- */
 
   return (
     <Dialog
@@ -67,12 +65,9 @@ function ConfirmationDialogRaw(props) {
       <DialogContent dividers sx={{ alignContent: "center" }}>
         {values.val.map((el, index) => (
           <Stack sx={{ marginBottom: 2 }} direction="row" spacing={2}>
-            <Account
-              valueLabel={el.account}
-              setAccountValue={setAccountValue}
-            />{" "}
-            <Amount />
-            <Date />
+            <Account values={values} setValues={setValues} index={index} />{" "}
+            <Amount values={values} setValues={setValues} index={index} />
+            <Date values={values} setValues={setValues} index={index} />
             <Box>
               <Fab
                 size="small"

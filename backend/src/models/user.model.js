@@ -16,14 +16,25 @@ const User = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
+
     lastname: {
       type: DataTypes.STRING(60),
       allowNull: false,
     },
+
     firstname: {
       type: DataTypes.STRING(60),
       allowNull: false,
     },
+
+    username: {
+      type: DataTypes.STRING(30),
+    },
+
+    avatar_path: {
+      type: DataTypes.STRING(255),
+    },
+
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
@@ -32,13 +43,19 @@ const User = sequelize.define(
         isEmail: true,
       },
     },
+
     password: {
       type: DataTypes.STRING(60),
       allowNull: false,
     },
+
     language: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+
+    theme: {
+      type: DataTypes.STRING(10),
     },
   },
   { tableName: "users" }

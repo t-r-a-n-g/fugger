@@ -27,9 +27,9 @@ import {
   MemoryRouter,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import axios from "axios";
 import validator from "validator";
-import { signupEndpoint } from "../../apiEndpoints";
+import { useTranslation } from "react-i18next";
+import Api from "@services/Api";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
@@ -47,7 +47,7 @@ Router.propTypes = {
 
 // ----------------------------------- end ----------------------------------- //
 
-function SignUpPage() {
+function SignUpPage({ setUser }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -57,6 +57,7 @@ function SignUpPage() {
   const [passwordCheck, setPasswordCheck] = useState(true);
   const [emailCheck, setEmailCheck] = useState(true);
   const [hidden, setHidden] = useState(false);
+  const { t } = useTranslation(); // i18next
 
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
@@ -108,16 +109,16 @@ function SignUpPage() {
   const [errorStatus, setErrorStatus] = useState();
 
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validEmail && strongPassword && passwordCheck && emailCheck) {
-      axios
-        .post(signupEndpoint, userData)
-        .then(() => navigate("/analysis"))
-        .catch((err) => {
-          setErrorStatus(err.response.status);
-        });
+      try {
+        const user = await Api.signup(userData);
+        setUser(user);
+        navigate("/");
+      } catch (err) {
+        setErrorStatus(err.response.status);
+      }
     }
   };
 
@@ -125,7 +126,7 @@ function SignUpPage() {
   const styleContainer = {
     height: "100vh",
     width: "100vw",
-    backgroundColor: "primary.main",
+    backgroundColor: "background.color",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -145,6 +146,7 @@ function SignUpPage() {
     justifyContent: "center",
     alignItems: "center",
     pb: "20px",
+    color: "text.primary",
   };
 
   const styleText = { color: "primary.contrastText" };
@@ -160,7 +162,7 @@ function SignUpPage() {
         </Stack>
         <Card sx={styleCard}>
           <Typography sx={styleTitle} variant="h6">
-            Create your account
+            {t("create-account-text")}
           </Typography>
           <Stack
             spacing={2}
@@ -173,7 +175,7 @@ function SignUpPage() {
                   fullWidth
                   required
                   id="signup-firstname-textfield"
-                  label="Firstname"
+                  label={t("input-label-firstname")}
                   variant="outlined"
                   size="small"
                   onChange={(e) => setFirstname(e.target.value)}
@@ -182,7 +184,7 @@ function SignUpPage() {
                   fullWidth
                   required
                   id="signup-lastname-textfield"
-                  label="Lastname"
+                  label={t("input-label-lastname")}
                   variant="outlined"
                   size="small"
                   onChange={(e) => setLastname(e.target.value)}
@@ -191,7 +193,7 @@ function SignUpPage() {
                   fullWidth
                   required
                   id="signup-email-textfield"
-                  label="E-Mail"
+                  label={t("input-label-email")}
                   variant="outlined"
                   type="email"
                   size="small"
@@ -200,29 +202,25 @@ function SignUpPage() {
                   }}
                   onBlur={handleValidEmail}
                   error={!(validEmail === true || validEmail === "")}
-                  helperText={
-                    !validEmail ? "Please provide a valid E-Mail." : null
-                  }
+                  helperText={!validEmail ? t("error-valid-email") : null}
                 />
                 <TextField
                   fullWidth
                   required
                   id="signup-email-confirm-textfield"
-                  label="Confirm E-Mail"
+                  label={t("input-label-confirm-email")}
                   variant="outlined"
                   type="email"
                   size="small"
                   onChange={handleEmailCheck}
                   error={!(emailCheck || emailCheck === "")}
-                  helperText={
-                    !emailCheck ? "Your E-Mails are not matching." : null
-                  }
+                  helperText={!emailCheck ? t("error-matching-emails") : null}
                 />
                 <TextField
                   fullWidth
                   required
                   id="signup-create-password"
-                  label="Create Password"
+                  label={t("input-label-create-password")}
                   variant="outlined"
                   type={hidden === false ? "password" : "text"}
                   onChange={handlePassword}
@@ -250,7 +248,7 @@ function SignUpPage() {
                             title={
                               <>
                                 <Typography>
-                                  Your password must contain
+                                  {t("password-condition-text")}
                                 </Typography>
                                 <Typography
                                   sx={
@@ -260,7 +258,7 @@ function SignUpPage() {
                                   }
                                   variant="body2"
                                 >
-                                  • min 8 digits
+                                  {t("password-condition-length")}
                                 </Typography>
                                 <Typography
                                   sx={
@@ -270,7 +268,7 @@ function SignUpPage() {
                                   }
                                   variant="body2"
                                 >
-                                  • lower case
+                                  {t("password-condition-lower-case")}
                                 </Typography>
                                 <Typography
                                   sx={
@@ -280,7 +278,7 @@ function SignUpPage() {
                                   }
                                   variant="body2"
                                 >
-                                  • upper case
+                                  {t("password-condition-upper-case")}
                                 </Typography>
                                 <Typography
                                   sx={
@@ -290,7 +288,7 @@ function SignUpPage() {
                                   }
                                   variant="body2"
                                 >
-                                  • number
+                                  {t("password-condition-number")}
                                 </Typography>
                                 <Typography
                                   sx={
@@ -300,7 +298,7 @@ function SignUpPage() {
                                   }
                                   variant="body2"
                                 >
-                                  • special charackter
+                                  {t("password-condition-special-charackter")}
                                 </Typography>
                               </>
                             }
@@ -310,9 +308,11 @@ function SignUpPage() {
                         )}
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -323,13 +323,13 @@ function SignUpPage() {
                   fullWidth
                   required
                   id="signup-confirm-password"
-                  label="Confirm Password"
+                  label={t("input-label-confirm-password")}
                   variant="outlined"
                   type={hidden === false ? "password" : "text"}
                   onChange={handlePasswordCheck}
                   error={!(passwordCheck === true || passwordCheck === "")}
                   helperText={
-                    !passwordCheck ? "Your passwords are not matching." : null
+                    !passwordCheck ? t("error-matching-passwords") : null
                   }
                   autoComplete="new-password"
                   size="small"
@@ -338,24 +338,22 @@ function SignUpPage() {
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
                     ),
                   }}
                 />
-                {errorStatus === 409 ? (
-                  <p>An Account with this E-Mail already exists.</p>
-                ) : null}
-                {errorStatus === 400 ? (
-                  <p>Please check if your E-Mail and Password are valid.</p>
-                ) : null}
+                {errorStatus === 409 ? <p>{t("409-error-message")}</p> : null}
+                {errorStatus === 400 ? <p>{t("409-error-message")}</p> : null}
 
                 {errorStatus === 500 || errorStatus === 0 ? (
-                  <p>We are very sorry. Please try again later!</p>
+                  <p>{t("500-error-message")}</p>
                 ) : null}
                 <Button
                   fullWidth
@@ -363,7 +361,7 @@ function SignUpPage() {
                   type="submit"
                   variant="contained"
                 >
-                  Create Account
+                  {t("create-account")}
                 </Button>
               </Stack>
             </form>
@@ -375,29 +373,43 @@ function SignUpPage() {
               alignItems="center"
             >
               <Typography
-                sx={{ color: "grey.700" }}
+                sx={{ color: "text.secondary" }}
                 variant="body2"
                 align="center"
               >
-                Or sign up with:
+                {t("third-party-signup-text")}
               </Typography>
               <Button
-                sx={{ color: "grey.700", borderRadius: "10px" }}
+                sx={{
+                  color: "text.secondary",
+                  borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
+                }}
                 id="signup-button-google"
                 fullWidth
                 variant="outlined"
                 startIcon={<GoogleLogo />}
               >
-                Google
+                {t("third-party-google")}
               </Button>
               <Button
-                sx={{ color: "#4267B2", borderRadius: "10px" }}
+                sx={{
+                  color: "#4267B2",
+                  borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
+                }}
                 id="signup-button-facebook"
                 fullWidth
                 variant="outlined"
                 startIcon={<FacebookIcon />}
               >
-                Facebook
+                {t("third-party-facebook")}
               </Button>
               <Button
                 sx={{
@@ -405,21 +417,25 @@ function SignUpPage() {
                   fontSize: "medium",
                   color: "#0A66C2",
                   borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "primary.contrastText",
+                  },
                 }}
                 id="signup-button-linkedin"
                 fullWidth
                 variant="outlined"
                 endIcon={<LinkedInIcon sx={{ margin: "-9px" }} />}
               >
-                Linked
+                {t("third-party-linkedin")}
               </Button>
             </Stack>
           </Stack>
         </Card>
         <Typography sx={styleText} variant="caption">
-          Already have an Account?{" "}
+          {t("already-have-account")}{" "}
           <Link color="primary.linkColor" component={RouterLink} to="/login">
-            Log in
+            {t("log-in-button")}
           </Link>
         </Typography>
       </Stack>

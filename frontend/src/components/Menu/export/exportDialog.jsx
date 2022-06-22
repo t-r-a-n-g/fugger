@@ -70,7 +70,7 @@ export default function ExportDialog() {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            height: "3ch",
+            height: "5ch",
             backgroundColor: "primary.main",
             color: "primary.contrastText",
           }}

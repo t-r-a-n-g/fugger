@@ -14,8 +14,8 @@ function Analysis() {
   useEffect(() => {
     async function fetchData() {
       const res = await API.get("analysis", {
-        from: "Jan/2019",
-        to: "Feb/2019",
+        from: "Jun/2022",
+        to: "Jun/2022",
       });
       setFinanceData(res.data);
     }

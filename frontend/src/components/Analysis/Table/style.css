@@ -1,0 +1,131 @@
+:root {
+  --cell-width: 120px;
+  --text-size: 0.7rem;
+  --border: 1px solid rgba(224, 224, 224, 1);
+}
+
+table {
+  table-layout: fixed;
+  display: block !important;
+  overflow: auto;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: Name=none; /* Firefox */
+}
+
+/* all headers */
+.MuiTable-root
+  .MuiTableHead-root
+  .MuiTableRow-root
+  .MuiTableCell-root.MuiTableCell-head {
+  background: #f7f7f7;
+  border: var(--border);
+}
+
+/* first header columns in both rows */
+.MuiTable-root
+  .MuiTableHead-root
+  .MuiTableRow-root
+  .MuiTableCell-root.MuiTableCell-head:first-child {
+  border: none;
+}
+
+/* second header column in second row */
+.MuiTable-root
+  .MuiTableHead-root
+  .MuiTableRow-root:nth-child(2)
+  .MuiTableCell-root.MuiTableCell-head:nth-child(2) {
+  border: none;
+}
+
+/* all header columns in first row */
+.MuiTable-root
+  .MuiTableHead-root
+  .MuiTableRow-root:first-child
+  .MuiTableCell-root.MuiTableCell-head {
+  border-bottom: none;
+  border-top: none;
+}
+
+/* all header columns in second row */
+.MuiTable-root
+  .MuiTableHead-root
+  .MuiTableRow-root:nth-child(2)
+  .MuiTableCell-root.MuiTableCell-head {
+  /* border-top: none; */
+}
+
+/* all columns */
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  /* width: 100px; */
+  /* max-width: 100px; */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* collapse/expand icon buttons */
+.MuiButtonBase-root.MuiIconButton-root {
+  padding: 0;
+}
+
+/* first column (contains collapse/expand buttons) */
+.firstColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: yellow; */
+  width: 50px;
+  padding: 0;
+  text-align: left;
+}
+
+/* category column */
+.categoryColumn.MuiTableCell-root.MuiTableCell-body {
+  min-width: 250px;
+  max-width: 250px;
+  padding: 0;
+  border-right: var(--border);
+  text-align: left;
+}
+
+/* category columns of child rows */
+.child-1 .categoryColumn.MuiTableCell-root.MuiTableCell-body {
+  padding-left: 10px;
+}
+
+.child-2 .categoryColumn.MuiTableCell-root.MuiTableCell-body {
+  padding-left: 20px;
+}
+
+/* actual column */
+.actualColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #ffc107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: var(--border);
+}
+
+/* budget column */
+.budgetColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #fff108; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: var(--border);
+}
+
+/* absolute column */
+.absoluteColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #dfc107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: var(--border);
+}
+
+/* percent column */
+.percentColumn.MuiTableCell-root.MuiTableCell-body {
+  /* background-color: #aac107; */
+  max-width: var(--cell-width);
+  min-width: var(--cell-width);
+  border-right: var(--border);
+}
+
+input {
+  width: 100%;
+}

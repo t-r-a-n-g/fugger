@@ -41,7 +41,7 @@ export default function TableOptionMenu() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreVertIcon sx={{ color: "primary.contrastText" }} />
       </IconButton>
       <Menu
         id="long-menu"

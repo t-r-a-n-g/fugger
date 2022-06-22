@@ -34,6 +34,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Avatar, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -102,9 +103,10 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function DrawerLayout({ children, themeMode }) {
+export default function DrawerLayout({ children, currentTheme }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation(); // i18next
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -116,58 +118,64 @@ export default function DrawerLayout({ children, themeMode }) {
   const menuId = "primary-search-account-menu";
   const menuItems = [
     {
-      title: "Analysis",
+      title: t("menu-item-analysis"),
       icon: <AnalyticsOutlinedIcon />,
       path: "/analysis",
     },
     {
-      title: "Uploads Files",
+      title: t("menu-item-files"),
       icon: <UploadFileIcon />,
-      path: "/analysis",
+      path: "/files",
     },
     {
-      title: "Dashboard",
+      title: t("menu-item-dashboard"),
       icon: <DashboardCustomizeOutlinedIcon />,
       path: "/analysis",
     },
     {
-      title: "Customers",
+      title: t("menu-item-customers"),
       icon: <PeopleAltIcon />,
       path: "/analysis",
     },
     {
-      title: "Orders",
+      title: t("menu-item-orders"),
       icon: <BorderColorOutlinedIcon />,
       path: "/analysis",
     },
     {
-      title: "Products",
+      title: t("menu-item-products"),
       icon: <Inventory2OutlinedIcon />,
       path: "/analysis",
     },
     {
-      title: "Invoices",
+      title: t("menu-item-invoices"),
       icon: <DescriptionOutlinedIcon />,
       path: "/analysis",
     },
   ];
   const menuItems2 = [
     {
-      title: "Settings",
+      title: t("menu-item-settings"),
       icon: <SettingsIcon />,
-      path: "/analysis",
+      path: "/settings",
     },
     {
-      title: "Logout",
+      title: t("menu-item-logout"),
       icon: <LogoutIcon />,
-      path: "/login",
+      path: "/logout",
     },
   ];
 
   const linkStyle = { textDecoration: "none", color: "#fff" };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={
+        currentTheme === "themeDark"
+          ? { display: "flex", backgroundColor: "#272727" }
+          : { display: "flex", backgroundColor: "background.none" }
+      }
+    >
       <CssBaseline />
       <AppBar
         sx={{ backgroundColor: "primary.contrast" }}
@@ -203,7 +211,7 @@ export default function DrawerLayout({ children, themeMode }) {
           </Stack>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Stack justifyContent="center">{themeMode}</Stack>
+            <Stack justifyContent="center" />
             <IconButton
               size="large"
               aria-label="show 4 new mails"
@@ -351,5 +359,5 @@ export default function DrawerLayout({ children, themeMode }) {
 }
 DrawerLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  themeMode: PropTypes.node.isRequired,
+  currentTheme: PropTypes.node.isRequired,
 };

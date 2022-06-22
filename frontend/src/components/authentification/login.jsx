@@ -22,13 +22,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Link as RouterLink,
-  useNavigate,
   MemoryRouter,
+  useNavigate,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import axios from "axios";
 import validator from "validator";
-import { loginEndpoint } from "../../apiEndpoints";
+import { useTranslation } from "react-i18next";
+import Api from "@services/Api";
 
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
@@ -46,11 +46,12 @@ Router.propTypes = {
 
 // ----------------------------------- end ----------------------------------- //
 
-function LoginPage() {
+function LoginPage({ setUser }) {
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
   const [password, setPassword] = useState("");
   const [hidden, setHidden] = useState(false);
+  const { t } = useTranslation(); // i18next
 
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
@@ -63,28 +64,26 @@ function LoginPage() {
   };
 
   // POST REQUEST TO BACKEND
-  const userData = {
-    email,
-    password,
-  };
 
   const [errorStatus, setErrorStatus] = useState();
-
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post(loginEndpoint, userData)
-      .then(() => navigate("/analysis"))
-      .catch((err) => setErrorStatus(err.response.status));
+    try {
+      const user = await Api.login(email, password);
+      setUser(user);
+      navigate("/");
+    } catch (err) {
+      setErrorStatus(err.response.status);
+    }
   };
 
   // VARIABLES FOR STYLING --- START ---
   const styleContainer = {
     height: "100vh",
     width: "100vw",
-    backgroundColor: "primary.main",
+    backgroundColor: "background.color",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -104,6 +103,7 @@ function LoginPage() {
     justifyContent: "center",
     alignItems: "center",
     pb: "20px",
+    color: "text.primary",
   };
 
   const styleText = { color: "primary.contrastText" };
@@ -120,7 +120,7 @@ function LoginPage() {
         </Stack>
         <Card sx={styleCard}>
           <Typography sx={styleTitle} variant="h6">
-            Log in to your account
+            {t("log-in")}
           </Typography>
           <form onSubmit={handleSubmit}>
             <Stack
@@ -134,7 +134,7 @@ function LoginPage() {
                   required
                   size="small"
                   id="login-textfield-email"
-                  label="E-Mail"
+                  label={t("input-label-email")}
                   variant="outlined"
                   type="email"
                   onChange={(e) => {
@@ -148,7 +148,7 @@ function LoginPage() {
                   required
                   size="small"
                   id="login-textfield-password"
-                  label="Password"
+                  label={t("input-label-password")}
                   variant="outlined"
                   type={hidden === false ? "password" : "text"}
                   onChange={(e) => setPassword(e.target.value)}
@@ -157,9 +157,11 @@ function LoginPage() {
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
                           {hidden === false ? (
-                            <VisibilityOffIcon />
+                            <VisibilityOffIcon
+                              sx={{ color: "text.secondary" }}
+                            />
                           ) : (
-                            <VisibilityIcon />
+                            <VisibilityIcon sx={{ color: "text.secondary" }} />
                           )}
                         </IconButton>
                       </InputAdornment>
@@ -167,17 +169,15 @@ function LoginPage() {
                   }}
                 />
                 <Typography color="text.secondary" variant="body2">
-                  Forgot password?
+                  {t("forgot-password")}
                 </Typography>
                 {errorStatus === 403 ? (
                   <Alert severity="error">
-                    E-Mail or Password is not correct
+                    {t("incorrect-email-or-password")}
                   </Alert>
                 ) : null}
                 {errorStatus === 500 || errorStatus === 0 ? (
-                  <Alert severity="error">
-                    We are very sorry. Please try again later!
-                  </Alert>
+                  <Alert severity="error">{t("500-error-message")}</Alert>
                 ) : null}
                 <Button
                   sx={{ borderRadius: "10px" }}
@@ -186,35 +186,49 @@ function LoginPage() {
                   type="submit"
                   variant="contained"
                 >
-                  Log In
+                  {t("log-in-button")}
                 </Button>
               </Stack>
               {/* -------------------------------- LOG IN WITH THIRD PARTY PROVIDER -------------------------------------------------------------- */}
               <Stack sx={{ width: "50%" }} spacing={2}>
                 <Typography
-                  sx={{ color: "grey.700" }}
+                  sx={{ color: "text.secondary" }}
                   variant="body2"
                   align="center"
                 >
-                  Or log in with:
+                  {t("third-party-login-text")}
                 </Typography>
                 <Button
-                  sx={{ color: "grey.700", borderRadius: "10px" }}
+                  sx={{
+                    color: "text.secondary",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                  }}
                   id="login-button-google"
                   fullWidth
                   variant="outlined"
                   startIcon={<GoogleLogo />}
                 >
-                  Google
+                  {t("third-party-google")}
                 </Button>
                 <Button
-                  sx={{ color: "#4267B2", borderRadius: "10px" }}
+                  sx={{
+                    color: "#4267B2",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                  }}
                   id="login-button-facebook"
                   fullWidth
                   variant="outlined"
                   startIcon={<FacebookIcon />}
                 >
-                  Facebook
+                  {t("third-party-facebook")}
                 </Button>
                 <Button
                   sx={{
@@ -222,22 +236,27 @@ function LoginPage() {
                     fontSize: "medium",
                     color: "#0A66C2",
                     borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
                   }}
+                  color="primary"
                   id="login-button-linkedin"
                   fullWidth
                   variant="outlined"
                   endIcon={<LinkedInIcon sx={{ margin: "-9px" }} />}
                 >
-                  Linked
+                  {t("third-party-linkedin")}
                 </Button>
               </Stack>
             </Stack>
           </form>
         </Card>
         <Typography sx={styleText} variant="caption">
-          New User?{" "}
+          {t("new-user")}{" "}
           <Link color="primary.linkColor" component={RouterLink} to="/signup">
-            Create Account
+            {t("create-account")}
           </Link>
         </Typography>
       </Stack>

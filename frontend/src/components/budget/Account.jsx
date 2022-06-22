@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
 
+// TO DO: fetch all datev accounts from db
+
 // Dummy data for accounts
 const datevAccounts = [
   { label: "1000 Fremdleistungen", id: 1 },
@@ -28,9 +30,6 @@ export default function Account(props) {
 
   // state to store user input of account they chose
   const [accountValue, setAccountValue] = useState("");
-  /*  console.log("values: ", values); */
-  /* console.log("accountValue: ", accountValue); */
-  /*  console.log("TEST: ", values.val[index].account.label); */
 
   // pushing chosen accountValue into overall values array when accountValues changes
   useEffect(() => {

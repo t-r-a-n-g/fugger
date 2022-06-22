@@ -8,8 +8,6 @@ export default function Amount(props) {
 
   // state to store user input of amount
   const [amountValue, setAmountValue] = useState("");
-  /* console.log("values: ", values);
-  console.log("amountValue: ", amountValue); */
 
   // pushing amountValue into overall values array when amountValues changes
   useEffect(() => {

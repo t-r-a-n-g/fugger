@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import BudgetEditing from "@components/budget_2/BudgetCard";
+import BudgetEditing from "@components/budget/BudgetCard";
 
 import API from "@services/Api";
 import AnTable from "./Table/AnTable";

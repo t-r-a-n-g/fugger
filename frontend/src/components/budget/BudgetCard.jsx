@@ -9,6 +9,7 @@ import Dialog from "@mui/material/Dialog";
 import { Alert, Stack, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import API from "@services/Api";
 import Account from "./Account";
 import Amount from "./Amount";
 import Date from "./Date";
@@ -73,7 +74,34 @@ function ConfirmationDialogRaw(props) {
     vals.splice(i, 1);
     setValues({ val: vals });
   };
-  /* 
+
+  /* -------------- FETCHING DATEV ACCOUNTS FROM DB TO PASS TO ACCOUNT COMPONENT -------------- */
+
+  const [accountData, setAccountData] = useState(null);
+
+  // renaming the label to have account number and account name
+  /* eslint array-callback-return: 0 */
+  function rename(data) {
+    data.map((obj) => {
+      obj.label = `${obj.number} ${obj.name}`;
+    });
+    return data;
+  }
+
+  // TO DO: specify error handling
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await API.getDatevAccounts();
+        const accounts = await rename(res);
+        setAccountData(accounts);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   /* --------------------------------------------------------------------------- */
 
@@ -90,7 +118,12 @@ function ConfirmationDialogRaw(props) {
       <DialogContent dividers sx={{ alignContent: "center" }}>
         {values.val.map((el, index) => (
           <Stack sx={{ marginBottom: 2 }} direction="row" spacing={2}>
-            <Account values={values} setValues={setValues} index={index} />{" "}
+            <Account
+              accountData={accountData}
+              values={values}
+              setValues={setValues}
+              index={index}
+            />{" "}
             <Amount values={values} setValues={setValues} index={index} />
             <Date values={values} setValues={setValues} index={index} />
             <Box>

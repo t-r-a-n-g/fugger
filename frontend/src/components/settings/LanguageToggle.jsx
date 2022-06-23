@@ -4,22 +4,25 @@ import Menu from "@mui/material/Menu";
 import { useTranslation } from "react-i18next";
 import MenuItem from "@mui/material/MenuItem";
 import LanguageIcon from "@mui/icons-material/Language";
-import i18n from "i18next";
+import UserContext from "@contexts/UserContext";
+import Api from "@services/Api";
 
-export default function LanguageToggle() {
+export default function LanguageToggle({ setUser }) {
   const { t } = useTranslation(); // i18next
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const user = React.useContext(UserContext);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
-    i18n.changeLanguage();
   };
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  const toggleLanguage = (lng) => {
     handleClose();
+    const newUser = { ...user, language: lng };
+    Api.changeUser({ data: newUser });
+    setUser(newUser);
   };
 
   return (
@@ -58,7 +61,7 @@ export default function LanguageToggle() {
               color: "primary.contrastText",
             },
           }}
-          onClick={() => changeLanguage("de")}
+          onClick={() => toggleLanguage("de-DE")}
         >
           Deutsch
         </MenuItem>
@@ -69,7 +72,7 @@ export default function LanguageToggle() {
               color: "primary.contrastText",
             },
           }}
-          onClick={() => changeLanguage("en")}
+          onClick={() => toggleLanguage("en-US")}
         >
           English
         </MenuItem>

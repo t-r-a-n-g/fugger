@@ -7,6 +7,7 @@ export default {
     logout: "auth/logout",
     signup: "auth/signup",
     me: "auth/me",
+    datevAccounts: "datev",
   },
 
   get(url, params) {
@@ -44,5 +45,10 @@ export default {
     } catch (res) {
       return null;
     }
+  },
+
+  async getDatevAccounts() {
+    const res = await this.get(this.routes.datevAccounts);
+    return res.data;
   },
 };

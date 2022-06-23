@@ -14,8 +14,8 @@ function Analysis() {
   useEffect(() => {
     async function fetchData() {
       const res = await API.get("analysis", {
-        from: "Jun/2022",
-        to: "Jun/2022",
+        from: "Jan/2019",
+        to: "Dez/2019",
       });
       setFinanceData(res.data);
     }
@@ -33,7 +33,7 @@ function Analysis() {
   return (
     <>
       <Button
-        sx={{ borderRadius: "10px", float: "right" }}
+        sx={{ borderRadius: "10px", marginBottom: 4 }}
         variant="contained"
         onClick={() => setOpen(true)}
       >

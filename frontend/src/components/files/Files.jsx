@@ -12,7 +12,6 @@ export default function Files() {
   const Input = styled("input")({
     display: "none",
   });
-
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes

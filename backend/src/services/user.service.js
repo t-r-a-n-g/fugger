@@ -15,7 +15,6 @@ class UserService {
   }
 
   static async changeUser(user, data) {
-
     return user.update(data);
   }
 }

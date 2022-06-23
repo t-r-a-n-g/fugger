@@ -31,7 +31,7 @@ class BudgetService {
           const tDate = parseDate(transfer.date);
           dbTransfers.push({
             datevAccountId: userDatevAccount.id,
-            amount: transfer.amount,
+            amount: Math.abs(transfer.amount),
             date: tDate.date,
             userId,
           });

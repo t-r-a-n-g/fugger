@@ -24,15 +24,37 @@ class BudgetService {
     for (const budgetInput of budgets) {
       // looking for the respective datev account which user defined budget for
       const userDatevAccount = datevAccounts.find((el) => {
-        return el.number === budgetInput.number;
+        return el.id === budgetInput.account.id;
       });
 
-      if (userDatevAccount) {
-        const tDate = parseDate(budgetInput.date);
+      // parse amount and date for correct format
+      const parsedAmount = Number.parseFloat(budgetInput.amount);
+      if (Number.isNaN(parsedAmount) || parsedAmount < 0)
+        throw new ValueError();
+
+      // needs to be modified
+      const parsedDate = parseDate(budgetInput.date);
+
+      // check if budget entry already exists in db
+      // eslint-disable-next-line no-await-in-loop
+      const budgetEntry = await Budget.findOne({
+        where: {
+          datevAccountId: budgetInput.account.id,
+          date: parsedDate.date,
+          userId,
+        },
+      });
+
+      /* if (budgetEntry) {
+        return budgetEntry.update({ amount: parsedAmount });
+      } */
+
+      // only create new budget if it does not already exist
+      if (userDatevAccount && !budgetEntry) {
         dbBudgets.push({
           datevAccountId: userDatevAccount.id,
-          amount: budgetInput.amount,
-          date: tDate.date,
+          amount: parsedAmount,
+          date: parsedDate.date,
           userId,
         });
       }

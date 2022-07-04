@@ -118,7 +118,7 @@ const themeDark = {
     background: {
       color: "#272727",
       paper: "#404040",
-      none: "#ececec",
+      none: "#272727",
       default: "#272727",
     },
   },

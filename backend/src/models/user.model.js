@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 const bcrypt = require("bcrypt");
 const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/db");
@@ -63,8 +65,8 @@ const User = sequelize.define(
 
 User.beforeCreate((user) => {
   return bcrypt.hash(user.password, 10).then((hash) => {
-    // eslint-disable-next-line no-param-reassign
     user.password = hash;
+    user.theme = "theme1";
   });
 });
 

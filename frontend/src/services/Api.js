@@ -8,6 +8,7 @@ export default {
     signup: "auth/signup",
     me: "auth/me",
     datevAccounts: "datev",
+    user: "user",
   },
 
   get(url, params) {
@@ -19,6 +20,13 @@ export default {
 
   post(url, body, params) {
     return axios.post(`${this.baseUrl}/${url}`, body, {
+      params,
+      withCredentials: true,
+    });
+  },
+
+  put(url, body, params) {
+    return axios.put(`${this.baseUrl}/${url}`, body, {
       params,
       withCredentials: true,
     });
@@ -45,6 +53,10 @@ export default {
     } catch (res) {
       return null;
     }
+  },
+
+  async changeUser(data) {
+    return this.put(this.routes.user, data);
   },
 
   async getDatevAccounts() {

@@ -4,6 +4,7 @@ const CategoryController = require("./category.controller");
 const TransferController = require("./transfer.controller");
 const BudgetController = require("./budget.controller");
 const DatevAccountController = require("./datevAccount.controller");
+const UserController = require("./user.controller");
 
 module.exports = {
   AuthController,
@@ -12,4 +13,5 @@ module.exports = {
   TransferController,
   BudgetController,
   DatevAccountController,
+  UserController,
 };

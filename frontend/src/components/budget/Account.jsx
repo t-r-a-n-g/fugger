@@ -38,7 +38,7 @@ export default function Account(props) {
 }
 
 Account.propTypes = {
-  values: PropTypes.objectOf().isRequired,
+  values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };

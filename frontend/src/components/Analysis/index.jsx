@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import BudgetEditing from "@components/budget/BudgetCard";
 
 import API from "@services/Api";
+import SuccessModal from "@components/budget/SuccessModel";
 import AnTable from "./Table/AnTable";
 
 function Analysis() {
@@ -10,6 +11,7 @@ function Analysis() {
   const [financeData, setFinanceData] = useState(null);
 
   const [open, setOpen] = useState(false);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -39,7 +41,16 @@ function Analysis() {
       >
         Specify budget
       </Button>
-      <BudgetEditing open={open} setOpen={setOpen} />
+      <SuccessModal
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+      />
+      <BudgetEditing
+        open={open}
+        setOpen={setOpen}
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+      />
       <AnTable data={financeData} />
     </>
   );

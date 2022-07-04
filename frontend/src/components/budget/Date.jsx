@@ -9,20 +9,34 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-// Dummy data. Which dates should be provided? alternatively provide a month picker
-// https://www.npmjs.com/package/react-month-picker
+// specify here which dates should be available (yearStart and yearEnd)
+const yearStart = 2016;
+const yearEnd = 2022;
 const months = [
-  { month: "Jan 2018", year: 2018 },
-  { month: "Feb 2018", year: 2018 },
-  { month: "Mar 2018", year: 2018 },
-  { month: "Jan 2019", year: 2019 },
-  { month: "Feb 2019", year: 2019 },
-  { month: "Mar 2019", year: 2019 },
-  { month: "Apr 2019", year: 2019 },
-  { month: "Jan 2020", year: 2020 },
-  { month: "Feb 2020", year: 2020 },
-  { month: "Mar 2020", year: 2020 },
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
+const dates = [];
+
+// creating dates array based on specified year range
+for (let i = yearStart; i <= yearEnd; i++) {
+  for (let j = 1; j <= 12; j++) {
+    for (let m = 0; m < months.length; m++) {
+      j = months[m];
+      dates.push({ year: i, month: `${j} ${i}`, dateToParse: `${j} / ${i}` });
+    }
+  }
+}
 
 export default function Date(props) {
   const { values, setValues, index } = props;
@@ -43,9 +57,9 @@ export default function Date(props) {
       onChange={(event, newValue) => setDateValue(newValue)}
       multiple
       id="dates"
-      options={months}
+      options={dates}
       disableCloseOnSelect
-      groupBy={(month) => month.year}
+      groupBy={(date) => date.year}
       getOptionLabel={(date) => date.month}
       // eslint-disable-next-line
       renderOption={(props, months, { selected }) => (
@@ -66,7 +80,7 @@ export default function Date(props) {
 }
 
 Date.propTypes = {
-  values: PropTypes.objectOf.isRequired,
+  values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };

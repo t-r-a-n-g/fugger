@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Alert from "@mui/material/Alert";
+import PropTypes from "prop-types";
 
 export default function SuccessModal(props) {
   const { savedSuccessfully, setSavedSuccessfully } = props;
@@ -57,3 +58,8 @@ export default function SuccessModal(props) {
     </div>
   );
 }
+
+SuccessModal.propTypes = {
+  savedSuccessfully: PropTypes.bool.isRequired,
+  setSavedSuccessfully: PropTypes.func.isRequired,
+};

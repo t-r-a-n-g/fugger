@@ -49,4 +49,6 @@ Account.propTypes = {
   values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  accountData: PropTypes.arrayOf.isRequired,
+  setAccountData: PropTypes.func.isRequired,
 };

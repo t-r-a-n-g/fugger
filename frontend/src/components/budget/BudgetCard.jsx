@@ -212,6 +212,8 @@ function ConfirmationDialogRaw(props) {
 ConfirmationDialogRaw.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  savedSuccessfully: PropTypes.bool.isRequired,
+  setSavedSuccessfully: PropTypes.func.isRequired,
 };
 
 /* ------------------------------------------------------------------------ */
@@ -242,4 +244,6 @@ export default function BudgetEditing(props) {
 BudgetEditing.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  savedSuccessfully: PropTypes.bool.isRequired,
+  setSavedSuccessfully: PropTypes.func.isRequired,
 };

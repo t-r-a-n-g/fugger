@@ -55,7 +55,6 @@ function App() {
   i18n.changeLanguage(user.language);
 
   return (
-
     <RecoilRoot>
       <Suspense>
         <ThemeProvider theme={createTheme(appliedTheme[user.theme])}>

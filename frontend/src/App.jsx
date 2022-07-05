@@ -1,18 +1,28 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import LoginPage from "@components/authentification/login";
-import SignUpPage from "@components/authentification/signUp";
-import LogoutPage from "@components/authentification/logout";
-import Analysis from "@components/Analysis";
+import { RecoilRoot } from "recoil";
+
+/* Layout & Theme Components */
 import DrawerLayout from "@components/DrawerLayout/DrawerLayout";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { theme1, theme2, themeDark } from "@components/themes";
+
+/* Auth Components */
+import LoginPage from "@components/authentification/login";
+import SignUpPage from "@components/authentification/signUp";
+import LogoutPage from "@components/authentification/logout";
+
+/* Page Components */
+import Analysis from "@components/Analysis";
 import Settings from "@components/settings/Settings";
 import Files from "@components/files/Files";
+
+/* Helpers & Libraries */
 import UserContext from "@contexts/UserContext";
 import Api from "@services/Api";
 import i18n from "./i18nextConfig";
+
+import "./App.css";
 
 function App() {
   // Set the applied theme depending on themeMode button group
@@ -44,32 +54,36 @@ function App() {
   i18n.changeLanguage(user.language);
 
   return (
-    <Suspense>
-      <ThemeProvider theme={createTheme(appliedTheme[user.theme])}>
-        <UserContext.Provider value={user}>
-          <Router>
-            <DrawerLayout currentTheme={theme}>
-              <Routes>
-                <Route>
-                  <Route path="/" element={<div>DASHBOARD</div>} />
-                  <Route path="/analysis" element={<Analysis />} />
+    <RecoilRoot>
+      <Suspense>
+        <ThemeProvider theme={createTheme(appliedTheme[user.theme])}>
+          <UserContext.Provider value={user}>
+            <Router>
+              <DrawerLayout currentTheme={theme}>
+                <Routes>
+                  <Route>
+                    <Route path="/" element={<div>DASHBOARD</div>} />
+                    <Route path="/analysis" element={<Analysis />} />
 
-                  <Route
-                    path="/settings"
-                    element={<Settings setUser={setUser} setTheme={setTheme} />}
-                  />
-                  <Route path="/files" element={<Files />} />
-                  <Route
-                    path="/logout"
-                    element={<LogoutPage setUser={setUser} />}
-                  />
-                </Route>
-              </Routes>
-            </DrawerLayout>
-          </Router>
-        </UserContext.Provider>
-      </ThemeProvider>
-    </Suspense>
+                    <Route
+                      path="/settings"
+                      element={
+                        <Settings setUser={setUser} setTheme={setTheme} />
+                      }
+                    />
+                    <Route path="/files" element={<Files />} />
+                    <Route
+                      path="/logout"
+                      element={<LogoutPage setUser={setUser} />}
+                    />
+                  </Route>
+                </Routes>
+              </DrawerLayout>
+            </Router>
+          </UserContext.Provider>
+        </ThemeProvider>
+      </Suspense>
+    </RecoilRoot>
   );
 }
 

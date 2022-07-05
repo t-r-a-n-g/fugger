@@ -443,4 +443,7 @@ function SignUpPage({ setUser }) {
   );
 }
 
+SignUpPage.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
 export default SignUpPage;

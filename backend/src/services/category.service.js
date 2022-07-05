@@ -2,6 +2,11 @@ const { Category, Subcategory, DatevAccount } = require("../models");
 const { NotFoundError, AuthorizationError } = require("../exceptions");
 
 class CategoryService {
+  static async findCategories(where) {
+    const categories = await Category.findAll(where);
+    return categories;
+  }
+
   static async getCategory(id, userId) {
     const category = await Category.findOne({ where: { id, userId } });
     return category;

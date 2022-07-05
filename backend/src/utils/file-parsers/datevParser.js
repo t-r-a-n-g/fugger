@@ -47,7 +47,6 @@ class DatevParser {
         accountName,
         transfers: [],
       };
-
       for (const [index, c] of columns.entries()) {
         const columnHeader = c[0];
         const columnValue = c[1];
@@ -61,11 +60,15 @@ class DatevParser {
             const transferAmount = columnValue;
             let finalTransferAmount = null;
 
-            const isRevenue = Object.values(row)[index + 1] === "H";
+            if (transferAmount === null) {
+              finalTransferAmount = 0;
+            } else {
+              // const isSoll = Object.values(row)[index + 1] === "S";
+              const isHaben = Object.values(row)[index + 2] === "H";
 
-            // if we have negative numbers we swap reveue and expenses
-            finalTransferAmount = isRevenue ? transferAmount : -transferAmount;
-
+              // if we have negative numbers we swap revenue and expenses
+              finalTransferAmount = isHaben ? transferAmount : -transferAmount;
+            }
             account.transfers.push({
               date,
               amount: finalTransferAmount,
@@ -88,7 +91,9 @@ class DatevParser {
 
         workbook.SheetNames.forEach((sheetName) => {
           const worksheet = workbook.Sheets[sheetName];
-          const jsonSheet = XLSX.utils.sheet_to_json(worksheet);
+          const jsonSheet = XLSX.utils.sheet_to_json(worksheet, {
+            defval: null,
+          });
           parsedSheets.push(...this.parseFinancialExportSheet(jsonSheet));
         });
 

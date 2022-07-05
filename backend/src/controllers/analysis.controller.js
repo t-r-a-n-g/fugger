@@ -14,6 +14,8 @@ class AnalysisController {
 
   static datevAccounts = {};
 
+  static transfers = [];
+
   static transferMonths = {};
 
   static getTransferParents(transfer) {
@@ -48,11 +50,9 @@ class AnalysisController {
       self.datevAccounts[datevAccountId] = {
         id: dt.id,
         name: dt.name,
-        monthlyTotal: {},
         subcategoryId,
         categoryId,
         type: "datev",
-        isEditable: true,
       };
     }
 
@@ -61,22 +61,19 @@ class AnalysisController {
       self.subcategories[subcategoryId] = {
         id: sc.id,
         name: sc.name,
-        monthlyTotal: {},
-        children: {},
+        childIds: {}, // use an object instead of a Set, because a set becomes an empty object on res.send and sends not data
         categoryId,
         type: "subcategory",
-        isEditable: true,
       };
     }
 
     if (!self.categories[categoryId]) {
       const cat = transfer.datevAccount.subcategory.category;
       self.categories[categoryId] = {
-        ...cat,
-        monthlyTotal: {},
-        children: {},
+        id: cat.id,
+        name: cat.name,
+        childIds: {}, // use an object instead of a Set, because a set becomes an empty object on res.send and sends not data
         type: "category",
-        isEditable: true,
       };
     }
   }
@@ -112,59 +109,42 @@ class AnalysisController {
         );
       });
 
-      datevAccount.monthlyTotal[dateKey] = {
+      self.transfers.push({
         id: trsf.id,
-        type: transferType,
+        date: trsf.date,
         actual: transferAmount,
         budget: budget.amount,
-        isEditable: true,
+        type: transferType,
+        dateKey,
         datevAccountId: datevAccount.id,
-      };
+        categoryId: category.id,
+        subcategoryId: subcategory.id,
+      });
 
-      if (!subcategory.monthlyTotal[dateKey])
-        subcategory.monthlyTotal[dateKey] = {
-          actual: 0,
-          budget: 0,
-          type: transferType,
-        };
-
-      subcategory.monthlyTotal[dateKey].actual += transferAmount;
-      subcategory.monthlyTotal[dateKey].budget += budget.amount;
-
-      if (!category.monthlyTotal[dateKey])
-        category.monthlyTotal[dateKey] = {
-          actual: 0,
-          budget: 0,
-          type: transferType,
-        };
-
-      category.monthlyTotal[dateKey].actual += transferAmount;
-      category.monthlyTotal[dateKey].budget += budget.amount;
-
-      if (!subcategory.children[datevAccount.id])
-        subcategory.children[datevAccount.id] = datevAccount;
-
-      if (!category.children[subcategory.id])
-        category.children[subcategory.id] = subcategory;
+      subcategory.childIds[datevAccount.id] = true;
+      category.childIds[subcategory.id] = true;
     }
 
-    res.json({ categories: self.categories, dates: self.transferMonths });
+    res.json({
+      categories: self.categories,
+      subcategories: self.subcategories,
+      datevAccounts: self.datevAccounts,
+      transfers: self.transfers,
+      dates: Object.values(self.transferMonths),
+    });
+    // res.json({
+    // categories: Object.values(self.categories),
+    // subcategories: Object.values(self.subcategories),
+    // datevAccounts: Object.values(self.datevAccounts),
+    // transfers: self.transfers,
+    // dates: Object.values(self.transferMonths),
+    // });
 
     self.categories = {};
     self.subcategories = {};
     self.transferMonths = {};
-    // res.json({
-    //   categories,
-    //   subcategories,
-    //   datevAccounts,
-    //   monthlyData: Object.values(monthlyData),
-    // });
-    // res.json({
-    //   categories: Object.values(categories),
-    //   subcategories: Object.values(subcategories),
-    //   datevAccounts: Object.values(datevAccounts),
-    //   monthlyData: Object.values(monthlyData),
-    // });
+    self.datevAccounts = {};
+    self.transfers = [];
   }
 
   static async postAnalysisData(req, res) {

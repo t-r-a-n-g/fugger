@@ -31,6 +31,7 @@ class TransferService {
           ],
         },
       ],
+      order: [["date", "ASC"]],
       raw: true,
       nest: true,
     });
@@ -59,6 +60,7 @@ class TransferService {
         }
       }
     }
+
     await BudgetService.createBudgets(transfers, userId);
     return Transfer.bulkCreate(dbTransfers);
   }

@@ -18,5 +18,5 @@ export default function Settings({ setUser }) {
 }
 
 Settings.propTypes = {
-  setUser: PropTypes.node.isRequired,
+  setUser: PropTypes.func.isRequired,
 };

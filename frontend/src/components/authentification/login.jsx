@@ -29,7 +29,6 @@ import { StaticRouter } from "react-router-dom/server";
 import validator from "validator";
 import { useTranslation } from "react-i18next";
 import Api from "@services/Api";
-
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
   const { children } = props;
@@ -263,5 +262,9 @@ function LoginPage({ setUser }) {
     </Box>
   );
 }
+
+LoginPage.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
 
 export default LoginPage;

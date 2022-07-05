@@ -12,6 +12,7 @@ import Settings from "@components/settings/Settings";
 import Files from "@components/files/Files";
 import UserContext from "@contexts/UserContext";
 import Api from "@services/Api";
+import BudgetPage from "@components/budget/BudgetPage/BudgetPage";
 import i18n from "./i18nextConfig";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
                 <Route>
                   <Route path="/" element={<div>DASHBOARD</div>} />
                   <Route path="/analysis" element={<Analysis />} />
+                  <Route path="/budgets" element={<BudgetPage />} />
 
                   <Route
                     path="/settings"

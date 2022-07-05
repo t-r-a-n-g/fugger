@@ -116,18 +116,24 @@ function ConfirmationDialogRaw(props) {
   valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
 
   // save function
+  const [errorStatus, setErrorStatus] = useState();
+
   const handleSave = async () => {
     if (!valueArray.some((el) => el.length === 0)) {
       const finalValuesArray = await formatValues();
 
-      const res = await API.post("budget", finalValuesArray);
-      if (res.status === 200) setSavedSuccessfully(true);
+      try {
+        await API.post("budget", finalValuesArray);
+        setSavedSuccessfully(true);
 
-      // resetting values to show only one empty row when reopen Budgetbox
-      setValues({
-        val: [{ account: "", amount: "", date: [] }],
-      });
-      onClose();
+        // resetting values to show only one empty row when reopen Budgetbox
+        setValues({
+          val: [{ account: "", amount: "", date: [] }],
+        });
+        onClose();
+      } catch (err) {
+        setErrorStatus(err.response.status);
+      }
     } else setInputComplete(false);
   };
 
@@ -187,6 +193,11 @@ function ConfirmationDialogRaw(props) {
         {!inputComplete ? (
           <Alert severity="error" sx={{ marginTop: 2 }}>
             Fill out every field before saving.
+          </Alert>
+        ) : null}
+        {errorStatus ? (
+          <Alert severity="error" sx={{ marginTop: 2 }}>
+            Something went wrong. Please try again later.
           </Alert>
         ) : null}
       </DialogContent>

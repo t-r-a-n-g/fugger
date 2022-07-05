@@ -45,11 +45,13 @@ class BudgetService {
         },
       });
 
-      /* if (budgetEntry) {
-        return budgetEntry.update({ amount: parsedAmount });
-      } */
+      // update already existing budgets
+      if (budgetEntry) {
+        // eslint-disable-next-line no-await-in-loop
+        await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount);
+      }
 
-      // only create new budget if it does not already exist
+      // create new budgets
       if (userDatevAccount && !budgetEntry) {
         dbBudgets.push({
           datevAccountId: userDatevAccount.id,
@@ -59,7 +61,7 @@ class BudgetService {
         });
       }
     }
-
+    // return something else here?
     return Budget.bulkCreate(dbBudgets);
   }
 

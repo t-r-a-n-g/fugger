@@ -42,5 +42,11 @@
   "menu-item-logout": "Ausloggen",
   "menu-item-budgets": "Budgets",
   "language-toggle": "Sprache",
-  "theme-toggle": "Theme"
+  "theme-toggle": "Theme",
+  "from": "Von",
+  "to": "Bis",
+  "actual": "Tatsächlich",
+  "budget": "Budget",
+  "abs": "Absolut",
+  "perct": "Prozentual"
 }

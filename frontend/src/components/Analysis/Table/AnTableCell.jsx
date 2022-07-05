@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 
 import React from "react";
+
 import TableCell from "@mui/material/TableCell";
+import { AnTableCellProps, AnTableCellDefaultProps } from "./propTypes";
 
-import "./style.css";
-
-export default class AnTableCell extends React.Component {
+class AnTableCell extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,12 @@ export default class AnTableCell extends React.Component {
     };
 
     this.onKeyPressOnInput = this.onKeyPressOnInput.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    // reset state on rerender because the constructor is not called again
+    const { children } = this.props;
+    if (prevProps.children !== children) this.setState({ value: children });
   }
 
   onCellClick() {
@@ -52,7 +58,19 @@ export default class AnTableCell extends React.Component {
     const { prevValue } = this.state;
 
     this.setState({ isEditing: false });
-    onValueChange(value, prevValue);
+
+    const res = onValueChange(value, prevValue);
+    const isPromise = typeof res === "object" && typeof res.then === "function";
+
+    if (isPromise) {
+      res.then((success) => {
+        if (success === false) {
+          this.setState({ value: prevValue });
+        }
+      });
+    } else if (res === false) {
+      this.setState({ value: prevValue });
+    }
   }
 
   render() {
@@ -87,3 +105,8 @@ export default class AnTableCell extends React.Component {
     );
   }
 }
+
+AnTableCell.propTypes = AnTableCellProps;
+AnTableCell.defaultProps = AnTableCellDefaultProps;
+
+export default AnTableCell;

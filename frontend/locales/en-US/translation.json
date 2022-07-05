@@ -42,5 +42,11 @@
   "menu-item-logout": "Logout",
   "menu-item-budgets": "Budgets",
   "language-toggle": "Language",
-  "theme-toggle": "Theme"
+  "theme-toggle": "Theme",
+  "from": "From",
+  "to": "To",
+  "actual": "Actual",
+  "budget": "Budget",
+  "abs": "Absolute",
+  "perct": "Percentage"
 }

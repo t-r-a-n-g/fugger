@@ -1,0 +1,49 @@
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  text-align: center;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  overflow: hidden;
+}
+
+.firstColumn {
+  min-width: 60px;
+  text-align: left !important;
+}
+
+.an-col {
+  min-width: 5.5vw;
+  max-width: 5.5vw;
+  padding: 0;
+}
+
+.an-col-1 {
+  min-width: 26vw;
+  max-width: 26vw;
+  text-align: left !important;
+}
+
+.budget-col {
+  border-right: 1px solid lightgray;
+}
+
+.pct-col {
+  border-right: 1px solid black;
+}
+
+.child-row-1 .an-col-1,
+.child-row-1 .firstColumn {
+  padding-left: 30px;
+}
+
+.child-row-2 .an-col-1 {
+  padding-left: 60px;
+}

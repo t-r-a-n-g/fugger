@@ -41,9 +41,11 @@ function selectTableHeaders(headers) {
 
 function selectTransferData(transfer) {
   let transferAbs = null;
+  let actualColor = "error.main";
   if (transfer.type === "S") {
     transferAbs = transfer.budget - transfer.actual;
   } else {
+    actualColor = "success.main";
     transferAbs = transfer.actual - transfer.budget;
   }
 
@@ -52,16 +54,17 @@ function selectTransferData(transfer) {
     transferPerct = (transferAbs / transfer.budget) * 100;
   else transferPerct = transfer.type === "H" ? 100 : -100;
 
-  let transferColor = null;
-  if (transferAbs < 0) transferColor = "error.main";
-  else if (transferAbs > 0) transferColor = "success.main";
+  let transferAbsColor = null;
+  if (transferAbs < 0) transferAbsColor = "error.main";
+  else if (transferAbs > 0) transferAbsColor = "success.main";
 
   return {
     abs: round(transferAbs),
     perct: round(transferPerct),
     actual: round(transfer.actual),
     budget: round(transfer.budget),
-    color: transferColor,
+    absColor: transferAbsColor,
+    actualColor,
   };
 }
 
@@ -112,7 +115,7 @@ function selectRowData(
         value: dataObject.name,
         isEditable: true,
         onValueChange: (value) => {
-          onCellValueChange(value, "name", dataObject);
+          return onCellValueChange(value, "name", dataObject);
         },
       },
     ],
@@ -135,21 +138,22 @@ function selectRowData(
         value: transfer.actual,
         isEditable,
         onValueChange: (value) => {
-          onCellValueChange(value, `actual`, trsf);
+          return onCellValueChange(value, `actual`, trsf);
         },
+        sx: { color: transfer.actualColor },
       },
       {
         value: transfer.budget,
         isEditable,
         onValueChange: (value) => {
-          onCellValueChange(value, `budget`, trsf);
+          return onCellValueChange(value, `budget`, trsf);
         },
         className: "budget-col",
       },
-      { value: transfer.abs, sx: { color: transfer.color } },
+      { value: transfer.abs, sx: { color: transfer.absColor } },
       {
-        value: transfer.perct,
-        sx: { color: transfer.color },
+        value: `${transfer.perct}%`,
+        sx: { color: transfer.absColor },
         className: "pct-col",
       },
     ];
@@ -265,9 +269,26 @@ class Analysis extends React.Component {
       });
   }
 
-  onTransferValueChange(value, field, transferObject) {
+  async onTransferValueChange(value, field, transferObject) {
     const { transferTotals } = this.state;
     const newTransferTotals = [...transferTotals];
+    value = parseFloat(value);
+    if (Number.isNaN(value)) return false;
+
+    let { type } = transferObject;
+    if (value < 0) {
+      type = type === "S" ? "H" : "S";
+      value = Math.abs(value);
+    }
+
+    try {
+      if (field === "actual")
+        await API.put(`transfer/${transferObject.id}`, {
+          amount: type === "H" ? value : -value,
+        });
+    } catch (err) {
+      return false;
+    }
 
     const categoryTotalIndex = transferTotals.findIndex(
       (tt) =>
@@ -289,7 +310,6 @@ class Analysis extends React.Component {
         tt.dateKey === transferObject.dateKey
     );
 
-    value = parseFloat(value);
     for (const tIndex of [
       categoryTotalIndex,
       subcategoryTotalIndex,
@@ -309,10 +329,19 @@ class Analysis extends React.Component {
       // tmpTransferTotals: newTransferTotals,
       // isLoading: true,
     });
+
+    return true;
   }
 
-  onCellValueChange(value, field, cellObject) {
+  async onCellValueChange(value, field, cellObject) {
     if (field === "name") {
+      try {
+        const apiUrl = `${cellObject.type}/${cellObject.id}`;
+        await API.put(apiUrl, { name: value });
+      } catch (err) {
+        return false;
+      }
+
       const { categories, subcategories, datevAccounts } = this.state;
       switch (cellObject.type) {
         case "category":
@@ -351,8 +380,9 @@ class Analysis extends React.Component {
         default:
       }
     } else {
-      this.onTransferValueChange(value, field, cellObject);
+      return this.onTransferValueChange(value, field, cellObject);
     }
+    return true;
   }
 
   toggleRowCollapse(key, isOpen) {

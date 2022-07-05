@@ -58,7 +58,19 @@ class AnTableCell extends React.Component {
     const { prevValue } = this.state;
 
     this.setState({ isEditing: false });
-    onValueChange(value, prevValue);
+
+    const res = onValueChange(value, prevValue);
+    const isPromise = typeof res === "object" && typeof res.then === "function";
+
+    if (isPromise) {
+      res.then((success) => {
+        if (success === false) {
+          this.setState({ value: prevValue });
+        }
+      });
+    } else if (res === false) {
+      this.setState({ value: prevValue });
+    }
   }
 
   render() {

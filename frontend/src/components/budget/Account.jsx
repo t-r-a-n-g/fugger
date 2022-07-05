@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
 
 export default function Account(props) {
-  const { values, setValues, index, accountData } = props;
+  const { values, setValues, index, accountData, setAccountData } = props;
 
   /* --------------------------- HANDLING USER INPUT --------------------------- */
 
@@ -12,10 +12,18 @@ export default function Account(props) {
   const [accountValue, setAccountValue] = useState("");
 
   // pushing chosen accountValue into overall values array when accountValues changes
+  // & slicing account out of available accountData options when it got chosen
   useEffect(() => {
     const vals = values.val;
     vals[index].account = accountValue;
     setValues({ val: vals });
+
+    if (accountData && accountValue) {
+      const slicedAccountData = accountData.filter(
+        (acc) => acc.id !== accountValue.id
+      );
+      setAccountData(slicedAccountData);
+    }
   }, [accountValue]);
 
   /* ---------------------------------------------------------------------------- */

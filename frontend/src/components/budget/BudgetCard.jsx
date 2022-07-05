@@ -27,76 +27,7 @@ function ConfirmationDialogRaw(props) {
     val: [{ account: "", amount: "", date: [] }],
   });
 
-  /* ---------------------- CANCEL BUDGET EDITING -------------------------*/
-  // resetting values to show only one empty row when reopen Budgetbox
-  const handleCancel = () => {
-    setValues({
-      val: [{ account: "", amount: "", date: [] }],
-    });
-    onClose();
-  };
-
-  /* ---------------------- SAVE BUDGET EDITING -------------------------*/
-  // TO DO: add POST request to send the data to backend
-
-  // reformat values because dates is an array
-
-  const formatValues = () => {
-    const finalValues = [];
-    values.val.map((budgetObj) =>
-      budgetObj.date.map((date) =>
-        finalValues.push({
-          account: budgetObj.account,
-          amount: budgetObj.amount,
-          date: date.dateToParse,
-        })
-      )
-    );
-    return finalValues;
-  };
-
-  // check if input is complete before saving
-  const [inputComplete, setInputComplete] = useState(true);
-
-  const valueArrayNested = values.val.map((row) => Object.values(row));
-  const valueArray = [];
-  valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
-
-  const handleSave = async () => {
-    if (!valueArray.some((el) => el.length === 0)) {
-      // put the reset function AFTER data was sent to backend
-      // resetting values to show only one empty row when reopen Budgetbox
-      const finalValuesArray = await formatValues();
-      const res = await API.post("budget", finalValuesArray);
-      if (res.status === 200) setSavedSuccessfully(true);
-      setValues({
-        val: [{ account: "", amount: "", date: [] }],
-      });
-      onClose();
-    } else setInputComplete(false);
-  };
-
-  // reset inputComplete state when closing box (otherwise error message would stay forever)
-  useEffect(() => {
-    if (!open) setInputComplete(true);
-  }, [open]);
-
-  /* ---------------------- ADDING AND REMOVING ROWS -------------------------*/
-
-  const addClick = () => {
-    setValues({
-      val: [...values.val, { account: "", amount: "", date: [] }],
-    });
-  };
-
-  const removeClick = (i) => {
-    const vals = [...values.val];
-    vals.splice(i, 1);
-    setValues({ val: vals });
-  };
-
   /* -------------- FETCHING DATEV ACCOUNTS FROM DB TO PASS TO ACCOUNT COMPONENT -------------- */
-
   const [accountData, setAccountData] = useState(null);
 
   // renaming the label to have account number and account name
@@ -121,7 +52,89 @@ function ConfirmationDialogRaw(props) {
     }
 
     fetchData();
-  }, []);
+  }, [open]);
+
+  /* ---------------------- ADDING AND REMOVING ROWS -------------------------*/
+
+  const addClick = () => {
+    setValues({
+      val: [...values.val, { account: "", amount: "", date: [] }],
+    });
+  };
+
+  // by removing a row, also add the chosen datevacc of this row back to available accountData options
+  const removeClick = (i) => {
+    const vals = [...values.val];
+
+    if (vals[i].account) {
+      const readdAccount = vals[i].account;
+      const updatedAccountData = accountData;
+      updatedAccountData.push(readdAccount);
+      updatedAccountData.sort((a, b) => {
+        const keyA = a.id;
+        const keyB = b.id;
+        return keyA - keyB;
+      });
+      setAccountData(updatedAccountData);
+    }
+
+    vals.splice(i, 1);
+    setValues({ val: vals });
+  };
+
+  /* ---------------------- CANCEL BUDGET EDITING -------------------------*/
+  // resetting values to show only one empty row when reopen Budgetbox
+  const handleCancel = () => {
+    setValues({
+      val: [{ account: "", amount: "", date: [] }],
+    });
+    onClose();
+  };
+
+  /* ---------------------- SAVE BUDGET EDITING -------------------------*/
+
+  // reformat values because dates is an array
+  const formatValues = () => {
+    const finalValues = [];
+    values.val.map((budgetObj) =>
+      budgetObj.date.map((date) =>
+        finalValues.push({
+          account: budgetObj.account,
+          amount: budgetObj.amount,
+          date: date.dateToParse,
+        })
+      )
+    );
+    return finalValues;
+  };
+
+  // check if input is complete before saving
+  const [inputComplete, setInputComplete] = useState(true);
+
+  const valueArrayNested = values.val.map((row) => Object.values(row));
+  const valueArray = [];
+  valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
+
+  // save function
+  const handleSave = async () => {
+    if (!valueArray.some((el) => el.length === 0)) {
+      const finalValuesArray = await formatValues();
+
+      const res = await API.post("budget", finalValuesArray);
+      if (res.status === 200) setSavedSuccessfully(true);
+
+      // resetting values to show only one empty row when reopen Budgetbox
+      setValues({
+        val: [{ account: "", amount: "", date: [] }],
+      });
+      onClose();
+    } else setInputComplete(false);
+  };
+
+  // reset inputComplete state when closing box (otherwise error message would stay forever)
+  useEffect(() => {
+    if (!open) setInputComplete(true);
+  }, [open]);
 
   /* --------------------------------------------------------------------------- */
 
@@ -145,6 +158,7 @@ function ConfirmationDialogRaw(props) {
           >
             <Account
               accountData={accountData}
+              setAccountData={setAccountData}
               values={values}
               setValues={setValues}
               index={index}

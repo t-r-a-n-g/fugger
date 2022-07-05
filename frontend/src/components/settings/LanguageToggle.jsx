@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import { useTranslation } from "react-i18next";
@@ -7,7 +8,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import UserContext from "@contexts/UserContext";
 import Api from "@services/Api";
 
-export default function LanguageToggle({ setUser }) {
+function LanguageToggle({ setUser }) {
   const { t } = useTranslation(); // i18next
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -80,3 +81,9 @@ export default function LanguageToggle({ setUser }) {
     </div>
   );
 }
+
+LanguageToggle.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
+
+export default LanguageToggle;

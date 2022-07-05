@@ -19,27 +19,50 @@ class BudgetService {
 
   static async createBudgets(budgets, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
-    const dbTransfers = [];
+    const dbBudgets = [];
 
-    for (const datevTransfer of budgets) {
+    for (const budgetInput of budgets) {
+      // looking for the respective datev account which user defined budget for
       const userDatevAccount = datevAccounts.find((el) => {
-        return el.number === datevTransfer.accountNumber;
+        return el.id === budgetInput.account.id;
       });
 
-      if (userDatevAccount) {
-        for (const transfer of datevTransfer.transfers) {
-          const tDate = parseDate(transfer.date);
-          dbTransfers.push({
-            datevAccountId: userDatevAccount.id,
-            amount: Math.abs(transfer.amount),
-            date: tDate.date,
-            userId,
-          });
-        }
+      // parse amount and date for correct format
+      const parsedAmount = Number.parseFloat(budgetInput.amount);
+      if (Number.isNaN(parsedAmount) || parsedAmount < 0)
+        throw new ValueError();
+
+      // needs to be modified
+      const parsedDate = parseDate(budgetInput.date);
+
+      // check if budget entry already exists in db
+      // eslint-disable-next-line no-await-in-loop
+      const budgetEntry = await Budget.findOne({
+        where: {
+          datevAccountId: budgetInput.account.id,
+          date: parsedDate.date,
+          userId,
+        },
+      });
+
+      // update already existing budgets
+      if (budgetEntry) {
+        // eslint-disable-next-line no-await-in-loop
+        await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount);
+      }
+
+      // create new budgets
+      if (userDatevAccount && !budgetEntry) {
+        dbBudgets.push({
+          datevAccountId: userDatevAccount.id,
+          amount: parsedAmount,
+          date: parsedDate.date,
+          userId,
+        });
       }
     }
-
-    return Budget.bulkCreate(dbTransfers);
+    // return something else here?
+    return Budget.bulkCreate(dbBudgets);
   }
 
   static async updateBudget(budgetId, userId, amount) {

@@ -20,6 +20,7 @@ import Files from "@components/files/Files";
 /* Helpers & Libraries */
 import UserContext from "@contexts/UserContext";
 import Api from "@services/Api";
+import BudgetPage from "@components/budget/BudgetPage/BudgetPage";
 import i18n from "./i18nextConfig";
 
 import "./App.css";
@@ -54,6 +55,7 @@ function App() {
   i18n.changeLanguage(user.language);
 
   return (
+
     <RecoilRoot>
       <Suspense>
         <ThemeProvider theme={createTheme(appliedTheme[user.theme])}>
@@ -64,6 +66,7 @@ function App() {
                   <Route>
                     <Route path="/" element={<div>DASHBOARD</div>} />
                     <Route path="/analysis" element={<Analysis />} />
+                    <Route path="/budgets" element={<BudgetPage />} />
 
                     <Route
                       path="/settings"

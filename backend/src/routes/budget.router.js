@@ -9,4 +9,8 @@ router.put("/:budgetId", verifyToken, (req, res) => {
   BudgetController.updateBudget(req, res);
 });
 
+router.post("/", verifyToken, (req, res) => {
+  BudgetController.createBudget(req, res);
+});
+
 module.exports = router;

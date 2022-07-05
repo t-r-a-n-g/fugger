@@ -9,6 +9,7 @@ import Dialog from "@mui/material/Dialog";
 import { Alert, Stack, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import API from "@services/Api";
 import Account from "./Account";
 import Amount from "./Amount";
 import Date from "./Date";
@@ -18,46 +19,39 @@ import Date from "./Date";
 -------------------------------------------------------------------------- */
 
 function ConfirmationDialogRaw(props) {
-  const { onClose, open, ...other } = props;
+  const { onClose, open, savedSuccessfully, setSavedSuccessfully, ...other } =
+    props;
 
   // creating values state that contains an object for all the user input
   const [values, setValues] = useState({
     val: [{ account: "", amount: "", date: [] }],
   });
 
-  // CANCEL function
-  // resetting values to show only one empty row when reopen Budgetbox
-  const handleCancel = () => {
-    setValues({
-      val: [{ account: "", amount: "", date: [] }],
+  /* -------------- FETCHING DATEV ACCOUNTS FROM DB TO PASS TO ACCOUNT COMPONENT -------------- */
+  const [accountData, setAccountData] = useState(null);
+
+  // renaming the label to have account number and account name
+  /* eslint array-callback-return: 0 */
+  function rename(data) {
+    data.map((obj) => {
+      obj.label = `${obj.number} ${obj.name}`;
     });
-    onClose();
-  };
+    return data;
+  }
 
-  // SAVE function
-  // TO DO: add POST request to send the data to backend
-
-  // check if input is complete before saving
-  const [inputComplete, setInputComplete] = useState(true);
-
-  const valueArrayNested = values.val.map((row) => Object.values(row));
-  const valueArray = [];
-  valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
-
-  const handleSave = () => {
-    if (!valueArray.some((el) => el.length === 0)) {
-      // put the reset function AFTER data was sent to backend
-      // resetting values to show only one empty row when reopen Budgetbox
-      setValues({
-        val: [{ account: "", amount: "", date: [] }],
-      });
-      onClose();
-    } else setInputComplete(false);
-  };
-
-  // reset inputComplete state when closing box (otherwise error message would stay forever)
+  // TO DO: specify error handling
   useEffect(() => {
-    if (!open) setInputComplete(true);
+    async function fetchData() {
+      try {
+        const res = await API.getDatevAccounts();
+        const accounts = await rename(res);
+        setAccountData(accounts);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchData();
   }, [open]);
 
   /* ---------------------- ADDING AND REMOVING ROWS -------------------------*/
@@ -68,12 +62,85 @@ function ConfirmationDialogRaw(props) {
     });
   };
 
+  // by removing a row, also add the chosen datevacc of this row back to available accountData options
   const removeClick = (i) => {
     const vals = [...values.val];
+
+    if (vals[i].account) {
+      const readdAccount = vals[i].account;
+      const updatedAccountData = accountData;
+      updatedAccountData.push(readdAccount);
+      updatedAccountData.sort((a, b) => {
+        const keyA = a.id;
+        const keyB = b.id;
+        return keyA - keyB;
+      });
+      setAccountData(updatedAccountData);
+    }
+
     vals.splice(i, 1);
     setValues({ val: vals });
   };
-  /* 
+
+  /* ---------------------- CANCEL BUDGET EDITING -------------------------*/
+  // resetting values to show only one empty row when reopen Budgetbox
+  const handleCancel = () => {
+    setValues({
+      val: [{ account: "", amount: "", date: [] }],
+    });
+    onClose();
+  };
+
+  /* ---------------------- SAVE BUDGET EDITING -------------------------*/
+
+  // reformat values because dates is an array
+  const formatValues = () => {
+    const finalValues = [];
+    values.val.map((budgetObj) =>
+      budgetObj.date.map((date) =>
+        finalValues.push({
+          account: budgetObj.account,
+          amount: budgetObj.amount,
+          date: date.dateToParse,
+        })
+      )
+    );
+    return finalValues;
+  };
+
+  // check if input is complete before saving
+  const [inputComplete, setInputComplete] = useState(true);
+
+  const valueArrayNested = values.val.map((row) => Object.values(row));
+  const valueArray = [];
+  valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
+
+  // save function
+  const [errorStatus, setErrorStatus] = useState();
+
+  const handleSave = async () => {
+    if (!valueArray.some((el) => el.length === 0)) {
+      const finalValuesArray = await formatValues();
+
+      try {
+        await API.post("budget", finalValuesArray);
+        setSavedSuccessfully(true);
+
+        // resetting values to show only one empty row when reopen Budgetbox
+        setValues({
+          val: [{ account: "", amount: "", date: [] }],
+        });
+        onClose();
+      } catch (err) {
+        setErrorStatus(err.response.status);
+      }
+    } else setInputComplete(false);
+  };
+
+  // reset inputComplete state when closing box (otherwise error message would stay forever)
+  useEffect(() => {
+    if (!open) setInputComplete(true);
+  }, [open]);
 
   /* --------------------------------------------------------------------------- */
 
@@ -89,8 +156,19 @@ function ConfirmationDialogRaw(props) {
       </DialogTitle>
       <DialogContent dividers sx={{ alignContent: "center" }}>
         {values.val.map((el, index) => (
-          <Stack sx={{ marginBottom: 2 }} direction="row" spacing={2}>
-            <Account values={values} setValues={setValues} index={index} />{" "}
+          <Stack
+            sx={{ marginBottom: 2 }}
+            direction="row"
+            spacing={2}
+            key={index}
+          >
+            <Account
+              accountData={accountData}
+              setAccountData={setAccountData}
+              values={values}
+              setValues={setValues}
+              index={index}
+            />{" "}
             <Amount values={values} setValues={setValues} index={index} />
             <Date values={values} setValues={setValues} index={index} />
             <Box>
@@ -111,9 +189,15 @@ function ConfirmationDialogRaw(props) {
             <AddIcon />
           </Fab>
         </Box>
+
         {!inputComplete ? (
           <Alert severity="error" sx={{ marginTop: 2 }}>
             Fill out every field before saving.
+          </Alert>
+        ) : null}
+        {errorStatus ? (
+          <Alert severity="error" sx={{ marginTop: 2 }}>
+            Something went wrong. Please try again later.
           </Alert>
         ) : null}
       </DialogContent>
@@ -134,7 +218,7 @@ ConfirmationDialogRaw.propTypes = {
 /* ---------------------- COMPLETE BUDGET COMPONENT ----------------------- */
 
 export default function BudgetEditing(props) {
-  const { open, setOpen } = props;
+  const { open, setOpen, savedSuccessfully, setSavedSuccessfully } = props;
 
   // function that only closes the box (saving is handled above)
   const handleClose = () => {
@@ -148,6 +232,8 @@ export default function BudgetEditing(props) {
         keepMounted
         open={open}
         onClose={handleClose}
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
       />
     </Box>
   );

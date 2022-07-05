@@ -30,7 +30,7 @@ export default function Amount(props) {
 }
 
 Amount.propTypes = {
-  values: PropTypes.objectOf.isRequired,
+  values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };

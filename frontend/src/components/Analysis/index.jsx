@@ -5,11 +5,18 @@ import i18n from "i18next";
 import { withTranslation } from "react-i18next";
 
 import API from "@services/Api";
+import SuccessModal from "@components/budget/SuccessModel";
 
 import MonthRangePicker from "@components/MonthRangePicker";
+
 import AnTable from "./Table/AnTable";
 
 import "./analysisTable.css";
+
+/* --------------- states for Budget Editing (via Button) ------------------------ */
+  const [open, setOpen] = useState(false);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
+ /* ------------------------------------------------------------------------------- */
 
 function round(num) {
   const m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -424,6 +431,23 @@ class Analysis extends React.Component {
     );
     return (
       <>
+      <Button
+        sx={{ borderRadius: "10px", marginBottom: 4 }}
+        variant="contained"
+        onClick={() => setOpen(true)}
+      >
+        Specify budget
+      </Button>
+      <SuccessModal
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+      />
+      <BudgetEditing
+        open={open}
+        setOpen={setOpen}
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+      />
         <MonthRangePicker
           onChange={this.onDateRangeChange}
           value={[analysisFrom, analysisTo]}

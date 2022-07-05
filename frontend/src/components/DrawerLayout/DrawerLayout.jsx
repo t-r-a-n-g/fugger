@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import SettingsIcon from "@mui/icons-material/Settings";
+import PaidIcon from "@mui/icons-material/Paid";
 /* import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
 import Icon from '@mui/material/Icon'; */
 import UploadFileIcon from "@mui/icons-material/UploadFile";
@@ -118,20 +119,26 @@ export default function DrawerLayout({ children, currentTheme }) {
   const menuId = "primary-search-account-menu";
   const menuItems = [
     {
+      title: t("menu-item-dashboard"),
+      icon: <DashboardCustomizeOutlinedIcon />,
+      path: "/analysis",
+    },
+    {
       title: t("menu-item-analysis"),
       icon: <AnalyticsOutlinedIcon />,
       path: "/analysis",
+    },
+    {
+      title: t("menu-item-budgets"),
+      icon: <PaidIcon />,
+      path: "/budgets",
     },
     {
       title: t("menu-item-files"),
       icon: <UploadFileIcon />,
       path: "/files",
     },
-    {
-      title: t("menu-item-dashboard"),
-      icon: <DashboardCustomizeOutlinedIcon />,
-      path: "/analysis",
-    },
+
     {
       title: t("menu-item-customers"),
       icon: <PeopleAltIcon />,

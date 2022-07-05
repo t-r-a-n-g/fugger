@@ -12,6 +12,12 @@ class BudgetController {
     );
     return res.json(budget);
   }
+
+  static async createBudget(req, res) {
+    const budgets = req.body;
+    const budgetsNew = await BudgetService.createBudgets(budgets, req.user.id);
+    return res.json(budgetsNew);
+  }
 }
 
 module.exports = BudgetController;

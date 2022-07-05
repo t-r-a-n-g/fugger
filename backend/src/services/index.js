@@ -4,6 +4,7 @@ const TransferService = require("./transfer.service");
 const BudgetService = require("./budget.service");
 const CategoryService = require("./category.service");
 const UserService = require("./user.service");
+const DatevService = require("./datev.service");
 
 module.exports = {
   AuthService,
@@ -12,4 +13,5 @@ module.exports = {
   BudgetService,
   CategoryService,
   UserService,
+  DatevService,
 };

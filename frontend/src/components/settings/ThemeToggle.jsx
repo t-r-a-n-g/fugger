@@ -104,5 +104,5 @@ export default function ThemeToggle({ setUser }) {
 }
 
 ThemeToggle.propTypes = {
-  setUser: PropTypes.node.isRequired,
+  setUser: PropTypes.func.isRequired,
 };

@@ -4,7 +4,7 @@ const {
   BudgetService,
 } = require("../services");
 const DatevParser = require("../utils/file-parsers/datevParser");
-const parseDate = require("../utils/dateParser");
+// const parseDate = require("../utils/dateParser");
 
 // ToDo: implement error handling
 class AnalysisController {
@@ -79,9 +79,9 @@ class AnalysisController {
   }
 
   static async getAnalysisData(req, res) {
-    const from = parseDate(req.query.from).date;
-    const to = parseDate(req.query.to).date;
-
+    // const from = parseDate(req.query.from).date;
+    // const to = parseDate(req.query.to).date;
+    const { from, to } = req.query;
     const transfers = await TransferService.getTransfers(from, to, req.user.id);
     const budgets = await BudgetService.getBudgets(from, to, req.user.id);
 

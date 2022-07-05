@@ -1,6 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import i18n from "i18next";
+import { withTranslation } from "react-i18next";
 
 import API from "@services/Api";
+
+import MonthRangePicker from "@components/MonthRangePicker";
 import AnTable from "./Table/AnTable";
 
 import "./analysisTable.css";
@@ -10,17 +16,17 @@ function round(num) {
   return (Math.round(m) / 100) * Math.sign(num);
 }
 
-function selectTableHeaders(headers) {
+function selectTableHeaders(headers, t) {
   const rowHeaders = [[{ colSpan: 2 }], ["", "Account"]];
 
   const monthlyHeaders = [
-    "Actual",
-    "Budget",
-    "Abs",
-    { value: "Perct", className: "pct-header" },
+    t("actual"),
+    t("budget"),
+    t("abs"),
+    { value: t("perct"), className: "pct-header" },
   ];
   for (const header of headers) {
-    const date = new Date(header.date).toLocaleDateString("en-US", {
+    const date = new Date(header.date).toLocaleDateString(i18n.language, {
       month: "long",
       year: "numeric",
     });
@@ -225,38 +231,23 @@ class Analysis extends React.Component {
       transferTotals: null,
       tmpTransferTotals: null,
 
-      analysisFrom: "Jan/2019",
-      analysisTo: "Mar/2019",
+      analysisFrom: null, // "Jan/2019",
+      analysisTo: null, // "Mar/2019",
     };
 
     this.toggleRowCollapse = this.toggleRowCollapse.bind(this);
     this.onCellValueChange = this.onCellValueChange.bind(this);
+    this.onDateRangeChange = this.onDateRangeChange.bind(this);
   }
 
   async componentDidMount() {
-    try {
-      const { analysisFrom, analysisTo } = this.state;
+    const localFrom = localStorage.getItem("analysisFrom");
+    const localTo = localStorage.getItem("analysisTo");
 
-      const res = await API.get("analysis", {
-        from: analysisFrom,
-        to: analysisTo,
-      });
+    const fromDate = localFrom ? new Date(localFrom) : new Date();
+    const toDate = localTo ? new Date(localTo) : new Date();
 
-      const { categories, subcategories, datevAccounts, transfers } = res.data;
-      const transferTotals = selectTransferTotals(transfers);
-
-      this.setState({
-        isLoading: false,
-        tableHeaders: selectTableHeaders(res.data.dates),
-        categories,
-        subcategories,
-        datevAccounts,
-        transferTotals,
-      });
-    } catch (err) {
-      console.error(err);
-      this.setState({ isLoading: false, error: "There was an error..." });
-    }
+    this.onDateRangeChange([fromDate, toDate]);
   }
 
   componentDidUpdate(nextProps, prevState) {
@@ -267,6 +258,13 @@ class Analysis extends React.Component {
         tmpTransferTotals: null,
         isLoading: false,
       });
+  }
+
+  onDateRangeChange([from, to]) {
+    this.setState({ analysisFrom: from, analysisTo: to });
+    this.loadAnalysisData(from, to);
+    localStorage.setItem("analysisFrom", from);
+    localStorage.setItem("analysisTo", to);
   }
 
   async onTransferValueChange(value, field, transferObject) {
@@ -390,8 +388,33 @@ class Analysis extends React.Component {
     this.setState({ rowOpenState: { ...rowOpenState, [key]: isOpen } });
   }
 
+  async loadAnalysisData(from, to) {
+    try {
+      const res = await API.get("analysis", {
+        from,
+        to,
+      });
+
+      const { categories, subcategories, datevAccounts, transfers } = res.data;
+      const transferTotals = selectTransferTotals(transfers);
+      const { t } = this.props;
+      this.setState({
+        isLoading: false,
+        tableHeaders: selectTableHeaders(res.data.dates, t),
+        categories,
+        subcategories,
+        datevAccounts,
+        transferTotals,
+      });
+    } catch (err) {
+      console.error(err);
+      this.setState({ isLoading: false, error: "There was an error..." });
+    }
+  }
+
   render() {
-    const { isLoading, tableHeaders, error } = this.state;
+    const { isLoading, tableHeaders, error, analysisFrom, analysisTo } =
+      this.state;
     if (isLoading) return "Loading data...";
     if (error) return { error };
     const data = selectTableData(
@@ -399,8 +422,20 @@ class Analysis extends React.Component {
       this.toggleRowCollapse,
       this.onCellValueChange
     );
-    return <AnTable data={data} headers={tableHeaders} />;
+    return (
+      <>
+        <MonthRangePicker
+          onChange={this.onDateRangeChange}
+          value={[analysisFrom, analysisTo]}
+        />
+        <AnTable data={data} headers={tableHeaders} />
+      </>
+    );
   }
 }
 
-export default Analysis;
+Analysis.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation()(Analysis);

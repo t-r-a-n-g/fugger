@@ -391,7 +391,7 @@ class Analysis extends React.Component {
   async loadAnalysisData(from, to) {
     try {
       const res = await API.get("analysis", {
-        from,
+        from: new Date(Date.UTC(from.getFullYear(), from.getMonth())),
         to,
       });
 

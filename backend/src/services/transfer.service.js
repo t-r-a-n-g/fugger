@@ -3,7 +3,7 @@ const { Transfer } = require("../models");
 const DatevService = require("./datev.service");
 const { Category, Subcategory, DatevAccount } = require("../models");
 const parseDate = require("../utils/dateParser");
-const BudgetService = require("./budget.service");
+// const BudgetService = require("./budget.service");
 const { ValueError, NotFoundError } = require("../exceptions");
 
 class TransferService {
@@ -61,7 +61,7 @@ class TransferService {
       }
     }
 
-    await BudgetService.createBudgets(transfers, userId);
+    // await BudgetService.createBudgets(transfers, userId);
     return Transfer.bulkCreate(dbTransfers);
   }
 

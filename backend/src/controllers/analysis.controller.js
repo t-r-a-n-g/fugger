@@ -113,7 +113,7 @@ class AnalysisController {
         id: trsf.id,
         date: trsf.date,
         actual: transferAmount,
-        budget: budget.amount,
+        budget: budget?.amount,
         type: transferType,
         dateKey,
         datevAccountId: datevAccount.id,

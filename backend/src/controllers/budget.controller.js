@@ -1,6 +1,13 @@
 const { BudgetService } = require("../services");
 
 class BudgetController {
+  static async getBudgets(req, res) {
+    const { from, to } = req.query;
+
+    const budgets = await BudgetService.getBudgets(from, to, req.user.id);
+    return res.json(budgets);
+  }
+
   static async updateBudget(req, res) {
     const { budgetId } = req.params;
     const { amount } = req.body;

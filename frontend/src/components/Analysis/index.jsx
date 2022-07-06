@@ -13,7 +13,9 @@ import "./analysisTable.css";
 
 function round(num) {
   const m = Number((Math.abs(num) * 100).toPrecision(15));
-  return (Math.round(m) / 100) * Math.sign(num);
+  const rounded = (Math.round(m) / 100) * Math.sign(num);
+
+  return Number.isNaN(rounded) ? 0 : rounded;
 }
 
 function selectTableHeaders(headers, t) {

@@ -8,7 +8,11 @@ export default {
     signup: "auth/signup",
     me: "auth/me",
     datevAccounts: "datev",
-    user: "user",
+    user: "users",
+    category: "categories",
+    subcategory: "subcategories",
+    transfer: "transfers",
+    budget: "budgets",
   },
 
   get(url, params) {

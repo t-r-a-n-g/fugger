@@ -288,10 +288,12 @@ class Analysis extends React.Component {
     }
 
     try {
-      if (field === "actual")
-        await API.put(`transfer/${transferObject.id}`, {
+      if (field === "actual") {
+        const transferRoute = API.routes.transfer;
+        await API.put(`${transferRoute}/${transferObject.id}`, {
           amount: type === "H" ? value : -value,
         });
+      }
     } catch (err) {
       return false;
     }
@@ -342,7 +344,7 @@ class Analysis extends React.Component {
   async onCellValueChange(value, field, cellObject) {
     if (field === "name") {
       try {
-        const apiUrl = `${cellObject.type}/${cellObject.id}`;
+        const apiUrl = `${API.routes[cellObject.type]}/${cellObject.id}`;
         await API.put(apiUrl, { name: value });
       } catch (err) {
         return false;

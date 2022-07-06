@@ -1,6 +1,11 @@
 const { CategoryService } = require("../services");
 
 class CategoryController {
+  static async getCategories(req, res) {
+    const categories = await CategoryService.getCategories(req.user.id);
+    return res.json(categories);
+  }
+
   static async updateCategory(req, res) {
     const data = { ...req.body };
     const { categoryId } = req.params;

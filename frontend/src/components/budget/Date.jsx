@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { useTranslation } from "react-i18next";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -41,6 +42,9 @@ for (let i = yearStart; i <= yearEnd; i++) {
 export default function Date(props) {
   const { values, setValues, index } = props;
 
+  // translation i18 next
+  const { t } = useTranslation();
+
   // state to store user input of dates
   const [dateValue, setDateValue] = useState([]);
 
@@ -74,7 +78,9 @@ export default function Date(props) {
         </li>
       )}
       style={{ width: 550 }}
-      renderInput={(params) => <TextField {...params} label="Select Date(s)" />}
+      renderInput={(params) => (
+        <TextField {...params} label={t("select-date")} />
+      )}
     />
   );
 }

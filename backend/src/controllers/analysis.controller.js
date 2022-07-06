@@ -113,7 +113,7 @@ class AnalysisController {
         id: trsf.id,
         date: trsf.date,
         actual: transferAmount,
-        budget: budget.amount,
+        budget: budget?.amount,
         type: transferType,
         dateKey,
         datevAccountId: datevAccount.id,
@@ -156,7 +156,8 @@ class AnalysisController {
 
     const uploadedFile = await UploadService.uploadFile(
       req.files.datev_export_file,
-      uploadPath
+      uploadPath,
+      user.id
     );
 
     const uploadedFilePath = `${uploadedFile.file_path}/${uploadedFile.file_name}`;

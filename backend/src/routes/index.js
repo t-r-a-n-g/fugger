@@ -6,6 +6,7 @@ const datev = require("./datev.router");
 const transfer = require("./transfer.router");
 const budget = require("./budget.router");
 const user = require("./user.router");
+const upload = require("./upload.router");
 
 module.exports = {
   auth,
@@ -16,4 +17,5 @@ module.exports = {
   transfer,
   budget,
   user,
+  upload,
 };

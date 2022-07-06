@@ -20,6 +20,7 @@ class BudgetService {
   static async createBudgets(budgets, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbBudgets = [];
+    const updatedOrCreatedBudgets = [];
 
     for (const budgetInput of budgets) {
       // looking for the respective datev account which user defined budget for
@@ -32,11 +33,9 @@ class BudgetService {
       if (Number.isNaN(parsedAmount) || parsedAmount < 0)
         throw new ValueError();
 
-      // needs to be modified
       const parsedDate = parseDate(budgetInput.date);
 
       // check if budget entry already exists in db
-      // eslint-disable-next-line no-await-in-loop
       const budgetEntry = await Budget.findOne({
         where: {
           datevAccountId: budgetInput.account.id,
@@ -47,8 +46,9 @@ class BudgetService {
 
       // update already existing budgets
       if (budgetEntry) {
-        // eslint-disable-next-line no-await-in-loop
-        await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount);
+        updatedOrCreatedBudgets.push(
+          await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount)
+        );
       }
 
       // create new budgets
@@ -61,8 +61,10 @@ class BudgetService {
         });
       }
     }
-    // return something else here?
-    return Budget.bulkCreate(dbBudgets);
+
+    updatedOrCreatedBudgets.push(Budget.bulkCreate(dbBudgets));
+
+    return updatedOrCreatedBudgets;
   }
 
   static async updateBudget(budgetId, userId, amount) {

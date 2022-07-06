@@ -48,5 +48,20 @@
   "actual": "Tatsächlich",
   "budget": "Budget",
   "abs": "Absolut",
-  "perct": "Prozentual"
+  "perct": "Prozentual",
+  "error-msg-not-filled-out-fields": "Bitte füll alle Felder aus, bevor du speicherst.",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "select-datev-account": "Suche oder wähle einen Datev Account",
+  "select-date": "Wähle einen oder mehrere Monate",
+  "plan-budgets": "BUDGET PLANUNG",
+  "file-upload": "DATEI UPLOAD",
+  "upload-success": "Deine Datei wurde erfolgreich hochgeladen!",
+  "upload-fail": "Bitte überprüfe das Dateiformat. Nur Excel-Dateien (.xlsx) können hochgeladen werden.",
+  "close": "Schließen",
+  "uploaded-files": "Hochgeladene Dateien",
+  "drag-drop-browse": "Drag and Drop, oder Dateien durchsuchen",
+  "allowed-file-format": "Unterstützte Dateiformate: Excel (.xlsx)",
+  "filename": "Name der Datei",
+  "upload-date": "Hochgeladen am"
 }

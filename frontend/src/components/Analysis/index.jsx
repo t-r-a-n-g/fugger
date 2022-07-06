@@ -17,7 +17,13 @@ function round(num) {
 }
 
 function selectTableHeaders(headers, t) {
-  const rowHeaders = [[{ colSpan: 2 }], ["", "Account"]];
+  const rowHeaders = [
+    [{ colSpan: 2 }],
+    [
+      { className: "firstColumn" },
+      { value: "Account", className: "accounts-header-col" },
+    ],
+  ];
 
   const monthlyHeaders = [
     t("actual"),

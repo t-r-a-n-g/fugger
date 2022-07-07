@@ -8,6 +8,7 @@ import API from "@services/Api";
 
 import MonthRangePicker from "@components/MonthRangePicker";
 import AnTable from "./Table/AnTable";
+import ExportTable from "@components/ExportTable";
 
 import "./analysisTable.css";
 
@@ -430,6 +431,7 @@ class Analysis extends React.Component {
           onChange={this.onDateRangeChange}
           value={[analysisFrom, analysisTo]}
         />
+        <ExportTable />
         <AnTable data={data} headers={tableHeaders} />
       </>
     );

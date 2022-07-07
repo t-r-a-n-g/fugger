@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export default function Account(props) {
   const { values, setValues, index, accountData, setAccountData } = props;
+
+  // translation i18 next
+  const { t } = useTranslation();
 
   /* --------------------------- HANDLING USER INPUT --------------------------- */
 
@@ -39,7 +43,7 @@ export default function Account(props) {
       sx={{ width: 400 }}
       size="medium"
       renderInput={(params) => (
-        <TextField {...params} label="Select Datev Account" />
+        <TextField {...params} label={t("select-datev-account")} />
       )}
     />
   );

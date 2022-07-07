@@ -3,7 +3,7 @@ const { nanoid } = require("nanoid");
 const { Upload } = require("../models");
 
 class UploadsService {
-  static async uploadFile(file, path) {
+  static async uploadFile(file, path, userId) {
     await this.ensureDirExists(path);
     const fileName = await this.getUniqueFileName(file.name);
 
@@ -15,6 +15,7 @@ class UploadsService {
           file_path: path,
           file_name: fileName,
           org_file_name: file.name,
+          userId,
         });
 
         return resolve(upload);
@@ -37,6 +38,12 @@ class UploadsService {
 
     const uniqueFileName = `${id}${timestamp}-${fileName}`;
     return uniqueFileName;
+  }
+
+  static async getUploadHistory(userId) {
+    const uploadHistory = await Upload.findAll({ where: { userId } });
+
+    return uploadHistory;
   }
 }
 

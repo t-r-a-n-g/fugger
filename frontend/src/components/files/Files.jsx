@@ -1,18 +1,11 @@
 import React, { useCallback, useState, useEffect } from "react";
-import { Stack, Button, Typography, Container } from "@mui/material";
+import { Stack, Button, Typography, Container, Alert } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import { useDropzone } from "react-dropzone";
 import API from "@services/Api";
 import SuccessErrorBox from "./SuccessErrorBox";
-
-/* TO DO:
-------------
-- only allow one file at a time
-- display the list of uploads
-- parse the upload date
-*/
 
 export default function Files() {
   const { t } = useTranslation(); // i18next
@@ -32,32 +25,37 @@ export default function Files() {
       .catch((err) => setResStatus(err.response.status));
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive /* , acceptedFiles  */ } =
-    useDropzone({
-      onDrop,
-      accept: {
-        "Excel files": [".xlsx"],
-      },
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "Excel files": [".xlsx"],
+    },
+    multiple: false,
+  });
 
   const Input = styled("input")({
     display: "none",
   });
-  /* const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  )); */
 
   // API Request to get Upload History
   const [uploadHistoryData, setUploadHistoryData] = useState([]);
+  const [uploadHistoryError, setUploadHistoryError] = useState();
 
-  // To do: specify when to make the call
   useEffect(() => {
     API.get("upload")
-      .then((response) => setUploadHistoryData(response.data))
-      .catch((err) => console.warn(err));
-  }, []);
+      .then((response) => {
+        setUploadHistoryData(response.data);
+
+        // sort uploads descending based on upload date
+        response.data.sort((a, b) => {
+          const keyA = a.id;
+          const keyB = b.id;
+          return keyB - keyA;
+        });
+      })
+
+      .catch((err) => setUploadHistoryError(err.response.status));
+  }, [resStatus]);
 
   return (
     <Stack spacing={2}>
@@ -112,8 +110,8 @@ export default function Files() {
               <h4 style={{ marginBottom: 2, marginTop: 2.5 }}>
                 {t("filename")}
               </h4>
-              {uploadHistoryData.map((file) => (
-                <p>{file.org_file_name}</p>
+              {uploadHistoryData.map((file, index) => (
+                <p key={index}>{file.org_file_name}</p>
               ))}
             </Stack>
 
@@ -121,11 +119,18 @@ export default function Files() {
               <h4 style={{ marginBottom: 2, marginTop: 2.5 }}>
                 {t("upload-date")}
               </h4>
-              {uploadHistoryData.map((file) => (
-                <p>{file.createdAt}</p>
+              {uploadHistoryData.map((file, index) => (
+                <p key={index}>{file.createdAt.substr(0, 10)}</p>
               ))}
             </Stack>
           </Stack>
+        ) : (
+          <p>Loading ...</p>
+        )}
+        {uploadHistoryError ? (
+          <Alert severity="error" sx={{ fontSize: 16, marginTop: 2 }}>
+            {t("500-error-message")}
+          </Alert>
         ) : null}
       </Container>
     </Stack>

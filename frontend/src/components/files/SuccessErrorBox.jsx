@@ -66,7 +66,8 @@ export default function SuccessErrorBox({ resStatus, setResStatus }) {
   );
 }
 
+/* eslint react/require-default-props: 0 */
 SuccessErrorBox.propTypes = {
-  resStatus: PropTypes.number.isRequired,
-  setResStatus: PropTypes.func.isRequired,
+  resStatus: PropTypes.number,
+  setResStatus: PropTypes.func,
 };

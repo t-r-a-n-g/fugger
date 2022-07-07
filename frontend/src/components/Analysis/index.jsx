@@ -7,8 +7,8 @@ import { withTranslation } from "react-i18next";
 import API from "@services/Api";
 
 import MonthRangePicker from "@components/MonthRangePicker";
-import AnTable from "./Table/AnTable";
 import ExportTable from "@components/ExportTable";
+import AnTable from "./Table/AnTable";
 
 import "./analysisTable.css";
 

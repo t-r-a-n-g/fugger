@@ -16,11 +16,7 @@ export default function Files() {
     const formData = new FormData();
     formData.append("datev_export_file", acceptedFiles[0]);
 
-    API.post("analysis", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
+    API.post("analysis", formData)
       .then((response) => setResStatus(response.status))
       .catch((err) => setResStatus(err.response.status));
   }, []);

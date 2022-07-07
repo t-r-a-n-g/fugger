@@ -14,6 +14,7 @@ XLSX.set_fs(fs);
 - define what time period to export (fetch data)
 - include month data
 - name headers dynamically
+- include abs and pct calculation
 */
 
 /*  eslint array-callback-return: 0 */

@@ -10,6 +10,7 @@ import { Alert, Stack, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import API from "@services/Api";
+import { useTranslation } from "react-i18next";
 import Account from "./Account";
 import Amount from "./Amount";
 import Date from "./Date";
@@ -21,6 +22,9 @@ import Date from "./Date";
 function ConfirmationDialogRaw(props) {
   const { onClose, open, savedSuccessfully, setSavedSuccessfully, ...other } =
     props;
+
+  // translation i18 next
+  const { t } = useTranslation();
 
   // creating values state that contains an object for all the user input
   const [values, setValues] = useState({
@@ -153,7 +157,7 @@ function ConfirmationDialogRaw(props) {
       {...other}
     >
       <DialogTitle sx={{ fontWeight: "bold", textAlign: "center" }}>
-        SPECIFY YOUR BUDGETS
+        {t("plan-budgets")}
       </DialogTitle>
       <DialogContent dividers sx={{ alignContent: "center" }}>
         {values.val.map((el, index) => (
@@ -193,18 +197,18 @@ function ConfirmationDialogRaw(props) {
 
         {!inputComplete ? (
           <Alert severity="error" sx={{ marginTop: 2 }}>
-            Fill out every field before saving.
+            {t("error-msg-not-filled-out-fields")}
           </Alert>
         ) : null}
         {errorStatus ? (
           <Alert severity="error" sx={{ marginTop: 2 }}>
-            Something went wrong. Please try again later.
+            {t("500-error-message")}
           </Alert>
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCancel}>Cancel</Button>
-        <Button onClick={handleSave}>Save</Button>
+        <Button onClick={handleCancel}>{t("cancel")}</Button>
+        <Button onClick={handleSave}>{t("save")}</Button>
       </DialogActions>
     </Dialog>
   );

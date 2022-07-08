@@ -71,7 +71,6 @@ class TransferService {
       }
     }
 
-    // await BudgetService.createBudgets(transfers, userId);
     return Transfer.bulkCreate(dbTransfers);
   }
 

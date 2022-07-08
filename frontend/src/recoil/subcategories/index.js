@@ -1,6 +1,6 @@
-import atom from "./atom";
-import subcategoriesWithTransfers from "./withTransfers";
+import subcategoriesAtom from "./atom";
+import subcategoriesWithDatevAccounts from "./withDatevAccounts";
+import subcategoriesWithTotals from "./withTotals";
 
-export { subcategoriesWithTransfers };
-
-export default atom;
+export { subcategoriesWithDatevAccounts, subcategoriesWithTotals };
+export default subcategoriesAtom;

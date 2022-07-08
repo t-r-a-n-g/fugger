@@ -70,7 +70,7 @@ function LoginPage({ setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await Api.login(email, password);
+      const user = await Api.auth.login(email, password);
       setUser(user);
       navigate("/");
     } catch (err) {

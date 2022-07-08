@@ -127,7 +127,8 @@ function ConfirmationDialogRaw(props) {
       const finalValuesArray = await formatValues();
 
       try {
-        await API.post("budget", finalValuesArray);
+        const budgetRoute = API.routes.budget;
+        await API.post(budgetRoute, finalValuesArray);
         setSavedSuccessfully(true);
 
         // resetting values to show only one empty row when reopen Budgetbox

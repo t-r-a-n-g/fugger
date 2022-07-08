@@ -5,6 +5,10 @@ const router = express.Router();
 const { BudgetController } = require("../controllers");
 const { verifyToken } = require("../middleware/auth.middleware");
 
+router.get("/", verifyToken, (req, res) => {
+  BudgetController.getBudgets(req, res);
+});
+
 router.put("/:budgetId", verifyToken, (req, res) => {
   BudgetController.updateBudget(req, res);
 });

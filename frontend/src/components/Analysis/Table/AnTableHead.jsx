@@ -9,11 +9,17 @@ import { AnTableHeadProps } from "./propTypes";
 function getHeaderRowCells(rowCells) {
   const cells = [];
   for (const [index, cell] of rowCells.entries()) {
+    let className = `an-header-col-${index + 1}`;
+
     if (typeof cell === "string") {
-      cells.push(<TableCell key={`${cell}-${index}`}>{cell}</TableCell>);
+      cells.push(
+        <TableCell className={className} key={`${cell}-${index}`}>
+          {cell}
+        </TableCell>
+      );
     } else {
       const value = cell.value ?? "";
-      const className = cell.className ?? "";
+      className = `${className} ${cell.className}`;
 
       let key = cell.key ?? `${cell.value}-${index}`;
       if (!key) key = `nk-${index}-${Math.random()}`;
@@ -28,7 +34,7 @@ function getHeaderRowCells(rowCells) {
 
       cells.push(
         <TableCell
-          className={className}
+          className={`${className}`}
           key={key}
           colSpan={colSpan}
           align={align}

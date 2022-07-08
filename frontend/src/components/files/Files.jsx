@@ -16,7 +16,8 @@ export default function Files() {
     const formData = new FormData();
     formData.append("datev_export_file", acceptedFiles[0]);
 
-    API.post("analysis", formData)
+    API.transfers
+      .post(formData)
       .then((response) => setResStatus(response.status))
       .catch((err) => setResStatus(err.response.status));
   }, []);
@@ -38,7 +39,8 @@ export default function Files() {
   const [uploadHistoryError, setUploadHistoryError] = useState();
 
   useEffect(() => {
-    API.get("upload")
+    API.uploads
+      .get()
       .then((response) => {
         setUploadHistoryData(response.data);
 

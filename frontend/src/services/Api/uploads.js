@@ -5,3 +5,5 @@ class UploadApi extends ApiInterface {
     super("uploads");
   }
 }
+
+export default UploadApi;

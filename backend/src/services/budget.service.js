@@ -24,7 +24,7 @@ class BudgetService {
 
     for (const budgetInput of budgets) {
       // looking for the respective datev account which user defined budget for
-      const userDatevAccount = datevAccounts.find((el) => {
+      const budgetDatevAccount = datevAccounts.find((el) => {
         return el.id === budgetInput.account.id;
       });
 
@@ -52,9 +52,11 @@ class BudgetService {
       }
 
       // create new budgets
-      if (userDatevAccount && !budgetEntry) {
+      if (budgetDatevAccount && !budgetEntry) {
         dbBudgets.push({
-          datevAccountId: userDatevAccount.id,
+          categoryId: budgetDatevAccount.subcategory.category.id,
+          subcategoryId: budgetDatevAccount.subcategory.id,
+          datevAccountId: budgetDatevAccount.id,
           amount: parsedAmount,
           date: parsedDate.date,
           userId,

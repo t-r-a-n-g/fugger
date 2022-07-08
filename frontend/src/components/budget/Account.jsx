@@ -49,10 +49,11 @@ export default function Account(props) {
   );
 }
 
+/* eslint react/require-default-props: 0 */
 Account.propTypes = {
   values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
-  accountData: PropTypes.arrayOf.isRequired,
+  accountData: PropTypes.arrayOf(PropTypes.objectOf),
   setAccountData: PropTypes.func.isRequired,
 };

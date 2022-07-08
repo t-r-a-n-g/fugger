@@ -7,6 +7,7 @@ import { withTranslation } from "react-i18next";
 import API from "@services/Api";
 
 import MonthRangePicker from "@components/MonthRangePicker";
+import ExportTable from "@components/ExportTable";
 import AnTable from "./Table/AnTable";
 
 import "./analysisTable.css";
@@ -430,6 +431,7 @@ class Analysis extends React.Component {
           onChange={this.onDateRangeChange}
           value={[analysisFrom, analysisTo]}
         />
+        <ExportTable />
         <AnTable data={data} headers={tableHeaders} />
       </>
     );

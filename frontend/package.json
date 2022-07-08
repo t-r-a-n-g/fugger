@@ -26,7 +26,8 @@
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.4",
     "template-fullstack": "file:..",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.9/xlsx-0.18.9.tgz"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",

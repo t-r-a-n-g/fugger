@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import BudgetEditing from "@components/budget/BudgetCard";
 import SuccessModal from "@components/budget/SuccessModel";
 import { useTranslation } from "react-i18next";
+import ExportTable from "@components/ExportTable";
 
 export default function BudgetPage() {
   const [open, setOpen] = useState(false);
@@ -31,6 +32,8 @@ export default function BudgetPage() {
         savedSuccessfully={savedSuccessfully}
         setSavedSuccessfully={setSavedSuccessfully}
       />
+      {/* TESTING ONLY */}
+      <ExportTable />
     </>
   );
 }

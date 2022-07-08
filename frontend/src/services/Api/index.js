@@ -7,6 +7,7 @@ import TransferApi from "./transfers";
 import BudgetApi from "./budgets";
 import UserApi from "./users";
 import AuthApi from "./auth";
+import UploadApi from "./uploads";
 
 class Api {
   constructor() {
@@ -20,6 +21,7 @@ class Api {
     this.budgets = new BudgetApi();
     this.users = new UserApi();
     this.auth = new AuthApi();
+    this.uploads = new UploadApi();
   }
 }
 

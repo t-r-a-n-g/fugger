@@ -4,10 +4,10 @@ const categories = require("./category.router");
 const subcategories = require("./subcategory.router");
 const datev = require("./datev.router");
 
-const transfer = require("./transfer.router");
-const budget = require("./budget.router");
-const user = require("./user.router");
-const upload = require("./upload.router");
+const transfers = require("./transfer.router");
+const budgets = require("./budget.router");
+const users = require("./user.router");
+const uploads = require("./upload.router");
 
 module.exports = {
   auth,
@@ -15,8 +15,8 @@ module.exports = {
   categories,
   subcategories,
   datev,
-  transfer,
-  budget,
-  user,
-  upload,
+  transfers,
+  budgets,
+  users,
+  uploads,
 };

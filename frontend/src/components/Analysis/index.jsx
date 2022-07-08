@@ -8,7 +8,6 @@ import monthRangeAtom from "@recoil/monthRange";
 import analysisTableDataAtom from "@recoil/analysisTableData";
 
 import MonthRangePicker from "@components/MonthRangePicker";
-import ExportTable from "@components/ExportTable";
 import AnTable from "./Table/AnTable";
 
 function Analysis() {
@@ -17,7 +16,6 @@ function Analysis() {
   // const transfers = useRecoilValue(transfersWithDateFilter);
 
   const tableData = useRecoilValue(analysisTableDataAtom);
-
   if (tableData.isLoading === true) return "Loading...";
   return (
     <>

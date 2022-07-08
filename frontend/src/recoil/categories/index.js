@@ -1,6 +1,7 @@
 import atom from "./atom";
-import categoriesWithTransfers from "./withTransfers";
+import categoriesWithTotals from "./withTotals";
+import categoriesWithSubcategories from "./withSubcategories";
 
-export { categoriesWithTransfers };
+export { categoriesWithSubcategories, categoriesWithTotals };
 
 export default atom;

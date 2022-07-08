@@ -1,13 +1,29 @@
 const {
   // DatevAccountDefaults,
   DatevAccount,
-  // Category,
-  // Subcategory,
+  Category,
+  Subcategory,
 } = require("../models");
 
 class DatevService {
-  static async getUserAccounts(userId) {
-    const accounts = DatevAccount.findAll({ where: { userId } });
+  static async getUserAccounts(userId, includeParents = true) {
+    const include = [
+      {
+        model: Subcategory,
+        attributes: ["id"],
+        include: [
+          {
+            model: Category,
+            attributes: ["id"],
+          },
+        ],
+      },
+    ];
+
+    const accounts = DatevAccount.findAll({
+      where: { userId },
+      include: includeParents ? include : [],
+    });
     return accounts;
   }
 }

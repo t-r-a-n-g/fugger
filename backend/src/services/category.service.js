@@ -1,14 +1,93 @@
-const { Category, Subcategory, DatevAccount } = require("../models");
+const sequelize = require("sequelize");
+const {
+  Category,
+  Subcategory,
+  DatevAccount,
+  Transfer,
+  Budget,
+} = require("../models");
 const { NotFoundError, AuthorizationError } = require("../exceptions");
 
 class CategoryService {
+  static async totalSums({ userId, categoryId }) {
+    const opts = {
+      attributes: [
+        "date",
+        "categoryId",
+        [sequelize.fn("sum", sequelize.col("amount")), "total"], // sum all values in column "amount" and return it as "total"
+      ],
+      group: ["date", "categoryId"],
+      order: [["date", "ASC"]],
+      raw: true,
+    };
+
+    if (userId) opts.where = { userId };
+    else if (categoryId) opts.where = { categoryId };
+
+    const totalTransfers = await Transfer.findAll(opts);
+    const totalBudgets = await Budget.findAll(opts);
+
+    const results = {};
+
+    // we need two loops to also add budgets when there are no transfers and vice versa
+    for (const transfer of totalTransfers) {
+      const key = `cat-${transfer.categoryId}`;
+      if (!results[key]) results[key] = {};
+
+      results[key][transfer.date.getTime()] = {
+        categoryId: transfer.categoryId,
+        date: transfer.date,
+        actual: transfer.total,
+        budget: 0,
+      };
+    }
+
+    for (const budget of totalBudgets) {
+      const key = `cat-${budget.categoryId}`;
+      if (!results[key]) results[key] = {};
+
+      const sumObject = results[key][budget.date.getTime()];
+      if (sumObject) sumObject.budget = budget.total;
+      else
+        results[key][budget.date.getTime()] = {
+          categoryId: budget.categoryId,
+          date: budget.date,
+          actual: 0,
+          budget: budget.total,
+        };
+    }
+
+    return results;
+  }
+
+  static async getAllTotalSums(userId) {
+    return CategoryService.totalSums({ userId });
+  }
+
+  static async getTotalSums(categoryId) {
+    return CategoryService.totalSums({ categoryId });
+  }
+
   static async findCategories(where, options = {}) {
-    const categories = await Category.findAll(where, options);
+    const categories = await Category.findAll({ where, ...options });
     return categories;
   }
 
   static async getCategories(userId) {
-    const categories = await CategoryService.findCategories({ userId });
+    const categories = await CategoryService.findCategories(
+      { userId },
+      { raw: true }
+    );
+
+    const totalSums = await CategoryService.getAllTotalSums(userId);
+    for (const category of categories) {
+      const sumsObject = totalSums[`cat-${category.id}`];
+      if (sumsObject) {
+        const sums = Object.values(sumsObject);
+        category.totalSums = sums;
+      }
+    }
+
     return categories;
   }
 

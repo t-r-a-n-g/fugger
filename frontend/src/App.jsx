@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     async function getUser() {
-      setUser(await Api.getCurrentUser());
+      setUser(await Api.auth.me());
     }
     getUser();
   }, []);

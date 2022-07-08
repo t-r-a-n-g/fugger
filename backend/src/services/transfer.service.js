@@ -1,30 +1,35 @@
-const { Op } = require("sequelize");
 const { Transfer } = require("../models");
-const DatevService = require("./datev.service");
 const { Category, Subcategory, DatevAccount } = require("../models");
-const parseDate = require("../utils/dateParser");
+
+const DatevService = require("./datev.service");
+
 // const BudgetService = require("./budget.service");
+
+const parseDate = require("../utils/dateParser");
 const { ValueError, NotFoundError } = require("../exceptions");
 
 class TransferService {
   static async getTransfers(from, to, userId) {
     const transfers = await Transfer.findAll({
       where: {
-        date: {
-          [Op.between]: [from, to],
-        },
+        // date: {
+        //   [Op.between]: [from, to],
+        // },
         userId,
       },
       include: [
         {
           model: DatevAccount,
           as: "datevAccount",
+          attributes: ["id"],
           include: [
             {
               model: Subcategory,
+              attributes: ["id"],
               include: [
                 {
                   model: Category,
+                  attributes: ["id"],
                 },
               ],
             },
@@ -39,20 +44,25 @@ class TransferService {
     return transfers;
   }
 
-  static async createTransfers(transfers, userId) {
+  static async createTransfers(accountTransfers, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbTransfers = [];
 
-    for (const datevTransfer of transfers) {
-      const userDatevAccount = datevAccounts.find((el) => {
-        return el.number === datevTransfer.accountNumber;
+    // accountTransfers contains an account number and an array (transfers) with transfers for this account
+    for (const accountTransfer of accountTransfers) {
+      const transferDatevAccount = datevAccounts.find((el) => {
+        return el.number === accountTransfer.accountNumber;
       });
 
-      if (userDatevAccount) {
-        for (const transfer of datevTransfer.transfers) {
+      if (transferDatevAccount) {
+        for (const transfer of accountTransfer.transfers) {
           const tDate = parseDate(transfer.date);
+          const subcategoryId = transferDatevAccount.subcategory.id;
+          const categoryId = transferDatevAccount.subcategory.category.id;
           dbTransfers.push({
-            datevAccountId: userDatevAccount.id,
+            datevAccountId: transferDatevAccount.id,
+            subcategoryId,
+            categoryId,
             amount: transfer.amount,
             date: tDate.date,
             userId,

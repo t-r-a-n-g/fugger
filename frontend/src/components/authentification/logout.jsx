@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 function LogoutPage({ setUser }) {
   const navigate = useNavigate();
 
-  Api.logout().then(() => {
+  Api.auth.logout().then(() => {
     setUser(null);
     navigate("/login");
   });

@@ -53,7 +53,8 @@ const AnTableHeadProps = {
   headers: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.oneOfType([
-        PropTypes.string,
+        PropTypes.node,
+        PropTypes.object,
         PropTypes.shape({
           label: PropTypes.string,
           className: PropTypes.string,

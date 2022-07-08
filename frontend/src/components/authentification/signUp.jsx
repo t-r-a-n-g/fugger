@@ -113,7 +113,7 @@ function SignUpPage({ setUser }) {
     e.preventDefault();
     if (validEmail && strongPassword && passwordCheck && emailCheck) {
       try {
-        const user = await Api.signup(userData);
+        const user = await Api.auth.register(userData);
         setUser(user);
         navigate("/");
       } catch (err) {

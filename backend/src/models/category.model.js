@@ -21,9 +21,8 @@ const Category = sequelize.define(
 
 Category.beforeFind("addType", (opts) => {
   const typeAttribute = [sequelize.literal("'category'"), "type"];
-
   if (opts.attributes) opts.attributes.push(typeAttribute);
-  else opts.attributes = ["*", typeAttribute];
+  else opts.attributes = [sequelize.literal("*"), typeAttribute];
 });
 
 module.exports = Category;

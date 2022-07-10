@@ -15,7 +15,12 @@ class CategoryController {
   }
 
   static async getCategories(req, res) {
-    const categories = await CategoryService.getCategories(req.user.id);
+    const { from, to } = req.query;
+    const categories = await CategoryService.getCategories(
+      req.user.id,
+      new Date(from),
+      new Date(to)
+    );
     return res.json(categories);
   }
 

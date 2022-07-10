@@ -18,12 +18,15 @@ class TransferController {
     const fileParser = new DatevParser(uploadedFilePath);
     const datevData = await fileParser.parseFinancialExportFile();
 
-    const transfers = await TransferService.createTransfers(
-      datevData,
-      req.user.id
-    );
-
-    return res.json(transfers);
+    try {
+      const transfers = await TransferService.createTransfers(
+        datevData,
+        req.user.id
+      );
+      return res.json(transfers);
+    } catch (err) {
+      return res.status(500).send("500-error");
+    }
   }
 
   static async getTransfers(req, res) {

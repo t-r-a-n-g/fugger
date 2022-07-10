@@ -10,6 +10,7 @@ class AnTableCell extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
+      label: props.label || props.children,
       value: props.children,
       prevValue: null,
     };
@@ -19,8 +20,9 @@ class AnTableCell extends React.Component {
 
   componentDidUpdate(prevProps) {
     // reset state on rerender because the constructor is not called again
-    const { children } = this.props;
-    if (prevProps.children !== children) this.setState({ value: children });
+    const { children, label } = this.props;
+    if (prevProps.children !== children)
+      this.setState({ value: children, label: label || children });
   }
 
   onCellClick() {
@@ -74,11 +76,11 @@ class AnTableCell extends React.Component {
   }
 
   render() {
-    const { value, isEditing } = this.state;
+    const { value, isEditing, label } = this.state;
     const { className, sx } = this.props;
     if (isEditing) {
       return (
-        <TableCell className={className}>
+        <TableCell className={`an-col ${className}`}>
           <input
             type="text"
             value={value}
@@ -97,10 +99,10 @@ class AnTableCell extends React.Component {
     return (
       <TableCell
         onClick={(e) => this.onCellClick(e)}
-        className={className}
+        className={`an-col ${className}`}
         sx={sx}
       >
-        <span>{value}</span>
+        <span>{`${label}`}</span>
       </TableCell>
     );
   }

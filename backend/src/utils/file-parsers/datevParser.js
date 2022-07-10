@@ -3,8 +3,8 @@ const XLSX = require("xlsx");
 class DatevParser {
   constructor(file) {
     this.file = file;
-    this.deletableHeaderKeys = ["__EMPTY_1", "__EMPTY_2", "__EMPTY_3"];
-    this.deletableHeaderFromEndIndex = 3;
+    this.deletableHeaderKeys = [];
+    this.deletableHeaderFromEndIndex = 0;
   }
 
   getDeletableHeaderKeys(headers) {
@@ -31,7 +31,76 @@ class DatevParser {
     return headers;
   }
 
-  parseFinancialExportSheet(jsonSheet) {
+  // eslint-disable-next-line class-methods-use-this
+  isMonthlyExportFile(jsonSheet) {
+    const headerKeys = Object.keys(jsonSheet[0]);
+
+    const isMonthly =
+      headerKeys[0].includes("pro Monat") || headerKeys.length === 12;
+    const isYearly =
+      headerKeys[0].includes("Jahresübersicht") || headerKeys.length === 44;
+
+    // double check, just in case...
+    if (isMonthly !== isYearly) return isMonthly;
+
+    return null;
+  }
+
+  parseMonthlyFincancialExportSheet(jsonSheet) {
+    this.deletableHeaderKeys = [
+      "__EMPTY_1",
+      "__EMPTY_2",
+      "__EMPTY_3",
+      "__EMPTY_4",
+      "__EMPTY_5",
+      "__EMPTY_6",
+    ];
+    this.deletableHeaderFromEndIndex = 2;
+
+    const headers = this.getHeaders(jsonSheet);
+    const accounts = [];
+
+    const sollHeader = Object.keys(headers).reverse()[1];
+
+    const month = headers[sollHeader]
+      .replace("Soll", "")
+      .replace(" ", "/")
+      .trim();
+
+    for (let i = 1; i < jsonSheet.length; i += 1) {
+      const row = jsonSheet[i];
+      const columns = Object.entries(row);
+
+      const accountNumber = columns[0][1];
+      const accountName = columns[1][1];
+
+      const account = {
+        accountNumber,
+        accountName,
+        transfers: [],
+      };
+
+      columns.reverse();
+      const habenCol = columns[0];
+      const sollCol = columns[1];
+
+      const trsfValue = Number(habenCol[1]) - Number(sollCol[1]);
+      account.transfers.push({
+        date: month,
+        amount: Math.abs(trsfValue),
+        type: trsfValue < 0 ? "S" : "H",
+      });
+
+      if (trsfValue !== 0) accounts.push(account);
+    }
+
+    return accounts;
+  }
+
+  parseYearlyFinancialExportSheet(jsonSheet) {
+    this.deletableHeaderKeys = ["__EMPTY_1", "__EMPTY_2", "__EMPTY_3"];
+    this.deletableHeaderFromEndIndex = 3;
+
     const headers = this.getHeaders(jsonSheet);
     const accounts = [];
 
@@ -58,20 +127,12 @@ class DatevParser {
             // columnName is a date in this case (Month/Year)
             const date = columnName;
             const transferAmount = columnValue;
-            let finalTransferAmount = null;
+            const isHaben = Object.values(row)[index + 2] === "H";
 
-            if (transferAmount === null) {
-              finalTransferAmount = 0;
-            } else {
-              // const isSoll = Object.values(row)[index + 1] === "S";
-              const isHaben = Object.values(row)[index + 2] === "H";
-
-              // if we have negative numbers we swap revenue and expenses
-              finalTransferAmount = isHaben ? transferAmount : -transferAmount;
-            }
             account.transfers.push({
               date,
-              amount: finalTransferAmount,
+              amount: transferAmount,
+              type: isHaben ? "H" : "S",
             });
           }
         }
@@ -94,7 +155,21 @@ class DatevParser {
           const jsonSheet = XLSX.utils.sheet_to_json(worksheet, {
             defval: null,
           });
-          parsedSheets.push(...this.parseFinancialExportSheet(jsonSheet));
+
+          const isMonthly = this.isMonthlyExportFile(jsonSheet);
+
+          if (isMonthly === null)
+            reject(new Error("Unable to determine monthly/yearly sheet"));
+
+          if (isMonthly) {
+            parsedSheets.push(
+              ...this.parseMonthlyFincancialExportSheet(jsonSheet)
+            );
+          } else {
+            parsedSheets.push(
+              ...this.parseYearlyFinancialExportSheet(jsonSheet)
+            );
+          }
         });
 
         resolve(parsedSheets);

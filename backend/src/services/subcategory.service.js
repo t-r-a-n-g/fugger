@@ -1,66 +1,28 @@
-const sequelize = require("sequelize");
-
-const { Subcategory, Transfer, Budget } = require("../models");
+const MonthlyTotalService = require("./monthlyTotal.service");
+const { Subcategory } = require("../models");
 
 const { NotFoundError } = require("../exceptions");
 
 class SubcategoryService {
-  static async totalSums({ userId, subcategoryId }) {
-    const opts = {
-      attributes: [
-        "date",
-        "subcategoryId",
-        [sequelize.fn("sum", sequelize.col("amount")), "total"],
-      ],
-      group: ["date", "subcategoryId"],
-      order: [["date", "ASC"]],
-      raw: true,
-    };
-
-    if (userId) opts.where = { userId };
-    else if (subcategoryId) opts.where = { subcategoryId };
-
-    const totalTransfers = await Transfer.findAll(opts);
-    const totalBudgets = await Budget.findAll(opts);
-    const results = [];
-
-    for (const transfer of totalTransfers) {
-      const budget = totalBudgets.find(
-        (tb) =>
-          tb.date.getTime() === transfer.date.getTime() &&
-          transfer.subcategoryId === tb.subcategoryId
-      );
-
-      results.push({
-        subcategoryId: transfer.subcategoryId,
-        date: transfer.date,
-        actual: transfer.total,
-        budget: budget?.total || 0,
-      });
-    }
-
-    return results;
-  }
-
-  static async getAllTotalSums(userId) {
-    return SubcategoryService.totalSums({ userId });
-  }
-
-  static async getTotalSums(categoryId) {
-    return SubcategoryService.totalSums({ categoryId });
-  }
-
-  static async getSubcategories(userId) {
-    const subcategories = await Subcategory.findAll({
+  static async getSubcategories(userId, from, to) {
+    const res = await Subcategory.findAll({
       where: { userId },
       raw: true,
     });
-    const totalSums = await SubcategoryService.getAllTotalSums(userId);
 
-    for (const subcategory of subcategories) {
-      subcategory.totalSums = totalSums.filter(
-        (sum) => sum.subcategoryId === subcategory.id
-      );
+    const subcategories = [];
+    const totalSums = await MonthlyTotalService.getAllSubcategoryTotalSums(
+      userId,
+      from,
+      to
+    );
+
+    for (const subcategory of res) {
+      const sumsObject = totalSums[`subcategory-${subcategory.id}`];
+      if (sumsObject) {
+        const sums = Object.values(sumsObject);
+        subcategories.push({ ...subcategory, totalSums: sums });
+      }
     }
 
     return subcategories;

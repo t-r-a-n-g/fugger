@@ -1,308 +1,221 @@
-import React, { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
 
-import i18n from "i18next";
+import { round } from "@services/utils/math";
 
-import AnTable from "@components/Analysis/Table/AnTable";
+import monthRangeAtom from "@recoil/monthRange";
+
+import useTableData from "@hooks/useTableData";
+
 import MonthRangePicker from "@components/MonthRangePicker";
 
 import Api from "@services/Api";
+import AnTable from "@components/Analysis/Table/AnTable";
+import AnTableRow from "@components/Analysis/Table/AnTableRow";
+import AnTableCell from "@components/Analysis/Table/AnTableCell";
 
-// Get the first day of a month from a date
-function getFirstDayOfMonth(date) {
-  const isValidDate = (d) => d instanceof Date && !Number.isNaN(d.getTime());
+import "@components/Analysis/analysisTable.css";
 
-  const d = new Date(date);
-
-  if (!isValidDate(d)) return null;
-  return new Date(Date.UTC(d.getFullYear(), d.getMonth()));
-}
-
-function monthDiff(startDate, endDate) {
-  let months;
-  months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-  months -= startDate.getMonth();
-  months += endDate.getMonth();
-  return months <= 0 ? 0 : months;
-}
-
-// save date range to local storage
-function saveDateRange([from, to]) {
-  localStorage.setItem("budgetFrom", getFirstDayOfMonth(from));
-  localStorage.setItem("budgetTo", getFirstDayOfMonth(to));
-}
-
-// load date range from local storage
-function loadDateRange() {
-  const from = getFirstDayOfMonth(localStorage.getItem("budgetFrom"));
-  const to = getFirstDayOfMonth(localStorage.getItem("budgetTo"));
-
-  if (from && to) return [from, to];
-  return null;
-}
-
-function round(num) {
-  const m = Number((Math.abs(num) * 100).toPrecision(15));
-  const rounded = (Math.round(m) / 100) * Math.sign(num);
-
-  return Number.isNaN(rounded) ? 0 : rounded;
-}
-
-function selectTransferData(transfer) {
-  let transferAbs = null;
-  let actualColor = "error.main";
-  if (transfer.type === "S") {
-    transferAbs = transfer.budget - transfer.actual;
-  } else {
-    actualColor = "success.main";
-    transferAbs = transfer.actual - transfer.budget;
-  }
-
-  let transferPerct = null;
-  if (transfer.budget > 0)
-    transferPerct = (transferAbs / transfer.budget) * 100;
-  else transferPerct = transfer.type === "H" ? 100 : -100;
-
-  let transferAbsColor = null;
-  if (transferAbs < 0) transferAbsColor = "error.main";
-  else if (transferAbs > 0) transferAbsColor = "success.main";
-
-  return {
-    abs: round(transferAbs),
-    perct: round(transferPerct),
-    actual: round(transfer.actual),
-    budget: round(transfer.budget),
-    absColor: transferAbsColor,
-    actualColor,
-  };
-}
-
-function selectRowData(
-  dataObject,
-  state,
-  toggleRowCollapse,
-  onCellValueChange
-) {
-  const key = `${dataObject.type}-${dataObject.id}`;
-  const isOpen = state.rowOpenState[key] || false;
-  let childIds = [];
-  if (dataObject.childIds) childIds = Object.keys(dataObject.childIds);
-
-  let childObjects = [];
-
-  switch (dataObject.type) {
-    case "category":
-      childObjects = state.subcategories;
-      break;
-    case "subcategory":
-      childObjects = state.datevAccounts;
-      break;
-    default:
-      break;
-  }
-
-  const row = {
-    key,
-    isOpen,
-    toggleOpen: () => {
-      toggleRowCollapse(key, !isOpen);
-    },
-    hasChildren: Array.isArray(childIds) && childIds.length > 0,
-    childRows: isOpen
-      ? childIds.map((childId) => {
-          const childDataObject = childObjects[childId];
-          return selectRowData(
-            childDataObject,
-            state,
-            toggleRowCollapse,
-            onCellValueChange
-          );
-        })
-      : [],
-    cellData: [
-      {
-        value: dataObject.name,
-        isEditable: true,
-        onValueChange: (value) => {
-          return onCellValueChange(value, "name", dataObject);
-        },
-      },
-    ],
-  };
-
-  const monthlyTransfers = state.transferTotals
-    .filter(
-      (tt) => tt.parentId === dataObject.id && tt.cType === dataObject.type
-    )
-    .sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
-    });
-
-  const monthlyCells = monthlyTransfers.map((trsf) => {
-    const transfer = selectTransferData(trsf);
-    const isEditable = dataObject.type === "datev";
-
-    return [
-      {
-        value: transfer.budget,
-        isEditable,
-        onValueChange: (value) => {
-          return onCellValueChange(value, `budget`, trsf);
-        },
-        className: "budget-col",
-      },
-    ];
-  });
-
-  for (const month of monthlyCells) row.cellData.push(...month);
-  return row;
-}
-
-function selectTableData(state, toggleRowCollapse, onCellValueChange) {
-  const data = [];
-  for (const category of Object.values(state.categories)) {
-    data.push(
-      selectRowData(category, state, toggleRowCollapse, onCellValueChange)
-    );
-  }
-
-  return data;
-}
-
-function selectTransferTotals(transfers) {
-  const transferTotals = [];
-
-  for (const transfer of transfers) {
-    for (const type of ["category", "subcategory", "datev"]) {
-      let parentId = transfer.datevAccountId;
-      if (type === "category") parentId = transfer.categoryId;
-      else if (type === "subcategory") parentId = transfer.subcategoryId;
-
-      let transferTotal = transferTotals.find(
-        (tt) =>
-          tt.date === transfer.date &&
-          tt.parentId === parentId &&
-          tt.cType === type
-      );
-
-      if (!transferTotal) {
-        transferTotal = {
-          ...transfer,
-          parentId,
-          cType: type,
-          actual: 0,
-          budget: 0,
-        };
-        transferTotals.push(transferTotal);
-      }
-
-      transferTotal.actual += transfer.actual;
-      transferTotal.budget += transfer.budget;
-    }
-  }
-
-  return transferTotals;
+function deepCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
 }
 
 function BudgetTable() {
-  // initialize with current date (set to beginning of month)
-  const [monthRange, setMonthRange] = useState([
-    getFirstDayOfMonth(new Date()),
-    getFirstDayOfMonth(new Date()),
-  ]);
+  const {
+    isLoading,
+    error,
+    categoryRows,
+    setCategoryRows,
+    subcategoryRows,
+    setSubcategoryRows,
+    datevRows,
+    setDatevRows,
+    headers,
+  } = useTableData({ table: "budgets" });
 
-  const [rowOpenState, setRowOpenState] = useState({});
+  const [monthRange, setMonthRange] = useRecoilState(monthRangeAtom("budgets"));
 
-  const [tableHeaders, setTableHeaders] = useState([[]]);
-  const [budgetData, setBudgetData] = useState([]);
+  function onNameChange(dataObject, key, newValue, oldValue) {
+    if (newValue === oldValue) return false;
 
-  useEffect(() => {
-    // get the date range
-    const range = loadDateRange();
+    let rowObjects = null;
+    let setState = null;
+    let api = null;
 
-    // if they don't exist / are not valid dates, store the default state value (current month)
-    if (!range) saveDateRange(monthRange);
-    // otherwise store them in state
-    else setMonthRange(range);
-  }, []);
-
-  useEffect(() => {
-    async function getBudgets() {
-      const res = await Api.get("analysis", {
-        from: monthRange[0],
-        to: monthRange[1],
-      });
-
-      const { categories, subcategories, datevAccounts, transfers } = res.data;
-      const transferTotals = selectTransferTotals(transfers);
-
-      // setCategories(categories);
-      // setSubcategories(subcategories);
-      // setDatevAccounts(datevAccounts);
-      // selectTransferTotals(transferTotals);
-
-      setBudgetData(
-        selectTableData(
-          {
-            categories,
-            subcategories,
-            datevAccounts,
-            transferTotals,
-            rowOpenState,
-          },
-          (key, isOpen) => {
-            setRowOpenState({ ...rowOpenState, [key]: isOpen });
-          },
-          () => {}
-        )
-      );
-      // setBudgets(res.data);
+    switch (dataObject.type) {
+      case "category":
+        rowObjects = deepCopy(categoryRows);
+        setState = setCategoryRows;
+        api = Api.categories;
+        break;
+      case "subcategory":
+        rowObjects = deepCopy(subcategoryRows);
+        setState = setSubcategoryRows;
+        api = Api.subcategories;
+        break;
+      case "datevAccount":
+        rowObjects = deepCopy(datevRows);
+        setState = setDatevRows;
+        api = Api.datevAccounts;
+        break;
+      default:
+        return false;
     }
 
-    // query the backend when monthRange changes
-    getBudgets();
+    const rowObject = rowObjects.find((row) => row.id === dataObject.id);
+    rowObject.cellData[key].value = newValue;
 
-    // set the table headers according to selected month range
-    const diff = monthDiff(monthRange[0], monthRange[1]) + 1;
-    const headers = ["", "Account"];
+    const { label } = rowObject.cellData[key];
+    rowObject.cellData[key].label = label.replace(oldValue, newValue);
 
-    let currentMonth = monthRange[0].getMonth();
-    let currentYear = monthRange[0].getFullYear();
-    for (let i = 0; i < diff; i++) {
-      if (currentMonth >= 12) {
-        currentMonth = 0;
-        currentYear += 1;
+    setState(rowObjects);
+
+    api.put({ name: newValue }, rowObject.id);
+    return true;
+  }
+
+  function onCellValueChange(dataObject, key, field, newValue, oldValue) {
+    if (field === "name") {
+      return onNameChange(dataObject, key, newValue, oldValue);
+    }
+
+    if (["budget"].includes(field) && dataObject.type === "datevAccount") {
+      if (
+        Number.isNaN(Number(newValue)) ||
+        Number(newValue) === Number(oldValue)
+      ) {
+        return false;
       }
 
-      const currentDate = new Date(Date.UTC(currentYear, currentMonth));
-      const dateString = currentDate.toLocaleDateString(i18n.language, {
-        month: "long",
-        year: "numeric",
-      });
+      const catRowsCopy = deepCopy(categoryRows);
+      const subcatRowsCopy = deepCopy(subcategoryRows);
+      const dtvRowsCopy = deepCopy(datevRows);
 
-      headers.push(dateString);
-      currentMonth += 1;
+      const datevRow = dtvRowsCopy.find((dtv) => dtv.id === dataObject.id);
+      const subcategoryRow = subcatRowsCopy.find(
+        (subcat) => subcat.id === datevRow.subcategoryId
+      );
+      const categoryRow = catRowsCopy.find(
+        (cat) => cat.id === subcategoryRow.categoryId
+      );
+
+      const timestamp = key.split("-").reverse()[0];
+      const { budgetId } = datevRow.cellData[key];
+
+      if (budgetId) Api.budgets.put({ amount: Math.abs(newValue) }, budgetId);
+
+      for (const row of [datevRow, subcategoryRow, categoryRow]) {
+        const cellKey = `${row.type}-${row.id}`;
+
+        const fieldKey = `${cellKey}-${field}-${timestamp}`;
+
+        const newCellValue =
+          Number(row.cellData[fieldKey].value) -
+          Number(oldValue) +
+          Number(newValue);
+
+        row.cellData[fieldKey].value = newCellValue;
+        row.cellData[fieldKey].label = round(newCellValue);
+      }
+
+      setCategoryRows(catRowsCopy);
+      setSubcategoryRows(subcatRowsCopy);
+      setDatevRows(dtvRowsCopy);
+    }
+    return true;
+  }
+
+  function onRowOpenToggle(type, key, open) {
+    if (type === "category") {
+      const rowsCopy = [...categoryRows];
+      const rowIndex = rowsCopy.findIndex((row) => row.key === key);
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+
+      setCategoryRows(rowsCopy);
+    } else if (type === "subcategory") {
+      const rowsCopy = [...subcategoryRows];
+      const rowIndex = rowsCopy.findIndex((row) => row.key === key);
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+
+      setSubcategoryRows(rowsCopy);
+    }
+  }
+
+  function getCellData(cellData, onValueChange) {
+    const cells = [];
+    for (const [index, cell] of cellData.entries()) {
+      const key = cell.key || `cell-${index}`;
+      const className = cell.className || "";
+      const isEditable = cell.isEditable || false;
+      const sx = cell.sx || null;
+
+      cells.push(
+        <AnTableCell
+          key={key}
+          className={`an-col an-col-${index + 1} ${className}`}
+          isEditable={isEditable}
+          sx={sx}
+          onValueChange={(newValue, oldValue) =>
+            onValueChange(newValue, oldValue, cell.field, key)
+          }
+          label={cell.label}
+        >
+          {cell.value}
+        </AnTableCell>
+      );
     }
 
-    setTableHeaders([headers]);
-    // setBudgetData(getBudgetData(budgets));
-  }, [monthRange, rowOpenState]);
+    return cells;
+  }
 
-  const onDateChange = ([from, to]) => {
-    // parse dates and get current month
-    const budgetFrom = getFirstDayOfMonth(from);
-    const budgetTo = getFirstDayOfMonth(to);
+  function getRowsJsx(rowData, depth = 0) {
+    const rows = [];
+    for (const row of rowData) {
+      const budgets = Object.values(row.cellData).filter(
+        (cell) => cell.field === "budget" || cell.field === "name"
+      );
 
-    // if valid, save them and update state
-    if (budgetFrom && budgetTo) {
-      saveDateRange([budgetFrom, budgetTo]);
-      setMonthRange([budgetFrom, budgetTo]);
+      rows.push(
+        <AnTableRow
+          {...row}
+          toggleOpen={(open) => onRowOpenToggle(row.type, row.key, open)}
+          className={`${row.className} row-depth-${depth}`}
+        >
+          {getCellData(budgets, (newValue, oldValue, field, key) =>
+            onCellValueChange(row, key, field, newValue, oldValue)
+          )}
+        </AnTableRow>
+      );
+
+      if (row.hasChildren && row.isOpen) {
+        let children = [];
+        if (row.type === "category")
+          children = subcategoryRows.filter(
+            (scat) => scat.categoryId === row.id
+          );
+        else if (row.type === "subcategory")
+          children = datevRows.filter((dtv) => dtv.subcategoryId === row.id);
+
+        rows.push(...getRowsJsx(children, depth + 1));
+      }
     }
-  };
+
+    return rows;
+  }
+
+  function tableJsx() {
+    if (isLoading) return "Loading...";
+    if (error) return "There was an whoopsie somewhere. Please try again later";
+
+    return <AnTable headers={headers}>{getRowsJsx(categoryRows)}</AnTable>;
+  }
 
   return (
     <>
-      <MonthRangePicker value={monthRange} onChange={onDateChange} />
-      <AnTable data={budgetData} headers={tableHeaders} />
+      <div>
+        <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+      </div>
+
+      <div id="table-container">{tableJsx()}</div>
     </>
   );
 }

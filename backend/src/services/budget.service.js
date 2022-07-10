@@ -1,8 +1,12 @@
 const { Op } = require("sequelize");
-const { Budget } = require("../models");
-const parseDate = require("../utils/dateParser");
+
+const { Budget, Category, Subcategory, DatevAccount } = require("../models");
+
 const DatevService = require("./datev.service");
+
 const { ValueError, NotFoundError } = require("../exceptions");
+
+const parseDate = require("../utils/dateParser");
 
 class BudgetService {
   static async getBudgets(from, to, userId) {
@@ -13,6 +17,15 @@ class BudgetService {
         },
         userId,
       },
+      include: [
+        { model: DatevAccount, as: "datevAccount" },
+        { model: Category },
+        { model: Subcategory },
+      ],
+
+      order: [["date", "ASC"]],
+      raw: true,
+      nest: true,
     });
     return budgets;
   }
@@ -21,7 +34,6 @@ class BudgetService {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbBudgets = [];
     const updatedOrCreatedBudgets = [];
-
     for (const budgetInput of budgets) {
       // looking for the respective datev account which user defined budget for
       const budgetDatevAccount = datevAccounts.find((el) => {
@@ -64,7 +76,9 @@ class BudgetService {
       }
     }
 
-    updatedOrCreatedBudgets.push(Budget.bulkCreate(dbBudgets));
+    updatedOrCreatedBudgets.push(
+      Budget.bulkCreate(dbBudgets, { updateOnDuplicate: ["amount"] })
+    );
 
     return updatedOrCreatedBudgets;
   }

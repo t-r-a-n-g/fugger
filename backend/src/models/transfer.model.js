@@ -20,6 +20,15 @@ const Transfer = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
+
+    // HABEN (H) or SOLL (S)
+    type: {
+      type: DataTypes.CHAR(1),
+      allowNull: false,
+      validate: {
+        isIn: [["H", "S"]],
+      },
+    },
   },
   {
     tableName: "transfers",

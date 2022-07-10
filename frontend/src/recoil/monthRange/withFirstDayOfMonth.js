@@ -1,19 +1,21 @@
-import { selector } from "recoil";
+import { selectorFamily } from "recoil";
 
 import { getFirstDayOfMonth } from "@services/utils/date";
 
 import monthRangeAtom from "./atom";
 
-const withFirstDayOfMonth = selector({
+const withFirstDayOfMonth = selectorFamily({
   key: "monthRangeWithFirstDayOfMonth",
-  get: ({ get }) => {
-    const range = get(monthRangeAtom);
+  get:
+    (table) =>
+    ({ get }) => {
+      const range = get(monthRangeAtom(table));
 
-    return [
-      getFirstDayOfMonth({ date: range[0] }),
-      getFirstDayOfMonth({ date: range[1] }),
-    ];
-  },
+      return [
+        getFirstDayOfMonth({ date: range[0] }),
+        getFirstDayOfMonth({ date: range[1] }),
+      ];
+    },
 });
 
 export default withFirstDayOfMonth;

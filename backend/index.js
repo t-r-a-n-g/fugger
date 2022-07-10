@@ -70,4 +70,4 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 startServer();
 checkDB();
 
-/* syncDB(true); */
+// syncDB(true);

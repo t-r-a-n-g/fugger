@@ -2,30 +2,18 @@ import PropTypes from "prop-types";
 
 const AnTableCellProps = {
   children: PropTypes.node.isRequired,
+  label: PropTypes.node,
   className: PropTypes.string,
   sx: PropTypes.object,
 };
 
 const AnTableCellDefaultProps = {
+  label: null,
   className: "",
   sx: {},
 };
 
 const AnTableRowProps = {
-  cellData: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.node,
-      PropTypes.object,
-      PropTypes.shape({
-        value: PropTypes.node.isRequired,
-        key: PropTypes.string,
-        className: PropTypes.string,
-        isEditable: PropTypes.bool,
-        onValueChange: PropTypes.func,
-        sx: PropTypes.object,
-      }),
-    ])
-  ).isRequired,
   className: PropTypes.string,
 
   toggleOpen: PropTypes.func,
@@ -69,7 +57,7 @@ const AnTableHeadProps = {
 
 const AnTableProps = {
   headers: AnTableHeadProps.headers,
-  data: PropTypes.arrayOf(PropTypes.shape(AnTableRowProps)),
+  children: PropTypes.node.isRequired,
 };
 
 export {

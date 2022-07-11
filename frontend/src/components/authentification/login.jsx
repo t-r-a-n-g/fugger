@@ -141,6 +141,9 @@ function LoginPage({ setUser }) {
                   }}
                   onBlur={handleValidEmail}
                   error={!validEmail}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -152,6 +155,7 @@ function LoginPage({ setUser }) {
                   type={hidden === false ? "password" : "text"}
                   onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
+                    style: { fontSize: 13 },
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>

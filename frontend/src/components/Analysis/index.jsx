@@ -10,6 +10,7 @@ import MonthRangePicker from "@components/MonthRangePicker";
 
 import Api from "@services/Api";
 import ExportTable from "@components/ExportTable";
+import { Box } from "@mui/material";
 import AnTable from "./Table/AnTable";
 import AnTableRow from "./Table/AnTableRow";
 import AnTableCell from "./Table/AnTableCell";
@@ -264,7 +265,9 @@ function AnalysisTable() {
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
       </div>
 
-      <div id="table-container">{tableJsx()}</div>
+      <Box sx={{ px: 2 }} id="table-container">
+        {tableJsx()}
+      </Box>
     </>
   );
 }

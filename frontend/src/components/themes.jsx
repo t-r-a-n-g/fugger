@@ -1,3 +1,19 @@
+const globalComponents = {
+  // menuItem
+  MuiMenuItem: {
+    styleOverrides: {
+      root: {
+        marginLeft: "5px",
+        marginRight: "5px",
+        paddingLeft: "15px",
+        "&:hover": {
+          borderRadius: "10px",
+        },
+      },
+    },
+  },
+};
+
 const theme1 = {
   // Overrides color palette
   palette: {
@@ -14,39 +30,8 @@ const theme1 = {
       default: "#ececec",
     },
   },
-
   // Overrides specific components
-  components: {
-    // outlinedInput
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    // inputLabel
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    // menuItem
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          marginLeft: "5px",
-          marginRight: "5px",
-          paddingLeft: "15px",
-          "&:hover": {
-            borderRadius: "10px",
-          },
-        },
-      },
-    },
-  },
+  components: globalComponents,
 };
 
 const theme2 = {
@@ -67,39 +52,10 @@ const theme2 = {
   },
 
   // Overrides specific components
-  components: {
-    // outlinedInput
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    // inputLabel
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    // menuItem
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          marginLeft: "5px",
-          marginRight: "5px",
-          paddingLeft: "15px",
-          "&:hover": {
-            borderRadius: "10px",
-          },
-        },
-      },
-    },
-  },
+  components: globalComponents,
 };
 
+// Do NOT change name of themeDark, because it is used often in whole app!
 const themeDark = {
   // Overrides color palette
   palette: {
@@ -124,32 +80,6 @@ const themeDark = {
   },
   // Overrides specific components
   components: {
-    // outlinedInput
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.variant === "outlined" &&
-            ownerState.color === "primary" && {
-              border: "#303030 1px solid",
-            }),
-        }),
-      },
-    },
-    // inputLabel
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: 12,
-        },
-      },
-    },
     // menuItem
     MuiMenuItem: {
       styleOverrides: {
@@ -161,6 +91,16 @@ const themeDark = {
             borderRadius: "10px",
           },
         },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.variant === "outlined" &&
+            ownerState.color === "primary" && {
+              border: "#303030 1px solid",
+            }),
+        }),
       },
     },
   },

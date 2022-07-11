@@ -28,7 +28,7 @@ Object.keys(routes).forEach((route) => {
 });
 
 async function startServer() {
-  const port = process.env.APP_PORT || 5000;
+  const port = process.env.PORT || 5000;
   app.listen(port, () => {
     console.info(`Server started on port ${port}`);
   });

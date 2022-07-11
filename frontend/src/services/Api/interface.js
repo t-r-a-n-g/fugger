@@ -2,7 +2,8 @@ import axios from "axios";
 
 class ApiInterface {
   constructor(route) {
-    this.baseUrl = "http://localhost:5000/api";
+    // this.baseUrl = "http://localhost:5000/api";
+    this.baseUrl = "/api";
     this.route = route;
 
     this.headers = {};

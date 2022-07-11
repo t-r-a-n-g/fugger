@@ -21,6 +21,7 @@ router.post("/", verifyToken, (req, res) => {
   try {
     TransferController.createTransfers(req, res);
   } catch (err) {
+    console.error(err);
     res.status(500).send("500-error");
   }
 });

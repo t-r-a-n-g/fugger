@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 
 export default function ProfilePage() {
   return (
-    <Box>
+    <Box sx={{ px: 2 }}>
       <Grid
         container
         spacing={1}

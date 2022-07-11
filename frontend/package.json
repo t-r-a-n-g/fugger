@@ -5,7 +5,7 @@
   "author": "Max Dahl",
   "license": "MIT",
   "engines": {
-    "node": ">=18.5.0"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "vite",

@@ -21,5 +21,5 @@ const endpointsFiles = [];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
   // eslint-disable-next-line global-require
-  require("../index"); // Your project's root file
+  require("../../index"); // Your project's root file
 });

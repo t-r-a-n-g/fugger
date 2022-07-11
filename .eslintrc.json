@@ -8,6 +8,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": ["import"],
   "rules": {
     "no-console": "off",
     "no-restricted-syntax": [
@@ -17,8 +18,13 @@
         "message": "You can only call the error() and warn() functions from the console object"
       }
     ],
+
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+
     "linebreak-style": ["error", "unix"],
     "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "no-await-in-loop": "off"
   }
 }

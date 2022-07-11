@@ -59,10 +59,7 @@ class TransferService {
         }
       }
     }
-
-    return Transfer.bulkCreate(dbTransfers, {
-      updateOnDuplicate: ["amount", "type"],
-    });
+    return Transfer.bulkCreate(dbTransfers, { updateOnDuplicate: ["amount"] });
   }
 
   static async updateTransfer(transferId, userId, amount) {

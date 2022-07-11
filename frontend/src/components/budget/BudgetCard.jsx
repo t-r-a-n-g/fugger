@@ -47,8 +47,8 @@ function ConfirmationDialogRaw(props) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await API.getDatevAccounts();
-        const accounts = await rename(res);
+        const res = await API.datevAccounts.get();
+        const accounts = await rename(res.data);
         setAccountData(accounts);
       } catch (err) {
         console.error(err);
@@ -127,8 +127,7 @@ function ConfirmationDialogRaw(props) {
       const finalValuesArray = await formatValues();
 
       try {
-        const budgetRoute = API.routes.budget;
-        await API.post(budgetRoute, finalValuesArray);
+        await API.budgets.post(finalValuesArray);
         setSavedSuccessfully(true);
 
         // resetting values to show only one empty row when reopen Budgetbox

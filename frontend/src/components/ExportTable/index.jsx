@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
-import API from "@services/Api";
+import { useRecoilValue } from "recoil";
+import { categoriesWithSubcategories } from "@recoil/categories";
+import analysisTableDataAtom from "@recoil/analysisTableData";
 
 import * as XLSX from "xlsx/xlsx.mjs";
 
@@ -22,72 +24,34 @@ XLSX.set_fs(fs);
 
 function ExportTable() {
   /*  functions for calculating abs and pct */
-  function round(num) {
-    const m = Number((Math.abs(num) * 100).toPrecision(15));
-    const rounded = (Math.round(m) / 100) * Math.sign(num);
 
-    return Number.isNaN(rounded) ? 0 : rounded;
-  }
+  const categories = useRecoilValue(categoriesWithSubcategories).data;
+  /* console.log("Categories: ", categories); */
 
-  function selectTransferData(transfer) {
-    let transferAbs = null;
-
-    if (transfer.type === "S") {
-      transferAbs = transfer.budget - transfer.actual;
-    } else {
-      transferAbs = transfer.actual - transfer.budget;
-    }
-
-    let transferPerct = null;
-    if (transfer.budget > 0)
-      transferPerct = (transferAbs / transfer.budget) * 100;
-    else transferPerct = transfer.type === "H" ? 100 : -100;
-
-    return {
-      abs: round(transferAbs),
-      perct: round(transferPerct),
-      actual: round(transfer.actual),
-      budget: round(transfer.budget),
-    };
-  }
+  const { headers } = useRecoilValue(analysisTableDataAtom).data;
+  /* console.log("Headers: ", headers); */
 
   /*  onClick for export */
-  const [data, setData] = useState();
-
   const handleExport = () => {
-    API.get("analysis", { from: "Jan2019", to: "Mar2019" }).then((resp) => {
-      /* console.log(resp.data); */
-      setData(resp.data);
-    });
-
-    if (data) {
-      for (const transfer of data.transfers) {
-        if (transfer.budget) {
-          transfer.abs = selectTransferData(transfer).abs;
-          transfer.perct = selectTransferData(transfer).perct;
-        } else {
-          transfer.abs = undefined;
-          transfer.perct = undefined;
-        }
-      }
-    }
-
     // reshape fetched data for excel sheet
     const rows = [];
-    if (data) {
-      rows.push(
-        // headers
-        {
-          "": "Account",
-          Jan2019Actual: "Actual",
-          Jan2019Budget: "Budget",
-          Jan2019Abs: "Absolute",
-          Jan2019Perct: "Percentage",
-        }
-      );
+    const headersObject = {};
+    headers[1].slice(2).map((heading, index) => {
+      if (typeof heading !== "object") {
+        headersObject[`${index}`] = heading;
+      } else headersObject[`${index}`] = heading.value;
+    });
 
-      // categories rows
-      Object.values(data.categories).map((cat) => {
+    /*  console.log(headersObject); */
+
+    if (headers && categories) {
+      // headers
+      rows.push({
+        "": "Account",
+      });
+    }
+    // categories rows
+    /* Object.values(data.categories).map((cat) => {
         rows.push({
           "": cat.name,
         });
@@ -139,24 +103,22 @@ function ExportTable() {
           }
         });
       });
-    }
+    } */
     /* console.log(rows); */
-
     // download the excel file
-    if (rows.length > 0) {
-      /* generate worksheet and workbook */
-      const worksheet = XLSX.utils.json_to_sheet(rows);
+    /*  if (rows.length > 0) { */
+    /* generate worksheet and workbook */
+    /* const worksheet = XLSX.utils.json_to_sheet(rows);
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "TestTable");
-
-      /* fix headers of table, this needs to be generated dynamically */
-      XLSX.utils.sheet_add_aoa(worksheet, [["Jan 2019", "", "", ""]], {
+      XLSX.utils.book_append_sheet(workbook, worksheet, "TestTable"); */
+    /* fix headers of table, this needs to be generated dynamically */
+    /* XLSX.utils.sheet_add_aoa(worksheet, [["Jan 2019", "", "", ""]], {
         origin: "B1",
       });
-
-      /* create an XLSX file and save as "anyfilename".xlsx */
-      XLSX.writeFile(workbook, "TestExport.xlsx");
-    }
+ */
+    /* create an XLSX file and save as "anyfilename".xlsx */
+    /* XLSX.writeFile(workbook, "TestExport.xlsx");
+    } */
   };
 
   return (

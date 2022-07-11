@@ -10,8 +10,8 @@ main {
   padding: 0;
 }
 
-#table-container {
-}
+/* #table-container {
+} */
 
 table {
   display: table;
@@ -26,8 +26,6 @@ table {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
-
-  background: #ececec;
 }
 
 .an-col {
@@ -48,7 +46,6 @@ table {
   min-width: 30vw;
   max-width: 30vw;
   text-align: left !important;
-  background: #ececec;
 }
 
 .an-header-col-1,
@@ -56,17 +53,14 @@ table {
   position: -webkit-sticky;
   position: sticky;
   left: 60px;
-  background: #ececec;
 }
 
 .an-header-col-1 {
   left: 0;
-  /* background: #fff; */
 }
 
 .empty-header {
   left: 0;
-  background: #ececec;
 }
 
 .budget-col {

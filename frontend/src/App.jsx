@@ -58,7 +58,6 @@ function App() {
     );
   }
   i18n.changeLanguage(user.language);
-
   return (
     <RecoilRoot>
       <Suspense>

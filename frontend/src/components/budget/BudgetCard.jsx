@@ -206,8 +206,12 @@ function ConfirmationDialogRaw(props) {
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCancel}>{t("cancel")}</Button>
-        <Button onClick={handleSave}>{t("save")}</Button>
+        <Button sx={{ color: "text.primary" }} onClick={handleCancel}>
+          {t("cancel")}
+        </Button>
+        <Button sx={{ color: "text.primary" }} onClick={handleSave}>
+          {t("save")}
+        </Button>
       </DialogActions>
     </Dialog>
   );

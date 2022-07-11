@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 
 import BudgetEditing from "@components/budget/BudgetCard";
 import SuccessModal from "@components/budget/SuccessModel";
@@ -17,7 +17,7 @@ export default function BudgetPage() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <Box sx={{px:2}}>
       <h1>Budgets</h1>
       <Button
         sx={{ borderRadius: "10px", marginBottom: 4 }}
@@ -41,6 +41,6 @@ export default function BudgetPage() {
       <ExportTable />
 
       <BudgetTable />
-    </>
+    </Box>
   );
 }

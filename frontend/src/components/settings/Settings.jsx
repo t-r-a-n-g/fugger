@@ -9,7 +9,7 @@ export default function Settings({ setUser }) {
   const { t } = useTranslation(); // i18next
 
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} sx={{px:2}}>
       <h1>{t("menu-item-settings")}</h1>
       <ThemeToggle setUser={setUser} />
       <LanguageToggle setUser={setUser} />

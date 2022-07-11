@@ -122,42 +122,50 @@ export default function DrawerLayout({ children, currentTheme }) {
       title: t("menu-item-dashboard"),
       icon: <DashboardCustomizeOutlinedIcon />,
       path: "/analysis",
+      disabled: false,
     },
     {
       title: t("menu-item-analysis"),
       icon: <AnalyticsOutlinedIcon />,
       path: "/analysis",
+      disabled: false,
     },
     {
       title: t("menu-item-budgets"),
       icon: <PaidIcon />,
       path: "/budgets",
+      disabled: false,
     },
     {
       title: t("menu-item-files"),
       icon: <UploadFileIcon />,
       path: "/files",
+      disabled: false,
     },
 
     {
       title: t("menu-item-customers"),
       icon: <PeopleAltIcon />,
       path: "/analysis",
+      disabled: true,
     },
     {
       title: t("menu-item-orders"),
       icon: <BorderColorOutlinedIcon />,
       path: "/analysis",
+      disabled: true,
     },
     {
       title: t("menu-item-products"),
       icon: <Inventory2OutlinedIcon />,
       path: "/analysis",
+      disabled: true,
     },
     {
       title: t("menu-item-invoices"),
       icon: <DescriptionOutlinedIcon />,
       path: "/analysis",
+      disabled: true,
     },
   ];
   const menuItems2 = [
@@ -283,21 +291,31 @@ export default function DrawerLayout({ children, currentTheme }) {
         </DrawerHeader>
 
         {/* ================================================== DRAWER FIRST SECTION ================================================== */}
-        <List sx={{ backgroundColor: "primary.main" }}>
+        <List sx={{ backgroundColor: "primary.main", py:0 }}>
           {menuItems.map((element) => (
             <ListItem
               key={element.title}
               disablePadding
               sx={{ display: "block" }}
             >
-              <Link style={linkStyle} to={element.path}>
+              <Link
+                style={linkStyle}
+                to={element.path}
+                onClick={
+                  element.disabled ? (event) => event.preventDefault() : null
+                }
+              >
                 <ListItemButton
                   sx={{
                     color: "primary.contrastText",
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
+                    "&:hover": {
+                      backgroundColor: "primary.contrast",
+                    },
                   }}
+                  disabled={element.disabled}
                 >
                   <ListItemIcon
                     sx={{
@@ -334,6 +352,9 @@ export default function DrawerLayout({ children, currentTheme }) {
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
+                    "&:hover": {
+                      backgroundColor: "primary.contrast",
+                    },
                   }}
                 >
                   <ListItemIcon

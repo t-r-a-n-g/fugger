@@ -113,7 +113,7 @@ function SignUpPage({ setUser }) {
     e.preventDefault();
     if (validEmail && strongPassword && passwordCheck && emailCheck) {
       try {
-        const user = await Api.signup(userData);
+        const user = await Api.auth.register(userData);
         setUser(user);
         navigate("/");
       } catch (err) {
@@ -179,6 +179,9 @@ function SignUpPage({ setUser }) {
                   variant="outlined"
                   size="small"
                   onChange={(e) => setFirstname(e.target.value)}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -188,6 +191,9 @@ function SignUpPage({ setUser }) {
                   variant="outlined"
                   size="small"
                   onChange={(e) => setLastname(e.target.value)}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -203,6 +209,9 @@ function SignUpPage({ setUser }) {
                   onBlur={handleValidEmail}
                   error={!(validEmail === true || validEmail === "")}
                   helperText={!validEmail ? t("error-valid-email") : null}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -215,6 +224,9 @@ function SignUpPage({ setUser }) {
                   onChange={handleEmailCheck}
                   error={!(emailCheck || emailCheck === "")}
                   helperText={!emailCheck ? t("error-matching-emails") : null}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -227,6 +239,8 @@ function SignUpPage({ setUser }) {
                   autoComplete="new-password"
                   size="small"
                   InputProps={{
+                    style: { fontSize: 13 },
+
                     endAdornment: (
                       <InputAdornment position="end">
                         {strongPassword === true ? null : (
@@ -334,6 +348,8 @@ function SignUpPage({ setUser }) {
                   autoComplete="new-password"
                   size="small"
                   InputProps={{
+                    style: { fontSize: 13 },
+
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
@@ -443,4 +459,7 @@ function SignUpPage({ setUser }) {
   );
 }
 
+SignUpPage.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
 export default SignUpPage;

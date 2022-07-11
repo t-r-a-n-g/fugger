@@ -1,20 +1,28 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 
 import React from "react";
+
 import TableCell from "@mui/material/TableCell";
+import { AnTableCellProps, AnTableCellDefaultProps } from "./propTypes";
 
-import "./style.css";
-
-export default class AnTableCell extends React.Component {
+class AnTableCell extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEditing: false,
+      label: props.label || props.children,
       value: props.children,
       prevValue: null,
     };
 
     this.onKeyPressOnInput = this.onKeyPressOnInput.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    // reset state on rerender because the constructor is not called again
+    const { children, label } = this.props;
+    if (prevProps.children !== children)
+      this.setState({ value: children, label: label || children });
   }
 
   onCellClick() {
@@ -52,15 +60,27 @@ export default class AnTableCell extends React.Component {
     const { prevValue } = this.state;
 
     this.setState({ isEditing: false });
-    onValueChange(value, prevValue);
+
+    const res = onValueChange(value, prevValue);
+    const isPromise = typeof res === "object" && typeof res.then === "function";
+
+    if (isPromise) {
+      res.then((success) => {
+        if (success === false) {
+          this.setState({ value: prevValue });
+        }
+      });
+    } else if (res === false) {
+      this.setState({ value: prevValue });
+    }
   }
 
   render() {
-    const { value, isEditing } = this.state;
+    const { value, isEditing, label } = this.state;
     const { className, sx } = this.props;
     if (isEditing) {
       return (
-        <TableCell className={className}>
+        <TableCell className={`an-col ${className}`}>
           <input
             type="text"
             value={value}
@@ -79,11 +99,16 @@ export default class AnTableCell extends React.Component {
     return (
       <TableCell
         onClick={(e) => this.onCellClick(e)}
-        className={className}
+        className={`an-col ${className}`}
         sx={sx}
       >
-        <span>{value}</span>
+        <span>{`${label}`}</span>
       </TableCell>
     );
   }
 }
+
+AnTableCell.propTypes = AnTableCellProps;
+AnTableCell.defaultProps = AnTableCellDefaultProps;
+
+export default AnTableCell;

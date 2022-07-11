@@ -1,6 +1,29 @@
 const { CategoryService } = require("../services");
 
 class CategoryController {
+  static async getAllTotalSums(req, res) {
+    const totalSums = await CategoryService.getAllTotalSums(req.user.id);
+
+    return res.json(totalSums);
+  }
+
+  static async getTotalSums(req, res) {
+    const { categoryId } = req.params;
+    const totalSums = await CategoryService.getTotalSums(categoryId);
+
+    return res.json(totalSums);
+  }
+
+  static async getCategories(req, res) {
+    const { from, to } = req.query;
+    const categories = await CategoryService.getCategories(
+      req.user.id,
+      new Date(from),
+      new Date(to)
+    );
+    return res.json(categories);
+  }
+
   static async updateCategory(req, res) {
     const data = { ...req.body };
     const { categoryId } = req.params;

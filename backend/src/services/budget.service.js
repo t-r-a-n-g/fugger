@@ -1,8 +1,12 @@
 const { Op } = require("sequelize");
-const { Budget } = require("../models");
-const parseDate = require("../utils/dateParser");
+
+const { Budget, Category, Subcategory, DatevAccount } = require("../models");
+
 const DatevService = require("./datev.service");
+
 const { ValueError, NotFoundError } = require("../exceptions");
+
+const parseDate = require("../utils/dateParser");
 
 class BudgetService {
   static async getBudgets(from, to, userId) {
@@ -13,33 +17,70 @@ class BudgetService {
         },
         userId,
       },
+      include: [
+        { model: DatevAccount, as: "datevAccount" },
+        { model: Category },
+        { model: Subcategory },
+      ],
+
+      order: [["date", "ASC"]],
+      raw: true,
+      nest: true,
     });
     return budgets;
   }
 
   static async createBudgets(budgets, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
-    const dbTransfers = [];
-
-    for (const datevTransfer of budgets) {
-      const userDatevAccount = datevAccounts.find((el) => {
-        return el.number === datevTransfer.accountNumber;
+    const dbBudgets = [];
+    const updatedOrCreatedBudgets = [];
+    for (const budgetInput of budgets) {
+      // looking for the respective datev account which user defined budget for
+      const budgetDatevAccount = datevAccounts.find((el) => {
+        return el.id === budgetInput.account.id;
       });
 
-      if (userDatevAccount) {
-        for (const transfer of datevTransfer.transfers) {
-          const tDate = parseDate(transfer.date);
-          dbTransfers.push({
-            datevAccountId: userDatevAccount.id,
-            amount: transfer.amount,
-            date: tDate.date,
-            userId,
-          });
-        }
+      // parse amount and date for correct format
+      const parsedAmount = Number.parseFloat(budgetInput.amount);
+      if (Number.isNaN(parsedAmount) || parsedAmount < 0)
+        throw new ValueError();
+
+      const parsedDate = parseDate(budgetInput.date);
+
+      // check if budget entry already exists in db
+      const budgetEntry = await Budget.findOne({
+        where: {
+          datevAccountId: budgetInput.account.id,
+          date: parsedDate.date,
+          userId,
+        },
+      });
+
+      // update already existing budgets
+      if (budgetEntry) {
+        updatedOrCreatedBudgets.push(
+          await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount)
+        );
+      }
+
+      // create new budgets
+      if (budgetDatevAccount && !budgetEntry) {
+        dbBudgets.push({
+          categoryId: budgetDatevAccount.subcategory.category.id,
+          subcategoryId: budgetDatevAccount.subcategory.id,
+          datevAccountId: budgetDatevAccount.id,
+          amount: parsedAmount,
+          date: parsedDate.date,
+          userId,
+        });
       }
     }
 
-    return Budget.bulkCreate(dbTransfers);
+    updatedOrCreatedBudgets.push(
+      Budget.bulkCreate(dbBudgets, { updateOnDuplicate: ["amount"] })
+    );
+
+    return updatedOrCreatedBudgets;
   }
 
   static async updateBudget(budgetId, userId, amount) {

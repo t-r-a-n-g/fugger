@@ -1,0 +1,85 @@
+main {
+  /* width: 100%; */
+  /* overflow: hidden; */
+  padding: 0 !important;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  text-align: center;
+  padding: 0;
+}
+
+/* #table-container {
+} */
+
+table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.firstColumn {
+  min-width: 60px;
+  text-align: left !important;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+}
+
+.an-col {
+  min-width: 6vw;
+  max-width: 10vw;
+  padding: 0;
+  text-align: center !important;
+}
+
+.an-col input {
+  width: 100%;
+}
+
+.an-col-1 {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 60px;
+  min-width: 30vw;
+  max-width: 30vw;
+  text-align: left !important;
+}
+
+.an-header-col-1,
+.accounts-header-col {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 60px;
+}
+
+.an-header-col-1 {
+  left: 0;
+}
+
+.empty-header {
+  left: 0;
+}
+
+.budget-col {
+  border-right: 1px solid lightgray;
+}
+
+.pct-col {
+  border-right: 1px solid black;
+}
+
+.pct-col span::after {
+  content: "%";
+}
+
+.row-depth-1 .an-col-1,
+.row-depth-1 .firstColumn {
+  padding-left: 30px;
+}
+
+.row-depth-2 .an-col-1 {
+  padding-left: 60px;
+}

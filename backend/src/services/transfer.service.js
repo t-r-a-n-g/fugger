@@ -1,9 +1,12 @@
 const { Op } = require("sequelize");
 const { Transfer } = require("../models");
-const DatevService = require("./datev.service");
 const { Category, Subcategory, DatevAccount } = require("../models");
+
+const DatevService = require("./datev.service");
+
+// const BudgetService = require("./budget.service");
+
 const parseDate = require("../utils/dateParser");
-const BudgetService = require("./budget.service");
 const { ValueError, NotFoundError } = require("../exceptions");
 
 class TransferService {
@@ -15,22 +18,14 @@ class TransferService {
         },
         userId,
       },
+
       include: [
-        {
-          model: DatevAccount,
-          as: "datevAccount",
-          include: [
-            {
-              model: Subcategory,
-              include: [
-                {
-                  model: Category,
-                },
-              ],
-            },
-          ],
-        },
+        { model: DatevAccount, as: "datevAccount" },
+        { model: Category },
+        { model: Subcategory },
       ],
+
+      order: [["date", "ASC"]],
       raw: true,
       nest: true,
     });
@@ -38,29 +33,36 @@ class TransferService {
     return transfers;
   }
 
-  static async createTransfers(transfers, userId) {
+  static async createTransfers(accountTransfers, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbTransfers = [];
-
-    for (const datevTransfer of transfers) {
-      const userDatevAccount = datevAccounts.find((el) => {
-        return el.number === datevTransfer.accountNumber;
+    // accountTransfers contains an account number and an array (transfers) with transfers for this account
+    for (const accountTransfer of accountTransfers) {
+      const transferDatevAccount = datevAccounts.find((el) => {
+        return el.number === accountTransfer.accountNumber;
       });
 
-      if (userDatevAccount) {
-        for (const transfer of datevTransfer.transfers) {
+      if (transferDatevAccount) {
+        for (const transfer of accountTransfer.transfers) {
           const tDate = parseDate(transfer.date);
+          const subcategoryId = transferDatevAccount.subcategory.id;
+          const categoryId = transferDatevAccount.subcategory.category.id;
           dbTransfers.push({
-            datevAccountId: userDatevAccount.id,
+            datevAccountId: transferDatevAccount.id,
+            subcategoryId,
+            categoryId,
             amount: transfer.amount,
+            type: transfer.type,
             date: tDate.date,
             userId,
           });
         }
       }
     }
-    await BudgetService.createBudgets(transfers, userId);
-    return Transfer.bulkCreate(dbTransfers);
+
+    return Transfer.bulkCreate(dbTransfers, {
+      updateOnDuplicate: ["amount", "type"],
+    });
   }
 
   static async updateTransfer(transferId, userId, amount) {

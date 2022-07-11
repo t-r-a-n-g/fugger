@@ -6,7 +6,11 @@ const { CategoryController } = require("../controllers");
 const { verifyToken } = require("../middleware/auth.middleware");
 
 router.put("/:categoryId", verifyToken, (req, res) => {
-  CategoryController.updateSubcategory(req, res);
+  try {
+    CategoryController.updateSubcategory(req, res);
+  } catch (err) {
+    res.status(500).send("500-error");
+  }
 });
 
 module.exports = router;

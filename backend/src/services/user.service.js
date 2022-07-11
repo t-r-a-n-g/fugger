@@ -13,6 +13,10 @@ class UserService {
       user,
     };
   }
+
+  static async changeUser(user, data) {
+    return user.update(data);
+  }
 }
 
 module.exports = UserService;

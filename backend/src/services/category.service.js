@@ -1,7 +1,39 @@
+const MonthlyTotalService = require("./monthlyTotal.service");
+
 const { Category, Subcategory, DatevAccount } = require("../models");
+
 const { NotFoundError, AuthorizationError } = require("../exceptions");
 
 class CategoryService {
+  static async findCategories(where, options = {}) {
+    const categories = await Category.findAll({ where, ...options });
+    return categories;
+  }
+
+  static async getCategories(userId, from, to) {
+    const fetchedCategories = await CategoryService.findCategories(
+      { userId },
+      { raw: true }
+    );
+
+    const categories = [];
+    const totalSums = await MonthlyTotalService.getAllCategoryTotalSums(
+      userId,
+      from,
+      to
+    );
+
+    for (const category of fetchedCategories) {
+      const sumsObject = totalSums[`category-${category.id}`];
+      if (sumsObject) {
+        const sums = Object.values(sumsObject);
+        categories.push({ ...category, totalSums: sums });
+      }
+    }
+
+    return categories;
+  }
+
   static async getCategory(id, userId) {
     const category = await Category.findOne({ where: { id, userId } });
     return category;

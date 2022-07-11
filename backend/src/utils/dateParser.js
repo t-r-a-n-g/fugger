@@ -13,7 +13,17 @@ const monthIndex = [
   "dec dez december dezember",
 ];
 
+const isValidDate = (d) => d instanceof Date && !Number.isNaN(d.getTime());
+
 function parseDate(date, delimiter = "/") {
+  if (isValidDate(date)) return { date };
+
+  const newDate = new Date(date);
+  if (isValidDate(newDate))
+    return {
+      date: new Date(Date.UTC(newDate.getFullYear(), newDate.getMonth())),
+    };
+
   const dateParts = date.split(delimiter);
   let month = null;
   let year = null;

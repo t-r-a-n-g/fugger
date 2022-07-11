@@ -6,45 +6,147 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
-import { Alert, Stack /* , Fab  */ } from "@mui/material";
-/* import AddIcon from "@mui/icons-material/Add"; */
-import Accounts from "./AccountsDropDown";
-import AmountInput from "./AmountInput";
-import Dates from "./Date";
+import { Alert, Stack, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import API from "@services/Api";
+import { useTranslation } from "react-i18next";
+import Account from "./Account";
+import Amount from "./Amount";
+import Date from "./Date";
+
+/* -------------------------------------------------------------------------
+---------------------------- BUDGET DIALOG COMPONENT ----------------------- 
+-------------------------------------------------------------------------- */
 
 function ConfirmationDialogRaw(props) {
-  const { onClose, open, ...other } = props;
+  const { onClose, open, savedSuccessfully, setSavedSuccessfully, ...other } =
+    props;
 
-  // check if all fields are filled out before save
-  const [inputComplete, setInputComplete] = useState(true);
-  const [accountSelected, setAccountSelected] = useState(false);
-  const [amountSelected, setAmountSelected] = useState(false);
-  const [dateSelected, setDateSelected] = useState(false);
+  // translation i18 next
+  const { t } = useTranslation();
 
-  /* -------------------------------------------------------------------- */
-  const [readyForNextRow, setReadyForNextRow] = useState(false);
-  const budgetRows = [];
+  // creating values state that contains an object for all the user input
+  const [values, setValues] = useState({
+    val: [{ account: "", amount: "", date: [] }],
+  });
 
+  /* -------------- FETCHING DATEV ACCOUNTS FROM DB TO PASS TO ACCOUNT COMPONENT -------------- */
+  const [accountData, setAccountData] = useState(null);
+
+  // renaming the label to have account number and account name
+  /* eslint array-callback-return: 0 */
+  function rename(data) {
+    data.map((obj) => {
+      obj.label = `${obj.number} ${obj.name}`;
+    });
+    return data;
+  }
+
+  // TO DO: specify error handling
   useEffect(() => {
-    if (accountSelected && amountSelected && dateSelected) {
-      setReadyForNextRow(true);
+    async function fetchData() {
+      try {
+        const res = await API.datevAccounts.get();
+        const accounts = await rename(res.data);
+        setAccountData(accounts);
+      } catch (err) {
+        console.error(err);
+      }
     }
-  }, [accountSelected, amountSelected, dateSelected]);
 
-  if (readyForNextRow) budgetRows.push(1);
-  /* ---------------------------------------------------------------- */
+    fetchData();
+  }, [open]);
 
+  /* ---------------------- ADDING AND REMOVING ROWS -------------------------*/
+
+  const addClick = () => {
+    setValues({
+      val: [...values.val, { account: "", amount: "", date: [] }],
+    });
+  };
+
+  // by removing a row, also add the chosen datevacc of this row back to available accountData options
+  const removeClick = (i) => {
+    const vals = [...values.val];
+
+    if (vals[i].account) {
+      const readdAccount = vals[i].account;
+      const updatedAccountData = accountData;
+      updatedAccountData.push(readdAccount);
+      updatedAccountData.sort((a, b) => {
+        const keyA = a.id;
+        const keyB = b.id;
+        return keyA - keyB;
+      });
+      setAccountData(updatedAccountData);
+    }
+
+    vals.splice(i, 1);
+    setValues({ val: vals });
+  };
+
+  /* ---------------------- CANCEL BUDGET EDITING -------------------------*/
+  // resetting values to show only one empty row when reopen Budgetbox
   const handleCancel = () => {
+    setValues({
+      val: [{ account: "", amount: "", date: [] }],
+    });
     onClose();
   };
 
-  // check if everything is filled out before saving
-  const handleSave = () => {
-    if (accountSelected && amountSelected && dateSelected) {
-      setInputComplete(true);
-      onClose();
+  /* ---------------------- SAVE BUDGET EDITING -------------------------*/
+
+  // reformat values because dates is an array
+  const formatValues = () => {
+    const finalValues = [];
+    values.val.map((budgetObj) =>
+      budgetObj.date.map((date) =>
+        finalValues.push({
+          account: budgetObj.account,
+          amount: budgetObj.amount,
+          date: date.dateToParse,
+        })
+      )
+    );
+    return finalValues;
+  };
+
+  // check if input is complete before saving
+  const [inputComplete, setInputComplete] = useState(true);
+
+  const valueArrayNested = values.val.map((row) => Object.values(row));
+  const valueArray = [];
+  valueArrayNested.map((array) => array.map((el) => valueArray.push(el)));
+
+  // save function
+  const [errorStatus, setErrorStatus] = useState();
+
+  const handleSave = async () => {
+    if (!valueArray.some((el) => el.length === 0)) {
+      const finalValuesArray = await formatValues();
+
+      try {
+        await API.budgets.post(finalValuesArray);
+        setSavedSuccessfully(true);
+
+        // resetting values to show only one empty row when reopen Budgetbox
+        setValues({
+          val: [{ account: "", amount: "", date: [] }],
+        });
+        onClose();
+      } catch (err) {
+        setErrorStatus(err.response.status);
+      }
     } else setInputComplete(false);
   };
+
+  // reset inputComplete state when closing box (otherwise error message would stay forever)
+  useEffect(() => {
+    if (!open) setInputComplete(true);
+  }, [open]);
+
+  /* --------------------------------------------------------------------------- */
 
   return (
     <Dialog
@@ -54,66 +156,62 @@ function ConfirmationDialogRaw(props) {
       {...other}
     >
       <DialogTitle sx={{ fontWeight: "bold", textAlign: "center" }}>
-        EDIT YOUR BUDGETS
+        {t("plan-budgets")}
       </DialogTitle>
       <DialogContent dividers sx={{ alignContent: "center" }}>
-        <Stack sx={{ marginBottom: 2 }} direction="row" spacing={2}>
-          {/* Accounts Dropdown */}
-          <Accounts
-            accountSelected={accountSelected}
-            setAccountSelected={setAccountSelected}
-          />
-          {/* Amount Input Field */}
-          <AmountInput
-            amountSelected={amountSelected}
-            setAmountSelected={setAmountSelected}
-          />
-          {/* Dates Checkbox Multiselect */}
-          <Dates
-            dateSelected={dateSelected}
-            setDateSelected={setDateSelected}
-          />
-          {/*  <Box>
-            <Fab size="small" color="secondary" aria-label="add">
-              <AddIcon />
-            </Fab>
-          </Box> */}
-        </Stack>
-        {/* maybe this needs to be mapped */}
-        {budgetRows.map(() => (
-          <Stack sx={{ marginBottom: 2 }} direction="row" spacing={2}>
-            {/* Accounts Dropdown */}
-            <Accounts
-              accountSelected={accountSelected}
-              setAccountSelected={setAccountSelected}
-            />
-            {/* Amount Input Field */}
-            <AmountInput
-              amountSelected={amountSelected}
-              setAmountSelected={setAmountSelected}
-            />
-            {/* Dates Checkbox Multiselect */}
-            <Dates
-              dateSelected={dateSelected}
-              setDateSelected={setDateSelected}
-            />
-            {/* <Box>
-              <Fab size="small" color="secondary" aria-label="add">
-                <AddIcon />
+        {values.val.map((el, index) => (
+          <Stack
+            sx={{ marginBottom: 2 }}
+            direction="row"
+            spacing={2}
+            key={index}
+          >
+            <Account
+              accountData={accountData}
+              setAccountData={setAccountData}
+              values={values}
+              setValues={setValues}
+              index={index}
+            />{" "}
+            <Amount values={values} setValues={setValues} index={index} />
+            <Date values={values} setValues={setValues} index={index} />
+            <Box>
+              <Fab
+                size="small"
+                color="primary"
+                aria-label="add"
+                onClick={() => removeClick(index)}
+              >
+                <RemoveIcon />
               </Fab>
-            </Box> */}
+            </Box>
           </Stack>
         ))}
 
+        <Box>
+          <Fab size="small" color="primary" aria-label="add" onClick={addClick}>
+            <AddIcon />
+          </Fab>
+        </Box>
+
         {!inputComplete ? (
           <Alert severity="error" sx={{ marginTop: 2 }}>
-            Fill out every field before saving.
+            {t("error-msg-not-filled-out-fields")}
+          </Alert>
+        ) : null}
+        {errorStatus ? (
+          <Alert severity="error" sx={{ marginTop: 2 }}>
+            {t("500-error-message")}
           </Alert>
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCancel}>Cancel</Button>
-        <Button onClick={handleSave}>Save</Button>
+        <Button sx={{ color: "text.primary" }} onClick={handleCancel}>
+          {t("cancel")}
+        </Button>
+        <Button sx={{ color: "text.primary" }} onClick={handleSave}>
+          {t("save")}
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -122,17 +220,19 @@ function ConfirmationDialogRaw(props) {
 ConfirmationDialogRaw.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  savedSuccessfully: PropTypes.bool.isRequired,
+  setSavedSuccessfully: PropTypes.func.isRequired,
 };
 
+/* ------------------------------------------------------------------------ */
+/* ---------------------- COMPLETE BUDGET COMPONENT ----------------------- */
+
 export default function BudgetEditing(props) {
-  const { open, setOpen } = props;
+  const { open, setOpen, savedSuccessfully, setSavedSuccessfully } = props;
 
-  const handleClose = (/* newValue */) => {
+  // function that only closes the box (saving is handled above)
+  const handleClose = () => {
     setOpen(false);
-
-    /* if (newValue) {
-      setValue(newValue);
-    } */
   };
 
   return (
@@ -142,6 +242,8 @@ export default function BudgetEditing(props) {
         keepMounted
         open={open}
         onClose={handleClose}
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
       />
     </Box>
   );
@@ -150,4 +252,6 @@ export default function BudgetEditing(props) {
 BudgetEditing.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  savedSuccessfully: PropTypes.bool.isRequired,
+  setSavedSuccessfully: PropTypes.func.isRequired,
 };

@@ -4,34 +4,63 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 
-function AnTableHead(props) {
-  const { months, monthHeaders } = props;
+import { AnTableHeadProps } from "./propTypes";
 
-  return (
-    <TableHead>
-      <TableRow key="header-row-1">
-        <TableCell colSpan={2} align="center" key="header-row-1-cell-1" />
-        {months.map((m) => (
-          <TableCell key={m.key} colSpan={4} align="center">
-            {new Date(m.date).toLocaleDateString("en-US", {
-              month: "long",
-              year: "numeric",
-            })}
-          </TableCell>
-        ))}
-      </TableRow>
-      <TableRow key="header-row-2">
-        <TableCell key="header-row-2-cell-1" />
-        <TableCell key="header-row-2-cell-2">Account</TableCell>
+function getHeaderRowCells(rowCells) {
+  const cells = [];
+  for (const [index, cell] of rowCells.entries()) {
+    let className = `an-header-col-${index + 1}`;
 
-        {months.map((m) =>
-          monthHeaders.map((h) => (
-            <TableCell key={`${m.key}-${h}`}>{h}</TableCell>
-          ))
-        )}
-      </TableRow>
-    </TableHead>
-  );
+    if (typeof cell === "string") {
+      cells.push(
+        <TableCell className={className} key={`${cell}-${index}`}>
+          {cell}
+        </TableCell>
+      );
+    } else {
+      const value = cell.value ?? "";
+      className = `${className} ${cell.className}`;
+
+      let key = cell.key ?? `${cell.value}-${index}`;
+      if (!key) key = `nk-${index}-${Math.random()}`;
+
+      let colSpan = 1;
+      if (cell.colSpan) colSpan = cell.colSpan;
+
+      let align = "left";
+      if (cell.align) align = cell.align;
+
+      const sx = cell.sx ?? {};
+
+      cells.push(
+        <TableCell
+          className={`${className}`}
+          key={key}
+          colSpan={colSpan}
+          align={align}
+          sx={sx}
+        >
+          {value}
+        </TableCell>
+      );
+    }
+  }
+
+  return cells;
 }
+
+function AnTableHead(props) {
+  const { headers } = props;
+  const rows = [];
+  for (const [index, row] of headers.entries()) {
+    rows.push(
+      <TableRow key={`row-${index}`}>{getHeaderRowCells(row)}</TableRow>
+    );
+  }
+
+  return <TableHead key="table-head">{rows}</TableHead>;
+}
+
+AnTableHead.propTypes = AnTableHeadProps;
 
 export default AnTableHead;

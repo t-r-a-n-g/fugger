@@ -29,7 +29,6 @@ import { StaticRouter } from "react-router-dom/server";
 import validator from "validator";
 import { useTranslation } from "react-i18next";
 import Api from "@services/Api";
-
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
   const { children } = props;
@@ -71,7 +70,7 @@ function LoginPage({ setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await Api.login(email, password);
+      const user = await Api.auth.login(email, password);
       setUser(user);
       navigate("/");
     } catch (err) {
@@ -142,6 +141,9 @@ function LoginPage({ setUser }) {
                   }}
                   onBlur={handleValidEmail}
                   error={!validEmail}
+                  InputProps={{
+                    style: { fontSize: 13 },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -153,6 +155,7 @@ function LoginPage({ setUser }) {
                   type={hidden === false ? "password" : "text"}
                   onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
+                    style: { fontSize: 13 },
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton tabIndex={-1} onClick={handleHidden}>
@@ -263,5 +266,9 @@ function LoginPage({ setUser }) {
     </Box>
   );
 }
+
+LoginPage.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};
 
 export default LoginPage;

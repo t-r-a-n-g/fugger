@@ -1,8 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { useRecoilValue } from "recoil";
-import { categoriesWithSubcategories } from "@recoil/categories";
-import analysisTableDataAtom from "@recoil/analysisTableData";
+/* import useTableData from "@hooks/useTableData"; */
 
 import * as XLSX from "xlsx/xlsx.mjs";
 
@@ -23,33 +21,30 @@ XLSX.set_fs(fs);
 /*  eslint array-callback-return: 0 */
 
 function ExportTable() {
-  /*  functions for calculating abs and pct */
-
-  const categories = useRecoilValue(categoriesWithSubcategories).data;
-  /* console.log("Categories: ", categories); */
-
-  const { headers } = useRecoilValue(analysisTableDataAtom).data;
-  /* console.log("Headers: ", headers); */
+  /*  hook useTableData */
+  /* const { categoryRows, subcategoryRows, datevRows, headers } = useTableData({
+    table: "analysis",
+  }); */
 
   /*  onClick for export */
   const handleExport = () => {
     // reshape fetched data for excel sheet
-    const rows = [];
-    const headersObject = {};
+    /* const rows = []; */
+    /*  console.log("useTableData: ", categoryRows);
+    console.log("headers: ", headers); */
+    /* const headersObject = {};
     headers[1].slice(2).map((heading, index) => {
       if (typeof heading !== "object") {
         headersObject[`${index}`] = heading;
       } else headersObject[`${index}`] = heading.value;
-    });
-
+    }); */
     /*  console.log(headersObject); */
-
-    if (headers && categories) {
+    /* if (headers && categories) {
       // headers
       rows.push({
         "": "Account",
       });
-    }
+    } */
     // categories rows
     /* Object.values(data.categories).map((cat) => {
         rows.push({

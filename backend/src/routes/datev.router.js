@@ -2,8 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
-const { CategoryController } = require("../controllers");
+const {
+  CategoryController,
+  DatevAccountController,
+} = require("../controllers");
 const { verifyToken } = require("../middleware/auth.middleware");
+
+router.get("/", verifyToken, (req, res) => {
+  DatevAccountController.getDatevAccounts(req, res);
+});
 
 router.put("/:accountId", verifyToken, (req, res) => {
   try {

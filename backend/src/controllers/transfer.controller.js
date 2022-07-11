@@ -11,7 +11,8 @@ class TransferController {
 
     const uploadedFile = await UploadService.uploadFile(
       req.files.datev_export_file,
-      uploadPath
+      uploadPath,
+      req.user.id
     );
 
     const uploadedFilePath = `${uploadedFile.file_path}/${uploadedFile.file_name}`;

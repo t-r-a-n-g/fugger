@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material";
 import "./MonthRangePicker.css";
 
-
 const languages = {
   "en-US": enLocale,
   "de-DE": deLocale,

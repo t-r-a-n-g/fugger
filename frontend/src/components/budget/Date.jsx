@@ -57,36 +57,34 @@ export default function Date(props) {
     setValues({ val: vals });
   }, [dateValue]);
 
-
-// user | usedTheme | CssTextField are used for styling reasons of DatePicker TextField
-const user = React.useContext(UserContext);
-const usedTheme = user.theme;
-const CssAutocomplete = styled(Autocomplete)(({ theme }) => ({
-  "& label.Mui-focused": {
-    color:
-      usedTheme === "themeDark"
-        ? theme.palette.text.primary
-        : theme.palette.primary.main,
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: theme.palette.text.primary,
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: theme.palette.text.secondary,
-    },
-    "&:hover fieldset": {
-      borderColor: theme.palette.text.primary,
-    },
-    "&.Mui-focused fieldset": {
-      borderColor:
+  // user | usedTheme | CssTextField are used for styling reasons of DatePicker TextField
+  const user = React.useContext(UserContext);
+  const usedTheme = user.theme;
+  const CssAutocomplete = styled(Autocomplete)(({ theme }) => ({
+    "& label.Mui-focused": {
+      color:
         usedTheme === "themeDark"
           ? theme.palette.text.primary
           : theme.palette.primary.main,
     },
-  },
-}));
-
+    "& .MuiInput-underline:after": {
+      borderBottomColor: theme.palette.text.primary,
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: theme.palette.text.secondary,
+      },
+      "&:hover fieldset": {
+        borderColor: theme.palette.text.primary,
+      },
+      "&.Mui-focused fieldset": {
+        borderColor:
+          usedTheme === "themeDark"
+            ? theme.palette.text.primary
+            : theme.palette.primary.main,
+      },
+    },
+  }));
 
   return (
     <CssAutocomplete
@@ -113,9 +111,12 @@ const CssAutocomplete = styled(Autocomplete)(({ theme }) => ({
       style={{ width: 550 }}
       renderInput={(params) => (
         <TextField
-        sx={{
-          svg: { color: "text.secondary" },
-        }} {...params} label={t("select-date")} />
+          sx={{
+            svg: { color: "text.secondary" },
+          }}
+          {...params}
+          label={t("select-date")}
+        />
       )}
     />
   );

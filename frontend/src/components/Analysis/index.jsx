@@ -9,12 +9,12 @@ import useTableData from "@hooks/useTableData";
 import MonthRangePicker from "@components/MonthRangePicker";
 
 import Api from "@services/Api";
+import { Box } from "@mui/material";
 import AnTable from "./Table/AnTable";
 import AnTableRow from "./Table/AnTableRow";
 import AnTableCell from "./Table/AnTableCell";
 
 import "./analysisTable.css";
-import { Box } from "@mui/material";
 
 function deepCopy(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -259,11 +259,13 @@ function AnalysisTable() {
 
   return (
     <>
-      <div >
+      <div>
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
       </div>
 
-      <Box sx={{px:2}} id="table-container" >{tableJsx()}</Box>
+      <Box sx={{ px: 2 }} id="table-container">
+        {tableJsx()}
+      </Box>
     </>
   );
 }

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { styled } from "@mui/material";
 import UserContext from "@contexts/UserContext";
 
-
 // TO DO: restrict input field to only 2 decimals and run validation check
 export default function Amount(props) {
   const { values, setValues, index } = props;
@@ -46,7 +45,6 @@ export default function Amount(props) {
       },
     },
   }));
-
 
   return (
     <CssTextField

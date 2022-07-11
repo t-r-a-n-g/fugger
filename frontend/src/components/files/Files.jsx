@@ -56,7 +56,7 @@ export default function Files() {
   }, [resStatus]);
 
   return (
-    <Stack spacing={2} sx={{px:2}}>
+    <Stack spacing={2} sx={{ px: 2 }}>
       <h1>{t("menu-item-files")}</h1>
       <div {...getRootProps({ className: "dropzone" })}>
         <Input {...getInputProps()} />

@@ -291,7 +291,7 @@ export default function DrawerLayout({ children, currentTheme }) {
         </DrawerHeader>
 
         {/* ================================================== DRAWER FIRST SECTION ================================================== */}
-        <List sx={{ backgroundColor: "primary.main", py:0 }}>
+        <List sx={{ backgroundColor: "primary.main", py: 0 }}>
           {menuItems.map((element) => (
             <ListItem
               key={element.title}

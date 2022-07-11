@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Transfer } = require("../models");
 const { Category, Subcategory, DatevAccount } = require("../models");
 
@@ -12,30 +13,18 @@ class TransferService {
   static async getTransfers(from, to, userId) {
     const transfers = await Transfer.findAll({
       where: {
-        // date: {
-        //   [Op.between]: [from, to],
-        // },
+        date: {
+          [Op.between]: [from, to],
+        },
         userId,
       },
+
       include: [
-        {
-          model: DatevAccount,
-          as: "datevAccount",
-          attributes: ["id"],
-          include: [
-            {
-              model: Subcategory,
-              attributes: ["id"],
-              include: [
-                {
-                  model: Category,
-                  attributes: ["id"],
-                },
-              ],
-            },
-          ],
-        },
+        { model: DatevAccount, as: "datevAccount" },
+        { model: Category },
+        { model: Subcategory },
       ],
+
       order: [["date", "ASC"]],
       raw: true,
       nest: true,
@@ -47,7 +36,6 @@ class TransferService {
   static async createTransfers(accountTransfers, userId) {
     const datevAccounts = await DatevService.getUserAccounts(userId);
     const dbTransfers = [];
-
     // accountTransfers contains an account number and an array (transfers) with transfers for this account
     for (const accountTransfer of accountTransfers) {
       const transferDatevAccount = datevAccounts.find((el) => {
@@ -64,6 +52,7 @@ class TransferService {
             subcategoryId,
             categoryId,
             amount: transfer.amount,
+            type: transfer.type,
             date: tDate.date,
             userId,
           });
@@ -71,7 +60,9 @@ class TransferService {
       }
     }
 
-    return Transfer.bulkCreate(dbTransfers);
+    return Transfer.bulkCreate(dbTransfers, {
+      updateOnDuplicate: ["amount", "type"],
+    });
   }
 
   static async updateTransfer(transferId, userId, amount) {

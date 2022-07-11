@@ -1,28 +1,8 @@
-import { atom } from "recoil";
+import { atomFamily } from "recoil";
 
-import Api from "@services/Api";
-
-const getCategories = async (set) => {
-  try {
-    const res = await Api.categories.get();
-    set({ isLoading: false, data: res.data });
-  } catch (err) {
-    set({ isLoading: false, error: err });
-  }
-};
-
-const categoriesAtom = atom({
+const categoriesAtom = atomFamily({
   key: "categories",
-  default: {
-    isLoading: true,
-    error: null,
-    data: [],
-  },
-  effects: [
-    ({ setSelf }) => {
-      getCategories(setSelf);
-    },
-  ],
+  default: [],
 });
 
 export default categoriesAtom;

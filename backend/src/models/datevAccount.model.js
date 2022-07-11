@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/db");
 
@@ -21,5 +23,11 @@ const DatevAccount = sequelize.define(
   },
   { tableName: "datev_accounts" }
 );
+
+DatevAccount.beforeFind("addType", (opts) => {
+  const typeAttribute = [sequelize.literal("'datevAccount'"), "type"];
+  if (opts.attributes) opts.attributes.push(typeAttribute);
+  else opts.attributes = ["id", "name", "number", typeAttribute];
+});
 
 module.exports = DatevAccount;

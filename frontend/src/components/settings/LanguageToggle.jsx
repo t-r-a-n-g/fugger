@@ -22,7 +22,7 @@ function LanguageToggle({ setUser }) {
   const toggleLanguage = (lng) => {
     handleClose();
     const newUser = { ...user, language: lng };
-    Api.changeUser({ data: newUser });
+    Api.users.put({ data: newUser });
     setUser(newUser);
   };
 

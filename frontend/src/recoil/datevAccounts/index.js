@@ -1,7 +1,7 @@
 import datevAccountsAtom from "./atom";
 
-import datevAccountsWithTotals from "./withTotals";
+import datevAccountsWithRowData from "./withRowData";
 
-export { datevAccountsWithTotals };
+export { datevAccountsWithRowData };
 
 export default datevAccountsAtom;

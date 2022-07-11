@@ -2,8 +2,11 @@ const { SubcategoryService } = require("../services");
 
 class SubcategoryController {
   static async getSubcategories(req, res) {
+    const { from, to } = req.query;
     const subcategories = await SubcategoryService.getSubcategories(
-      req.user.id
+      req.user.id,
+      from,
+      to
     );
     return res.json(subcategories);
   }

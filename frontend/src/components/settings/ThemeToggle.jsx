@@ -20,7 +20,7 @@ export default function ThemeToggle({ setUser }) {
   const handleCloseItem = (mode) => {
     setAnchorEl(null);
     const newUser = { ...user, theme: mode };
-    Api.changeUser({ data: newUser });
+    Api.users.put({ data: newUser });
     setUser(newUser);
   };
 

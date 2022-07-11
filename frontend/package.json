@@ -4,9 +4,6 @@
   "proxy": "http://localhost:5000",
   "author": "Max Dahl",
   "license": "MIT",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

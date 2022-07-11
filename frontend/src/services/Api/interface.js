@@ -2,8 +2,7 @@ import axios from "axios";
 
 class ApiInterface {
   constructor(route) {
-    // this.baseUrl = "http://localhost:5000/api";
-    this.baseUrl = "/api";
+    this.baseUrl = import.meta.env.VITE_API_URL;
     this.route = route;
 
     this.headers = {};

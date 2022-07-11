@@ -27,7 +27,6 @@
     "react-i18next": "^11.17.2",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.4",
-    "template-fullstack": "file:..",
     "validator": "^13.7.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.9/xlsx-0.18.9.tgz",
     "vite": "^2.8.0",

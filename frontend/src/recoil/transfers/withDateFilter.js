@@ -10,7 +10,6 @@ const transfersWithDateFilter = selector({
     const [from, to] = get(monthRangeWithMonthBeginning);
 
     if (transfers.isLoading || transfers.error) return transfers;
-    console.log("transfers");
     return {
       ...transfers,
       data: transfers.data.reduce((filtered, trsf) => {

@@ -14,6 +14,7 @@ import Files from "@components/files/Files";
 
 import UserContext from "@contexts/UserContext";
 import Api from "@services/Api";
+import ProfilePage from "@components/profilePage";
 
 function App() {
   // Set the applied theme depending on themeMode button group
@@ -63,6 +64,7 @@ function App() {
                     path="/logout"
                     element={<LogoutPage setUser={setUser} />}
                   />
+                  <Route path="/profile" element={<ProfilePage />} />
                 </Route>
               </Routes>
             </DrawerLayout>

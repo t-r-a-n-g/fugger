@@ -17,7 +17,7 @@ XLSX.set_fs(fs); */
 
 function ExportTableTest() {
   /*  hook useTableData */
-  const { /* categoryRows, subcategoryRows, datevRows,  */ headers } =
+  const { categoryRows, /* subcategoryRows, datevRows,  */ headers } =
     useTableData({
       table: "analysis",
     });
@@ -45,10 +45,39 @@ function ExportTableTest() {
 
     rows.push(monthsHeader, subHeader);
 
-    /* CATEGORIES */
-    /*  console.log("Categories: ", categoryRows); */
+    /* CATEGORIES, TO DO: rewrite this whole block to keep it easy */
+    /* console.log("Categories: ", categoryRows); */
+    const categoryArray = [];
+    for (let i = 0; i < categoryRows.length; i++) {
+      categoryArray.push(Object.values(categoryRows[i].cellData));
+    }
 
-    /*  console.log(rows); */
+    const categoriesHelper = [];
+    for (const cat of categoryArray) {
+      // cat is an array of objects
+      const categ = [];
+      for (const c of cat) {
+        // c is an object
+        categ.push(c.value);
+      }
+      categoriesHelper.push(categ);
+    }
+
+    /* console.log("helper: ", categoriesHelper); */
+
+    const categories = categoriesHelper.map((row) =>
+      row.map((el) => {
+        return { v: el, t: "s", s: { fill: { fgColor: { rgb: "E9E9E9" } } } };
+      })
+    );
+
+    for (const cat of categories) {
+      rows.push(cat);
+    }
+
+    /* console.log("CATEGORIES ", categories);
+     */
+    /* console.log(rows); */
 
     // download the excel file
     if (rows.length > 0) {
@@ -63,12 +92,12 @@ function ExportTableTest() {
       });
  */
       /* create an XLSX file and save as "anyfilename".xlsx */
-      /* XLSX.writeFile(
+      XLSX.writeFile(
         workbook,
         `Export_${monthsHeader[1]}-${
           monthsHeader[monthsHeader.length - 4]
         }.xlsx`
-      ); */
+      );
     }
   };
 

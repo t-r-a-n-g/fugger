@@ -11,14 +11,9 @@ XLSX.set_fs(fs);
 
 /* TO DO:
 ----------
-- define what time period to export (fetch data)
-- include month data
-- name headers dynamically
-- include abs and pct calculation
 - adjust cell width
+- add styling if possible
 */
-
-/*  eslint array-callback-return: 0 */
 
 function ExportTable() {
   /*  hook useTableData */
@@ -111,7 +106,7 @@ function ExportTable() {
       }
     }
 
-    /*  console.log("ROWS: ", rows); */
+    /* console.log("ROWS: ", rows); */
 
     // download the excel file
     if (rows.length > 0) {
@@ -119,7 +114,7 @@ function ExportTable() {
       const worksheet = XLSX.utils.json_to_sheet(rows);
       const workbook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(workbook, worksheet, "Export_Fugger");
-      /* fix headers of table, this needs to be generated dynamically */
+      /* define headers of table */
       XLSX.utils.sheet_add_aoa(worksheet, [monthsHeader], {
         origin: "A1",
       });

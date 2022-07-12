@@ -11,6 +11,7 @@ import MonthRangePicker from "@components/MonthRangePicker";
 import Api from "@services/Api";
 import ExportTable from "@components/ExportTable";
 import { Box } from "@mui/material";
+import ExportTableTest from "@components/ExportTable/TestExport";
 import AnTable from "./Table/AnTable";
 import AnTableRow from "./Table/AnTableRow";
 import AnTableCell from "./Table/AnTableCell";
@@ -261,6 +262,7 @@ function AnalysisTable() {
   return (
     <>
       <ExportTable />
+      <ExportTableTest />
       <div>
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
       </div>

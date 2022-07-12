@@ -83,7 +83,10 @@ function App() {
                       path="/logout"
                       element={<LogoutPage setUser={setUser} />}
                     />
-                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route
+                      path="/profile"
+                      element={<ProfilePage user={user} />}
+                    />
                   </Route>
                 </Routes>
               </DrawerLayout>

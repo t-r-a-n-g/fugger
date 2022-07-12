@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-/* import useTableData from "@hooks/useTableData"; */
+import useTableData from "@hooks/useTableData";
 
 import * as XLSX from "xlsx/xlsx.mjs";
 
@@ -22,98 +22,116 @@ XLSX.set_fs(fs);
 
 function ExportTable() {
   /*  hook useTableData */
-  /* const { categoryRows, subcategoryRows, datevRows, headers } = useTableData({
+  const { categoryRows, subcategoryRows, datevRows, headers } = useTableData({
     table: "analysis",
-  }); */
+  });
 
   /*  onClick for export */
   const handleExport = () => {
-    // reshape fetched data for excel sheet
-    /* const rows = []; */
-    /*  console.log("useTableData: ", categoryRows);
-    console.log("headers: ", headers); */
-    /* const headersObject = {};
-    headers[1].slice(2).map((heading, index) => {
-      if (typeof heading !== "object") {
-        headersObject[`${index}`] = heading;
-      } else headersObject[`${index}`] = heading.value;
-    }); */
-    /*  console.log(headersObject); */
-    /* if (headers && categories) {
-      // headers
-      rows.push({
-        "": "Account",
-      });
-    } */
-    // categories rows
-    /* Object.values(data.categories).map((cat) => {
-        rows.push({
-          "": cat.name,
-        });
+    const rows = [];
+    const monthsHeader = [""];
 
-        // subcategories rows
-        Object.values(data.subcategories).map((subcat) => {
-          let subcatActual = 0;
-          let subcatBudget = 0;
-          let subcatAbs = 0;
-          let subcatPerct = 0;
+    /* --- HEADERS --- */
+    if (headers) {
+      const monthsHeaderArray = headers[0].slice(1).map((month) => month.value);
+      for (let i = 0; i < monthsHeaderArray.length; i++) {
+        monthsHeader.push(monthsHeaderArray[i], "", "", "");
+      }
 
-          Object.values(data.datevAccounts).map((datev) => {
-            if (datev.subcategoryId === subcat.id) {
-              const transfer = data.transfers.find(
-                (transferRow) => transferRow.datevAccountId === datev.id
-              );
-              subcatActual += transfer.actual;
-              if (transfer.budget) subcatBudget += transfer.budget;
-              if (transfer.abs) subcatAbs += transfer.abs;
-              if (transfer.perct) subcatPerct += transfer.perct;
+      const subHeaderObject = { 1: "Account" };
+      for (let i = 2; i < headers[1].length; i++) {
+        if (typeof headers[1][i] !== "object")
+          subHeaderObject[i] = headers[1][i];
+        else subHeaderObject[i] = headers[1][i].value;
+      }
+
+      rows.push(subHeaderObject);
+    }
+
+    /* --- CATEGORIES ---  */
+    // each array of categoryArray contains the row data for one category
+    const categoryArray = [];
+    if (categoryRows) {
+      for (let i = 0; i < categoryRows.length; i++) {
+        categoryArray.push(Object.values(categoryRows[i].cellData));
+        categoryArray[i].push({ id: categoryRows[i].id });
+      }
+    }
+
+    const subcategoryArray = [];
+    if (subcategoryRows) {
+      for (let i = 0; i < subcategoryRows.length; i++) {
+        subcategoryArray.push(Object.values(subcategoryRows[i].cellData));
+        subcategoryArray[i].push({ id: subcategoryRows[i].id });
+        subcategoryArray[i].push({ categoryId: subcategoryRows[i].categoryId });
+      }
+    }
+
+    const datevArray = [];
+    if (datevRows) {
+      for (let i = 0; i < datevRows.length; i++) {
+        datevArray.push(Object.values(datevRows[i].cellData));
+        datevArray[i].push({ subcategoryId: datevRows[i].subcategoryId });
+      }
+    }
+
+    if (categoryArray && subcategoryArray && datevArray) {
+      for (let i = 0; i < categoryArray.length; i++) {
+        const category = {};
+        for (let j = 0; j < categoryArray[i].length - 1; j++) {
+          category[j + 1] = categoryArray[i][j].value;
+        }
+        rows.push(category);
+
+        for (let m = 0; m < subcategoryArray.length; m++) {
+          if (
+            subcategoryArray[m][subcategoryArray[m].length - 1].categoryId ===
+            categoryArray[i][categoryArray[i].length - 1].id
+          ) {
+            const subcategory = {};
+            for (let n = 0; n < subcategoryArray[m].length - 2; n++) {
+              subcategory[n + 1] = subcategoryArray[m][n].value;
             }
-          });
+            rows.push(subcategory);
 
-          if (subcat.categoryId === cat.id) {
-            rows.push({
-              "": subcat.name,
-              Jan2019Actual: subcatActual,
-              Jan2019Budget: subcatBudget,
-              Jan2019Abs: subcatAbs,
-              Jan2019Perct: subcatPerct,
-            });
-
-            // datev accounts rows
-            Object.values(data.datevAccounts).map((datev) => {
-              if (datev.subcategoryId === subcat.id) {
-                const transfer = data.transfers.find(
-                  (transferRow) => transferRow.datevAccountId === datev.id
-                );
-
-                rows.push({
-                  "": datev.name,
-                  Jan2019Actual: transfer.actual,
-                  Jan2019Budget: transfer.budget,
-                  Jan2019Abs: transfer.abs,
-                  Jan2019Perct: transfer.perct,
-                });
+            for (let x = 0; x < datevArray.length; x++) {
+              if (
+                datevArray[x][datevArray[x].length - 1].subcategoryId ===
+                subcategoryArray[m][subcategoryArray[m].length - 2].id
+              ) {
+                const datev = {};
+                for (let y = 0; y < datevArray[x].length - 1; y++) {
+                  datev[y + 1] = datevArray[x][y].value;
+                }
+                rows.push(datev);
               }
-            });
+            }
           }
-        });
-      });
-    } */
-    /* console.log(rows); */
+        }
+      }
+    }
+
+    /*  console.log("ROWS: ", rows); */
+
     // download the excel file
-    /*  if (rows.length > 0) { */
-    /* generate worksheet and workbook */
-    /* const worksheet = XLSX.utils.json_to_sheet(rows);
+    if (rows.length > 0) {
+      /* generate worksheet and workbook */
+      const worksheet = XLSX.utils.json_to_sheet(rows);
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "TestTable"); */
-    /* fix headers of table, this needs to be generated dynamically */
-    /* XLSX.utils.sheet_add_aoa(worksheet, [["Jan 2019", "", "", ""]], {
-        origin: "B1",
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Export_Fugger");
+      /* fix headers of table, this needs to be generated dynamically */
+      XLSX.utils.sheet_add_aoa(worksheet, [monthsHeader], {
+        origin: "A1",
       });
- */
-    /* create an XLSX file and save as "anyfilename".xlsx */
-    /* XLSX.writeFile(workbook, "TestExport.xlsx");
-    } */
+
+      /* create an XLSX file and save as "anyfilename".xlsx */
+      XLSX.writeFile(
+        workbook,
+        `Export_${monthsHeader[1]}-${
+          monthsHeader[monthsHeader.length - 4]
+        }.xlsx`
+      );
+    }
   };
 
   return (

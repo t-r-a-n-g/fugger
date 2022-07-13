@@ -85,6 +85,7 @@ function useTableData({ table }) {
   }, [isLoading]);
 
   return {
+    setIsLoading,
     isLoading,
     error,
     categoryRows,

@@ -205,9 +205,9 @@ function ExportTableTest() {
       }
     }
 
-    console.log("categories: ", categoryRows);
+    /* console.log("categories: ", categoryRows);
     console.log("subcategories: ", subcategoryRows);
-    console.log(rows);
+    console.log(rows); */
 
     // download the excel file
     if (rows.length > 0) {

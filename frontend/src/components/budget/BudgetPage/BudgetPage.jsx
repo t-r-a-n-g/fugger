@@ -19,7 +19,7 @@ export default function BudgetPage() {
     <Box sx={{ px: 2 }}>
       <h1>Budgets</h1>
       <Button
-        sx={{ borderRadius: "10px", marginBottom: 4 }}
+        sx={{ marginBottom: 4 }}
         variant="contained"
         onClick={() => setOpen(true)}
       >

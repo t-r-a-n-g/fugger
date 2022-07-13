@@ -1,11 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
 import useTableData from "@hooks/useTableData";
-/* import { round } from "@services/utils/math"; */
+import { useTranslation } from "react-i18next";
 
 import * as XLSX from "xlsx-js-style";
 
 function ExportTable() {
+  const { t } = useTranslation();
+
   const { categoryRows, subcategoryRows, datevRows, headers } = useTableData({
     table: "analysis",
   });
@@ -31,7 +33,6 @@ function ExportTable() {
     const monthsHeader = monthsHeaderHelper.map((el) => {
       return {
         v: el,
-        t: "s",
         s: {
           fill: { color: { rgb: "000000" } },
           font: { bold: true, color: { rgb: "FFFFFF" } },
@@ -45,7 +46,6 @@ function ExportTable() {
       .map((el) => {
         return {
           v: el,
-          t: "s",
           s: {
             fill: { color: { rgb: "000000" } },
             font: { bold: true, color: { rgb: "FFFFFF" } },
@@ -70,7 +70,6 @@ function ExportTable() {
         if (el > 0)
           return {
             v: el,
-            t: "s",
             s: {
               fill: { fgColor: { rgb: "819CDB" } },
               font: { bold: true, color: { rgb: "228A3E" } },
@@ -81,7 +80,7 @@ function ExportTable() {
         if (el < 0)
           return {
             v: el,
-            t: "s",
+            /*   */
             s: {
               fill: { fgColor: { rgb: "819CDB" } },
               font: { bold: true, color: { rgb: "FF0000" } },
@@ -91,7 +90,6 @@ function ExportTable() {
 
         return {
           v: el,
-          t: "s",
           s: {
             fill: { fgColor: { rgb: "819CDB" } },
             font: { bold: true },
@@ -116,7 +114,6 @@ function ExportTable() {
             if (el > 0)
               return {
                 v: el,
-                t: "s",
                 s: {
                   fill: { fgColor: { rgb: "D0E5F8" } },
                   font: { bold: true, color: { rgb: "228A3E" } },
@@ -130,7 +127,6 @@ function ExportTable() {
             if (el < 0)
               return {
                 v: el,
-                t: "s",
                 s: {
                   fill: { fgColor: { rgb: "D0E5F8" } },
                   font: { bold: true, color: { rgb: "FF0000" } },
@@ -143,7 +139,6 @@ function ExportTable() {
 
             return {
               v: el,
-              t: "s",
               s: {
                 fill: { fgColor: { rgb: "D0E5F8" } },
                 font: { bold: true },
@@ -166,7 +161,6 @@ function ExportTable() {
                 if (el > 0)
                   return {
                     v: el,
-                    t: "s",
                     s: {
                       font: { color: { rgb: "228A3E" } },
                     },
@@ -175,7 +169,6 @@ function ExportTable() {
                 if (el < 0)
                   return {
                     v: el,
-                    t: "s",
                     s: {
                       font: { color: { rgb: "FF0000" } },
                     },
@@ -183,7 +176,6 @@ function ExportTable() {
 
                 return {
                   v: el,
-                  t: "s",
                 };
               });
 
@@ -199,24 +191,41 @@ function ExportTable() {
       /* generate worksheet and workbook */
       const worksheet = XLSX.utils.aoa_to_sheet(rows);
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "Export_Fugger");
+      XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        `${monthsArray[0]} - ${monthsArray[monthsArray.length - 1]}`
+      );
 
       /* change width of first column */
       worksheet["!cols"] = [{ wch: 40 }];
 
+      /* merge months cells */
+      const mergeCells = [{ s: { r: 0, c: 1 }, e: { r: 0, c: 4 } }];
+
+      let n = 5;
+      for (let i = 0; i < monthsArray.length; i++) {
+        mergeCells.push({ s: { r: 0, c: n }, e: { r: 0, c: n + 3 } });
+        n += 4;
+      }
+
+      worksheet["!merges"] = mergeCells;
+
       /* create an XLSX file and save as "anyfilename".xlsx */
       XLSX.writeFile(
         workbook,
-        `Export_${monthsHeader[1]}-${
-          monthsHeader[monthsHeader.length - 4]
-        }.xlsx`
+        `Export_${monthsArray[0]}-${monthsArray[monthsArray.length - 1]}.xlsx`
       );
     }
   };
 
   return (
-    <Button variant="contained" onClick={handleExport}>
-      Export with styles
+    <Button
+      sx={{ marginTop: 3, marginLeft: 2 }}
+      variant="contained"
+      onClick={handleExport}
+    >
+      {t("export-table")}
     </Button>
   );
 }

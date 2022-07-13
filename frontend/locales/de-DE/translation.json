@@ -63,5 +63,6 @@
   "drag-drop-browse": "Drag and Drop, oder Dateien durchsuchen",
   "allowed-file-format": "Unterstützte Dateiformate: Excel (.xlsx)",
   "filename": "Name der Datei",
-  "upload-date": "Hochgeladen am"
+  "upload-date": "Hochgeladen am",
+  "export-table": "TABELLE EXPORTIEREN"
 }

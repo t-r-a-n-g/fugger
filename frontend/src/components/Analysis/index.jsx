@@ -260,9 +260,9 @@ function AnalysisTable() {
 
   return (
     <>
-      <ExportTable />
       <div>
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+        <ExportTable />
       </div>
 
       <Box sx={{ px: 2 }} id="table-container">

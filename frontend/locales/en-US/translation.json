@@ -64,5 +64,8 @@
   "allowed-file-format": "Supported File Formats: Excel (.xlsx)",
   "filename": "File Name",
   "upload-date": "Upload Date",
-  "export-table": "EXPORT TABLE"
+  "export-table": "EXPORT TABLE",
+  "go-to-budget-page": "Go to Budget Page",
+  "save-budgets-success": "Your budgets have been successfully saved!",
+  "your-budgets-heading": "DEINE BUDGETS"
 }

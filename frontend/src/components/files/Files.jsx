@@ -25,7 +25,9 @@ export default function Files() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "Excel files": [".xlsx"],
+      "application/vnd.openxmlformats-officedocument. spreadsheetml.sheet": [
+        ".xlsx",
+      ],
     },
     multiple: false,
   });

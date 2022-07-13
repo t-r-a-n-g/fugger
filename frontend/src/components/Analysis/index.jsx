@@ -77,7 +77,7 @@ function AnalysisTable() {
     return true;
   }
 
-  function onCellValueChange(dataObject, key, field, newValue, oldValue) {
+  async function onCellValueChange(dataObject, key, field, newValue, oldValue) {
     if (field === "name") {
       return onNameChange(dataObject, key, newValue, oldValue);
     }
@@ -94,9 +94,14 @@ function AnalysisTable() {
       }
 
       const getFieldColorSx = (val) => {
+        val = Number(val);
         if (Number.isNaN(Number(val))) return {};
-        if (val < 0) return { color: "error.main" };
-        return { color: "success.main" };
+
+        let color = "";
+        if (val > 0) color = "success.main";
+        else if (val < 0) color = "error.main";
+
+        return { color };
       };
 
       const catRowsCopy = deepCopy(categoryRows);
@@ -124,14 +129,15 @@ function AnalysisTable() {
         );
       else if (field === "budget") {
         if (budgetId) Api.budgets.put({ amount: Math.abs(newValue) }, budgetId);
-        else
-          Api.budgets.post([
-            {
-              amount: newValue,
-              date: new Date(Number(timestamp)),
-              account: { id: datevRow.id },
-            },
-          ]);
+        else {
+          const res = await Api.budgets.post({
+            amount: newValue,
+            date: timestamp,
+            accountId: datevRow.id,
+          });
+
+          datevRow.cellData[key].budgetId = res.id;
+        }
       }
 
       for (const row of [datevRow, subcategoryRow, categoryRow]) {

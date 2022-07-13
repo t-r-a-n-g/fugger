@@ -21,9 +21,23 @@ class BudgetController {
   }
 
   static async createBudget(req, res) {
-    const budgets = req.body;
-    const budgetsNew = await BudgetService.createBudgets(budgets, req.user.id);
-    return res.json(budgetsNew);
+    if (Array.isArray(req.body)) {
+      const budgets = req.body;
+      const budgetsNew = await BudgetService.createBudgets(
+        budgets,
+        req.user.id
+      );
+      return res.json(budgetsNew);
+    }
+
+    const { amount, date, accountId } = req.body;
+    const budget = await BudgetService.createBudget(
+      amount,
+      date,
+      accountId,
+      req.user.id
+    );
+    return res.json(budget);
   }
 }
 

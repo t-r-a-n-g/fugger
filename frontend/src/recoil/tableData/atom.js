@@ -13,13 +13,23 @@ import { getMonthRange } from "@services/utils/date";
 import { calculateDiff, round } from "@services/utils/math";
 
 const getHeaders = ([from, to], table) => {
-  const headers = [
-    [{ colSpan: 2 }],
-    [
-      { className: "firstColumn empty-header" },
-      { value: "Account", className: "accounts-header-col" },
-    ],
-  ];
+  let headers = [];
+  if (table === "analysis") {
+    headers = [
+      [{ colSpan: 2 }],
+      [
+        { className: "firstColumn empty-header" },
+        { value: "Account", className: "accounts-header-col" },
+      ],
+    ];
+  } else {
+    headers = [
+      [
+        { className: "firstColumn empty-header" },
+        { value: "Account", className: "accounts-header-col" },
+      ],
+    ];
+  }
 
   let monthlyHeaders = [];
   if (table === "analysis") {
@@ -46,7 +56,7 @@ const getHeaders = ([from, to], table) => {
       className: "date-header",
     });
 
-    headers[1].push(...monthlyHeaders);
+    if (table === "analysis") headers[1].push(...monthlyHeaders);
   }
 
   return headers;
@@ -85,16 +95,16 @@ function getRow(table, dataObject, rowOpenState) {
       pct,
     })) {
       const cellKey = `${dataObject.type}-${dataObject.id}-${field}-${monthSum.date}`;
-      const sx = {
-        color: value < 0 ? "error.main" : "success.main",
-      };
+      let color = "";
+      if (value > 0) color = "success.main";
+      else if (value < 0) color = "error.main";
 
       cellData[cellKey] = {
         key: cellKey,
         value,
         label: round(value),
         isEditable: isDatev && !["abs", "pct"].includes(field),
-        sx,
+        sx: { color },
         field,
         type,
         className: `${field}-col`,

@@ -64,5 +64,8 @@
   "allowed-file-format": "Unterstützte Dateiformate: Excel (.xlsx)",
   "filename": "Name der Datei",
   "upload-date": "Hochgeladen am",
-  "export-table": "TABELLE EXPORTIEREN"
+  "export-table": "TABELLE EXPORTIEREN",
+  "go-to-budget-page": "Zur Budget-Seite",
+  "save-budgets-success": "Deine Budgets wurden erfolgreich gespeichert!",
+  "your-budgets-heading": "YOUR BUDGETS"
 }

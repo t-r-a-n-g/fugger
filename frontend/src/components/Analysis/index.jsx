@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import { useRecoilState } from "recoil";
 
 import { calculateDiff, round } from "@services/utils/math";
@@ -9,8 +11,15 @@ import useTableData from "@hooks/useTableData";
 import MonthRangePicker from "@components/MonthRangePicker";
 
 import Api from "@services/Api";
+
 import ExportTable from "@components/ExportTable";
-import { Box } from "@mui/material";
+import BudgetEditing from "@components/budget/BudgetCard";
+import SuccessModal from "@components/budget/SuccessModel";
+
+import { Box, Button } from "@mui/material";
+
+import { useTranslation } from "react-i18next";
+
 import AnTable from "./Table/AnTable";
 import AnTableRow from "./Table/AnTableRow";
 import AnTableCell from "./Table/AnTableCell";
@@ -22,6 +31,13 @@ function deepCopy(obj) {
 }
 
 function AnalysisTable() {
+  const { t } = useTranslation();
+
+  /* States for Budget Planning Box and Success Message */
+  const [openBudget, setOpenBudget] = useState(false);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
+  const fromAnalysisPage = true;
+
   const {
     isLoading,
     error,
@@ -263,7 +279,26 @@ function AnalysisTable() {
       <div>
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         <ExportTable />
+        <Button
+          sx={{ marginTop: 3, marginLeft: 2 }}
+          variant="contained"
+          onClick={() => setOpenBudget(true)}
+        >
+          {t("plan-budgets")}
+        </Button>
       </div>
+
+      <SuccessModal
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+        fromAnalysisPage={fromAnalysisPage}
+      />
+      <BudgetEditing
+        open={openBudget}
+        setOpen={setOpenBudget}
+        savedSuccessfully={savedSuccessfully}
+        setSavedSuccessfully={setSavedSuccessfully}
+      />
 
       <Box sx={{ px: 2 }} id="table-container">
         {tableJsx()}

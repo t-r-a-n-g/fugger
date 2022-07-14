@@ -279,9 +279,11 @@ function AnalysisTable() {
   return (
     <>
       <div id="table-functions">
-        <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         <div>
           <ExportTable />
+        </div>
+        <div>
+          <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         </div>
       </div>
 

@@ -66,7 +66,7 @@ function App() {
               <DrawerLayout currentTheme={user.theme}>
                 <Routes>
                   <Route>
-                    <Route path="/" element={<div>DASHBOARD</div>} />
+                    <Route path="/" element={<Analysis />} />
                     <Route path="/analysis" element={<Analysis />} />
                     <Route path="/budgets" element={<BudgetPage />} />
 

@@ -81,3 +81,12 @@ table {
 .row-depth-2 .an-col-1 {
   padding-left: 60px;
 }
+
+#table-functions {
+  display: grid;
+  grid-template-rows: 50px 100px;
+}
+
+#table-functions > div:first-child {
+  margin: 16px 0 0 16px;
+}

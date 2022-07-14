@@ -280,8 +280,11 @@ function BudgetTable() {
 
   return (
     <>
-      <div>
-        <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+      <div id="table-functions">
+        <div></div>
+        <div>
+          <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+        </div>
       </div>
 
       <div id="table-container">{tableJsx()}</div>

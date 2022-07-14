@@ -117,7 +117,7 @@ function ExportTable() {
   };
 
   return (
-    <Button variant="contained" onClick={handleExport}>
+    <Button variant="contained" onClick={handleExport} sx={{ height: "100%" }}>
       Export
     </Button>
   );

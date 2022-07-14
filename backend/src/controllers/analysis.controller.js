@@ -107,11 +107,13 @@ class AnalysisController {
         self.getTransferParents(transfer);
 
       const dateTime = transfer.date.getTime();
-      const budget = budgets.find(
+      let budget = budgets.find(
         (b) =>
           b.datevAccountId === transfer.datevAccountId &&
           b.date.getTime() === dateTime
       );
+
+      if (!budget) budget = { amount: 0 };
 
       for (const parent of [category, subcategory, datevAccount]) {
         if (!parent.totalSums[dateTime]) {
@@ -133,7 +135,8 @@ class AnalysisController {
           parent.totalSums[dateTime].type = "S";
         else parent.totalSums[dateTime].type = "H";
 
-        if (parent.isEmpty) parent.isEmpty = transfer.amount === 0;
+        if (parent.isEmpty)
+          parent.isEmpty = transfer.amount === 0 && budget.amount === 0;
 
         if (parent.type === "datevAccount") {
           parent.totalSums[dateTime].transferId = transfer.id;

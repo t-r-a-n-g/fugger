@@ -60,7 +60,7 @@ function ExportTable() {
 
     rows.push(monthsHeader, subHeader);
 
-    /* TABLE BODY, TO DO: change fill color */
+    /* TABLE BODY */
 
     for (const category of categoryRows) {
       const { id } = category;
@@ -69,7 +69,7 @@ function ExportTable() {
       const catRow = Object.values(cellData).map((el) =>
         typeof el.value === "number" ? round(el.value) : el.value
       );
-      catRow.unshift("");
+      catRow.splice(1, 0, "");
 
       // creating the final styled array for excel export
       const categoryStyled = [
@@ -140,7 +140,7 @@ function ExportTable() {
           const subcatRow = Object.values(subcatCellData).map((el) =>
             typeof el.value === "number" ? round(el.value) : el.value
           );
-          subcatRow.unshift("");
+          subcatRow.splice(1, 0, "");
 
           // creating the final styled array for excel export
           const subcategoryStyled = [
@@ -274,8 +274,7 @@ function ExportTable() {
         }
       }
     }
-    /*  console.log("datev: ", datevRows); */
-    /*    console.log("subcat: ", subcategoryRows); */
+
     /*   console.log("ROWS: ", rows); */
 
     // download the excel file
@@ -292,7 +291,18 @@ function ExportTable() {
       /* change width of first and second column */
       worksheet["!cols"] = [{ wch: 5 }, { wch: 40 }];
 
-      /* merge months cells */
+      /* define cells that needs to be merged */
+      const worksheetAsArray = Object.entries(worksheet);
+
+      const filteredArray = worksheetAsArray.filter(
+        ([key, value]) =>
+          value.s?.font?.bold && (key.includes("A") || key.includes("B"))
+      ); // --> this only works when categories and subcategories are styled bold
+
+      const cellsToBeMerged = filteredArray.map(
+        (keyValuePair) => keyValuePair[0]
+      );
+
       const mergeCells = [{ s: { r: 0, c: 2 }, e: { r: 0, c: 5 } }];
 
       let n = 6;
@@ -301,7 +311,19 @@ function ExportTable() {
         n += 4;
       }
 
+      for (let i = 0; i < cellsToBeMerged.length; i += 2) {
+        mergeCells.push({
+          s: XLSX.utils.decode_cell(cellsToBeMerged[i]),
+          e: XLSX.utils.decode_cell(cellsToBeMerged[i + 1]),
+        });
+      }
+
       worksheet["!merges"] = mergeCells;
+
+      /* IDEA for building sums:
+      - create rows and worksheet like here
+      - filter the necessary excel cells out of worksheet
+      - 
 
       /* create an XLSX file and save as "anyfilename".xlsx */
       XLSX.writeFile(

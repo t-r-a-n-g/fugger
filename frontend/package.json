@@ -16,10 +16,13 @@
     "@mui/material": "^5.8.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.7",
     "@mui/x-date-pickers-pro": "^5.0.0-alpha.7",
+    "@vitejs/plugin-react": "^1.0.7",
     "@wojtekmaj/react-daterange-picker": "^3.4.0",
     "axios": "^0.27.2",
     "date-fns": "^2.28.0",
+    "esbuild": "^0.14.49",
     "i18next": "^21.8.10",
+    "mvc-express": "file:..",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -28,9 +31,9 @@
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.4",
     "validator": "^13.7.0",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.9/xlsx-0.18.9.tgz",
     "vite": "^2.8.0",
-    "@vitejs/plugin-react": "^1.0.7"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.9/xlsx-0.18.9.tgz",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^19.0.4",

@@ -8,9 +8,12 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Alert from "@mui/material/Alert";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export default function SuccessModal(props) {
-  const { savedSuccessfully, setSavedSuccessfully } = props;
+  const { savedSuccessfully, setSavedSuccessfully, fromAnalysisPage } = props;
+
+  const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
 
@@ -36,22 +39,24 @@ export default function SuccessModal(props) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title" sx={{ fontWeight: "bold" }}>
-          YOUR BUDGETS
+          {t("your-budgets-heading")}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
             {" "}
             <Alert severity="success" sx={{ marginTop: 2 }}>
-              Your budgets have been successfully saved!
+              {t("save-budgets-success")}
             </Alert>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleGoToPage} autoFocus>
-            Go to Budget Page
-          </Button>
+          {fromAnalysisPage ? (
+            <Button onClick={handleGoToPage} autoFocus>
+              {t("go-to-budget-page")}
+            </Button>
+          ) : null}
           <Button onClick={handleClose} autoFocus>
-            Close
+            {t("close")}
           </Button>
         </DialogActions>
       </Dialog>
@@ -62,4 +67,5 @@ export default function SuccessModal(props) {
 SuccessModal.propTypes = {
   savedSuccessfully: PropTypes.bool.isRequired,
   setSavedSuccessfully: PropTypes.func.isRequired,
+  fromAnalysisPage: PropTypes.bool,
 };

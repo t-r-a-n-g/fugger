@@ -5,7 +5,6 @@ import { Button, Box } from "@mui/material";
 import BudgetEditing from "@components/budget/BudgetCard";
 import SuccessModal from "@components/budget/SuccessModel";
 import { useTranslation } from "react-i18next";
-import ExportTable from "@components/ExportTable";
 
 import BudgetTable from "./BudgetTable";
 
@@ -20,7 +19,7 @@ export default function BudgetPage() {
     <Box sx={{ px: 2 }}>
       <h1>Budgets</h1>
       <Button
-        sx={{ borderRadius: "10px", marginBottom: 4 }}
+        sx={{ marginBottom: 4 }}
         variant="contained"
         onClick={() => setOpen(true)}
       >
@@ -36,10 +35,6 @@ export default function BudgetPage() {
         savedSuccessfully={savedSuccessfully}
         setSavedSuccessfully={setSavedSuccessfully}
       />
-
-      {/* TESTING ONLY */}
-      <ExportTable />
-
       <BudgetTable />
     </Box>
   );

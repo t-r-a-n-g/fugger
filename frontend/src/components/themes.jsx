@@ -1,13 +1,29 @@
-const globalComponents = {
-  // menuItem
-  MuiMenuItem: {
-    styleOverrides: {
-      root: {
-        marginLeft: "5px",
-        marginRight: "5px",
-        paddingLeft: "15px",
-        "&:hover": {
-          borderRadius: "10px",
+// variable for customized MUI components for every theme
+const global = {
+  components: {
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          marginLeft: "5px",
+          marginRight: "5px",
+          paddingLeft: "15px",
+          "&:hover": {
+            borderRadius: "10px",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      defaultProps: {
+        sx: {
+          fontSize: "0.8rem",
+        },
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        sx: {
+          fontSize: "0.8rem",
         },
       },
     },
@@ -51,7 +67,7 @@ const theme1 = {
     },
   },
   // Overrides specific components
-  components: globalComponents,
+  components: global.components,
 };
 
 const theme2 = {
@@ -86,9 +102,9 @@ const theme2 = {
   },
 
   // Overrides specific components
-  components: {
-    ...globalComponents,
-  },
+
+  components: global.components,
+
 };
 
 // Do NOT change name of themeDark, because it is used often in whole app!
@@ -133,30 +149,16 @@ const themeDark = {
   },
 
   // Overrides specific components
-  components: {
-    // menuItem
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          marginLeft: "5px",
-          marginRight: "5px",
-          paddingLeft: "15px",
-          "&:hover": {
-            borderRadius: "10px",
-          },
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.variant === "outlined" &&
-            ownerState.color === "primary" && {
-              border: "#303030 1px solid",
-            }),
-        }),
-      },
-    },
-  },
+  components: global.components,
+  // MuiButton: {
+  //   styleOverrides: {
+  //     root: ({ ownerState }) => ({
+  //       ...(ownerState.variant === "outlined" &&
+  //         ownerState.color === "primary" && {
+  //           border: "#303030 1px solid",
+  //         }),
+  //     }),
+  //   },
+  // },
 };
 export { theme1, theme2, themeDark };

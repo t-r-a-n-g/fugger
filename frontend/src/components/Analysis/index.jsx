@@ -13,6 +13,7 @@ import MonthRangePicker from "@components/MonthRangePicker";
 import Api from "@services/Api";
 
 import ExportTable from "@components/ExportTable";
+import ExportTableTest from "@components/ExportTable/TestTable";
 import BudgetEditing from "@components/budget/BudgetCard";
 import SuccessModal from "@components/budget/SuccessModel";
 
@@ -279,6 +280,7 @@ function AnalysisTable() {
       <div>
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         <ExportTable />
+        <ExportTableTest />
         <Button
           sx={{ marginTop: 3, marginLeft: 2 }}
           variant="contained"

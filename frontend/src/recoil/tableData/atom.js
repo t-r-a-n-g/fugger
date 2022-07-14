@@ -70,6 +70,7 @@ function getRow(table, dataObject, rowOpenState) {
       value: dataObject.name,
       isEditable: true,
       label,
+      accNumber: dataObject.number,
       field: "name",
       key: nameCellKey,
     },

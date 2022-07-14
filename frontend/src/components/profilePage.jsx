@@ -30,6 +30,7 @@ export default function ProfilePage({ user }) {
     <Box sx={{ px: 2 }}>
       <Grid
         container
+        sx={{ padding: "10px" }}
         spacing={1}
         alignItems="flex-start"
         direction="row"
@@ -37,7 +38,7 @@ export default function ProfilePage({ user }) {
       >
         {/* FORM SIDE ( LEFT ) */}
 
-        <Grid container xs={8} spacing={1}>
+        <Grid container xs={8} spacing={3}>
           <Grid item xs={12}>
             <h4>General Information</h4>
           </Grid>
@@ -135,30 +136,41 @@ export default function ProfilePage({ user }) {
           </Grid>
         </Grid>
         {/* PROFILE CARD SIDE (RIGHT) */}
-        <Grid item xs={4} spacing={1}>
-          <Card>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="300"
-                image="src\img\pexel.webp"
-                alt="User"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  <p>User</p>
-                  <a href="someone@gmail.com">someone@gmail.com</a>
-                  <p>Germany , Berlin</p>
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maxime mollitia, molestiae quas vel sint commodi repudiandae
-                  consequuntur voluptatum laborum numquam blanditiis harum
-                  quisquam eius sed odit fugiat iusto fuga praesentium
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+        <Grid container xs={4} spacing={3}>
+          <Grid item xs={14}>
+            <Card sx={{ marginLeft: "50px" }}>
+              <CardActionArea sx={{ marginTop: "3px" }}>
+                <CardMedia
+                  component="img"
+                  height="400"
+                  image="src\img\pexel.webp"
+                  alt="User"
+                />
+                <CardContent sx={{ backgroundColor: "background.color" }}>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{ color: "primary.contrastText" }}
+                  >
+                    <p>Hans Wurst</p>
+                    <a href="hans.wurst@salami.de">hans.wurst@salami.de</a>
+                    <p>Germany, Berlin</p>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ color: "primary.contrastText" }}
+                  >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime mollitia, molestiae quas vel sint commodi repudiandae
+                    consequuntur voluptatum laborum numquam blanditiis harum
+                    quisquam eius sed odit fugiat iusto fuga praesentium
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
         </Grid>
       </Grid>
     </Box>

@@ -16,6 +16,7 @@ import LogoutPage from "@components/authentification/logout";
 import Analysis from "@components/Analysis";
 import Settings from "@components/settings/Settings";
 import Files from "@components/files/Files";
+import ProfilePage from "@components/profilePage";
 
 /* Helpers & Libraries */
 import UserContext from "@contexts/UserContext";
@@ -78,6 +79,10 @@ function App() {
                     <Route
                       path="/logout"
                       element={<LogoutPage setUser={setUser} />}
+                    />
+                    <Route
+                      path="/profile"
+                      element={<ProfilePage user={user} />}
                     />
                   </Route>
                 </Routes>

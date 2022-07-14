@@ -1,41 +1,24 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "plugin:jsx-a11y/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    }
   },
-  "plugins": ["react", "import"],
+  "plugins": ["react"],
   "rules": {
-    "no-console": "off",
-    "no-restricted-syntax": [
-      "error",
-      {
-        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(error|warn)$/]",
-        "message": "You can only call the error() and warn() functions from the console object"
-      }
-    ],
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/forbid-prop-types": "off",
-    "linebreak-style": ["error", "unix"],
-    "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "off",
-    "no-param-reassign": "off",
-    "no-plusplus": "off"
+
+    "jsx-a11y/no-autofocus": "off"
   },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "eslint-import-resolver-custom-alias": {
         "alias": {
@@ -43,7 +26,10 @@
           "@components": "./src/components",
           "@img": "./src/img",
           "@pages": "./src/pages",
-          "@services": "./src/services"
+          "@services": "./src/services",
+          "@hooks": "./src/hooks",
+          "@recoil": "./src/recoil",
+          "@contexts": "./src/contexts"
         },
         "extensions": [".js", ".jsx"]
       }

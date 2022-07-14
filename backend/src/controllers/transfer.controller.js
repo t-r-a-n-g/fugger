@@ -11,7 +11,8 @@ class TransferController {
 
     const uploadedFile = await UploadService.uploadFile(
       req.files.datev_export_file,
-      uploadPath
+      uploadPath,
+      req.user.id
     );
 
     const uploadedFilePath = `${uploadedFile.file_path}/${uploadedFile.file_name}`;
@@ -38,12 +39,13 @@ class TransferController {
 
   static async updateTransfer(req, res) {
     const { transferId } = req.params;
-    const { amount } = req.body;
+    const { amount, type } = req.body;
 
     const transfer = await TransferService.updateTransfer(
       transferId,
       req.user.id,
-      amount
+      amount,
+      type
     );
     return res.json(transfer);
   }

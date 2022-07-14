@@ -7,13 +7,17 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-const swaggerFile = require("./swagger/output.json");
+const path = require("path");
+const swaggerFile = require("./backend/swagger/output.json");
 
-const db = require("./src/models");
-const routes = require("./src/routes");
+const db = require("./backend/src/models");
+const routes = require("./backend/src/routes");
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: process.env.CORS_URI, credentials: true }));
+// app.use(
+//   cors({ origin: "https://wcs-fugger.herokuapp.com/", credentials: true })
+// );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -27,7 +31,7 @@ Object.keys(routes).forEach((route) => {
 });
 
 async function startServer() {
-  const port = process.env.APP_PORT || 5000;
+  const port = process.env.PORT || 5000;
   app.listen(port, () => {
     console.info(`Server started on port ${port}`);
   });
@@ -71,3 +75,13 @@ startServer();
 checkDB();
 
 // syncDB(true);
+
+// HEROKU DEPLOYMENT
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(`${__dirname}/frontend/dist/index.html`));
+});

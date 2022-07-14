@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { monthRangeWithMonthBeginning } from "@recoil/monthRange";
 import Api from "@services/Api";
 
 const getTransfers = async (setSelf) => {

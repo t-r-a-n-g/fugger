@@ -17,12 +17,16 @@ const isValidDate = (d) => d instanceof Date && !Number.isNaN(d.getTime());
 
 function parseDate(date, delimiter = "/") {
   if (isValidDate(date)) return { date };
-
-  const newDate = new Date(date);
-  if (isValidDate(newDate))
-    return {
-      date: new Date(Date.UTC(newDate.getFullYear(), newDate.getMonth())),
-    };
+  if (
+    (typeof date === "string" && !date.includes(delimiter)) ||
+    typeof date !== "string"
+  ) {
+    const newDate = new Date(Number(date));
+    if (isValidDate(newDate))
+      return {
+        date: new Date(Date.UTC(newDate.getFullYear(), newDate.getMonth())),
+      };
+  }
 
   const dateParts = date.split(delimiter);
   let month = null;
@@ -40,6 +44,7 @@ function parseDate(date, delimiter = "/") {
     }
   }
 
+  if (year === null) return null;
   if (month === -1) month = 0;
 
   return { month, year, date: new Date(Date.UTC(year, month)) };

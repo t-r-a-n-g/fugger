@@ -1,167 +1,233 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
-import API from "@services/Api";
+import useTableData from "@hooks/useTableData";
+import { useTranslation } from "react-i18next";
 
-import * as XLSX from "xlsx/xlsx.mjs"; // eslint-disable-line
 
-/* load 'fs' for readFile and writeFile support */
-import * as fs from "fs";
+import * as XLSX from "xlsx-js-style";
 
-XLSX.set_fs(fs);
-
-/* TO DO:
-----------
-- define what time period to export (fetch data)
-- include month data
-- name headers dynamically
-- include abs and pct calculation
-- adjust cell width
-*/
-
-/*  eslint array-callback-return: 0 */
 
 function ExportTable() {
-  /*  functions for calculating abs and pct */
+  const { t } = useTranslation();
+
+  const { categoryRows, subcategoryRows, datevRows, headers } = useTableData({
+    table: "analysis",
+  });
+
   function round(num) {
-    const m = Number((Math.abs(num) * 100).toPrecision(15));
-    const rounded = (Math.round(m) / 100) * Math.sign(num);
+    if (Number.isNaN(num)) return NaN;
+
+    const m = Number(num * 100).toPrecision(15);
+    const rounded = Math.round(m) / 100;
 
     return Number.isNaN(rounded) ? 0 : rounded;
   }
 
-  function selectTransferData(transfer) {
-    let transferAbs = null;
-
-    if (transfer.type === "S") {
-      transferAbs = transfer.budget - transfer.actual;
-    } else {
-      transferAbs = transfer.actual - transfer.budget;
-    }
-
-    let transferPerct = null;
-    if (transfer.budget > 0)
-      transferPerct = (transferAbs / transfer.budget) * 100;
-    else transferPerct = transfer.type === "H" ? 100 : -100;
-
-    return {
-      abs: round(transferAbs),
-      perct: round(transferPerct),
-      actual: round(transfer.actual),
-      budget: round(transfer.budget),
-    };
-  }
-
-  /*  onClick for export */
-  const [data, setData] = useState();
-
   const handleExport = () => {
-    API.get("analysis", { from: "Jan2019", to: "Mar2019" }).then((resp) => {
-      /* console.log(resp.data); */
-      setData(resp.data);
+    const rows = [];
+
+    /* TABLE HEADERS */
+    const monthsHeaderHelper = [""];
+    const monthsArray = headers[0].slice(1).map((month) => month.value);
+    for (let i = 0; i < monthsArray.length; i++) {
+      monthsHeaderHelper.push(monthsArray[i], "", "", "");
+    }
+    const monthsHeader = monthsHeaderHelper.map((el) => {
+      return {
+        v: el,
+        s: {
+          fill: { color: { rgb: "000000" } },
+          font: { bold: true, color: { rgb: "FFFFFF" } },
+        },
+      };
     });
 
-    if (data) {
-      for (const transfer of data.transfers) {
-        if (transfer.budget) {
-          transfer.abs = selectTransferData(transfer).abs;
-          transfer.perct = selectTransferData(transfer).perct;
-        } else {
-          transfer.abs = undefined;
-          transfer.perct = undefined;
+    const subHeader = headers[1]
+      .slice(1)
+      .map((el) => (typeof el === "object" ? el.value : el))
+      .map((el) => {
+        return {
+          v: el,
+          s: {
+            fill: { color: { rgb: "000000" } },
+            font: { bold: true, color: { rgb: "FFFFFF" } },
+            border: { bottom: { style: "medium", color: { rgb: "FFFFFF" } } },
+          },
+        };
+      });
+
+    rows.push(monthsHeader, subHeader);
+
+    /* TABLE BODY, TO DO: change fill color */
+
+    for (const category of categoryRows) {
+      const { id } = category;
+      const { cellData } = category;
+
+      const catRow = Object.values(cellData).map((el) =>
+        typeof el.value === "number" ? round(el.value) : el.value
+      );
+
+      const categoryStyled = catRow.map((el) => {
+        if (el > 0)
+          return {
+            v: el,
+            s: {
+              fill: { fgColor: { rgb: "819CDB" } },
+              font: { bold: true, color: { rgb: "228A3E" } },
+              border: { bottom: { style: "thin" }, top: { style: "medium" } },
+            },
+          };
+
+        if (el < 0)
+          return {
+            v: el,
+            /*   */
+            s: {
+              fill: { fgColor: { rgb: "819CDB" } },
+              font: { bold: true, color: { rgb: "FF0000" } },
+              border: { bottom: { style: "thin" }, top: { style: "medium" } },
+            },
+          };
+
+        return {
+          v: el,
+          s: {
+            fill: { fgColor: { rgb: "819CDB" } },
+            font: { bold: true },
+            border: { bottom: { style: "thin" }, top: { style: "medium" } },
+          },
+        };
+      });
+
+      rows.push(categoryStyled);
+
+      for (const subcategory of subcategoryRows) {
+        const { categoryId } = subcategory;
+        const subcatId = subcategory.id;
+
+        if (id === categoryId) {
+          const subcatCellData = subcategory.cellData;
+
+          const subcatRow = Object.values(subcatCellData).map((el) =>
+            typeof el.value === "number" ? round(el.value) : el.value
+          );
+          const subcategoryStyled = subcatRow.map((el) => {
+            if (el > 0)
+              return {
+                v: el,
+                s: {
+                  fill: { fgColor: { rgb: "D0E5F8" } },
+                  font: { bold: true, color: { rgb: "228A3E" } },
+                  border: {
+                    bottom: { style: "thin" },
+                    top: { style: "medium" },
+                  },
+                },
+              };
+
+            if (el < 0)
+              return {
+                v: el,
+                s: {
+                  fill: { fgColor: { rgb: "D0E5F8" } },
+                  font: { bold: true, color: { rgb: "FF0000" } },
+                  border: {
+                    bottom: { style: "thin" },
+                    top: { style: "medium" },
+                  },
+                },
+              };
+
+            return {
+              v: el,
+              s: {
+                fill: { fgColor: { rgb: "D0E5F8" } },
+                font: { bold: true },
+                border: { bottom: { style: "thin" }, top: { style: "medium" } },
+              },
+            };
+          });
+
+          rows.push(subcategoryStyled);
+
+          for (const datevAcc of datevRows) {
+            const { subcategoryId } = datevAcc;
+
+            if (subcatId === subcategoryId) {
+              const datevCellData = datevAcc.cellData;
+              const datevRow = Object.values(datevCellData).map((el) =>
+                typeof el.value === "number" ? round(el.value) : el.value
+              );
+              const datevStyled = datevRow.map((el) => {
+                if (el > 0)
+                  return {
+                    v: el,
+                    s: {
+                      font: { color: { rgb: "228A3E" } },
+                    },
+                  };
+
+                if (el < 0)
+                  return {
+                    v: el,
+                    s: {
+                      font: { color: { rgb: "FF0000" } },
+                    },
+                  };
+
+                return {
+                  v: el,
+                };
+              });
+
+              rows.push(datevStyled);
+            }
+          }
         }
       }
     }
 
-    // reshape fetched data for excel sheet
-    const rows = [];
-    if (data) {
-      rows.push(
-        // headers
-        {
-          "": "Account",
-          Jan2019Actual: "Actual",
-          Jan2019Budget: "Budget",
-          Jan2019Abs: "Absolute",
-          Jan2019Perct: "Percentage",
-        }
-      );
-
-      // categories rows
-      Object.values(data.categories).map((cat) => {
-        rows.push({
-          "": cat.name,
-        });
-
-        // subcategories rows
-        Object.values(data.subcategories).map((subcat) => {
-          let subcatActual = 0;
-          let subcatBudget = 0;
-          let subcatAbs = 0;
-          let subcatPerct = 0;
-
-          Object.values(data.datevAccounts).map((datev) => {
-            if (datev.subcategoryId === subcat.id) {
-              const transfer = data.transfers.find(
-                (transferRow) => transferRow.datevAccountId === datev.id
-              );
-              subcatActual += transfer.actual;
-              if (transfer.budget) subcatBudget += transfer.budget;
-              if (transfer.abs) subcatAbs += transfer.abs;
-              if (transfer.perct) subcatPerct += transfer.perct;
-            }
-          });
-
-          if (subcat.categoryId === cat.id) {
-            rows.push({
-              "": subcat.name,
-              Jan2019Actual: subcatActual,
-              Jan2019Budget: subcatBudget,
-              Jan2019Abs: subcatAbs,
-              Jan2019Perct: subcatPerct,
-            });
-
-            // datev accounts rows
-            Object.values(data.datevAccounts).map((datev) => {
-              if (datev.subcategoryId === subcat.id) {
-                const transfer = data.transfers.find(
-                  (transferRow) => transferRow.datevAccountId === datev.id
-                );
-
-                rows.push({
-                  "": datev.name,
-                  Jan2019Actual: transfer.actual,
-                  Jan2019Budget: transfer.budget,
-                  Jan2019Abs: transfer.abs,
-                  Jan2019Perct: transfer.perct,
-                });
-              }
-            });
-          }
-        });
-      });
-    }
-    /* console.log(rows); */
-
     // download the excel file
     if (rows.length > 0) {
       /* generate worksheet and workbook */
-      const worksheet = XLSX.utils.json_to_sheet(rows);
+      const worksheet = XLSX.utils.aoa_to_sheet(rows);
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "TestTable");
+      XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        `${monthsArray[0]} - ${monthsArray[monthsArray.length - 1]}`
+      );
 
-      /* fix headers of table, this needs to be generated dynamically */
-      XLSX.utils.sheet_add_aoa(worksheet, [["Jan 2019", "", "", ""]], {
-        origin: "B1",
-      });
+      /* change width of first column */
+      worksheet["!cols"] = [{ wch: 40 }];
+
+      /* merge months cells */
+      const mergeCells = [{ s: { r: 0, c: 1 }, e: { r: 0, c: 4 } }];
+
+      let n = 5;
+      for (let i = 0; i < monthsArray.length; i++) {
+        mergeCells.push({ s: { r: 0, c: n }, e: { r: 0, c: n + 3 } });
+        n += 4;
+      }
+
+      worksheet["!merges"] = mergeCells;
 
       /* create an XLSX file and save as "anyfilename".xlsx */
-      XLSX.writeFile(workbook, "TestExport.xlsx");
+      XLSX.writeFile(
+        workbook,
+        `Export_${monthsArray[0]}-${monthsArray[monthsArray.length - 1]}.xlsx`
+      );
     }
   };
 
   return (
-    <Button variant="contained" onClick={handleExport}>
-      Export
+    <Button
+      sx={{ marginTop: 3, marginLeft: 2 }}
+      variant="contained"
+      onClick={handleExport}
+    >
+      {t("export-table")}
     </Button>
   );
 }

@@ -144,6 +144,9 @@ function LoginPage({ setUser }) {
                   InputProps={{
                     style: { fontSize: 13 },
                   }}
+                  InputLabelProps={{
+                    color: "contrastText",
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -169,6 +172,9 @@ function LoginPage({ setUser }) {
                         </IconButton>
                       </InputAdornment>
                     ),
+                  }}
+                  InputLabelProps={{
+                    color: "contrastText",
                   }}
                 />
                 <Typography color="text.secondary" variant="body2">
@@ -206,13 +212,12 @@ function LoginPage({ setUser }) {
                     color: "text.secondary",
                     borderRadius: "10px",
                     "&:hover": {
-                      backgroundColor: "primary.main",
                       color: "primary.contrastText",
                     },
                   }}
                   id="login-button-google"
                   fullWidth
-                  variant="outlined"
+                  variant="contained"
                   startIcon={<GoogleLogo />}
                 >
                   {t("third-party-google")}
@@ -222,13 +227,12 @@ function LoginPage({ setUser }) {
                     color: "#4267B2",
                     borderRadius: "10px",
                     "&:hover": {
-                      backgroundColor: "primary.main",
                       color: "primary.contrastText",
                     },
                   }}
                   id="login-button-facebook"
                   fullWidth
-                  variant="outlined"
+                  variant="contained"
                   startIcon={<FacebookIcon />}
                 >
                   {t("third-party-facebook")}
@@ -240,14 +244,13 @@ function LoginPage({ setUser }) {
                     color: "#0A66C2",
                     borderRadius: "10px",
                     "&:hover": {
-                      backgroundColor: "primary.main",
                       color: "primary.contrastText",
                     },
                   }}
                   color="primary"
                   id="login-button-linkedin"
                   fullWidth
-                  variant="outlined"
+                  variant="contained"
                   endIcon={<LinkedInIcon sx={{ margin: "-9px" }} />}
                 >
                   {t("third-party-linkedin")}

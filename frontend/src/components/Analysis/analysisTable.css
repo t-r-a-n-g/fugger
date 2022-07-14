@@ -64,11 +64,9 @@ table {
 }
 
 .budget-col {
-  border-right: 1px solid lightgray;
 }
 
 .pct-col {
-  border-right: 1px solid black;
 }
 
 .pct-col span::after {
@@ -82,4 +80,13 @@ table {
 
 .row-depth-2 .an-col-1 {
   padding-left: 60px;
+}
+
+#table-functions {
+  display: grid;
+  grid-template-rows: 50px 100px;
+}
+
+#table-functions > div:nth-child(2) {
+  margin: 16px 0 0 0;
 }

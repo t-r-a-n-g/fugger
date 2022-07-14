@@ -1,4 +1,4 @@
-const datevAccountDefaults = require("../../datev_account_defaults.json");
+const datevAccountDefaults = require("../../../dev/data/datev_account_defaults.json");
 const DatevAccountDefaults = require("./datevAccountDefaults.model");
 
 const User = require("./user.model");

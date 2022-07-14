@@ -59,13 +59,10 @@ class TransferService {
         }
       }
     }
-
-    return Transfer.bulkCreate(dbTransfers, {
-      updateOnDuplicate: ["amount", "type"],
-    });
+    return Transfer.bulkCreate(dbTransfers, { updateOnDuplicate: ["amount"] });
   }
 
-  static async updateTransfer(transferId, userId, amount) {
+  static async updateTransfer(transferId, userId, amount, type) {
     const transfer = await Transfer.findOne({
       where: { id: transferId, userId },
     });
@@ -74,7 +71,7 @@ class TransferService {
     const parsedAmount = Number.parseFloat(amount);
     if (Number.isNaN(parsedAmount)) throw new ValueError();
 
-    return transfer.update({ amount: parsedAmount });
+    return transfer.update({ amount: parsedAmount, type });
   }
 }
 

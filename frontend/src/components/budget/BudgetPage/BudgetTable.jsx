@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { useRecoilState } from "recoil";
+
+import { Button } from "@mui/material";
+
+import BudgetEditing from "@components/budget/BudgetCard";
+import SuccessModal from "@components/budget/SuccessModel";
 
 import { round } from "@services/utils/math";
 
 import monthRangeAtom from "@recoil/monthRange";
 
+import { useTranslation } from "react-i18next";
 import useTableData from "@hooks/useTableData";
 
 import MonthRangePicker from "@components/MonthRangePicker";
@@ -33,6 +40,13 @@ function BudgetTable() {
   } = useTableData({ table: "budgets" });
 
   const [monthRange, setMonthRange] = useRecoilState(monthRangeAtom("budgets"));
+
+  // for budget planing/editing
+  const [open, setOpen] = useState(false);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
+
+  // translation i18 next
+  const { t } = useTranslation();
 
   function onNameChange(dataObject, key, newValue, oldValue) {
     if (newValue === oldValue) return false;
@@ -149,17 +163,17 @@ function BudgetTable() {
     return true;
   }
 
-  function onRowOpenToggle(type, key, open) {
+  function onRowOpenToggle(type, key, isOpen) {
     if (type === "category") {
       const rowsCopy = [...categoryRows];
       const rowIndex = rowsCopy.findIndex((row) => row.key === key);
-      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen });
 
       setCategoryRows(rowsCopy);
     } else if (type === "subcategory") {
       const rowsCopy = [...subcategoryRows];
       const rowIndex = rowsCopy.findIndex((row) => row.key === key);
-      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen });
 
       setSubcategoryRows(rowsCopy);
     }
@@ -246,7 +260,7 @@ function BudgetTable() {
       rows.push(
         <AnTableRow
           {...row}
-          toggleOpen={(open) => onRowOpenToggle(row.type, row.key, open)}
+          toggleOpen={(rowOpen) => onRowOpenToggle(row.type, row.key, rowOpen)}
           className={`${row.className} row-depth-${depth}`}
         >
           {getCellData(budgets, (newValue, oldValue, field, key) =>
@@ -281,7 +295,25 @@ function BudgetTable() {
   return (
     <>
       <div id="table-functions">
-        <div></div>
+        <div>
+          <Button
+            sx={{ marginTop: 3, marginLeft: 2 }}
+            variant="contained"
+            onClick={() => setOpen(true)}
+          >
+            {t("plan-budgets")}
+          </Button>
+          <SuccessModal
+            savedSuccessfully={savedSuccessfully}
+            setSavedSuccessfully={setSavedSuccessfully}
+          />
+          <BudgetEditing
+            open={open}
+            setOpen={setOpen}
+            savedSuccessfully={savedSuccessfully}
+            setSavedSuccessfully={setSavedSuccessfully}
+          />
+        </div>
         <div>
           <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         </div>

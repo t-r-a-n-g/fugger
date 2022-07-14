@@ -104,7 +104,6 @@ const theme2 = {
   // Overrides specific components
 
   components: global.components,
-
 };
 
 // Do NOT change name of themeDark, because it is used often in whole app!

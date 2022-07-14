@@ -297,17 +297,17 @@ function AnalysisTable() {
       <div id="table-functions">
         <div>
           <Button
-          sx={{ marginTop: 3, marginLeft: 2 }}
-          variant="contained"
-          onClick={() => setOpenBudget(true)}
-        >
-          {t("plan-budgets")}
-        </Button>
+            sx={{ marginTop: 3, marginLeft: 2 }}
+            variant="contained"
+            onClick={() => setOpenBudget(true)}
+          >
+            {t("plan-budgets")}
+          </Button>
+          <ExportTable />
         </div>
         <div>
           <MonthRangePicker onChange={setMonthRange} value={monthRange} />
         </div>
-
       </div>
 
       <SuccessModal

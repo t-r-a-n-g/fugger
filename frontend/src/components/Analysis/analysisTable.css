@@ -87,6 +87,6 @@ table {
   grid-template-rows: 50px 100px;
 }
 
-#table-functions > div:first-child {
-  margin: 16px 0 0 16px;
+#table-functions > div:nth-child(2) {
+  margin: 16px 0 0 0;
 }

@@ -5,29 +5,86 @@ import i18n from "i18next";
 import rowOpenAtomFamily from "@recoil/rowOpen";
 import { monthRangeWithMonthBeginning } from "@recoil/monthRange";
 
-import categoriesAtom from "@recoil/categories";
-import subcategoriesAtom from "@recoil/subcategories";
-import datevAccountsAtom from "@recoil/datevAccounts";
+import categoriesAtom from "@recoil/categories/atom";
+import subcategoriesAtom from "@recoil/subcategories/atom";
+import datevAccountsAtom from "@recoil/datevAccounts/atom";
 
 import { getMonthRange } from "@services/utils/date";
 import { calculateDiff, round } from "@services/utils/math";
 
 const getHeaders = ([from, to], table) => {
-  const headers = [
-    [{ colSpan: 2 }],
-    [
-      { className: "firstColumn empty-header" },
-      { value: "Account", className: "accounts-header-col" },
-    ],
-  ];
+  let headers = [];
+  if (table === "analysis") {
+    headers = [
+      [
+        {
+          colSpan: 2,
+          sx: {
+            height: "50px",
+            borderBottom: 0,
+          },
+        },
+      ],
+      [
+        {
+          className: "firstColumn empty-header",
+          sx: {
+            height: "50px",
+          },
+        },
+        {
+          value: "Account",
+          className: "accounts-header-col",
+          sx: {
+            height: "50px",
+          },
+        },
+      ],
+    ];
+  } else {
+    headers = [
+      [
+        {
+          className: "firstColumn empty-header",
+          sx: {
+            height: "50px",
+          },
+        },
+        {
+          value: "Account",
+          className: "accounts-header-col",
+          sx: {},
+        },
+      ],
+    ];
+  }
 
   let monthlyHeaders = [];
   if (table === "analysis") {
     monthlyHeaders = [
-      "Actual",
-      "Budget",
-      "Abs",
-      { value: "Perct", className: "pct-header" },
+      {
+        value: "Actual",
+        sx: {
+          borderLeft: 1,
+          borderLeftColor: "table.border.thick",
+        },
+      },
+      {
+        value: "Budget",
+        sx: {},
+      },
+      {
+        value: "Abs",
+        sx: {},
+      },
+      {
+        value: "Perct",
+        className: "pct-header",
+        sx: {
+          borderRight: 1,
+          borderRightColor: "table.border.thick",
+        },
+      },
     ];
   } else if (table === "budget") monthlyHeaders = ["Budget"];
 
@@ -44,9 +101,18 @@ const getHeaders = ([from, to], table) => {
       align: "center",
       key: month.getTime(),
       className: "date-header",
+      sx:
+        table === "analysis"
+          ? {
+              borderLeft: 1,
+              borderLeftColor: "table.border.thick",
+              borderBottom: 1,
+              borderBottomColor: "table.border.thick",
+            }
+          : {},
     });
 
-    headers[1].push(...monthlyHeaders);
+    if (table === "analysis") headers[1].push(...monthlyHeaders);
   }
 
   return headers;
@@ -85,16 +151,16 @@ function getRow(table, dataObject, rowOpenState) {
       pct,
     })) {
       const cellKey = `${dataObject.type}-${dataObject.id}-${field}-${monthSum.date}`;
-      const sx = {
-        color: value < 0 ? "error.main" : "success.main",
-      };
+      let color = "";
+      if (value > 0) color = "success.main";
+      else if (value < 0) color = "error.main";
 
       cellData[cellKey] = {
         key: cellKey,
         value,
         label: round(value),
         isEditable: isDatev && !["abs", "pct"].includes(field),
-        sx,
+        sx: { color },
         field,
         type,
         className: `${field}-col`,

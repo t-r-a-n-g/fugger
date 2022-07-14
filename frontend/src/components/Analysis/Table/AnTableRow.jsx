@@ -18,11 +18,21 @@ function AnTableRow(props) {
     firstCell = <TableCell className="firstColumn" />;
   else if (hasChildren) {
     firstCell = (
-      <TableCell className="firstColumn" sx={{ textAlign: "center" }}>
+      <TableCell
+        className="firstColumn"
+        sx={{
+          textAlign: "center",
+          borderBottom: 1,
+          borderBottomColor: "table.border.thin",
+        }}
+      >
         <IconButton
           aria-label="expand row"
           size="small"
           onClick={() => toggleOpen(!isOpen)}
+          sx={{
+            color: "table.accent",
+          }}
         >
           {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </IconButton>

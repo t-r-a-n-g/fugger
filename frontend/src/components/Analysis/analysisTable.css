@@ -64,11 +64,9 @@ table {
 }
 
 .budget-col {
-  border-right: 1px solid lightgray;
 }
 
 .pct-col {
-  border-right: 1px solid black;
 }
 
 .pct-col span::after {

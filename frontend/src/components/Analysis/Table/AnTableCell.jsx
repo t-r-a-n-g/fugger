@@ -13,6 +13,11 @@ class AnTableCell extends React.Component {
       label: props.label || props.children,
       value: props.children,
       prevValue: null,
+      sx: {
+        borderBottom: 1,
+        borderBottomColor: "table.border.thin",
+        ...props.sx,
+      },
     };
 
     this.onKeyPressOnInput = this.onKeyPressOnInput.bind(this);
@@ -76,8 +81,8 @@ class AnTableCell extends React.Component {
   }
 
   render() {
-    const { value, isEditing, label } = this.state;
-    const { className, sx } = this.props;
+    const { value, isEditing, label, sx } = this.state;
+    const { className } = this.props;
     if (isEditing) {
       return (
         <TableCell className={`an-col ${className}`}>

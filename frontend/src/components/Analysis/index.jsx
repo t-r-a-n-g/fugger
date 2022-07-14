@@ -145,11 +145,12 @@ function AnalysisTable() {
 
         const fieldKey = `${cellKey}-${field}-${timestamp}`;
 
-        const newCellValue =
+        let newCellValue =
           Number(row.cellData[fieldKey].value) -
           Number(oldValue) +
           Number(newValue);
 
+        if (field === "budget") newCellValue = Math.abs(newCellValue);
         row.cellData[fieldKey].sx = getFieldColorSx(newCellValue);
         row.cellData[fieldKey].value = newCellValue;
         row.cellData[fieldKey].label = round(newCellValue);
@@ -203,7 +204,18 @@ function AnalysisTable() {
       const key = cell.key || `cell-${index}`;
       const className = cell.className || "";
       const isEditable = cell.isEditable || false;
-      const sx = cell.sx || null;
+      const sx = { ...cell.sx } || {};
+
+      if (cell.field === "budget") {
+        sx.borderRight = 1;
+        sx.borderRightColor = "table.border.thin";
+      } else if (cell.field === "actual") {
+        sx.borderLeft = 1;
+        sx.borderLeftColor = "table.border.thick";
+      } else if (cell.field === "pct") {
+        sx.borderRight = 1;
+        sx.borderRightColor = "table.border.thick";
+      }
 
       cells.push(
         <AnTableCell
@@ -266,9 +278,11 @@ function AnalysisTable() {
 
   return (
     <>
-      <ExportTable />
-      <div>
+      <div id="table-functions">
         <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+        <div>
+          <ExportTable />
+        </div>
       </div>
 
       <Box sx={{ px: 2 }} id="table-container">

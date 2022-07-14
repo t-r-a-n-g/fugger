@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
-import UserContext from "@contexts/UserContext";
+
+import userAtom from "@recoil/users";
 
 export default function Account(props) {
   const { values, setValues, index, accountData, setAccountData } = props;
@@ -12,8 +15,8 @@ export default function Account(props) {
   const { t } = useTranslation();
 
   // to get accsess to userTheme
-  const user = React.useContext(UserContext);
-  const usedTheme = user.theme;
+  const user = useRecoilValue(userAtom);
+  const usedTheme = user.data.theme;
 
   /* --------------------------- HANDLING USER INPUT --------------------------- */
 

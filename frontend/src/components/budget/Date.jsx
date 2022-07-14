@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+
 import PropTypes from "prop-types";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
@@ -6,14 +8,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { useTranslation } from "react-i18next";
-import UserContext from "@contexts/UserContext";
+
+import userAtom from "@recoil/users";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 // specify here which dates should be available (yearStart and yearEnd)
-const yearStart = 2016;
-const yearEnd = 2022;
+const yearStart = new Date().getFullYear() - 5;
+const yearEnd = new Date().getFullYear() + 5;
 const months = [
   "Jan",
   "Feb",
@@ -40,7 +43,7 @@ for (let i = yearStart; i <= yearEnd; i++) {
   }
 }
 
-export default function Date(props) {
+export default function DateComponent(props) {
   const { values, setValues, index } = props;
 
   // translation i18 next
@@ -57,8 +60,8 @@ export default function Date(props) {
   }, [dateValue]);
 
   // to get accsess to userTheme
-  const user = React.useContext(UserContext);
-  const usedTheme = user.theme;
+  const user = useRecoilValue(userAtom);
+  const usedTheme = user.data.theme;
 
   return (
     <Autocomplete
@@ -108,7 +111,7 @@ export default function Date(props) {
   );
 }
 
-Date.propTypes = {
+DateComponent.propTypes = {
   values: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   setValues: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

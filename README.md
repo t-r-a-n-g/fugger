@@ -13,3 +13,5 @@ This data will be parsed and uploaded into the Analysis Table where changes in a
 
 Budgets can be planned for now and the future.
 ![Budget Planning](https://user-images.githubusercontent.com/96376911/179528169-a2a852ef-7b98-4487-aae1-a9bd1b4679ef.jpg)
+
+The Analysis Table can be exported as an Excel File.

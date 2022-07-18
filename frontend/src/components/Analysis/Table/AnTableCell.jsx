@@ -10,24 +10,24 @@ class AnTableCell extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      label: props.label || props.children,
-      value: props.children,
+      label: props.children,
+      value: props.value || props.children,
       prevValue: null,
       sx: {
         borderBottom: 1,
         borderBottomColor: "table.border.thin",
+        backgroundColor: "table.body.backgroundColor",
         ...props.sx,
       },
     };
-
     this.onKeyPressOnInput = this.onKeyPressOnInput.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     // reset state on rerender because the constructor is not called again
-    const { children, label } = this.props;
+    const { children, value } = this.props;
     if (prevProps.children !== children)
-      this.setState({ value: children, label: label || children });
+      this.setState({ value: value || children, label: children });
   }
 
   onCellClick() {
@@ -107,7 +107,7 @@ class AnTableCell extends React.Component {
         className={`an-col ${className}`}
         sx={sx}
       >
-        <span>{`${label}`}</span>
+        {label}
       </TableCell>
     );
   }

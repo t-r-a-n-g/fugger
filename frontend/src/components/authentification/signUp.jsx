@@ -1,3 +1,4 @@
+import { useSetRecoilState } from "recoil";
 import {
   Avatar,
   Button,
@@ -31,6 +32,8 @@ import validator from "validator";
 import { useTranslation } from "react-i18next";
 import Api from "@services/Api";
 
+import { userWithAuth } from "@recoil/users";
+
 // To convert react-router Links in MUI Links, to style them like MUI components --- start --- //
 function Router(props) {
   const { children } = props;
@@ -47,7 +50,7 @@ Router.propTypes = {
 
 // ----------------------------------- end ----------------------------------- //
 
-function SignUpPage({ setUser }) {
+function SignUpPage() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +61,7 @@ function SignUpPage({ setUser }) {
   const [emailCheck, setEmailCheck] = useState(true);
   const [hidden, setHidden] = useState(false);
   const { t } = useTranslation(); // i18next
-
+  const setUser = useSetRecoilState(userWithAuth);
   // STATEHANDLE FOR VISIBILL-PASSWORD-BUTTON --> BOOLEAN
   const handleHidden = () => {
     setHidden(!hidden);
@@ -114,7 +117,7 @@ function SignUpPage({ setUser }) {
     if (validEmail && strongPassword && passwordCheck && emailCheck) {
       try {
         const user = await Api.auth.register(userData);
-        setUser(user);
+        setUser(user.data);
         navigate("/");
       } catch (err) {
         setErrorStatus(err.response.status);
@@ -459,7 +462,4 @@ function SignUpPage({ setUser }) {
   );
 }
 
-SignUpPage.propTypes = {
-  setUser: PropTypes.func.isRequired,
-};
 export default SignUpPage;

@@ -1,10 +1,9 @@
+const sequelize = require("sequelize");
 const { Op } = require("sequelize");
 const { Transfer } = require("../models");
 const { Category, Subcategory, DatevAccount } = require("../models");
 
 const DatevService = require("./datev.service");
-
-// const BudgetService = require("./budget.service");
 
 const parseDate = require("../utils/dateParser");
 const { ValueError, NotFoundError } = require("../exceptions");
@@ -25,7 +24,12 @@ class TransferService {
         { model: Subcategory },
       ],
 
-      order: [["date", "ASC"]],
+      // order by date and order_num
+      // if order_num is zero, put it to the end
+      order: [
+        ["date", "ASC"],
+        [sequelize.literal("category.order_num = 0, category.order_num")],
+      ],
       raw: true,
       nest: true,
     });

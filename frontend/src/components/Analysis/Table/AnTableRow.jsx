@@ -21,6 +21,7 @@ function AnTableRow(props) {
       <TableCell
         className="firstColumn"
         sx={{
+          backgroundColor: "table.body.backgroundColor",
           textAlign: "center",
           borderBottom: 1,
           borderBottomColor: "table.border.thin",

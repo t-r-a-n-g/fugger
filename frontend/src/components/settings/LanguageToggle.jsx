@@ -1,28 +1,31 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import { useRecoilState } from "recoil";
+
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import { useTranslation } from "react-i18next";
 import MenuItem from "@mui/material/MenuItem";
 import LanguageIcon from "@mui/icons-material/Language";
-import UserContext from "@contexts/UserContext";
-import Api from "@services/Api";
 
-function LanguageToggle({ setUser }) {
+import userAtom from "@recoil/users";
+
+function LanguageToggle() {
   const { t } = useTranslation(); // i18next
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const user = React.useContext(UserContext);
+  const [user, setUser] = useRecoilState(userAtom);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const toggleLanguage = (lng) => {
     handleClose();
-    const newUser = { ...user, language: lng };
-    Api.users.put({ data: newUser });
+    const newUser = { ...user.data, language: lng };
     setUser(newUser);
   };
 
@@ -81,9 +84,5 @@ function LanguageToggle({ setUser }) {
     </div>
   );
 }
-
-LanguageToggle.propTypes = {
-  setUser: PropTypes.func.isRequired,
-};
 
 export default LanguageToggle;

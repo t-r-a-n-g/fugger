@@ -1,5 +1,6 @@
 {
   "COGS": {
+    "order": 2,
     "Aufwendungen für bezogene Leistungen": {
       "accounts": [
         { "name": "Fremdleistungen", "number": 3100 },
@@ -15,6 +16,7 @@
     }
   },
   "Consulting, Legal and Accounting": {
+    "order": 4,
     "Sonstige betriebliche Aufwendungen": {
       "accounts": [
         { "name": "Rechts- und Beratungskosten", "number": 4950 },
@@ -25,6 +27,7 @@
     }
   },
   "Depreciation": {
+    "order": 5,
     "Abschreibungen auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen": {
       "accounts": [
         { "name": "Abschreibung immaterielle VermG", "number": 4822 },
@@ -72,6 +75,7 @@
     }
   },
   "Employee expenses": {
+    "order": 3,
     "Löhne und Gehälter": {
       "accounts": [
         { "name": "Löhne und Gehälter", "number": 4100 },
@@ -144,6 +148,7 @@
     }
   },
   "extraordinary Revenue": {
+    "order": 1,
     "Erträge aus Beteiligungen": {
       "accounts": [
         { "name": "Erträge aus Beteiligungen", "number": 2600 },
@@ -345,6 +350,7 @@
     }
   },
   "Other Expenses": {
+    "order": 6,
     "Sonstige betriebliche Aufwendungen": {
       "accounts": [
         { "name": "Verluste durch Verschmelzg./Umwandlung", "number": 2004 },
@@ -1099,9 +1105,7 @@
     },
     "Gegenkonto zu 9990-9997": {
       "accounts": [{ "name": "Gegenkonto zu 9990-9997", "number": 9998 }]
-    }
-  },
-  "Other Expenses ": {
+    },
     "Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren": {
       "accounts": [
         { "name": "Einkauf Roh-,Hilfs- und Betriebsstoffe", "number": 3000 },
@@ -1351,6 +1355,7 @@
     }
   },
   "Taxes": {
+    "order": 7,
     "Steuern vom Einkommen und Ertrag": {
       "accounts": [
         { "name": "Körperschaftsteuer", "number": 2200 },

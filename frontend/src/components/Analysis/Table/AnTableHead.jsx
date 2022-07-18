@@ -6,7 +6,7 @@ import TableCell from "@mui/material/TableCell";
 
 import { AnTableHeadProps } from "./propTypes";
 
-function getHeaderRowCells(rowCells) {
+function getHeaderRowCells(rowCells, depth = 0) {
   const cells = [];
 
   for (const [index, cell] of rowCells.entries()) {
@@ -15,7 +15,7 @@ function getHeaderRowCells(rowCells) {
       color: "table.header.fontColor",
       borderBottom: 0,
     };
-    let className = `an-header-col-${index + 1}`;
+    let className = `an-header-col-${depth}-${index + 1}`;
 
     if (typeof cell === "string") {
       cells.push(
@@ -25,7 +25,7 @@ function getHeaderRowCells(rowCells) {
       );
     } else {
       const value = cell.value ?? "";
-      className = `${className} ${cell.className}`;
+      if (cell.className) className = `${className} ${cell.className}`;
 
       let key = cell.key ?? `${cell.value}-${index}`;
       if (!key) key = `nk-${index}-${Math.random()}`;
@@ -60,7 +60,7 @@ function AnTableHead(props) {
   const rows = [];
   for (const [index, row] of headers.entries()) {
     rows.push(
-      <TableRow key={`row-${index}`}>{getHeaderRowCells(row)}</TableRow>
+      <TableRow key={`row-${index}`}>{getHeaderRowCells(row, index)}</TableRow>
     );
   }
 

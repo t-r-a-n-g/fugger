@@ -1,3 +1,4 @@
+const sequelize = require("sequelize");
 const { Op } = require("sequelize");
 
 const { Budget, Category, Subcategory, DatevAccount } = require("../models");
@@ -23,7 +24,10 @@ class BudgetService {
         { model: Subcategory },
       ],
 
-      order: [["date", "ASC"]],
+      order: [
+        ["date", "ASC"],
+        [sequelize.literal("category.order_num = 0, category.order_num")],
+      ],
       raw: true,
       nest: true,
     });
@@ -56,13 +60,6 @@ class BudgetService {
           userId,
         },
       });
-
-      // update already existing budgets
-      // if (budgetEntry) {
-      //   updatedOrCreatedBudgets.push(
-      //     await BudgetService.updateBudget(budgetEntry.id, userId, parsedAmount)
-      //   );
-      // }
 
       // create new budgets
       if (budgetDatevAccount && !budgetEntry) {

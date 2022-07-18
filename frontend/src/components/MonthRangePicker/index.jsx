@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import UserContext from "@contexts/UserContext";
 import deLocale from "date-fns/locale/de";
 import enLocale from "date-fns/locale/en-US";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { styled } from "@mui/material";
+
+import userAtom from "@recoil/users";
+
 import "./MonthRangePicker.css";
 
 const languages = {
@@ -23,8 +26,8 @@ function MonthRangePicker({ onChange, value }) {
   const { t } = useTranslation();
 
   // user | usedTheme | CssTextField are used for styling reasons of DatePicker TextField
-  const user = React.useContext(UserContext);
-  const usedTheme = user.theme;
+  const user = useRecoilValue(userAtom);
+  const usedTheme = user.data.theme;
   const CssTextField = styled(TextField)(({ theme }) => ({
     "& label.Mui-focused": {
       color:

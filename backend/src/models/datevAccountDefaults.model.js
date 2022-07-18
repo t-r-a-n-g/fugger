@@ -22,6 +22,10 @@ const DatevAccountDefaults = sequelize.define(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
+    category_order: {
+      type: DataTypes.INTEGER,
+      default: 0,
+    },
     subcategory_name: {
       type: DataTypes.STRING(100),
       allowNull: false,

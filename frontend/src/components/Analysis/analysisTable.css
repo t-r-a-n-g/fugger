@@ -25,14 +25,13 @@ table {
   text-align: left !important;
   position: -webkit-sticky;
   position: sticky;
-  left: 0;
+  left: 60px;
 }
 
 .an-col {
   min-width: 6vw;
   max-width: 10vw;
   padding: 0;
-  text-align: center !important;
 }
 
 .an-col input {
@@ -42,25 +41,21 @@ table {
 .an-col-1 {
   position: -webkit-sticky;
   position: sticky;
-  left: 60px;
+  left: 120px;
   min-width: 30vw;
   max-width: 30vw;
-  text-align: left !important;
 }
 
-.an-header-col-1,
-.accounts-header-col {
+.an-header-col-0-1 {
   position: -webkit-sticky;
   position: sticky;
   left: 60px;
 }
 
-.an-header-col-1 {
-  left: 0;
-}
-
-.empty-header {
-  left: 0;
+.accounts-header-col {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 120px;
 }
 
 .budget-col {

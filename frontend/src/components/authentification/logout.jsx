@@ -1,20 +1,20 @@
-import Api from "@services/Api";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+
 import { useNavigate } from "react-router-dom";
 
-import PropTypes from "prop-types";
+import userAtom from "@recoil/users";
 
-function LogoutPage({ setUser }) {
+function LogoutPage() {
   const navigate = useNavigate();
+  const setUser = useSetRecoilState(userAtom);
 
-  Api.auth.logout().then(() => {
+  useEffect(() => {
     setUser(null);
     navigate("/login");
-  });
+  }, []);
 
   return null;
 }
 
-LogoutPage.propTypes = {
-  setUser: PropTypes.func.isRequired,
-};
 export default LogoutPage;

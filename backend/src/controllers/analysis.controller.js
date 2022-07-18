@@ -1,4 +1,5 @@
 const { TransferService, BudgetService } = require("../services");
+const { getMonthRange } = require("../utils/date");
 
 // ToDo: implement error handling
 class AnalysisController {
@@ -11,7 +12,7 @@ class AnalysisController {
   static getTransferParents(transfer) {
     const self = AnalysisController;
 
-    const categoryId = transfer.category.id;
+    const categoryId = `${transfer.category.order_num}-${transfer.category.id}`; // transfer.category.id;
     const subcategoryId = transfer.subcategory.id;
     const datevAccountId = transfer.datevAccount.id;
 
@@ -46,6 +47,45 @@ class AnalysisController {
     };
   }
 
+  /*
+   * format sum for a parent object (category, subcategory or datevAccount)
+   *
+   * take the amount of a transfer and/or a budget and add it to the parents totalSums property using the timestamp as key
+   */
+  static formatParentTotalSums(parent, transfer, budget, timestamp) {
+    const transferType = transfer?.type ?? "H";
+    if (!parent.totalSums[timestamp]) {
+      parent.totalSums[timestamp] = {
+        actual: 0,
+        budget: 0,
+        date: timestamp,
+        type: transferType,
+      };
+    }
+
+    if (transfer) {
+      if (transfer.type === "H")
+        parent.totalSums[timestamp].actual += transfer.amount;
+      else parent.totalSums[timestamp].actual -= transfer.amount;
+    }
+
+    if (budget) parent.totalSums[timestamp].budget += budget.amount;
+
+    if (parent.totalSums[timestamp].actual < 0)
+      parent.totalSums[timestamp].type = "S";
+    else parent.totalSums[timestamp].type = "H";
+
+    if (parent.isEmpty)
+      parent.isEmpty =
+        parent.totalSums[timestamp].actual === 0 &&
+        parent.totalSums[timestamp].budget === 0;
+
+    if (parent.type === "datevAccount") {
+      parent.totalSums[timestamp].transferId = transfer?.id;
+      parent.totalSums[timestamp].budgetId = budget?.id;
+    }
+  }
+
   static async getBudgetData(req, res) {
     const { from, to } = req.query;
 
@@ -62,24 +102,9 @@ class AnalysisController {
 
       const dateTime = budget.date.getTime();
       for (const parent of [category, subcategory, datevAccount]) {
-        if (!parent.totalSums[dateTime]) {
-          parent.totalSums[dateTime] = {
-            actual: 0,
-            budget: 0,
-            date: dateTime,
-            type: "H",
-          };
-        }
-
-        parent.totalSums[dateTime].budget += budget.amount;
-        if (parent.isEmpty) parent.isEmpty = budget.amount === 0;
-
-        if (parent.type === "datevAccount") {
-          parent.totalSums[dateTime].budgetId = budget.id;
-        }
+        self.formatParentTotalSums(parent, null, budget, dateTime);
       }
     }
-
     return res.json({
       categories: Object.values(self.categories).filter((cat) => !cat.isEmpty),
       subcategories: Object.values(self.subcategories).filter(
@@ -96,7 +121,6 @@ class AnalysisController {
 
     const transfers = await TransferService.getTransfers(from, to, req.user.id);
     const budgets = await BudgetService.getBudgets(from, to, req.user.id);
-
     const self = AnalysisController;
     self.categories = {};
     self.subcategories = {};
@@ -107,43 +131,47 @@ class AnalysisController {
         self.getTransferParents(transfer);
 
       const dateTime = transfer.date.getTime();
-      const budget = budgets.find(
+
+      let budget = null;
+      const budgetIndex = budgets.findIndex(
         (b) =>
           b.datevAccountId === transfer.datevAccountId &&
           b.date.getTime() === dateTime
       );
 
+      if (budgetIndex >= 0) {
+        // use splice to remove it from budgets array, so that we can map over the remaining budgets later
+        // this fixes the bug where table data which has only a budget but no transfers is not includes
+        // eslint-disable-next-line prefer-destructuring
+        budget = budgets.splice(budgetIndex, 1)[0];
+      }
+
       for (const parent of [category, subcategory, datevAccount]) {
-        if (!parent.totalSums[dateTime]) {
-          parent.totalSums[dateTime] = {
-            actual: 0,
-            budget: 0,
-            date: dateTime,
-            type: transfer.type,
-          };
-        }
+        self.formatParentTotalSums(parent, transfer, budget, dateTime);
+      }
+    }
 
-        if (transfer.type === "H")
-          parent.totalSums[dateTime].actual += transfer.amount;
-        else parent.totalSums[dateTime].actual -= transfer.amount;
+    const monthRange = getMonthRange(new Date(from), new Date(to));
+    // loop over remaining budgets
+    for (const budget of budgets) {
+      // loop over every month to fill them with 0 if there is no budget
+      for (const month of monthRange) {
+        const { category, subcategory, datevAccount } =
+          self.getTransferParents(budget);
 
-        if (budget) parent.totalSums[dateTime].budget += budget.amount;
-
-        if (parent.totalSums[dateTime].actual < 0)
-          parent.totalSums[dateTime].type = "S";
-        else parent.totalSums[dateTime].type = "H";
-
-        if (parent.isEmpty) parent.isEmpty = transfer.amount === 0;
-
-        if (parent.type === "datevAccount") {
-          parent.totalSums[dateTime].transferId = transfer.id;
-          parent.totalSums[dateTime].budgetId = budget?.id;
+        const dateTime = month.getTime();
+        for (const parent of [category, subcategory, datevAccount]) {
+          // since the budgets are ordered by date, we can use a zero budget if it does not belong to the current month
+          // and override it later if the is a budget for the month
+          if (budget.date.getTime() === month.getTime())
+            self.formatParentTotalSums(parent, null, budget, dateTime);
+          else self.formatParentTotalSums(parent, null, null, dateTime);
         }
       }
     }
 
     return res.json({
-      categories: Object.values(self.categories).filter((cat) => !cat.isEmpty),
+      categories: Object.values(self.categories).filter((cat) => !cat.isEmpty), // .sort((a,b) => a.order_num - b.order_num),
       subcategories: Object.values(self.subcategories).filter(
         (scat) => !scat.isEmpty
       ),

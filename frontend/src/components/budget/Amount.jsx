@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+
 import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
-import UserContext from "@contexts/UserContext";
+
+import userAtom from "@recoil/users";
 
 // TO DO: restrict input field to only 2 decimals and run validation check
 export default function Amount(props) {
@@ -17,8 +20,8 @@ export default function Amount(props) {
     setValues({ val: vals });
   }, [amountValue]);
 
-  const user = React.useContext(UserContext);
-  const usedTheme = user.theme;
+  const user = useRecoilValue(userAtom);
+  const usedTheme = user.data.theme;
 
   return (
     <TextField

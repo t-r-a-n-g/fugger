@@ -9,16 +9,20 @@ function setupData() {
   for (const [category, subcategories] of Object.entries(
     datevAccountDefaults
   )) {
+    let order = 0;
     for (const [subcategory, accounts] of Object.entries(subcategories)) {
-      for (const account of accounts.accounts) {
-        promises.push(
-          DatevAccountDefaults.create({
+      if (subcategory === "order") order = accounts;
+      else {
+        for (const account of accounts.accounts) {
+          const obj = {
             name: account.name,
             number: account.number,
             category_name: category,
+            category_order: order,
             subcategory_name: subcategory,
-          })
-        );
+          };
+          promises.push(DatevAccountDefaults.create(obj));
+        }
       }
     }
   }

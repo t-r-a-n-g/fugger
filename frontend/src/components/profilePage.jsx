@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Api from "@services/Api";
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 export default function ProfilePage({ user }) {
   // CREATE A BOOLEAN STATE disabled starts as true
   const [disabled, setDisabled] = React.useState(true);

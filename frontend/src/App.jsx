@@ -16,6 +16,7 @@ import LogoutPage from "@components/authentification/logout";
 import Analysis from "@components/Analysis";
 import Settings from "@components/settings/Settings";
 import Files from "@components/files/Files";
+import ProfilePage from "@components/profilePage";
 
 /* Helpers & Libraries */
 import UserContext from "@contexts/UserContext";
@@ -28,7 +29,6 @@ import "./App.css";
 function App() {
   // Set the applied theme depending on themeMode button group
   const appliedTheme = { theme1, theme2, themeDark };
-  const [theme, setTheme] = useState("theme1");
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function App() {
 
   if (user === null) {
     return (
-      <ThemeProvider theme={createTheme(appliedTheme.theme1)}>
+      <ThemeProvider theme={createTheme(appliedTheme.themeDark)}>
         <Router>
           <Routes>
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
@@ -64,23 +64,25 @@ function App() {
         <ThemeProvider theme={createTheme(appliedTheme[user.theme])}>
           <UserContext.Provider value={user}>
             <Router>
-              <DrawerLayout currentTheme={theme}>
+              <DrawerLayout currentTheme={user.theme}>
                 <Routes>
                   <Route>
-                    <Route path="/" element={<div>DASHBOARD</div>} />
+                    <Route path="/" element={<Analysis />} />
                     <Route path="/analysis" element={<Analysis />} />
                     <Route path="/budgets" element={<BudgetPage />} />
 
                     <Route
                       path="/settings"
-                      element={
-                        <Settings setUser={setUser} setTheme={setTheme} />
-                      }
+                      element={<Settings setUser={setUser} />}
                     />
                     <Route path="/files" element={<Files />} />
                     <Route
                       path="/logout"
                       element={<LogoutPage setUser={setUser} />}
+                    />
+                    <Route
+                      path="/profile"
+                      element={<ProfilePage user={user} />}
                     />
                   </Route>
                 </Routes>

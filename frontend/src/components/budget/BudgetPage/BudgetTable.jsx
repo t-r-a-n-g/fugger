@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { useRecoilState } from "recoil";
+
+import { Button } from "@mui/material";
+
+import BudgetEditing from "@components/budget/BudgetCard";
+import SuccessModal from "@components/budget/SuccessModel";
 
 import { round } from "@services/utils/math";
 
 import monthRangeAtom from "@recoil/monthRange";
 
+import { useTranslation } from "react-i18next";
 import useTableData from "@hooks/useTableData";
 
 import MonthRangePicker from "@components/MonthRangePicker";
@@ -33,6 +40,13 @@ function BudgetTable() {
   } = useTableData({ table: "budgets" });
 
   const [monthRange, setMonthRange] = useRecoilState(monthRangeAtom("budgets"));
+
+  // for budget planing/editing
+  const [open, setOpen] = useState(false);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
+
+  // translation i18 next
+  const { t } = useTranslation();
 
   function onNameChange(dataObject, key, newValue, oldValue) {
     if (newValue === oldValue) return false;
@@ -73,7 +87,7 @@ function BudgetTable() {
     return true;
   }
 
-  function onCellValueChange(dataObject, key, field, newValue, oldValue) {
+  async function onCellValueChange(dataObject, key, field, newValue, oldValue) {
     if (field === "name") {
       return onNameChange(dataObject, key, newValue, oldValue);
     }
@@ -99,19 +113,44 @@ function BudgetTable() {
       );
 
       const timestamp = key.split("-").reverse()[0];
-      const { budgetId } = datevRow.cellData[key];
+      const { budgetId } = datevRow.cellData[key] ?? { budgetId: null };
 
       if (budgetId) Api.budgets.put({ amount: Math.abs(newValue) }, budgetId);
+      else {
+        const res = await Api.budgets.post({
+          amount: Math.abs(newValue),
+          date: timestamp,
+          accountId: datevRow.id,
+        });
+
+        const cell = {
+          budgetId: res.data.id,
+          className: "budget-col",
+          field: "budget",
+          value: 0,
+          isEditable: true,
+          key,
+          type: "H",
+        };
+
+        datevRow.cellData[key] = cell;
+      }
 
       for (const row of [datevRow, subcategoryRow, categoryRow]) {
         const cellKey = `${row.type}-${row.id}`;
-
         const fieldKey = `${cellKey}-${field}-${timestamp}`;
+
+        if (!row.cellData[fieldKey])
+          row.cellData[fieldKey] = { ...datevRow[key] };
 
         const newCellValue =
           Number(row.cellData[fieldKey].value) -
           Number(oldValue) +
           Number(newValue);
+
+        row.cellData[fieldKey].sx = {
+          color: newCellValue > 0 ? "success.main" : "",
+        };
 
         row.cellData[fieldKey].value = newCellValue;
         row.cellData[fieldKey].label = round(newCellValue);
@@ -124,17 +163,17 @@ function BudgetTable() {
     return true;
   }
 
-  function onRowOpenToggle(type, key, open) {
+  function onRowOpenToggle(type, key, isOpen) {
     if (type === "category") {
       const rowsCopy = [...categoryRows];
       const rowIndex = rowsCopy.findIndex((row) => row.key === key);
-      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen });
 
       setCategoryRows(rowsCopy);
     } else if (type === "subcategory") {
       const rowsCopy = [...subcategoryRows];
       const rowIndex = rowsCopy.findIndex((row) => row.key === key);
-      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen: open });
+      rowsCopy.splice(rowIndex, 1, { ...rowsCopy[rowIndex], isOpen });
 
       setSubcategoryRows(rowsCopy);
     }
@@ -142,8 +181,52 @@ function BudgetTable() {
 
   function getCellData(cellData, onValueChange) {
     const cells = [];
-    for (const [index, cell] of cellData.entries()) {
-      const key = cell.key || `cell-${index}`;
+
+    // push the first cell which is the account name
+    cells.push(
+      <AnTableCell
+        key={cellData[0].key}
+        className={`an-col an-col-1 ${cellData[0].className}`}
+        isEditable={true}
+        onValueChange={(newValue, oldValue) =>
+          onValueChange(newValue, oldValue, "name", cellData[0].key)
+        }
+        label={cellData[0].label}
+      >
+        {cellData[0].value}
+      </AnTableCell>
+    );
+
+    const months = headers[0];
+
+    // since there has to be at least one entry we can get the key from it and remove the timestamp at the end
+    // to get the part of the key that all cells on this row share
+    const rowKey = cellData[1].key.split("-").slice(0, 3).join("-");
+
+    // we need to loop over the months because the backend does not return data for months when there is no budget,
+    // which messes up the table structure (budgets get pushed to the left)
+    for (let i = 2; i < months.length; i += 1) {
+      const month = months[i];
+
+      // month.key is the timestamp of the month
+      let cell = cellData.find((c) => c.key.includes(month.key));
+
+      if (!cell) {
+        cell = {
+          budgetId: null,
+          className: "budget-col",
+          field: "budget",
+          isEditable: rowKey.includes("datev"),
+          key: `${rowKey}-${month.key}`,
+          label: "N/A",
+          sx: {},
+          transferId: null,
+          type: "H",
+          value: 0,
+        };
+      }
+
+      const key = cell.key || `cell-${i}`;
       const className = cell.className || "";
       const isEditable = cell.isEditable || false;
       const sx = cell.sx || null;
@@ -151,7 +234,7 @@ function BudgetTable() {
       cells.push(
         <AnTableCell
           key={key}
-          className={`an-col an-col-${index + 1} ${className}`}
+          className={`an-col an-col-${i} ${className}`}
           isEditable={isEditable}
           sx={sx}
           onValueChange={(newValue, oldValue) =>
@@ -177,7 +260,7 @@ function BudgetTable() {
       rows.push(
         <AnTableRow
           {...row}
-          toggleOpen={(open) => onRowOpenToggle(row.type, row.key, open)}
+          toggleOpen={(rowOpen) => onRowOpenToggle(row.type, row.key, rowOpen)}
           className={`${row.className} row-depth-${depth}`}
         >
           {getCellData(budgets, (newValue, oldValue, field, key) =>
@@ -211,8 +294,29 @@ function BudgetTable() {
 
   return (
     <>
-      <div>
-        <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+      <div id="table-functions">
+        <div>
+          <Button
+            sx={{ marginTop: 3, marginLeft: 2 }}
+            variant="contained"
+            onClick={() => setOpen(true)}
+          >
+            {t("plan-budgets")}
+          </Button>
+          <SuccessModal
+            savedSuccessfully={savedSuccessfully}
+            setSavedSuccessfully={setSavedSuccessfully}
+          />
+          <BudgetEditing
+            open={open}
+            setOpen={setOpen}
+            savedSuccessfully={savedSuccessfully}
+            setSavedSuccessfully={setSavedSuccessfully}
+          />
+        </div>
+        <div>
+          <MonthRangePicker onChange={setMonthRange} value={monthRange} />
+        </div>
       </div>
 
       <div id="table-container">{tableJsx()}</div>

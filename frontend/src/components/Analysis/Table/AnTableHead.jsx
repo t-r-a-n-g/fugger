@@ -8,12 +8,18 @@ import { AnTableHeadProps } from "./propTypes";
 
 function getHeaderRowCells(rowCells) {
   const cells = [];
+
   for (const [index, cell] of rowCells.entries()) {
+    let sx = {
+      backgroundColor: "table.header.backgroundColor",
+      color: "table.header.fontColor",
+      borderBottom: 0,
+    };
     let className = `an-header-col-${index + 1}`;
 
     if (typeof cell === "string") {
       cells.push(
-        <TableCell className={className} key={`${cell}-${index}`}>
+        <TableCell className={className} key={`${cell}-${index}`} sx={sx}>
           {cell}
         </TableCell>
       );
@@ -30,7 +36,7 @@ function getHeaderRowCells(rowCells) {
       let align = "left";
       if (cell.align) align = cell.align;
 
-      const sx = cell.sx ?? {};
+      if (cell.sx) sx = { ...sx, ...cell.sx };
 
       cells.push(
         <TableCell
@@ -40,7 +46,7 @@ function getHeaderRowCells(rowCells) {
           align={align}
           sx={sx}
         >
-          {value}
+          <span>{value}</span>
         </TableCell>
       );
     }

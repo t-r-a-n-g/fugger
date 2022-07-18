@@ -11,6 +11,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import API from "@services/Api";
 import { useTranslation } from "react-i18next";
+import useTableData from "@hooks/useTableData";
 import Account from "./Account";
 import Amount from "./Amount";
 import Date from "./Date";
@@ -122,13 +123,17 @@ function ConfirmationDialogRaw(props) {
   // save function
   const [errorStatus, setErrorStatus] = useState();
 
+  const tableData = useTableData({ table: "budgets" });
+
   const handleSave = async () => {
     if (!valueArray.some((el) => el.length === 0)) {
-      const finalValuesArray = await formatValues();
+      const finalValuesArray = formatValues();
 
       try {
         await API.budgets.post(finalValuesArray);
         setSavedSuccessfully(true);
+
+        tableData.setIsLoading(true);
 
         // resetting values to show only one empty row when reopen Budgetbox
         setValues({

@@ -60,7 +60,7 @@ const theme1 = {
         fontColor: "#ffef62",
       },
       body: {
-        backgroundColor: "#ececec"
+        backgroundColor: "#ececec",
       },
 
       border: {
@@ -98,7 +98,7 @@ const theme2 = {
       },
 
       body: {
-        backgroundColor: "#ececec"
+        backgroundColor: "#ececec",
       },
 
       border: {
@@ -148,7 +148,7 @@ const themeDark = {
       },
 
       body: {
-        backgroundColor: "#272727"
+        backgroundColor: "#272727",
       },
 
       border: {

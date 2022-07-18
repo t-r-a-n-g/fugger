@@ -248,7 +248,9 @@ function AnalysisTable() {
           }
           value={cell.value}
         >
-          {label}
+          <div>
+            <span>{label}</span>
+          </div>
         </AnTableCell>
       );
     }

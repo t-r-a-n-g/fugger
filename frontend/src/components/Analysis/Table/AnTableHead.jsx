@@ -25,8 +25,7 @@ function getHeaderRowCells(rowCells, depth = 0) {
       );
     } else {
       const value = cell.value ?? "";
-      if(cell.className)
-        className = `${className} ${cell.className}`;
+      if (cell.className) className = `${className} ${cell.className}`;
 
       let key = cell.key ?? `${cell.value}-${index}`;
       if (!key) key = `nk-${index}-${Math.random()}`;

@@ -20,7 +20,6 @@ class AnTableCell extends React.Component {
         ...props.sx,
       },
     };
-
     this.onKeyPressOnInput = this.onKeyPressOnInput.bind(this);
   }
 
@@ -108,7 +107,7 @@ class AnTableCell extends React.Component {
         className={`an-col ${className}`}
         sx={sx}
       >
-        <span>{`${label}`}</span>
+        {label}
       </TableCell>
     );
   }

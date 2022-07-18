@@ -20,6 +20,10 @@ const DatevAccount = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    order_num: {
+      type: DataTypes.INTEGER,
+      default: 0
+    }
   },
   { tableName: "datev_accounts" }
 );

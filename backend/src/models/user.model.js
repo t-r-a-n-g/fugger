@@ -73,16 +73,20 @@ User.beforeCreate((user) => {
 User.afterCreate(async (user) => {
   const defaultDatevAccounts = await DatevAccountDefaults.findAll();
   // const userDatevAccounts = {} // { category: { subcategory: [{accountName: "", accountNumber: 123}]}}
-
+  
   // Get unique category names and bulk create them
-  const categoryNames = new Set(
-    defaultDatevAccounts.map((acc) => acc.category_name)
-  );
-  const categories = [...categoryNames].map((cat) => ({
-    userId: user.id,
-    name: cat,
-  }));
-  const userCategories = await Category.bulkCreate(categories);
+  const categories = {};
+  for(const acc of defaultDatevAccounts) {
+    if(!categories[acc.category_name]) {
+      categories[acc.category_name] = {
+        userId: user.id,
+        name: acc.category_name,
+        order_num: acc.category_order,
+      }
+    }
+  }
+
+  const userCategories = await Category.bulkCreate(Object.values(categories));
 
   // convert subcategory names to object to make them unique, find parent category and bulk insert into db
   const subcategories = {};
@@ -93,6 +97,7 @@ User.afterCreate(async (user) => {
           .id,
         name: acc.subcategory_name,
         userId: user.id,
+        order_num: 0,
       };
     }
   }
@@ -109,6 +114,7 @@ User.afterCreate(async (user) => {
         (cat) => cat.name === acc.subcategory_name
       ).id,
       userId: user.id,
+      order_num: 0
     };
   });
 

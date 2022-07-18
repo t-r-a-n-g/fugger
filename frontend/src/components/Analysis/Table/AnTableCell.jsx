@@ -16,6 +16,7 @@ class AnTableCell extends React.Component {
       sx: {
         borderBottom: 1,
         borderBottomColor: "table.border.thin",
+        backgroundColor: "table.body.backgroundColor",
         ...props.sx,
       },
     };

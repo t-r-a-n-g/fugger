@@ -46,19 +46,16 @@ table {
   max-width: 30vw;
 }
 
-.an-header-col-1,
-.accounts-header-col {
+.an-header-col-0-1 {
   position: -webkit-sticky;
   position: sticky;
   left: 60px;
 }
 
-.an-header-col-1 {
-  left: 0;
-}
-
-.empty-header {
-  left: 0;
+.accounts-header-col {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 120px;
 }
 
 .budget-col {

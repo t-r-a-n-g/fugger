@@ -10,7 +10,6 @@ const { ValueError, NotFoundError } = require("../exceptions");
 
 class TransferService {
   static async getTransfers(from, to, userId) {
-
     const transfers = await Transfer.findAll({
       where: {
         date: {
@@ -18,16 +17,19 @@ class TransferService {
         },
         userId,
       },
- 
+
       include: [
         { model: DatevAccount, as: "datevAccount" },
         { model: Category },
         { model: Subcategory },
       ],
-      
+
       // order by date and order_num
       // if order_num is zero, put it to the end
-      order: [["date", "ASC"], [sequelize.literal("category.order_num = 0, category.order_num")]], 
+      order: [
+        ["date", "ASC"],
+        [sequelize.literal("category.order_num = 0, category.order_num")],
+      ],
       raw: true,
       nest: true,
     });

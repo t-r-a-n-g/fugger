@@ -11,8 +11,7 @@ function setupData() {
   )) {
     let order = 0;
     for (const [subcategory, accounts] of Object.entries(subcategories)) {
-      if (subcategory === "order")
-        order = accounts;
+      if (subcategory === "order") order = accounts;
       else {
         for (const account of accounts.accounts) {
           const obj = {
@@ -21,10 +20,8 @@ function setupData() {
             category_name: category,
             category_order: order,
             subcategory_name: subcategory,
-          }
-          promises.push(
-            DatevAccountDefaults.create(obj)
-          );
+          };
+          promises.push(DatevAccountDefaults.create(obj));
         }
       }
     }

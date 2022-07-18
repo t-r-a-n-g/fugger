@@ -18,7 +18,7 @@ const Category = sequelize.define(
     order_num: {
       type: DataTypes.INTEGER,
       default: 0,
-    }
+    },
   },
   { tableName: "categories" }
 );

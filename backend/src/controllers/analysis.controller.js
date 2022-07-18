@@ -12,7 +12,7 @@ class AnalysisController {
   static getTransferParents(transfer) {
     const self = AnalysisController;
 
-    const categoryId = `${transfer.category.order_num}-${transfer.category.id}` //transfer.category.id;
+    const categoryId = `${transfer.category.order_num}-${transfer.category.id}`; // transfer.category.id;
     const subcategoryId = transfer.subcategory.id;
     const datevAccountId = transfer.datevAccount.id;
 
@@ -129,7 +129,7 @@ class AnalysisController {
     for (const transfer of transfers) {
       const { category, subcategory, datevAccount } =
         self.getTransferParents(transfer);
-      
+
       const dateTime = transfer.date.getTime();
 
       let budget = null;
@@ -171,7 +171,7 @@ class AnalysisController {
     }
 
     return res.json({
-      categories: Object.values(self.categories).filter((cat) => !cat.isEmpty),//.sort((a,b) => a.order_num - b.order_num),
+      categories: Object.values(self.categories).filter((cat) => !cat.isEmpty), // .sort((a,b) => a.order_num - b.order_num),
       subcategories: Object.values(self.subcategories).filter(
         (scat) => !scat.isEmpty
       ),

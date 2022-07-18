@@ -22,8 +22,8 @@ const DatevAccount = sequelize.define(
     },
     order_num: {
       type: DataTypes.INTEGER,
-      default: 0
-    }
+      default: 0,
+    },
   },
   { tableName: "datev_accounts" }
 );

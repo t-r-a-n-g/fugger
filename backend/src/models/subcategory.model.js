@@ -17,9 +17,9 @@ const Subcategory = sequelize.define(
       allowNull: false,
     },
     order_num: {
-      type:DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       default: 0,
-    }
+    },
   },
   { tableName: "subcategories" }
 );

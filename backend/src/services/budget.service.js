@@ -24,7 +24,10 @@ class BudgetService {
         { model: Subcategory },
       ],
 
-      order: [["date", "ASC"], [sequelize.literal("category.order_num = 0, category.order_num")]], 
+      order: [
+        ["date", "ASC"],
+        [sequelize.literal("category.order_num = 0, category.order_num")],
+      ],
       raw: true,
       nest: true,
     });

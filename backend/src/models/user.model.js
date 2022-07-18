@@ -73,16 +73,16 @@ User.beforeCreate((user) => {
 User.afterCreate(async (user) => {
   const defaultDatevAccounts = await DatevAccountDefaults.findAll();
   // const userDatevAccounts = {} // { category: { subcategory: [{accountName: "", accountNumber: 123}]}}
-  
+
   // Get unique category names and bulk create them
   const categories = {};
-  for(const acc of defaultDatevAccounts) {
-    if(!categories[acc.category_name]) {
+  for (const acc of defaultDatevAccounts) {
+    if (!categories[acc.category_name]) {
       categories[acc.category_name] = {
         userId: user.id,
         name: acc.category_name,
         order_num: acc.category_order,
-      }
+      };
     }
   }
 
@@ -114,7 +114,7 @@ User.afterCreate(async (user) => {
         (cat) => cat.name === acc.subcategory_name
       ).id,
       userId: user.id,
-      order_num: 0
+      order_num: 0,
     };
   });
 

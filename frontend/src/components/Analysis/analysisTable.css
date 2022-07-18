@@ -32,7 +32,6 @@ table {
   min-width: 6vw;
   max-width: 10vw;
   padding: 0;
-  text-align: center !important;
 }
 
 .an-col input {
@@ -45,7 +44,6 @@ table {
   left: 60px;
   min-width: 30vw;
   max-width: 30vw;
-  text-align: left !important;
 }
 
 .an-header-col-1,

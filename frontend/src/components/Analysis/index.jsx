@@ -222,6 +222,7 @@ function AnalysisTable() {
       const isEditable = cell.isEditable || false;
       const sx = { ...cell.sx } || {};
 
+      sx.textAlign = cell.field === "name" ? "left" : "right";
       if (cell.field === "budget") {
         sx.borderRight = 1;
         sx.borderRightColor = "table.border.thin";
@@ -233,6 +234,9 @@ function AnalysisTable() {
         sx.borderRightColor = "table.border.thick";
       }
 
+      let { label } = cell;
+      if (!Number.isNaN(Number(label))) label = Number(label).toLocaleString(); // seperate with commas on thousand (i.e. 1,000)
+
       cells.push(
         <AnTableCell
           key={key}
@@ -242,9 +246,9 @@ function AnalysisTable() {
           onValueChange={(newValue, oldValue) =>
             onValueChange(newValue, oldValue, cell.field, key)
           }
-          label={cell.label}
+          value={cell.value}
         >
-          {cell.value}
+          {label}
         </AnTableCell>
       );
     }

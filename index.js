@@ -24,7 +24,6 @@ app.use(cookieParser());
 app.use(fileUpload());
 
 app.set("upload_dir", `${__dirname}/${process.env.UPLOAD_DIR}`);
-
 // creating routes by looping over the routes/index.js file
 Object.keys(routes).forEach((route) => {
   app.use(`/api/${route}`, routes[route]);
@@ -68,7 +67,6 @@ async function syncDB(force = false) {
     throw err;
   }
 }
-
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 startServer();

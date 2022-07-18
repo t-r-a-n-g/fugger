@@ -45,7 +45,7 @@ function ExportTable() {
     const subHeaderArray = headers[1]
       .slice(1)
       .map((el) => (typeof el === "object" ? el.value : el));
-    subHeaderArray.unshift("");
+    subHeaderArray.splice(1, 0, "");
 
     const subHeader = subHeaderArray.map((el) => {
       return {
@@ -98,6 +98,7 @@ function ExportTable() {
           categoryStyled.push({
             v: el,
             t: "n",
+            id,
             s: {
               fill: { fgColor: { rgb: "819CDB" } },
               font: { bold: true, color: { rgb: "228A3E" } },
@@ -109,6 +110,7 @@ function ExportTable() {
           categoryStyled.push({
             v: el,
             t: "n",
+            id,
             s: {
               fill: { fgColor: { rgb: "819CDB" } },
               font: { bold: true, color: { rgb: "FF0000" } },
@@ -119,6 +121,7 @@ function ExportTable() {
         if (el === 0 || typeof el === "string")
           categoryStyled.push({
             v: el,
+            id,
             s: {
               fill: { fgColor: { rgb: "819CDB" } },
               font: { bold: true },
@@ -147,6 +150,7 @@ function ExportTable() {
             {
               v: subcatRow[0],
               t: "s",
+
               s: {
                 fill: { fgColor: { rgb: "D0E5F8" } },
                 font: { bold: true },
@@ -159,6 +163,7 @@ function ExportTable() {
             {
               v: subcatRow[1],
               t: "s",
+
               s: {
                 fill: { fgColor: { rgb: "D0E5F8" } },
                 font: { bold: true },
@@ -175,6 +180,8 @@ function ExportTable() {
               subcategoryStyled.push({
                 v: el,
                 t: "n",
+                categoryId,
+                subcatId,
                 s: {
                   fill: { fgColor: { rgb: "D0E5F8" } },
                   font: { bold: true, color: { rgb: "228A3E" } },
@@ -189,6 +196,8 @@ function ExportTable() {
               subcategoryStyled.push({
                 v: el,
                 t: "n",
+                categoryId,
+                subcatId,
                 s: {
                   fill: { fgColor: { rgb: "D0E5F8" } },
                   font: { bold: true, color: { rgb: "FF0000" } },
@@ -202,6 +211,8 @@ function ExportTable() {
             if (el === 0 || typeof el === "string")
               subcategoryStyled.push({
                 v: el,
+                categoryId,
+                subcatId,
                 s: {
                   fill: { fgColor: { rgb: "D0E5F8" } },
                   font: { bold: true },
@@ -247,6 +258,8 @@ function ExportTable() {
                   datevStyled.push({
                     v: el,
                     t: "n",
+                    subcategoryId,
+                    datevId,
                     s: {
                       font: { color: { rgb: "228A3E" } },
                     },
@@ -256,6 +269,8 @@ function ExportTable() {
                   datevStyled.push({
                     v: el,
                     t: "n",
+                    subcategoryId,
+                    datevId,
                     s: {
                       font: { color: { rgb: "FF0000" } },
                     },
@@ -264,6 +279,8 @@ function ExportTable() {
                 if (el === 0 || typeof el === "string")
                   datevStyled.push({
                     v: el,
+                    subcategoryId,
+                    datevId,
                     s: { alignment: { horizontal: "right" } },
                   });
               });
@@ -277,7 +294,7 @@ function ExportTable() {
 
     /*   console.log("ROWS: ", rows); */
 
-    // download the excel file
+    /* --------------------------------- EXCEL DOWNLOAD -------------------------------- */
     if (rows.length > 0) {
       /* generate worksheet and workbook */
       const worksheet = XLSX.utils.aoa_to_sheet(rows);
@@ -305,12 +322,14 @@ function ExportTable() {
 
       const mergeCells = [{ s: { r: 0, c: 2 }, e: { r: 0, c: 5 } }];
 
+      // merge cells with months
       let n = 6;
       for (let i = 0; i < monthsArray.length; i++) {
         mergeCells.push({ s: { r: 0, c: n }, e: { r: 0, c: n + 3 } });
         n += 4;
       }
 
+      // merge naming cells of categories and subcategories
       for (let i = 0; i < cellsToBeMerged.length; i += 2) {
         mergeCells.push({
           s: XLSX.utils.decode_cell(cellsToBeMerged[i]),
@@ -320,10 +339,9 @@ function ExportTable() {
 
       worksheet["!merges"] = mergeCells;
 
-      /* IDEA for building sums:
-      - create rows and worksheet like here
-      - filter the necessary excel cells out of worksheet
-      - 
+      /* console.log("WORKSHEET: ", worksheet);
+      console.log("WS AS ARRAY: ", worksheetAsArray); */
+      /*  console.log(filteredWorksheetForSums); */
 
       /* create an XLSX file and save as "anyfilename".xlsx */
       XLSX.writeFile(

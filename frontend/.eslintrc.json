@@ -24,6 +24,7 @@
         "alias": {
           "@assets": "./src/assets",
           "@components": "./src/components",
+          "@img": "./src/img",
           "@pages": "./src/pages",
           "@services": "./src/services",
           "@hooks": "./src/hooks",

@@ -16,6 +16,7 @@ import Analysis from "@components/Analysis";
 import BudgetPage from "@components/budget/BudgetPage/BudgetPage";
 import Settings from "@components/settings/Settings";
 import Files from "@components/files/Files";
+import ProfilePage from "@components/profilePage";
 
 /* Helpers & Libraries */
 import userAtom from "@recoil/users";
@@ -48,6 +49,7 @@ function App() {
     );
   }
 
+
   if (user.isAuthenticated === true && user.isLoading === false) {
     i18n.changeLanguage(user.data.language);
     return (
@@ -62,6 +64,7 @@ function App() {
 
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/files" element={<Files />} />
+                <Route path="/profile" element={<ProfilePage user={user} />} />
                 <Route path="/logout" element={<LogoutPage />} />
               </Route>
             </Routes>
@@ -72,6 +75,7 @@ function App() {
   }
 
   return null;
+
 }
 
 export default App;
